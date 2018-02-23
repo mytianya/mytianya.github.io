@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[tcp3次握手与4次挥手]]></title>
+    <url>%2Ftcp3%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E4%E6%AC%A1%E6%8C%A5%E6%89%8B.html</url>
+    <content type="text"><![CDATA[tcp报文格式 3次握手client:发起连接 seq=10000 ack=0 SYN=1 ACK=0 1.SYN=1,ACK=0 请求连接报文,客户端进入SYN-SENT状态 server:同意连接，应答报文 seq=20000 ack=10001 SYN=1 ACK=1 2.SYN=1，ACK=1表示该报文段为连接同意的应答报文。ack=10001表示服务端希望下一个数据报发送序号从x+1开始的字节。 client:收到了同意连接的应答报文 seq=10001 ack=20001 SYN=0 ACK=1]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[wireshark常见过滤规则]]></title>
+    <url>%2Fwireshark%E5%B8%B8%E8%A7%81%E8%BF%87%E6%BB%A4%E8%A7%84%E5%88%99.html</url>
+    <content type="text"><![CDATA[&ensp;&ensp;wireshark使用过滤来快速找到关注的信息。一种是在捕获前选择过滤，捕获特定的信息。另一种在捕获的结果中进行显示过滤。 捕捉过滤器（用于决定将什么样的信息记录在捕捉结果中。需要在开始捕捉前设置）表达式:protocol direction host value Logical-operations other-expression 1. Protocol(协议)可能的值: ether, ip, arp, tcp and udp。 如果没有特别指明是什么协议，则默认使用所有支持的协议。 2. Direction(方向)可能的值: src, dst, src and dst, src or dst 。 如果没有特别指明来源或目的地，则默认使用 &quot;src or dst&quot; 作为关键字。 3. Host(s):可能的值： net, port, host, portrange. 4. Logical Operations(逻辑运算符)。否(&quot;not&quot;)具有最高的优先级。 或(&quot;or&quot;)和与(&quot;and&quot;)具有相同的优先级，运算时从左至右进行。 显示过滤器（在捕捉结果中进行详细查找。他们可以在得到捕捉结果后随意修改）表达式:protocol string1 string2 comparison-operator value logical-operations other-expression 1.Protocol(协议)可能的值http,ip.tcp,dns等。 2.String1,String2(可选)，协议的子类如http.request.uri.path contains &quot;query&quot;。 3.ComparisonOpertator(比较运算符),eq(==)、ne(!=)、gt(&gt;)、lt(&lt;)、ge(&gt;=)、le(&lt;=),contains,matchers,in。 4.Logical expressions(逻辑运算符),and,or,xor,not 举例1. ip.addr eq 58.216.109.186 ,ip.src eq x.x.x.x ip.desc eq x.x.x.x //过滤ip 2. tcp.port eq 80 //过滤端口 3. tcp udp arp icmp http smtp ftp dns msnms ip ssl oicq bootp //过滤协议 4. eth.addr eq 00:00:5e:00:53:00 //过滤mac 5. http.request.uri contains &quot;jpg&quot; and ip.addr==180.97.244.192//组合使用 and,or,not]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>wireshark</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[url编码解码]]></title>
+    <url>%2Furl%E7%BC%96%E7%A0%81%E8%A7%A3%E7%A0%81.html</url>
+    <content type="text"><![CDATA[Thus, only alphanumerics, the special characters “$-.+!*’(),”, and reserved characters used for their reserved purposes may be used unencoded within a URL.url rfc“只有字母和数字[0-9a-zA-Z]、一些特殊符号”$-.+!*’(),”[不包括双引号]、以及某些保留字，才可以不经过编码直接用于URL。” url组成&lt;scheme&gt;:&lt;scheme-specific-part&gt; 1.scheme由a-z,数字,字符+、字符.、字符-组成,不区分大小写 2.scheme-specific-part由&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;url-path&gt;组成。其中用户名密码，端口，路径等有时都可以不包括或被省略。 javascripturl编码函数escape()与unescape()escape()返回一个字符的unicode编码值,除了ASCII字母、数字、标点符号”@ * _ + - . /“以外，对其他所有字符进行编码。在\u0000到\u00ff之间的符号被转成%xx的形式，其余符号被转成%uxxxx的形式。对应的解码函数是unescape()。 12escape('moonlight/明月天涯')//"moonlight/%u660E%u6708%u5929%u6DAF"unescape("moonlight/%u660E%u6708%u5929%u6DAF")//"moonlight/明月天涯" encodeURI()与decodeURI()encodeURI()对整个URL进行编码,因此除了常见的符号以外,对其他一些在网址中有特殊含义的符号”; / ? : ‘ @ &amp; = + $ , #”，也不进行编码。编码后，它输出符号的utf-8形式，并且在每个字节前加上%。 12encodeURI("http://mytianya.me/url编码解码.html")//"http://mytianya.me/url%E7%BC%96%E7%A0%81%E8%A7%A3%E7%A0%81.html" encodeURIComponent()与decodeURIComponent()相比在encodeURI()中”; / ? : @ &amp; = + $ , #”不被编码的符号，都会被编码。 12encodeURIComponent("http://mytianya.me/url编码解码.html")//"http%3A%2F%2Fmytianya.me%2Furl%E7%BC%96%E7%A0%81%E8%A7%A3%E7%A0%81.html"]]></content>
+      <categories>
+        <category>http</category>
+      </categories>
+      <tags>
+        <tag>url编码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java泛型]]></title>
+    <url>%2Fjava%E6%B3%9B%E5%9E%8B.html</url>
+    <content type="text"><![CDATA[&ensp;&ensp;Java泛型本质为参数化类型,也就是说变量的类型是一个参数(type parameter)。类型参数只存在于编译期泛型只能用于在编译期间的静态类型检查,然后编译器生成的代码会擦除相应的类型信息,把类型参数替换成Bounding Type(未有限定为Object)。 泛型类可以复用代码保存不同的类型 123456789class GenericClass&lt;T&gt;&#123; private T t; public void setT(T t)&#123; this.t=t; &#125; public T getT()&#123; return this.t; &#125;&#125; 泛型方法123456class Demo&#123; static &lt;T&gt; void genericMethod(T t)&#123; &#125;&#125;Demo&lt;String&gt;.genercMethod("test");//调用方法 PECS(Producer Extends,Consumer Super)原则 使用List&lt;? extends T&gt;这种形式表示List的ArrayList等子类对象,可以包含T自身及其子类。(上边界限定,安全的取T) 使用List&lt;? super T&gt;这种形式表示List的ArrayList等子类对象,可以包含T自身及其超类。(下边界限定,安全的存T) 使用List&lt;?&gt;这种形式表示list是持有某种特定类型的 List，但是不知道具体是哪种类型。 1234567891011121314151617public static &lt;T&gt; void copy(List&lt;? super T&gt; dest, List&lt;? extends T&gt; src) &#123; int srcSize = src.size(); if (srcSize &gt; dest.size()) throw new IndexOutOfBoundsException("Source does not fit in dest"); if (srcSize &lt; COPY_THRESHOLD || (src instanceof RandomAccess &amp;&amp; dest instanceof RandomAccess)) &#123; for (int i=0; i&lt;srcSize; i++) dest.set(i, src.get(i)); &#125; else &#123; ListIterator&lt;? super T&gt; di=dest.listIterator(); ListIterator&lt;? extends T&gt; si=src.listIterator(); for (int i=0; i&lt;srcSize; i++) &#123; di.next(); di.set(si.next()); &#125; &#125; &#125; 类型擦除类型擦除就是说Java泛型只能用于在编译期间的静态类型检查，然后编译器生成的代码会擦除相应的类型信息，这样到了运行期间实际上JVM根本就知道泛型所代表的具体类型。这样做的目的是为了保持向下的兼容性，兼容JDk1.5以前的非泛型代码。1.在运行期ArrayList中的E都被替换成了Object,实际元素都是Object,故两个被jvm认为是同一个类。 123Class c1=new ArrayList&lt;String&gt;();Class c2=new ArrayList&lt;Object&gt;();System.out.println(c1==c2);//true]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java generic</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java8 lambda表达式]]></title>
+    <url>%2Fjava8-lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F.html</url>
+    <content type="text"><![CDATA[&ensp;&ensp;可以把Lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表、函数主体、返回类型，可能还有一个可以抛出的异常列表。 JAVA8 以前Runnable实现jdk1.6 Runnable源码123public interface Runnable &#123; public abstract void run();&#125; 以匿名内部类实现123456new Thread(new Runnable() &#123; @Override public void run() &#123; System.out.println("jdk1.6"); &#125; &#125;).start(); Java8 Runnable lambda实现JAVA1.8 Runnable源码1234@FunctionalInterfacepublic interface Runnable &#123; public abstract void run();&#125; lambda实现1new Thread(()-&gt;System.out.println("java 1.8")).start(); lambda优点1.简洁 2.函数式编程。成为一等公民(对象)，可以存储在变量，作为参数传递给方法 lambda语法(parameters)-&gt;{statements;} or (parameters)-&gt;expression 1. parmeters可为空, ()-&gt;{System.out.println(&quot;void&quot;);} 2. expression形式有返回值时，可省略return, ()-&gt;true lambda使用于函数式接口函数式接口定义为只有一个抽象方法的接口。 1. @FunctionalInterface表明此接口设计为一个函数式接口。 2. java8中可使用default修饰的接口方法 1234567@FunctionalInterfaceinterface lambdaInferface&#123; public boolean equals(String s); default void print()&#123; System.out.printf("default method"); &#125;&#125; 统合实例通过传入的不同的lambda,灵活的根据年龄，居住地的人群。 1. lambda的类型是根据filter中LambdaInterface推断出来的 2. 使用了Iterable的forEach,实际是传入了内置函数式接口Comsumer的lambda。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647package lambda;import java.util.ArrayList;import java.util.Arrays;import java.util.List;/*** * @description lambdaDemo * @author zhanyunwu * @time 2018/1/25 1:03 **/public class LambdaDemo &#123; public static void main(String[] args) &#123; LambdaInterface&lt;Person&gt; agetest=(Person p)-&gt;p.getAge()&gt;30; List&lt;Person&gt; agelist=filter(personList,agetest); System.out.println("--------who age greater than 30-----------"); print(agelist); LambdaInterface&lt;Person&gt; citytest=p-&gt;"nanjing".equals(p.getCity());//Person,() 类型可省略， List&lt;Person&gt; citylist=filter(personList,citytest); System.out.println("---------------who live in nanjing--------------"); print(citylist); &#125; static List&lt;Person&gt; filter(List&lt;Person&gt; in, LambdaInterface&lt;Person&gt; t)&#123; List&lt;Person&gt; out=new ArrayList&lt;&gt;(); in.forEach(p-&gt;&#123; if (t.test(p)) &#123; out.add(p); &#125; &#125;); return out; &#125; static List&lt;Person&gt; personList= Arrays.asList(new Person("mytianya",23,"nanjing") ,new Person("xiaoli",35,"shanghai"), new Person("ahua",28,"nanjing")); static void print(List&lt;Person&gt; pl)&#123; pl.forEach(p-&gt;System.out.printf("%s live on %s,age is %d\n",p.getName(),p.getCity(),p.getAge())); &#125;&#125;@FunctionalInterfaceinterface LambdaInterface&lt;T&gt;&#123; boolean test(T t);&#125;class Person&#123; private String name; private int age; private String city; //setter,getter,constructor&#125; 结果--------who age greater than 30----------- xiaoli live on shanghai,age is 35 ---------------who live in nanjing-------------- mytianya live on nanjing,age is 23 ahua live on nanjing,age is 28]]></content>
+      <categories>
+        <category>java8</category>
+      </categories>
+      <tags>
+        <tag>java8</tag>
+        <tag>lambda</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[selenium webdriver两三事]]></title>
+    <url>%2Fselenium-webdriver%E4%B8%A4%E4%B8%89%E4%BA%8B.html</url>
+    <content type="text"><![CDATA[&ensp;&ensp;Selenium是一个开源的和便携式的自动化软件测试工具，用于测试Web应用程序有能力在不同的浏览器和操作系统运行。其中Selenium的webdriver可以直接发送命令给浏览器,常用于爬虫爬取javascript动态渲染的页面,下图演示firefox自动化填写表单，查看火车票信息。 浏览器设置webdriver初始化123System.setProperty("webdriver.firefox.bin","E:\\firefox.exe");//设置firefox程序路径System.setProperty("webdriver.gecko.driver","F:\\geckodriver--win64\\geckodriver.exe");//驱动路径WebDriver driver=new FirefoxDriver(); userAgent设置123FirefoxOptions options=new FirefoxOptions();options.addArguments("--user-agent=Apple Iphone 5");WebDriver driver=new FirefoxDriver(options); 添加cookie12Cookie cookie = new Cookie("username", "name", "/", null);driver.manage().addCookie(cookie); 窗体位置大小123driver.manage().window().setSize(new Dimension(width,height));//设置大小driver.manage().window().setPosition(new Point(left,top));//设置窗体位置driver.manage().window().maximize();//窗体最大化 元素查找工具类12345678910111213141516171819202122232425262728293031323334public enum Select &#123; ID,NAME,CLASS,TAG,LINKTEXT,PARTLINKTEXT,CSS,XPATH&#125;public WebElement findElement(Select select,String text)&#123; WebElement element=null; switch (select)&#123; case ID: element=driver.findElement(By.id(text));//通过匹配id break; case NAME: element=driver.findElement(By.name(text));//通过匹配name break; case CLASS: element=driver.findElement(By.className(text));//通过样式名 break; case TAG: element=driver.findElement(By.tagName(text));//通过匹配标签名 break; case LINKTEXT: element=driver.findElement(By.linkText(text));//通过匹配链接文本 break; case PARTLINKTEXT: element=driver.findElement(By.partialLinkText(text));//通过匹配部分链接文本 break; case CSS: element=driver.findElement(By.cssSelector(text));//通过css 选择器 break; case XPATH: element=driver.findElement(By.xpath(text));//通过配置xpath break; default: &#125; return element; &#125; 窗口操作打开窗口123driver.get("https://mytianya.github.io/);driver.navigate().to("https://mytianya.github.io/");((JavascriptExecutor) driver).executeScript("window.open(\"https://mytianya.github.io/\");")//强制打开新窗口 窗口切换1234567String handle=driver.getWindowHandle();//获取当前窗口句柄 for(String h:driverManager.driver().getWindowHandles())&#123; if(!h.equals(handle))&#123; driver.close(); driver.switchTo().window(h);//切换窗口 &#125; &#125; 时间等待当前主线程直接休眠1Thread.Sleep(1000); 等待某个条件发生才进行123WebDriver driver = new FirefoxDriver();driver.get("https://mytianya.github.io/");WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("DynamicElement"))); 等待确切时间再执行1driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); 用户交互1234WebElement input=driver.findElement(By.id("id"));input.sendKeys("hexo");//输入值input.getAttribute("value");//获取属性value值input.click();//点击元素 屏幕截图123456789//FileUtils需要引用commons-io包public void screenShoot(String pathname)&#123; File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE); try &#123; FileUtils.copyFile(screenshot, new File(pathname)); &#125; catch (IOException e) &#123; e.printStackTrace(); &#125; &#125;]]></content>
+      <categories>
+        <category>selenium</category>
+      </categories>
+      <tags>
+        <tag>selenium webdriver</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2Fhello-world.html</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+</search>

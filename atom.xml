@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>明月天涯</title>
+  
+  <subtitle>寒鸦掠过枝头去,咫尺茫茫是醉乡</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://mytianya.me/"/>
+  <updated>2018-02-23T02:34:57.134Z</updated>
+  <id>http://mytianya.me/</id>
+  
+  <author>
+    <name>明月天涯</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>tcp3次握手与4次挥手</title>
+    <link href="http://mytianya.me/tcp3%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E4%E6%AC%A1%E6%8C%A5%E6%89%8B.html"/>
+    <id>http://mytianya.me/tcp3次握手与4次挥手.html</id>
+    <published>2018-02-07T08:27:20.000Z</published>
+    <updated>2018-02-23T02:34:57.134Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;tcp报文格式&quot;&gt;&lt;a href=&quot;#tcp报文格式&quot; class=&quot;headerlink&quot; title=&quot;tcp报文格式&quot;&gt;&lt;/a&gt;tcp报文格式&lt;/h2&gt;&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>wireshark常见过滤规则</title>
+    <link href="http://mytianya.me/wireshark%E5%B8%B8%E8%A7%81%E8%BF%87%E6%BB%A4%E8%A7%84%E5%88%99.html"/>
+    <id>http://mytianya.me/wireshark常见过滤规则.html</id>
+    <published>2018-02-01T02:39:44.000Z</published>
+    <updated>2018-02-01T06:11:32.078Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;ensp;&amp;ensp;wireshark使用过滤来快速找到关注的信息。一种是在捕获前选择过滤，捕获特定的信息。另一种在捕获的结果中进行显示过滤。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="网络安全" scheme="http://mytianya.me/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="wireshark" scheme="http://mytianya.me/tags/wireshark/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>url编码解码</title>
+    <link href="http://mytianya.me/url%E7%BC%96%E7%A0%81%E8%A7%A3%E7%A0%81.html"/>
+    <id>http://mytianya.me/url编码解码.html</id>
+    <published>2018-01-30T02:12:35.000Z</published>
+    <updated>2018-01-31T03:36:33.435Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Thus, only alphanumerics, the special characters “$-&lt;em&gt;.+!*’(),”, and reserved characters used for their reserved purposes may be used unencoded within a URL.&lt;a href=&quot;https://www.rfc-editor.org/rfc/rfc1738.txt&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;url rfc&lt;/a&gt;&lt;br&gt;“只有字母和数字[0-9a-zA-Z]、一些特殊符号”$-&lt;/em&gt;.+!*’(),”[不包括双引号]、以及某些保留字，才可以不经过编码直接用于URL。”&lt;br&gt;
+    
+    </summary>
+    
+      <category term="http" scheme="http://mytianya.me/categories/http/"/>
+    
+    
+      <category term="url编码" scheme="http://mytianya.me/tags/url%E7%BC%96%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java泛型</title>
+    <link href="http://mytianya.me/java%E6%B3%9B%E5%9E%8B.html"/>
+    <id>http://mytianya.me/java泛型.html</id>
+    <published>2018-01-25T03:18:58.000Z</published>
+    <updated>2018-01-28T08:18:22.513Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;ensp;&amp;ensp;Java泛型本质为参数化类型,也就是说变量的类型是一个参数(type parameter)。类型参数只存在于编译期泛型只能用于在编译期间的静态类型检查,然后编译器生成的代码会擦除相应的类型信息,把类型参数替换成Bounding Type(未有限定为Object)。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://mytianya.me/categories/java/"/>
+    
+    
+      <category term="java generic" scheme="http://mytianya.me/tags/java-generic/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java8 lambda表达式</title>
+    <link href="http://mytianya.me/java8-lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F.html"/>
+    <id>http://mytianya.me/java8-lambda表达式.html</id>
+    <published>2018-01-24T16:06:08.000Z</published>
+    <updated>2018-01-28T08:18:24.190Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;ensp;&amp;ensp;可以把Lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表、函数主体、返回类型，可能还有一个可以抛出的异常列表。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="java8" scheme="http://mytianya.me/categories/java8/"/>
+    
+    
+      <category term="java8" scheme="http://mytianya.me/tags/java8/"/>
+    
+      <category term="lambda" scheme="http://mytianya.me/tags/lambda/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>selenium webdriver两三事</title>
+    <link href="http://mytianya.me/selenium-webdriver%E4%B8%A4%E4%B8%89%E4%BA%8B.html"/>
+    <id>http://mytianya.me/selenium-webdriver两三事.html</id>
+    <published>2018-01-22T14:10:29.000Z</published>
+    <updated>2018-01-28T08:18:25.814Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;ensp;&amp;ensp;Selenium是一个开源的和便携式的自动化软件测试工具，用于测试Web应用程序有能力在不同的浏览器和操作系统运行。其中Selenium的webdriver可以直接发送命令给浏览器,常用于爬虫爬取javascript动态渲染的页面,下图演示firefox自动化填写表单，查看火车票信息。&lt;br&gt;&lt;img src=&quot;https://github.com/mytianya/mytianya.github.io/blob/master/blog_imgs/selenium.gif?raw=true&quot; alt=&quot;示例&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="selenium" scheme="http://mytianya.me/categories/selenium/"/>
+    
+    
+      <category term="selenium webdriver" scheme="http://mytianya.me/tags/selenium-webdriver/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://mytianya.me/hello-world.html"/>
+    <id>http://mytianya.me/hello-world.html</id>
+    <published>2018-01-06T08:21:04.101Z</published>
+    <updated>2018-01-23T11:43:55.588Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="http://mytianya.me/categories/blog/"/>
+    
+    
+      <category term="hexo" scheme="http://mytianya.me/tags/hexo/"/>
+    
+  </entry>
+  
+</feed>

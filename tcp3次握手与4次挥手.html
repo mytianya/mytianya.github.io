@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="python java spring it js javascript maven spring dubbo zookeeper" />
+  <meta name="keywords" content="tcp python wireshark," />
 
 
 
@@ -84,6 +84,7 @@
 
 
 <meta name="description" content="tcp报文格式 1.源端口,16bit。 2.目的端口,16bit。 3.序列号,32bit。当SYN为1,发起连接时为初始序号，其他为该段中第一个数据字节的序号。 4.确认号,32bit。当ACK为1时生效,确认号为序列号+1,即目的主机希望接收下次报文段的序列号。 5.数据偏移,4bit。表示数据开始的地方离TCP段的起始处有多远。实际上就是TCP段首部的长度。由于首部长度不固定，因此数据偏移">
+<meta name="keywords" content="tcp python wireshark">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tcp3次握手与4次挥手">
 <meta property="og:url" content="http://mytianya.me/tcp3次握手与4次挥手.html">
@@ -98,7 +99,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/fin_ack2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/fin_ack3.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/fin_ack4.png">
-<meta property="og:updated_time" content="2018-02-23T07:33:29.371Z">
+<meta property="og:updated_time" content="2018-02-23T07:35:22.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tcp3次握手与4次挥手">
 <meta name="twitter:description" content="tcp报文格式 1.源端口,16bit。 2.目的端口,16bit。 3.序列号,32bit。当SYN为1,发起连接时为初始序号，其他为该段中第一个数据字节的序号。 4.确认号,32bit。当ACK为1时生效,确认号为序列号+1,即目的主机希望接收下次报文段的序列号。 5.数据偏移,4bit。表示数据开始的地方离TCP段的起始处有多远。实际上就是TCP段首部的长度。由于首部长度不固定，因此数据偏移">
@@ -349,6 +350,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/network/" itemprop="url" rel="index">
+                    <span itemprop="name">network</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -422,6 +445,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tcp-python-wireshark/" rel="tag"># tcp python wireshark</a>
+          
+        </div>
       
 
       
@@ -575,7 +604,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -586,7 +615,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

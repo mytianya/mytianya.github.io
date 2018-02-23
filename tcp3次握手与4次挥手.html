@@ -83,13 +83,13 @@
 
 
 
-<meta name="description" content="tcp报文格式 1.源端口,16bit。 2.目的端口,16bit。 3.序列号,32bit。当SYN为1,发起连接时为初始序号，其他为该段中第一个数据字节的序号。 4.确认号,32bit。当ACK为1时生效,确认号为序列号+1,即目的主机希望接收下次报文段的序列号。 5.数据偏移,4bit。表示数据开始的地方离TCP段的起始处有多远。实际上就是TCP段首部的长度。由于首部长度不固定，因此数据偏移">
+<meta name="description" content="&amp;ensp;&amp;ensp;wireshark抓包分析tcp3次握手和4次挥手">
 <meta name="keywords" content="tcp python wireshark">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tcp3次握手与4次挥手">
 <meta property="og:url" content="http://mytianya.me/tcp3次握手与4次挥手.html">
 <meta property="og:site_name" content="明月天涯">
-<meta property="og:description" content="tcp报文格式 1.源端口,16bit。 2.目的端口,16bit。 3.序列号,32bit。当SYN为1,发起连接时为初始序号，其他为该段中第一个数据字节的序号。 4.确认号,32bit。当ACK为1时生效,确认号为序列号+1,即目的主机希望接收下次报文段的序列号。 5.数据偏移,4bit。表示数据开始的地方离TCP段的起始处有多远。实际上就是TCP段首部的长度。由于首部长度不固定，因此数据偏移">
+<meta property="og:description" content="&amp;ensp;&amp;ensp;wireshark抓包分析tcp3次握手和4次挥手">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/tcp_format.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/syn.png">
@@ -99,10 +99,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/fin_ack2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/fin_ack3.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/fin_ack4.png">
-<meta property="og:updated_time" content="2018-02-23T07:35:22.390Z">
+<meta property="og:updated_time" content="2018-02-23T07:38:13.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tcp3次握手与4次挥手">
-<meta name="twitter:description" content="tcp报文格式 1.源端口,16bit。 2.目的端口,16bit。 3.序列号,32bit。当SYN为1,发起连接时为初始序号，其他为该段中第一个数据字节的序号。 4.确认号,32bit。当ACK为1时生效,确认号为序列号+1,即目的主机希望接收下次报文段的序列号。 5.数据偏移,4bit。表示数据开始的地方离TCP段的起始处有多远。实际上就是TCP段首部的长度。由于首部长度不固定，因此数据偏移">
+<meta name="twitter:description" content="&amp;ensp;&amp;ensp;wireshark抓包分析tcp3次握手和4次挥手">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/tcp_format.png">
 
 
@@ -410,7 +410,8 @@
       
 
       
-        <h2 id="tcp报文格式"><a href="#tcp报文格式" class="headerlink" title="tcp报文格式"></a>tcp报文格式</h2><p><img src="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/tcp_format.png" alt="tcp报文格式"></p>
+        <p>&ensp;&ensp;wireshark抓包分析tcp3次握手和4次挥手<br><a id="more"></a></p>
+<h2 id="tcp报文格式"><a href="#tcp报文格式" class="headerlink" title="tcp报文格式"></a>tcp报文格式</h2><p><img src="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/tcp_format.png" alt="tcp报文格式"></p>
 <pre><code>1.源端口,16bit。
 2.目的端口,16bit。
 3.序列号,32bit。当SYN为1,发起连接时为初始序号，其他为该段中第一个数据字节的序号。

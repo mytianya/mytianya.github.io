@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-02-23T07:38:13.239Z</updated>
+  <updated>2018-02-24T03:56:24.954Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java base64编码</title>
+    <link href="http://mytianya.me/Java-base64%E7%BC%96%E7%A0%81.html"/>
+    <id>http://mytianya.me/Java-base64编码.html</id>
+    <published>2018-02-24T02:56:53.000Z</published>
+    <updated>2018-02-24T03:56:24.954Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;ensp;&amp;ensp;Base64是一种基于64个可打印字符来表示二进制数据的表示方法。由于2^6=64,所以每6个比特为一个单元,对应某个可打印字符。3个字节有24个比特,对应于4个Base64单元，即3个字节可表示4个可打印字符。它可用来作为电子邮件的传输编码。在Base64中的可打印字符包括字母A-Z、a-z、数字0-9,这样共有62个字符,此外两个可打印符号在不同的系统中而不同。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://mytianya.me/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://mytianya.me/tags/java/"/>
+    
+      <category term="base64" scheme="http://mytianya.me/tags/base64/"/>
+    
+  </entry>
   
   <entry>
     <title>tcp3次握手与4次挥手</title>

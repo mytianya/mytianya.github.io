@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-02-24T03:56:24.954Z</updated>
+  <updated>2018-02-27T03:57:43.400Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java异常</title>
+    <link href="http://mytianya.me/java%E5%BC%82%E5%B8%B8.html"/>
+    <id>http://mytianya.me/java异常.html</id>
+    <published>2018-02-26T08:53:03.000Z</published>
+    <updated>2018-02-27T03:57:43.400Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;ensp;&amp;ensp;Java中错误分为Error与Exception都是Throwable的子类。其中Error与RuntimeException及其子类称为未检查异常(unchecked Exception),其他异常为受检查异常(checked Exception)。&lt;br&gt;&amp;ensp;&amp;ensp;Error为程序运行中较严重的错误,如系统崩溃,内存空间不足,方法调用栈溢等。对于这类错误的导致的应用程序中断,仅靠程序本身无法恢复和预防,遇到这样的错误,建议让程序终止。&lt;br&gt;&amp;ensp;&amp;ensp;Exception表示程序可可以处理的异常,恢复程序正常运行。&lt;br&gt;&amp;ensp;&amp;ensp;未检查异常如ArithmeticException,Java编译器不去检查它,由程序员控制。受检查异常如FileNotFoundException,这类异常如果没有try……catch也没有throws抛出,编译强制处理否则通不过。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://mytianya.me/categories/java/"/>
+    
+    
+      <category term="java异常" scheme="http://mytianya.me/tags/java%E5%BC%82%E5%B8%B8/"/>
+    
+  </entry>
   
   <entry>
     <title>Java base64编码</title>

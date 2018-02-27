@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://mytianya.me/java%E6%B3%9B%E5%9E%8B.html</loc>
+    
+    <lastmod>2018-02-27T04:04:33.078Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://mytianya.me/java%E5%BC%82%E5%B8%B8.html</loc>
     
     <lastmod>2018-02-27T03:57:43.400Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>http://mytianya.me/java8-lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F.html</loc>
     
     <lastmod>2018-01-28T08:18:24.190Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://mytianya.me/java%E6%B3%9B%E5%9E%8B.html</loc>
-    
-    <lastmod>2018-01-28T08:18:22.513Z</lastmod>
     
   </url>
   

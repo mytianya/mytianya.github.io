@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[windows进程相关命令]]></title>
+    <url>%2Fwindows%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[java异常]]></title>
     <url>%2Fjava%E5%BC%82%E5%B8%B8.html</url>
     <content type="text"><![CDATA[&ensp;&ensp;Java中错误分为Error与Exception都是Throwable的子类。其中Error与RuntimeException及其子类称为未检查异常(unchecked Exception),其他异常为受检查异常(checked Exception)。&ensp;&ensp;Error为程序运行中较严重的错误,如系统崩溃,内存空间不足,方法调用栈溢等。对于这类错误的导致的应用程序中断,仅靠程序本身无法恢复和预防,遇到这样的错误,建议让程序终止。&ensp;&ensp;Exception表示程序可可以处理的异常,恢复程序正常运行。&ensp;&ensp;未检查异常如ArithmeticException,Java编译器不去检查它,由程序员控制。受检查异常如FileNotFoundException,这类异常如果没有try……catch也没有throws抛出,编译强制处理否则通不过。 异常处理总结1.在finally中关闭打开的资源。如文件读取,数据库连接。 2.在finally中不应该有return语句,否则程序会提前退出,具体的业务逻辑应写在try...catch中。 3.注意catch块的顺序,IOException如果先被捕获,则FileNotFoundException永远不会被捕获。 4.优先明确异常,异常越具体越好。 5.不要把异常包含在循环语句中。 6.重要的异常产生的原因写入注释,方便后期bug。 7.提早抛出(又称&quot;顺序失败&quot;),方便快速定位原因。 8.同一份异常不要捕获多次,重复打印日志。]]></content>

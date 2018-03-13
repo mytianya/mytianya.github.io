@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="java8,lambda," />
+  <meta name="keywords" content="python java spring it js javascript maven spring dubbo zookeeper" />
 
 
 
@@ -83,18 +83,14 @@
 
 
 
-<meta name="description" content="&amp;ensp;&amp;ensp;可以把Lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表、函数主体、返回类型，可能还有一个可以抛出的异常列表。">
-<meta name="keywords" content="java8,lambda">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java8 lambda表达式">
-<meta property="og:url" content="http://mytianya.me/java8-lambda表达式.html">
+<meta property="og:title" content="windows进程相关命令">
+<meta property="og:url" content="http://mytianya.me/windows进程相关命令.html">
 <meta property="og:site_name" content="明月天涯">
-<meta property="og:description" content="&amp;ensp;&amp;ensp;可以把Lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表、函数主体、返回类型，可能还有一个可以抛出的异常列表。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-28T08:18:24.190Z">
+<meta property="og:updated_time" content="2018-03-13T06:46:40.701Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java8 lambda表达式">
-<meta name="twitter:description" content="&amp;ensp;&amp;ensp;可以把Lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表、函数主体、返回类型，可能还有一个可以抛出的异常列表。">
+<meta name="twitter:title" content="windows进程相关命令">
 
 
 
@@ -124,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://mytianya.me/java8-lambda表达式.html"/>
+  <link rel="canonical" href="http://mytianya.me/windows进程相关命令.html"/>
 
 
 
 
 
-  <title>java8 lambda表达式 | 明月天涯</title>
+  <title>windows进程相关命令 | 明月天涯</title>
   
 
 
@@ -301,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://mytianya.me/java8-lambda表达式.html">
+    <link itemprop="mainEntityOfPage" href="http://mytianya.me/windows进程相关命令.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="明月天涯">
@@ -318,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java8 lambda表达式</h1>
+          <h1 class="post-title" itemprop="name headline">windows进程相关命令</h1>
         
 
         <div class="post-meta">
@@ -330,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-25T00:06:08+08:00">
-                2018-01-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-13T14:46:40+08:00">
+                2018-03-13
               </time>
             
 
@@ -341,28 +337,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java8/" itemprop="url" rel="index">
-                    <span itemprop="name">java8</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -370,7 +344,7 @@
 
           
           
-             <span id="/java8-lambda表达式.html" class="leancloud_visitors" data-flag-title="java8 lambda表达式">
+             <span id="/windows进程相关命令.html" class="leancloud_visitors" data-flag-title="windows进程相关命令">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -401,30 +375,7 @@
       
 
       
-        <p>&ensp;&ensp;可以把Lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表、函数主体、返回类型，可能还有一个可以抛出的异常列表。<br><a id="more"></a></p>
-<h2 id="JAVA8-以前Runnable实现"><a href="#JAVA8-以前Runnable实现" class="headerlink" title="JAVA8 以前Runnable实现"></a>JAVA8 以前Runnable实现</h2><h3 id="jdk1-6-Runnable源码"><a href="#jdk1-6-Runnable源码" class="headerlink" title="jdk1.6 Runnable源码"></a>jdk1.6 Runnable源码</h3><pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">   	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre><h3 id="以匿名内部类实现"><a href="#以匿名内部类实现" class="headerlink" title="以匿名内部类实现"></a>以匿名内部类实现</h3><pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">           System.out.println(<span class="string">"jdk1.6"</span>);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;).start();</span><br></pre></td></tr></table></figure>
-</code></pre><h2 id="Java8-Runnable-lambda实现"><a href="#Java8-Runnable-lambda实现" class="headerlink" title="Java8 Runnable lambda实现"></a>Java8 Runnable lambda实现</h2><h3 id="JAVA1-8-Runnable源码"><a href="#JAVA1-8-Runnable源码" class="headerlink" title="JAVA1.8 Runnable源码"></a>JAVA1.8 Runnable源码</h3><pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre><h3 id="lambda实现"><a href="#lambda实现" class="headerlink" title="lambda实现"></a>lambda实现</h3><pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Thread(()-&gt;System.out.println(<span class="string">"java 1.8"</span>)).start();</span><br></pre></td></tr></table></figure>
-</code></pre><h2 id="lambda优点"><a href="#lambda优点" class="headerlink" title="lambda优点"></a>lambda优点</h2><pre><code>1.简洁
-2.函数式编程。成为一等公民(对象)，可以存储在变量，作为参数传递给方法
-</code></pre><h2 id="lambda语法"><a href="#lambda语法" class="headerlink" title="lambda语法"></a>lambda语法</h2><p>(parameters)-&gt;{statements;} or (parameters)-&gt;expression</p>
-<pre><code>1. parmeters可为空,   ()-&gt;{System.out.println(&quot;void&quot;);}
-2. expression形式有返回值时，可省略return, ()-&gt;true
-</code></pre><h2 id="lambda使用于函数式接口"><a href="#lambda使用于函数式接口" class="headerlink" title="lambda使用于函数式接口"></a>lambda使用于函数式接口</h2><p>函数式接口定义为只有一个抽象方法的接口。</p>
-<pre><code>1. @FunctionalInterface表明此接口设计为一个函数式接口。
-2. java8中可使用default修饰的接口方法
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">lambdaInferface</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(String s)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.printf(<span class="string">"default method"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre><h2 id="统合实例"><a href="#统合实例" class="headerlink" title="统合实例"></a>统合实例</h2><p>通过传入的不同的lambda,灵活的根据年龄，居住地的人群。</p>
-<pre><code>1. lambda的类型是根据filter中LambdaInterface推断出来的
-2. 使用了Iterable的forEach,实际是传入了内置函数式接口Comsumer的lambda。
-</code></pre><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> lambda;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> lambdaDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> zhanyunwu</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@time</span> 2018/1/25 1:03</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LambdaDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        LambdaInterface&lt;Person&gt; agetest=(Person p)-&gt;p.getAge()&gt;<span class="number">30</span>;</span><br><span class="line">        List&lt;Person&gt; agelist=filter(personList,agetest);</span><br><span class="line">        System.out.println(<span class="string">"--------who age greater than 30-----------"</span>);</span><br><span class="line">        print(agelist);</span><br><span class="line">        LambdaInterface&lt;Person&gt; citytest=p-&gt;<span class="string">"nanjing"</span>.equals(p.getCity());<span class="comment">//Person,() 类型可省略，</span></span><br><span class="line">        List&lt;Person&gt; citylist=filter(personList,citytest);</span><br><span class="line">        System.out.println(<span class="string">"---------------who live in nanjing--------------"</span>);</span><br><span class="line">        print(citylist);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> List&lt;Person&gt; <span class="title">filter</span><span class="params">(List&lt;Person&gt; in, LambdaInterface&lt;Person&gt; t)</span></span>&#123;</span><br><span class="line">        List&lt;Person&gt; out=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        in.forEach(p-&gt;&#123;</span><br><span class="line">            <span class="keyword">if</span> (t.test(p)) &#123;</span><br><span class="line">                out.add(p);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> out;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> List&lt;Person&gt; personList= Arrays.asList(<span class="keyword">new</span> Person(<span class="string">"mytianya"</span>,<span class="number">23</span>,<span class="string">"nanjing"</span>)</span><br><span class="line">            ,<span class="keyword">new</span> Person(<span class="string">"xiaoli"</span>,<span class="number">35</span>,<span class="string">"shanghai"</span>),</span><br><span class="line">            <span class="keyword">new</span> Person(<span class="string">"ahua"</span>,<span class="number">28</span>,<span class="string">"nanjing"</span>));</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(List&lt;Person&gt; pl)</span></span>&#123;</span><br><span class="line">        pl.forEach(p-&gt;System.out.printf(<span class="string">"%s live on %s,age is %d\n"</span>,p.getName(),p.getCity(),p.getAge()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">LambdaInterface</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">boolean</span> <span class="title">test</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> String city;</span><br><span class="line">	<span class="comment">//setter,getter,constructor</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre><h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><pre><code>--------who age greater than 30-----------
-xiaoli live on shanghai,age is 35
----------------who live in nanjing--------------
-mytianya live on nanjing,age is 23
-ahua live on nanjing,age is 28
-</code></pre>
+        
       
     </div>
     
@@ -439,14 +390,6 @@ ahua live on nanjing,age is 28
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/java8/" rel="tag"># java8</a>
-          
-            <a href="/tags/lambda/" rel="tag"># lambda</a>
-          
-        </div>
-      
 
       
       
@@ -456,8 +399,8 @@ ahua live on nanjing,age is 28
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/selenium-webdriver两三事.html" rel="next" title="selenium webdriver两三事">
-                <i class="fa fa-chevron-left"></i> selenium webdriver两三事
+              <a href="/java异常.html" rel="next" title="java异常">
+                <i class="fa fa-chevron-left"></i> java异常
               </a>
             
           </div>
@@ -465,10 +408,6 @@ ahua live on nanjing,age is 28
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/java泛型.html" rel="prev" title="java泛型">
-                java泛型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -563,17 +502,8 @@ ahua live on nanjing,age is 28
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -674,22 +604,6 @@ ahua live on nanjing,age is 28
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA8-以前Runnable实现"><span class="nav-number">1.</span> <span class="nav-text">JAVA8 以前Runnable实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jdk1-6-Runnable源码"><span class="nav-number">1.1.</span> <span class="nav-text">jdk1.6 Runnable源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以匿名内部类实现"><span class="nav-number">1.2.</span> <span class="nav-text">以匿名内部类实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java8-Runnable-lambda实现"><span class="nav-number">2.</span> <span class="nav-text">Java8 Runnable lambda实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA1-8-Runnable源码"><span class="nav-number">2.1.</span> <span class="nav-text">JAVA1.8 Runnable源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lambda实现"><span class="nav-number">2.2.</span> <span class="nav-text">lambda实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lambda优点"><span class="nav-number">3.</span> <span class="nav-text">lambda优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lambda语法"><span class="nav-number">4.</span> <span class="nav-text">lambda语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lambda使用于函数式接口"><span class="nav-number">5.</span> <span class="nav-text">lambda使用于函数式接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统合实例"><span class="nav-number">6.</span> <span class="nav-text">统合实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">6.1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">6.2.</span> <span class="nav-text">结果</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

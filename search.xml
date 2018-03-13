@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[windows进程相关命令]]></title>
     <url>%2Fwindows%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4.html</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[&ensp;&ensp;windows管理进程相关命令:netstat、findstr、tasklist、taskkill netstat 显示端口信息1. listening 服务启动后处于监听状态。 2. established 建立了连接,正在通信中。 3. close_wait 对方关闭连接，或网络故障等原因导致连接中断,这时我方状态为close_wait,需要调用close()来关闭连接。 4. time_wait 我方主动关闭了连接，收到对方确认后状态变为time_wait。 5. syn_send 表示请求建立连接 findstr 查找内容 tasklist 显示进程 taskkill 杀死进程]]></content>
       <categories>
         <category>bat编程</category>
       </categories>

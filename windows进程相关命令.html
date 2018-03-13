@@ -83,15 +83,23 @@
 
 
 
+<meta name="description" content="&amp;ensp;&amp;ensp;windows管理进程相关命令:netstat、findstr、tasklist、taskkill">
 <meta name="keywords" content="进程 端口">
 <meta property="og:type" content="article">
 <meta property="og:title" content="windows进程相关命令">
 <meta property="og:url" content="http://mytianya.me/windows进程相关命令.html">
 <meta property="og:site_name" content="明月天涯">
+<meta property="og:description" content="&amp;ensp;&amp;ensp;windows管理进程相关命令:netstat、findstr、tasklist、taskkill">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-13T06:49:52.082Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/netstat.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/findstr.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/tasklist.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/taskkill.png">
+<meta property="og:updated_time" content="2018-03-13T07:28:59.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="windows进程相关命令">
+<meta name="twitter:description" content="&amp;ensp;&amp;ensp;windows管理进程相关命令:netstat、findstr、tasklist、taskkill">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/netstat.png">
 
 
 
@@ -398,7 +406,17 @@
       
 
       
-        
+        <p>&ensp;&ensp;windows管理进程相关命令:netstat、findstr、tasklist、taskkill<br><a id="more"></a></p>
+<h2 id="netstat-显示端口信息"><a href="#netstat-显示端口信息" class="headerlink" title="netstat 显示端口信息"></a>netstat 显示端口信息</h2><pre><code>1. listening 服务启动后处于监听状态。
+2. established 建立了连接,正在通信中。
+3. close_wait 对方关闭连接，或网络故障等原因导致连接中断,这时我方状态为close_wait,需要调用close()来关闭连接。
+4. time_wait 我方主动关闭了连接，收到对方确认后状态变为time_wait。
+5. syn_send 表示请求建立连接
+</code></pre><p><img src="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/netstat.png" alt="示例"></p>
+<h2 id="findstr-查找内容"><a href="#findstr-查找内容" class="headerlink" title="findstr 查找内容"></a>findstr 查找内容</h2><p><img src="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/findstr.png" alt="示例"></p>
+<h2 id="tasklist-显示进程"><a href="#tasklist-显示进程" class="headerlink" title="tasklist 显示进程"></a>tasklist 显示进程</h2><p><img src="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/tasklist.png" alt="示例"></p>
+<h2 id="taskkill-杀死进程"><a href="#taskkill-杀死进程" class="headerlink" title="taskkill 杀死进程"></a>taskkill 杀死进程</h2><p><img src="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/taskkill.png" alt="示例"></p>
+
       
     </div>
     
@@ -531,8 +549,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -633,6 +660,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#netstat-显示端口信息"><span class="nav-number">1.</span> <span class="nav-text">netstat 显示端口信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#findstr-查找内容"><span class="nav-number">2.</span> <span class="nav-text">findstr 查找内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tasklist-显示进程"><span class="nav-number">3.</span> <span class="nav-text">tasklist 显示进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#taskkill-杀死进程"><span class="nav-number">4.</span> <span class="nav-text">taskkill 杀死进程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

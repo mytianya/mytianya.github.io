@@ -4,6 +4,12 @@
     <title><![CDATA[windows进程相关命令]]></title>
     <url>%2Fwindows%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4.html</url>
     <content type="text"></content>
+      <categories>
+        <category>bat编程</category>
+      </categories>
+      <tags>
+        <tag>进程 端口</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[java异常]]></title>
@@ -89,7 +95,7 @@
     <url>%2Fselenium-webdriver%E4%B8%A4%E4%B8%89%E4%BA%8B.html</url>
     <content type="text"><![CDATA[&ensp;&ensp;Selenium是一个开源的和便携式的自动化软件测试工具，用于测试Web应用程序有能力在不同的浏览器和操作系统运行。其中Selenium的webdriver可以直接发送命令给浏览器,常用于爬虫爬取javascript动态渲染的页面,下图演示firefox自动化填写表单，查看火车票信息。 浏览器设置webdriver初始化123System.setProperty("webdriver.firefox.bin","E:\\firefox.exe");//设置firefox程序路径System.setProperty("webdriver.gecko.driver","F:\\geckodriver--win64\\geckodriver.exe");//驱动路径WebDriver driver=new FirefoxDriver(); userAgent设置123FirefoxOptions options=new FirefoxOptions();options.addArguments("--user-agent=Apple Iphone 5");WebDriver driver=new FirefoxDriver(options); 添加cookie12Cookie cookie = new Cookie("username", "name", "/", null);driver.manage().addCookie(cookie); 窗体位置大小123driver.manage().window().setSize(new Dimension(width,height));//设置大小driver.manage().window().setPosition(new Point(left,top));//设置窗体位置driver.manage().window().maximize();//窗体最大化 元素查找工具类12345678910111213141516171819202122232425262728293031323334public enum Select &#123; ID,NAME,CLASS,TAG,LINKTEXT,PARTLINKTEXT,CSS,XPATH&#125;public WebElement findElement(Select select,String text)&#123; WebElement element=null; switch (select)&#123; case ID: element=driver.findElement(By.id(text));//通过匹配id break; case NAME: element=driver.findElement(By.name(text));//通过匹配name break; case CLASS: element=driver.findElement(By.className(text));//通过样式名 break; case TAG: element=driver.findElement(By.tagName(text));//通过匹配标签名 break; case LINKTEXT: element=driver.findElement(By.linkText(text));//通过匹配链接文本 break; case PARTLINKTEXT: element=driver.findElement(By.partialLinkText(text));//通过匹配部分链接文本 break; case CSS: element=driver.findElement(By.cssSelector(text));//通过css 选择器 break; case XPATH: element=driver.findElement(By.xpath(text));//通过配置xpath break; default: &#125; return element; &#125; 窗口操作打开窗口123driver.get("https://mytianya.github.io/);driver.navigate().to("https://mytianya.github.io/");((JavascriptExecutor) driver).executeScript("window.open(\"https://mytianya.github.io/\");")//强制打开新窗口 窗口切换1234567String handle=driver.getWindowHandle();//获取当前窗口句柄 for(String h:driverManager.driver().getWindowHandles())&#123; if(!h.equals(handle))&#123; driver.close(); driver.switchTo().window(h);//切换窗口 &#125; &#125; 时间等待当前主线程直接休眠1Thread.Sleep(1000); 等待某个条件发生才进行123WebDriver driver = new FirefoxDriver();driver.get("https://mytianya.github.io/");WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.id("DynamicElement"))); 等待确切时间再执行1driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); 用户交互1234WebElement input=driver.findElement(By.id("id"));input.sendKeys("hexo");//输入值input.getAttribute("value");//获取属性value值input.click();//点击元素 屏幕截图123456789//FileUtils需要引用commons-io包public void screenShoot(String pathname)&#123; File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE); try &#123; FileUtils.copyFile(screenshot, new File(pathname)); &#125; catch (IOException e) &#123; e.printStackTrace(); &#125; &#125;]]></content>
       <categories>
-        <category>selenium</category>
+        <category>爬虫</category>
       </categories>
       <tags>
         <tag>selenium webdriver</tag>

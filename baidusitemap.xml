@@ -5,14 +5,39 @@
     
   <url>
     <loc>http://mytianya.me/windows%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4.html</loc>
-    <lastmod>2018-03-13T06:46:40.701Z</lastmod>
+    <lastmod>2018-03-13T06:49:52.082Z</lastmod>
     <data>
         <display>
         <title>windows进程相关命令</title>
         <pubTime>2018-03-13T06:46:40.000Z</pubTime>
         
+        <tag>进程 端口</tag>
+         
          
            
+             
+              <breadCrumb title="bat编程" url="http://mytianya.me/categories/bat%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://mytianya.me/selenium-webdriver%E4%B8%A4%E4%B8%89%E4%BA%8B.html</loc>
+    <lastmod>2018-03-13T06:48:55.417Z</lastmod>
+    <data>
+        <display>
+        <title>selenium webdriver两三事</title>
+        <pubTime>2018-01-22T14:10:29.000Z</pubTime>
+        
+        <tag>selenium webdriver</tag>
+         
+         
+           
+             
+              <breadCrumb title="爬虫" url="http://mytianya.me/categories/%E7%88%AC%E8%99%AB/"/>
+          
         </display>
     </data>
     </url>
@@ -134,26 +159,6 @@
            
              
               <breadCrumb title="http" url="http://mytianya.me/categories/http/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://mytianya.me/selenium-webdriver%E4%B8%A4%E4%B8%89%E4%BA%8B.html</loc>
-    <lastmod>2018-01-28T08:18:25.814Z</lastmod>
-    <data>
-        <display>
-        <title>selenium webdriver两三事</title>
-        <pubTime>2018-01-22T14:10:29.000Z</pubTime>
-        
-        <tag>selenium webdriver</tag>
-         
-         
-           
-             
-              <breadCrumb title="selenium" url="http://mytianya.me/categories/selenium/"/>
           
         </display>
     </data>

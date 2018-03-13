@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-03-13T06:46:40.701Z</updated>
+  <updated>2018-03-13T06:49:52.082Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -21,12 +21,16 @@
     <link href="http://mytianya.me/windows%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4.html"/>
     <id>http://mytianya.me/windows进程相关命令.html</id>
     <published>2018-03-13T06:46:40.000Z</published>
-    <updated>2018-03-13T06:46:40.701Z</updated>
+    <updated>2018-03-13T06:49:52.082Z</updated>
     
     <summary type="html">
     
     </summary>
     
+      <category term="bat编程" scheme="http://mytianya.me/categories/bat%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="进程 端口" scheme="http://mytianya.me/tags/%E8%BF%9B%E7%A8%8B-%E7%AB%AF%E5%8F%A3/"/>
     
   </entry>
   
@@ -179,7 +183,7 @@
     <link href="http://mytianya.me/selenium-webdriver%E4%B8%A4%E4%B8%89%E4%BA%8B.html"/>
     <id>http://mytianya.me/selenium-webdriver两三事.html</id>
     <published>2018-01-22T14:10:29.000Z</published>
-    <updated>2018-01-28T08:18:25.814Z</updated>
+    <updated>2018-03-13T06:48:55.417Z</updated>
     
     <summary type="html">
     
@@ -187,7 +191,7 @@
     
     </summary>
     
-      <category term="selenium" scheme="http://mytianya.me/categories/selenium/"/>
+      <category term="爬虫" scheme="http://mytianya.me/categories/%E7%88%AC%E8%99%AB/"/>
     
     
       <category term="selenium webdriver" scheme="http://mytianya.me/tags/selenium-webdriver/"/>

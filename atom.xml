@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-04-03T13:34:10.131Z</updated>
+  <updated>2018-04-03T13:36:34.523Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -21,17 +21,11 @@
     <link href="http://mytianya.me/phantomjs-websever-%E7%88%AC%E8%99%AB%E6%9C%8D%E5%8A%A1.html"/>
     <id>http://mytianya.me/phantomjs-websever-爬虫服务.html</id>
     <published>2018-03-22T13:03:13.000Z</published>
-    <updated>2018-04-03T13:34:10.131Z</updated>
+    <updated>2018-04-03T13:36:34.523Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&amp;ensp;&amp;ensp;PhantomJS is a headless WebKit scriptable with a JavaScript API. It has fast and native support for various web standards:
-        
-      
+      &lt;p&gt;&amp;ensp;&amp;ensp;PhantomJS is a headless WebKit scriptable with a JavaScript API. It has fast and native support for various web standards: DOM handling, CSS selector, JSON, Canvas, and SVG。&lt;br&gt;&amp;ensp;&amp;ensp;在爬虫方面phantomjs常来获取javascript渲染过后的页面。提供的webserver模块可发布为服务，提供了http,socks5代理、切换userAgent等爬虫常见功能,还可以配合nodejs实现更复杂的页面抓取。另外提供的网页截图,渲染html可方便用来做网站seo,网站监控等。&lt;br&gt;
     
     </summary>
     

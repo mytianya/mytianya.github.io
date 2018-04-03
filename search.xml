@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[phantomjs websever 爬虫服务]]></title>
+    <url>%2Fphantomjs-websever-%E7%88%AC%E8%99%AB%E6%9C%8D%E5%8A%A1.html</url>
+    <content type="text"><![CDATA[&ensp;&ensp;PhantomJS is a headless WebKit scriptable with a JavaScript API. It has fast and native support for various web standards: DOM handling, CSS selector, JSON, Canvas, and SVG。&ensp;&ensp;在爬虫方面phantomjs常来获取javascript渲染过后的页面。提供的webserver模块可发布为服务，提供了http,socks5代理、切换userAgent等爬虫常见功能,还可以配合nodejs实现更复杂的页面抓取。另外提供的网页截图,渲染html可方便用来做网站seo,网站监控等。 phantomjs 模块介绍System Module1.获取命令行参数,phantomjs 进程id 123var system = require('system');var args = system.args;var pid=system.pid Web Page Module 设置请求头 1234567var webPage = require('webpage');var page = webPage.create();page.customHeaders = &#123;//设置请求头 "Connection":"keep-alive", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", "Accept-Language": "zh-CN,zh;q=0.8,en;q=0.6" &#125;; 设置userAgent 1page.settings.userAgent ='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36'; 设置cookie 123456789phantom.addCookie(&#123; 'name' : 'Valid-Cookie-Name', /* required property */ 'value' : 'Valid-Cookie-Value', /* required property */ 'domain' : 'localhost', 'path' : '/foo', /* required property */ 'httponly' : true, 'secure' : false, 'expires' : (new Date()).getTime() + (1000 * 60 * 60) /* &lt;-- expires in 1 hour */&#125;); 设置代理 phantomjs只支持sock5与http代理。其中又分为全局代理与动态代理。全局代理在启动的参数中设置,具体可以phantomjs -h参考。 1phantomjs --proxy-type=sock5 --proxy=ip:port spider.js 动态代理设置可用来page.open()之前动态配置。 1phantom.setProxy(ip, port,'manual','',''); 解析元素 12345page.open('http://mytianya.me', function(status) &#123; var title = page.evaluate(function() &#123; return document.getElementById("xxId").innerText &#125;);&#125;); 设置视窗大小截图 12345page.viewportSize = &#123; width: 1920, height: 1080 &#125;;page.open("http://mytianya.me", function start(status) &#123; page.render('test.jpeg', &#123;format: 'jpeg', quality: '100'&#125;); phantom.exit();&#125;); Web Server Module监听本地端口，启动一个http服务 1234567var webserver = require('webserver');var server = webserver.create();var service = server.listen(8080, function(request, response) &#123; response.statusCode = 200; response.write('&lt;html&gt;&lt;body&gt;Hello!&lt;/body&gt;&lt;/html&gt;'); response.close();&#125;); 综合应用12345678910111213141516171819202122232425262728293031323334353637383940414243444546var webserver = require('webserver');var maxWait = 5000;var resourceWait = 500;var server = webserver.create();var service = server.listen(8080, function(request, response) &#123; var headers = request.headers; console.log("headers---&gt;" + headers) var postRaw = request.postRaw; var host = headers.proxyIp; var port = headers.proxyPort; var url = headers.proxyUrl; var ua = headers.proxyUa; //获取源码 var webPage = require('webpage'); var page = webPage.create(); page.clearCookies(); page.settings.userAgent = ua; page.settings.resourceTimeout=maxWait page.customHeaders = &#123; "Connection":"keep-alive", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", "Accept-Language": "zh-CN,zh;q=0.8,en;q=0.6" &#125;; phantom.setProxy(host, port, 'manual', '', ''); response.headers = &#123; 'Cache': 'no-cache', 'Content-Type': 'text/plain;charset=utf-8' &#125;; page.onResourceTimeout = function(request) &#123; console.log('onResourceTimeout (#' + request.id + '): ' + JSON.stringify(request)); response.write("error#_#" + host + ":" + port) response.close() &#125; page.open(url, function(status) &#123; window.setTimeout(function() &#123; if (status !== 'success') &#123; response.write("error#_#" + host + ":" + port) response.close() &#125; else &#123; response.statusCode = 200; response.write(page.content); response.close(); &#125; &#125;,resourceWait); &#125;);&#125;);]]></content>
+      <categories>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>phantomjs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2Fhello-world.html</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[windows进程相关命令]]></title>
     <url>%2Fwindows%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4.html</url>
     <content type="text"><![CDATA[&ensp;&ensp;windows管理进程相关命令:netstat、findstr、tasklist、taskkill netstat 显示端口信息1. listening 服务启动后处于监听状态。 2. established 建立了连接,正在通信中。 3. close_wait 对方关闭连接，或网络故障等原因导致连接中断,这时我方状态为close_wait,需要调用close()来关闭连接。 4. time_wait 我方主动关闭了连接，收到对方确认后状态变为time_wait。 5. syn_send 表示请求建立连接 findstr 查找内容 tasklist 显示进程 taskkill 杀死进程]]></content>
@@ -99,17 +121,6 @@
       </categories>
       <tags>
         <tag>selenium webdriver</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2Fhello-world.html</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-      <categories>
-        <category>blog</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
       </tags>
   </entry>
 </search>

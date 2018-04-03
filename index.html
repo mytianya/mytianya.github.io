@@ -297,6 +297,340 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mytianya.me/phantomjs-websever-爬虫服务.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="明月天涯">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="明月天涯">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/phantomjs-websever-爬虫服务.html" itemprop="url">phantomjs websever 爬虫服务</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-22T21:03:13+08:00">
+                2018-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/phantomjs-websever-爬虫服务.html" class="leancloud_visitors" data-flag-title="phantomjs websever 爬虫服务">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&ensp;&ensp;PhantomJS is a headless WebKit scriptable with a JavaScript API. It has fast and native support for various web standards: DOM handling, CSS selector, JSON, Canvas, and SVG。<br>&ensp;&ensp;在爬虫方面phantomjs常来获取javascript渲染过后的页面。提供的webserver模块可发布为服务，提供了http,socks5代理、切换userAgent等爬虫常见功能,还可以配合nodejs实现更复杂的页面抓取。另外提供的网页截图,渲染html可方便用来做网站seo,网站监控等。</p>
+<h2 id="phantomjs-模块介绍"><a href="#phantomjs-模块介绍" class="headerlink" title="phantomjs 模块介绍"></a>phantomjs 模块介绍</h2><h3 id="System-Module"><a href="#System-Module" class="headerlink" title="System Module"></a>System Module</h3><pre><code>1.获取命令行参数,phantomjs 进程id
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> system = <span class="built_in">require</span>(<span class="string">'system'</span>);</span><br><span class="line"><span class="keyword">var</span> args = system.args;</span><br><span class="line"><span class="keyword">var</span> pid=system.pid</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="Web-Page-Module"><a href="#Web-Page-Module" class="headerlink" title="Web Page Module"></a>Web Page Module</h3><ol>
+<li><p>设置请求头</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> webPage = <span class="built_in">require</span>(<span class="string">'webpage'</span>);</span><br><span class="line"><span class="keyword">var</span> page = webPage.create();</span><br><span class="line">page.customHeaders = &#123;<span class="comment">//设置请求头</span></span><br><span class="line">	<span class="string">"Connection"</span>:<span class="string">"keep-alive"</span>,</span><br><span class="line">       <span class="string">"Accept"</span>: <span class="string">"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"</span>,</span><br><span class="line">       <span class="string">"Accept-Language"</span>: <span class="string">"zh-CN,zh;q=0.8,en;q=0.6"</span></span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置userAgent</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">page.settings.userAgent =<span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置cookie</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">phantom.addCookie(&#123;</span><br><span class="line">  <span class="string">'name'</span>     : <span class="string">'Valid-Cookie-Name'</span>,   <span class="comment">/* required property */</span></span><br><span class="line">  <span class="string">'value'</span>    : <span class="string">'Valid-Cookie-Value'</span>,  <span class="comment">/* required property */</span></span><br><span class="line">  <span class="string">'domain'</span>   : <span class="string">'localhost'</span>,</span><br><span class="line">  <span class="string">'path'</span>     : <span class="string">'/foo'</span>,                <span class="comment">/* required property */</span></span><br><span class="line">  <span class="string">'httponly'</span> : <span class="literal">true</span>,</span><br><span class="line">  <span class="string">'secure'</span>   : <span class="literal">false</span>,</span><br><span class="line">  <span class="string">'expires'</span>  : (<span class="keyword">new</span> <span class="built_in">Date</span>()).getTime() + (<span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span>)   <span class="comment">/* &lt;-- expires in 1 hour */</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置代理<br> phantomjs只支持sock5与http代理。其中又分为全局代理与动态代理。全局代理在启动的参数中设置,具体可以phantomjs -h参考。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phantomjs --proxy-type=sock5 --proxy=ip:port spider.js</span><br></pre></td></tr></table></figure>
+<p> 动态代理设置可用来page.open()之前动态配置。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phantom.setProxy(ip, port,<span class="string">'manual'</span>,<span class="string">''</span>,<span class="string">''</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解析元素</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">page.open(<span class="string">'http://mytianya.me'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">status</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> title = page.evaluate(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(<span class="string">"xxId"</span>).innerText</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置视窗大小截图</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">page.viewportSize = &#123; <span class="attr">width</span>: <span class="number">1920</span>, <span class="attr">height</span>: <span class="number">1080</span> &#125;;</span><br><span class="line">page.open(<span class="string">"http://mytianya.me"</span>, <span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params">status</span>) </span>&#123;</span><br><span class="line">  page.render(<span class="string">'test.jpeg'</span>, &#123;<span class="attr">format</span>: <span class="string">'jpeg'</span>, <span class="attr">quality</span>: <span class="string">'100'</span>&#125;);</span><br><span class="line">  phantom.exit();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Web-Server-Module"><a href="#Web-Server-Module" class="headerlink" title="Web Server Module"></a>Web Server Module</h3><p>监听本地端口，启动一个http服务<br>    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> webserver = <span class="built_in">require</span>(<span class="string">'webserver'</span>);</span><br><span class="line"><span class="keyword">var</span> server = webserver.create();</span><br><span class="line"><span class="keyword">var</span> service = server.listen(<span class="number">8080</span>, <span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">  response.statusCode = <span class="number">200</span>;</span><br><span class="line">  response.write(<span class="string">'&lt;html&gt;&lt;body&gt;Hello!&lt;/body&gt;&lt;/html&gt;'</span>);</span><br><span class="line">  response.close();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="综合应用"><a href="#综合应用" class="headerlink" title="综合应用"></a>综合应用</h2><pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> webserver = <span class="built_in">require</span>(<span class="string">'webserver'</span>);</span><br><span class="line"><span class="keyword">var</span> maxWait = <span class="number">5000</span>;</span><br><span class="line"><span class="keyword">var</span> resourceWait = <span class="number">500</span>;</span><br><span class="line"><span class="keyword">var</span> server = webserver.create();</span><br><span class="line"><span class="keyword">var</span> service = server.listen(<span class="number">8080</span>, <span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> headers = request.headers;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"headers---&gt;"</span> + headers)</span><br><span class="line">    <span class="keyword">var</span> postRaw = request.postRaw;</span><br><span class="line">    <span class="keyword">var</span> host = headers.proxyIp;</span><br><span class="line">    <span class="keyword">var</span> port = headers.proxyPort;</span><br><span class="line">    <span class="keyword">var</span> url = headers.proxyUrl;</span><br><span class="line">    <span class="keyword">var</span> ua = headers.proxyUa;</span><br><span class="line">    <span class="comment">//获取源码</span></span><br><span class="line">    <span class="keyword">var</span> webPage = <span class="built_in">require</span>(<span class="string">'webpage'</span>);</span><br><span class="line">    <span class="keyword">var</span> page = webPage.create();</span><br><span class="line">    page.clearCookies();</span><br><span class="line">    page.settings.userAgent = ua;</span><br><span class="line">    page.settings.resourceTimeout=maxWait</span><br><span class="line">    page.customHeaders = &#123;</span><br><span class="line">		<span class="string">"Connection"</span>:<span class="string">"keep-alive"</span>,</span><br><span class="line">		<span class="string">"Accept"</span>: <span class="string">"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"</span>,</span><br><span class="line">		<span class="string">"Accept-Language"</span>: <span class="string">"zh-CN,zh;q=0.8,en;q=0.6"</span></span><br><span class="line">    &#125;;</span><br><span class="line">    phantom.setProxy(host, port, <span class="string">'manual'</span>, <span class="string">''</span>, <span class="string">''</span>);</span><br><span class="line">    response.headers = &#123;</span><br><span class="line">        <span class="string">'Cache'</span>: <span class="string">'no-cache'</span>,</span><br><span class="line">        <span class="string">'Content-Type'</span>: <span class="string">'text/plain;charset=utf-8'</span></span><br><span class="line">    &#125;;</span><br><span class="line">    page.onResourceTimeout = <span class="function"><span class="keyword">function</span>(<span class="params">request</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'onResourceTimeout (#'</span> + request.id + <span class="string">'): '</span> + <span class="built_in">JSON</span>.stringify(request));</span><br><span class="line">        response.write(<span class="string">"error#_#"</span> + host + <span class="string">":"</span> + port)</span><br><span class="line">        response.close()</span><br><span class="line">    &#125;</span><br><span class="line">    page.open(url, <span class="function"><span class="keyword">function</span>(<span class="params">status</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">window</span>.setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (status !== <span class="string">'success'</span>) &#123;</span><br><span class="line">                response.write(<span class="string">"error#_#"</span> + host + <span class="string">":"</span> + port)</span><br><span class="line">                response.close()</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                response.statusCode = <span class="number">200</span>;</span><br><span class="line">                response.write(page.content);</span><br><span class="line">                response.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,resourceWait);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mytianya.me/hello-world.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="明月天涯">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="明月天涯">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hello-world.html" itemprop="url">Hello World</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-22T20:09:25+08:00">
+                2018-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/blog/" itemprop="url" rel="index">
+                    <span itemprop="name">blog</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/hello-world.html" class="leancloud_visitors" data-flag-title="Hello World">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/hello-world.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://mytianya.me/windows进程相关命令.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1540,321 +1874,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://mytianya.me/selenium-webdriver两三事.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="明月天涯">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="明月天涯">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/selenium-webdriver两三事.html" itemprop="url">selenium webdriver两三事</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-22T22:10:29+08:00">
-                2018-01-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/爬虫/" itemprop="url" rel="index">
-                    <span itemprop="name">爬虫</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/selenium-webdriver两三事.html" class="leancloud_visitors" data-flag-title="selenium webdriver两三事">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&ensp;&ensp;Selenium是一个开源的和便携式的自动化软件测试工具，用于测试Web应用程序有能力在不同的浏览器和操作系统运行。其中Selenium的webdriver可以直接发送命令给浏览器,常用于爬虫爬取javascript动态渲染的页面,下图演示firefox自动化填写表单，查看火车票信息。<br><img src="https://github.com/mytianya/mytianya.github.io/blob/master/blog_imgs/selenium.gif?raw=true" alt="示例"><br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/selenium-webdriver两三事.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://mytianya.me/hello-world.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="明月天涯">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="明月天涯">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hello-world.html" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-06T16:21:04+08:00">
-                2018-01-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/blog/" itemprop="url" rel="index">
-                    <span itemprop="name">blog</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-             <span id="/hello-world.html" class="leancloud_visitors" data-flag-title="Hello World">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/hello-world.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1902,7 +1928,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1913,7 +1939,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1924,7 +1950,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

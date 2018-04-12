@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://mytianya.me/Java%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.html</loc>
+    <lastmod>2018-04-12T12:45:36.565Z</lastmod>
+    <data>
+        <display>
+        <title>Java类文件结构</title>
+        <pubTime>2018-04-11T14:32:12.000Z</pubTime>
+        
+        <tag>java8</tag>
+         
+        <tag>class file format</tag>
+         
+         
+           
+             
+              <breadCrumb title="jvm" url="http://mytianya.me/categories/jvm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://mytianya.me/java%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%96%AD.html</loc>
     <lastmod>2018-04-09T15:46:01.259Z</lastmod>
     <data>

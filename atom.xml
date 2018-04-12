@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-04-09T15:46:01.259Z</updated>
+  <updated>2018-04-12T12:45:36.565Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java类文件结构</title>
+    <link href="http://mytianya.me/Java%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.html"/>
+    <id>http://mytianya.me/Java类文件结构.html</id>
+    <published>2018-04-11T14:32:12.000Z</published>
+    <updated>2018-04-12T12:45:36.565Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;ensp;&amp;ensp;Java类文件格式分析。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="jvm" scheme="http://mytianya.me/categories/jvm/"/>
+    
+    
+      <category term="java8" scheme="http://mytianya.me/tags/java8/"/>
+    
+      <category term="class file format" scheme="http://mytianya.me/tags/class-file-format/"/>
+    
+  </entry>
   
   <entry>
     <title>java线程中断</title>

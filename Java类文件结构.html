@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="python java spring it js javascript maven spring dubbo zookeeper" />
+  <meta name="keywords" content="java8,class file format," />
 
 
 
@@ -83,13 +83,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="明月天涯">
-<meta property="og:url" content="http://mytianya.me/categories/爬虫/index.html">
+<meta name="description" content="&amp;ensp;&amp;ensp;Java类文件格式分析。">
+<meta name="keywords" content="java8,class file format">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java类文件结构">
+<meta property="og:url" content="http://mytianya.me/Java类文件结构.html">
 <meta property="og:site_name" content="明月天涯">
+<meta property="og:description" content="&amp;ensp;&amp;ensp;Java类文件格式分析。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-12T12:45:36.565Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="明月天涯">
+<meta name="twitter:title" content="Java类文件结构">
+<meta name="twitter:description" content="&amp;ensp;&amp;ensp;Java类文件格式分析。">
 
 
 
@@ -119,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://mytianya.me/categories/爬虫/"/>
+  <link rel="canonical" href="http://mytianya.me/Java类文件结构.html"/>
 
 
 
 
 
-  <title>分类: 爬虫 | 明月天涯</title>
+  <title>Java类文件结构 | 明月天涯</title>
   
 
 
@@ -144,7 +149,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -282,83 +287,263 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>爬虫<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mytianya.me/Java类文件结构.html">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="明月天涯">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="明月天涯">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/phantomjs-websever-爬虫服务.html" itemprop="url">
-              
-                <span itemprop="name">phantomjs websever 爬虫服务</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Java类文件结构</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-22T21:03:13+08:00"
-              content="2018-03-22" >
-          03-22
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T22:32:12+08:00">
+                2018-04-11
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jvm/" itemprop="url" rel="index">
+                    <span itemprop="name">jvm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/Java类文件结构.html" class="leancloud_visitors" data-flag-title="Java类文件结构">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/selenium-webdriver两三事.html" itemprop="url">
-              
-                <span itemprop="name">selenium webdriver两三事</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-22T22:10:29+08:00"
-              content="2018-01-22" >
-          01-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <p>&ensp;&ensp;Java类文件格式分析。<br><a id="more"></a></p>
+<blockquote>
+<p>a. Class文件是一组以8位字节为基础的二进制流，各个数据项目按照顺序排列在Class文件中，中间没有任何分隔符。因此整个class文件中存储的内容几乎全是程序运行时的必要数据。当遇到需要占用8位以上字节空间的数据项时，会按照高位在前的方式分割成若干个8位字节存储。<br>b. Class文件结构采用类似C语言的结构体来存储数据的，主要有两类数据项，无符号数和表，无符号数用来表述数字，索引引用以及字符串等，比如 u1,u2,u4,u8分别代表1个字节，2个字节，4个字节，8个字节的无符号数，而表是有多个无符号数以及其它的表组成的复合结构。</p>
+</blockquote>
+<h2 id="类文件结构"><a href="#类文件结构" class="headerlink" title="类文件结构"></a>类文件结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ClassFile &#123;</span><br><span class="line">    u4             magic;</span><br><span class="line">    u2             minor_version;</span><br><span class="line">    u2             major_version;</span><br><span class="line">    u2             constant_pool_count;</span><br><span class="line">    cp_info        constant_pool[constant_pool_count-1];</span><br><span class="line">    u2             access_flags;</span><br><span class="line">    u2             this_class;</span><br><span class="line">    u2             super_class;</span><br><span class="line">    u2             interfaces_count;</span><br><span class="line">    u2             interfaces[interfaces_count];</span><br><span class="line">    u2             fields_count;</span><br><span class="line">    field_info     fields[fields_count];</span><br><span class="line">    u2             methods_count;</span><br><span class="line">    method_info    methods[methods_count];</span><br><span class="line">    u2             attributes_count;</span><br><span class="line">    attribute_info attributes[attributes_count];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="类文件结构分析"><a href="#类文件结构分析" class="headerlink" title="类文件结构分析"></a>类文件结构分析</h2><ol>
+<li>magic表示位魔数,固定为0xCAFEBABE</li>
+<li>minor_version为Class文件此版本号</li>
+<li>major_version为Class文件主版本号 //Major.Minnor如52.0,为JDK8.0</li>
+<li>constant_pool_count为常量池数量。此外容量计数从1开始。</li>
+<li>cp_info为常量池。<ul>
+<li>常量池中主要存放:字面量及符号引用。<br>  字面量如文本字符串、final的常量值。<br>  符号引用为类和接口的全限定名、字段的名称和描述符、方法的名称和描述符。</li>
+<li>常量池中每一个常量都一个表,并且每种常量都用一个公共的部分tag来表示是哪种类型的常量。<br>////////////////////////////////////////////////////////////////////////////////<br>CONSTANT_Utf8_info      tag标志位为1,   UTF-8编码的字符串<br>CONSTANT_Integer_info  tag标志位为3， 整形字面量<br>CONSTANT_Float_info     tag标志位为4， 浮点型字面量<br>CONSTANT_Long_info     tag标志位为5， 长整形字面量<br>CONSTANT_Double_info  tag标志位为6， 双精度字面量<br>CONSTANT_Class_info    tag标志位为7， 类或接口的符号引用<br>CONSTANT_String_info    tag标志位为8，字符串类型的字面量<br>CONSTANT_Fieldref_info  tag标志位为9,  字段的符号引用<br>CONSTANT_Methodref_info  tag标志位为10，类中方法的符号引用<br>CONSTANT_InterfaceMethodref_info tag标志位为11, 接口中方法的符号引用<br>CONSTANT_NameAndType_info tag 标志位为12，字段和方法的部分符号引用<br>CONSTANT_MethodHandle_info tag 标志位为15，方法句柄<br>CONSTANT_MethodType_info tag 标志位为16，标识方法类型<br>CONSTANT_InvokeDynamic_info tag 标志位为18，表示一个动态方法调用点</li>
+<li>14种类型的常量表又有各自结构。</li>
+</ul>
+</li>
+<li>access_flags为访问标志。用于标识Class表示的是类还是接口，修饰符是否是public,static,final等。</li>
+<li>this_class为类的常量池索引,指向常量池中CONSTANT_Class_info的常量</li>
+<li>super_class为父类索引,指向常量池中CONSTANT_Class_info的常量</li>
+<li>interfaces_count表示接口的数量</li>
+<li>interfaces[interfaces_count]为接口表，每一项指向常量池的CONSTANT_Class_info结构的常量。</li>
+<li>fields_count 表示类的实例变量和类变量的数量</li>
+<li>field_info为字段表。用于描述接口或者类中声明的变量，包括类级变量以及实例级变量，但不包括在方法内部声明的局部变量。<ul>
+<li>字段表结构<br>/////////////////////////////////////////////////<br>类型    名称    数量<br>u2    access_flags    1 //表示字段修饰符，与类的access_flags类似，并且都是一个u2的数据类型。<br>u2    name_index    1    //字段的简单名称。<br>u2    descriptor_index    1 //字段和方法的描述符<br>u2    attributes_count    1 //字段表中的属性表的数量<br>attribute_info    attributes    attributes_count</li>
+</ul>
+</li>
+<li>methods_count为方法表数量</li>
+<li>method_info为方法表<ul>
+<li>方法表结构,与字段表相似<br>/////////////////////////////<br>类型    名称    数量<br>u2    access_flags    1<br>u2    name_index    1<br>u2    descriptor_index    1<br>u2    attributes_count    1<br>attribute_info    attributes    attributes_count</li>
+</ul>
+</li>
+<li>attributes_count为属性表个数</li>
+<li>attribute_info为属性表<ul>
+<li>Class文件、字段表、方法表都可以有自己的属性表集合，用于描述某些场景的专有信息。属性表集合的限制更宽松一些，不要求各个属性表具有严格顺序，并且只要不与已有属性名重复即可。</li>
+<li>jvm在运行会忽略不认识的属性。</li>
+<li>在field_info中的属性表通常为ConstantValue属性表,为final关键字定义的常量值。</li>
+<li>在method_info中的字节码指令在Code属性表中定义。</li>
+</ul>
+</li>
+</ol>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ol>
+<li><a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html" target="_blank" rel="noopener">JAVA虚拟机规范类结构官方参考地址</a></li>
+<li>为了方便常看Class类结构,可用javap -v xx.class帮助查看。或者winhex打开类文件根据规范对照学习。</li>
+</ol>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java8/" rel="tag"># java8</a>
+          
+            <a href="/tags/class-file-format/" rel="tag"># class file format</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/java线程中断.html" rel="next" title="java线程中断">
+                <i class="fa fa-chevron-left"></i> java线程中断
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -366,6 +551,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzUxMy8xMDA2OQ=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -386,8 +580,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -488,6 +691,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类文件结构"><span class="nav-number">1.</span> <span class="nav-text">类文件结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类文件结构分析"><span class="nav-number">2.</span> <span class="nav-text">类文件结构分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -635,6 +854,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -663,6 +886,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 

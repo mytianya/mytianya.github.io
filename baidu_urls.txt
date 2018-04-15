@@ -1,4 +1,3 @@
-http://mytianya.me/hello-world.html
 http://mytianya.me/java并发编程-Callable-Future.html
 http://mytianya.me/Java类文件结构.html
 http://mytianya.me/java线程中断.html

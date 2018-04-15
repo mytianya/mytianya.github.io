@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-04-15T13:52:46.847Z</updated>
+  <updated>2018-04-15T13:52:57.655Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -15,26 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://mytianya.me/hello-world.html"/>
-    <id>http://mytianya.me/hello-world.html</id>
-    <published>2018-04-15T13:52:46.847Z</published>
-    <updated>2018-04-15T13:52:46.847Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="blog" scheme="http://mytianya.me/categories/blog/"/>
-    
-    
-      <category term="hexo" scheme="http://mytianya.me/tags/hexo/"/>
-    
-  </entry>
   
   <entry>
     <title>java并发编程 Callable Future</title>

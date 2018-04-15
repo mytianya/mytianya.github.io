@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-04-12T12:45:36.565Z</updated>
+  <updated>2018-04-15T13:50:26.249Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -17,11 +17,51 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>java并发编程 Callable Future</title>
+    <link href="http://mytianya.me/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B-Callable-Future.html"/>
+    <id>http://mytianya.me/java并发编程-Callable-Future.html</id>
+    <published>2018-04-15T11:41:05.000Z</published>
+    <updated>2018-04-15T13:50:26.249Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;ensp;&amp;ensp;在JAVA中通过继承Runnable重写run()方法,线程执行结果返回为空。某些情况下我们需要获取线程中执行结果,Java1.5提供了Callable和Future,通过继承Callable接口重写call()方法执行任务,配合Future获取线程中执行结果。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="并发编程" scheme="http://mytianya.me/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Callable Future" scheme="http://mytianya.me/tags/Callable-Future/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://mytianya.me/hello-world.html"/>
+    <id>http://mytianya.me/hello-world.html</id>
+    <published>2018-04-14T14:01:31.979Z</published>
+    <updated>2018-01-23T11:43:56.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="http://mytianya.me/categories/blog/"/>
+    
+    
+      <category term="hexo" scheme="http://mytianya.me/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java类文件结构</title>
     <link href="http://mytianya.me/Java%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.html"/>
     <id>http://mytianya.me/Java类文件结构.html</id>
     <published>2018-04-11T14:32:12.000Z</published>
-    <updated>2018-04-12T12:45:36.565Z</updated>
+    <updated>2018-04-12T12:45:36.000Z</updated>
     
     <summary type="html">
     
@@ -43,7 +83,7 @@
     <link href="http://mytianya.me/java%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%96%AD.html"/>
     <id>http://mytianya.me/java线程中断.html</id>
     <published>2018-04-09T14:58:11.000Z</published>
-    <updated>2018-04-09T15:46:01.259Z</updated>
+    <updated>2018-04-09T15:46:01.000Z</updated>
     
     <summary type="html">
     
@@ -63,7 +103,7 @@
     <link href="http://mytianya.me/phantomjs-websever-%E7%88%AC%E8%99%AB%E6%9C%8D%E5%8A%A1.html"/>
     <id>http://mytianya.me/phantomjs-websever-爬虫服务.html</id>
     <published>2018-03-22T13:03:13.000Z</published>
-    <updated>2018-04-03T13:36:34.523Z</updated>
+    <updated>2018-04-03T13:36:34.000Z</updated>
     
     <summary type="html">
     
@@ -75,26 +115,6 @@
     
     
       <category term="phantomjs" scheme="http://mytianya.me/tags/phantomjs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://mytianya.me/hello-world.html"/>
-    <id>http://mytianya.me/hello-world.html</id>
-    <published>2018-03-22T12:09:25.750Z</published>
-    <updated>2018-01-23T11:43:56.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="blog" scheme="http://mytianya.me/categories/blog/"/>
-    
-    
-      <category term="hexo" scheme="http://mytianya.me/tags/hexo/"/>
     
   </entry>
   

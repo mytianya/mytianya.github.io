@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="python java spring it js javascript maven spring dubbo zookeeper" />
+  <meta name="keywords" content="Callable Future," />
 
 
 
@@ -83,13 +83,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="明月天涯">
-<meta property="og:url" content="http://mytianya.me/categories/jvm/index.html">
+<meta name="description" content="&amp;ensp;&amp;ensp;在JAVA中通过继承Runnable重写run()方法,线程执行结果返回为空。某些情况下我们需要获取线程中执行结果,Java1.5提供了Callable和Future,通过继承Callable接口重写call()方法执行任务,配合Future获取线程中执行结果。">
+<meta name="keywords" content="Callable Future">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java并发编程 Callable Future">
+<meta property="og:url" content="http://mytianya.me/java并发编程-Callable-Future.html">
 <meta property="og:site_name" content="明月天涯">
+<meta property="og:description" content="&amp;ensp;&amp;ensp;在JAVA中通过继承Runnable重写run()方法,线程执行结果返回为空。某些情况下我们需要获取线程中执行结果,Java1.5提供了Callable和Future,通过继承Callable接口重写call()方法执行任务,配合Future获取线程中执行结果。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-15T13:50:26.249Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="明月天涯">
+<meta name="twitter:title" content="java并发编程 Callable Future">
+<meta name="twitter:description" content="&amp;ensp;&amp;ensp;在JAVA中通过继承Runnable重写run()方法,线程执行结果返回为空。某些情况下我们需要获取线程中执行结果,Java1.5提供了Callable和Future,通过继承Callable接口重写call()方法执行任务,配合Future获取线程中执行结果。">
 
 
 
@@ -119,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://mytianya.me/categories/jvm/"/>
+  <link rel="canonical" href="http://mytianya.me/java并发编程-Callable-Future.html"/>
 
 
 
 
 
-  <title>分类: jvm | 明月天涯</title>
+  <title>java并发编程 Callable Future | 明月天涯</title>
   
 
 
@@ -144,7 +149,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -282,55 +287,221 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>jvm<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mytianya.me/java并发编程-Callable-Future.html">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="明月天涯">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="明月天涯">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/Java类文件结构.html" itemprop="url">
-              
-                <span itemprop="name">Java类文件结构</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">java并发编程 Callable Future</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-11T22:32:12+08:00"
-              content="2018-04-11" >
-          04-11
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-15T19:41:05+08:00">
+                2018-04-15
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/并发编程/" itemprop="url" rel="index">
+                    <span itemprop="name">并发编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/java并发编程-Callable-Future.html" class="leancloud_visitors" data-flag-title="java并发编程 Callable Future">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    </div>
+      
 
+      
+        <p>&ensp;&ensp;在JAVA中通过继承Runnable重写run()方法,线程执行结果返回为空。某些情况下我们需要获取线程中执行结果,Java1.5提供了Callable和Future,通过继承Callable接口重写call()方法执行任务,配合Future获取线程中执行结果。<br><a id="more"></a></p>
+<h2 id="Callable和Future接口"><a href="#Callable和Future接口" class="headerlink" title="Callable和Future接口"></a>Callable和Future接口</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Callable</span>&lt;<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function">V <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Future</span>&lt;<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *取消任务执行，如果任务不能取消如已完成返回false</span></span><br><span class="line"><span class="comment">     *mayInterruptIfRunning为true,适用于常见时间处于运行状态的任务,并能响应中断</span></span><br><span class="line"><span class="comment">     *为false如果任务已开始不会停止,会继续执行</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">cancel</span><span class="params">(<span class="keyword">boolean</span> mayInterruptIfRunning)</span></span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">	*返回true如果任务已被取消或者任务已完成</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isCancelled</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *任务已结束返回true</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isDone</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *获取返回结果,会阻塞当前线程如果任务未结束</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function">V <span class="title">get</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException, ExecutionException</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *获取返回结果，超时抛出java.util.concurrent.TimeoutException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function">V <span class="title">get</span><span class="params">(<span class="keyword">long</span> timeout, TimeUnit unit)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> InterruptedException, ExecutionException, TimeoutException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="FutureTask"><a href="#FutureTask" class="headerlink" title="FutureTask"></a>FutureTask</h2><p>FutureTask实现了RunnableFuture接口,而RunnableFuture继承了Future和Runnable接口。所以FutureTask既可以当做一个Runnable直接被线程执行,也能作为Future来等到Callable计算结果。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;<span class="comment">//状态不是NEW，说明任务已经被执行或者被取消,直接返回</span></span><br><span class="line">    <span class="keyword">if</span> (state != NEW ||</span><br><span class="line">        !UNSAFE.compareAndSwapObject(<span class="keyword">this</span>, runnerOffset,</span><br><span class="line">                                     <span class="keyword">null</span>, Thread.currentThread()))</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Callable&lt;V&gt; c = callable;</span><br><span class="line">        <span class="keyword">if</span> (c != <span class="keyword">null</span> &amp;&amp; state == NEW) &#123;</span><br><span class="line">            V result;</span><br><span class="line">            <span class="keyword">boolean</span> ran;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                result = c.call();<span class="comment">//调用Callable.call()</span></span><br><span class="line">                ran = <span class="keyword">true</span>;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Throwable ex) &#123;</span><br><span class="line">                result = <span class="keyword">null</span>;</span><br><span class="line">                ran = <span class="keyword">false</span>;</span><br><span class="line">                setException(ex);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (ran)</span><br><span class="line">                set(result);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> s = state;</span><br><span class="line">        <span class="keyword">if</span> (s &gt;= INTERRUPTING)</span><br><span class="line">            handlePossibleCancellationInterrupt(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException, ExecutionException </span>&#123;</span><br><span class="line">     <span class="keyword">int</span> s = state;</span><br><span class="line">     <span class="keyword">if</span> (s &lt;= COMPLETING)<span class="comment">//未完成进入阻塞等待</span></span><br><span class="line">         s = awaitDone(<span class="keyword">false</span>, <span class="number">0L</span>);</span><br><span class="line">     <span class="keyword">return</span> report(s);<span class="comment">//返回结果</span></span><br><span class="line"> &#125;</span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">awaitDone</span><span class="params">(<span class="keyword">boolean</span> timed, <span class="keyword">long</span> nanos)</span></span></span><br><span class="line"><span class="function">     <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">     <span class="keyword">final</span> <span class="keyword">long</span> deadline = timed ? System.nanoTime() + nanos : <span class="number">0L</span>;</span><br><span class="line">     WaitNode q = <span class="keyword">null</span>;</span><br><span class="line">     <span class="keyword">boolean</span> queued = <span class="keyword">false</span>;</span><br><span class="line">     <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">         <span class="keyword">if</span> (Thread.interrupted()) &#123;</span><br><span class="line">             removeWaiter(q);</span><br><span class="line">             <span class="keyword">throw</span> <span class="keyword">new</span> InterruptedException();</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         <span class="keyword">int</span> s = state;</span><br><span class="line">         <span class="keyword">if</span> (s &gt; COMPLETING) &#123;<span class="comment">//完成跳出死循环</span></span><br><span class="line">             <span class="keyword">if</span> (q != <span class="keyword">null</span>)</span><br><span class="line">                 q.thread = <span class="keyword">null</span>;</span><br><span class="line">             <span class="keyword">return</span> s;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">else</span> <span class="keyword">if</span> (s == COMPLETING) <span class="comment">// 完成让出优先权，让其他线程执行</span></span><br><span class="line">             Thread.yield();</span><br><span class="line">         <span class="keyword">else</span> <span class="keyword">if</span> (q == <span class="keyword">null</span>)</span><br><span class="line">             q = <span class="keyword">new</span> WaitNode();</span><br><span class="line">         <span class="keyword">else</span> <span class="keyword">if</span> (!queued)</span><br><span class="line">             queued = UNSAFE.compareAndSwapObject(<span class="keyword">this</span>, waitersOffset,</span><br><span class="line">                                                  q.next = waiters, q);</span><br><span class="line">         <span class="keyword">else</span> <span class="keyword">if</span> (timed) &#123;</span><br><span class="line">             nanos = deadline - System.nanoTime();</span><br><span class="line">             <span class="keyword">if</span> (nanos &lt;= <span class="number">0L</span>) &#123;</span><br><span class="line">                 removeWaiter(q);</span><br><span class="line">                 <span class="keyword">return</span> state;</span><br><span class="line">             &#125;</span><br><span class="line">             LockSupport.parkNanos(<span class="keyword">this</span>, nanos);<span class="comment">//阻塞等待特定时间</span></span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">else</span></span><br><span class="line">             LockSupport.park(<span class="keyword">this</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> zyw</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@creatTime</span> Apr 15, 2018--9:34:20 PM</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 把计算耗时的任务放在线程执行,主线程继续执行其他业务直到需要返回值,阻塞等待获取线程返回结果。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FutureDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		Callable&lt;Result&gt; compute=()-&gt;&#123;</span><br><span class="line">			System.out.println(<span class="string">"compute starting..."</span>);</span><br><span class="line">			TimeUnit.SECONDS.sleep(<span class="number">3</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Result();</span><br><span class="line">		&#125;;</span><br><span class="line">		System.out.println(<span class="string">"continue doing something"</span>);</span><br><span class="line">		FutureTask&lt;Result&gt; task=<span class="keyword">new</span> FutureTask(compute);</span><br><span class="line">		<span class="keyword">new</span> Thread(task).start();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Result result=task.get(<span class="number">5</span>, TimeUnit.MILLISECONDS);</span><br><span class="line">			System.out.println(<span class="string">"done"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">			task.cancel(<span class="keyword">true</span>); </span><br><span class="line">		&#125; <span class="keyword">catch</span> (ExecutionException e) &#123;</span><br><span class="line">			task.cancel(<span class="keyword">true</span>); </span><br><span class="line">		&#125; <span class="keyword">catch</span> (TimeoutException e) &#123;</span><br><span class="line">			task.cancel(<span class="keyword">true</span>); </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Result</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Callable-Future/" rel="tag"># Callable Future</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hello-world.html" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -338,6 +509,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzUxMy8xMDA2OQ=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -358,8 +538,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -460,6 +649,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Callable和Future接口"><span class="nav-number">1.</span> <span class="nav-text">Callable和Future接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FutureTask"><span class="nav-number">2.</span> <span class="nav-text">FutureTask</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用"><span class="nav-number">3.</span> <span class="nav-text">应用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -607,6 +812,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -635,6 +844,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 

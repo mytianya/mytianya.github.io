@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="&amp;ensp;&amp;ensp;看了下爬虫框架webmagic,发现爬虫状态的监控使用JMX实现了，外部获得爬虫的信息。JMX还没用过，学习之。试写一个demo,通过JMX来改变服务的配置文件。">
+<meta name="description" content="&amp;ensp;&amp;ensp;看了下爬虫框架webmagic,发现爬虫状态的监控使用JMX获得爬虫运行信息。JMX还没用过，学习之。试写一个demo,通过JMX来改变服务的配置文件。">
 <meta name="keywords" content="jmx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java JMX 开始到待续">
 <meta property="og:url" content="http://mytianya.me/java-JMX-开始到待续.html">
 <meta property="og:site_name" content="明月天涯">
-<meta property="og:description" content="&amp;ensp;&amp;ensp;看了下爬虫框架webmagic,发现爬虫状态的监控使用JMX实现了，外部获得爬虫的信息。JMX还没用过，学习之。试写一个demo,通过JMX来改变服务的配置文件。">
+<meta property="og:description" content="&amp;ensp;&amp;ensp;看了下爬虫框架webmagic,发现爬虫状态的监控使用JMX获得爬虫运行信息。JMX还没用过，学习之。试写一个demo,通过JMX来改变服务的配置文件。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-17T15:15:02.613Z">
+<meta property="og:updated_time" content="2018-04-17T15:16:19.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java JMX 开始到待续">
-<meta name="twitter:description" content="&amp;ensp;&amp;ensp;看了下爬虫框架webmagic,发现爬虫状态的监控使用JMX实现了，外部获得爬虫的信息。JMX还没用过，学习之。试写一个demo,通过JMX来改变服务的配置文件。">
+<meta name="twitter:description" content="&amp;ensp;&amp;ensp;看了下爬虫框架webmagic,发现爬虫状态的监控使用JMX获得爬虫运行信息。JMX还没用过，学习之。试写一个demo,通过JMX来改变服务的配置文件。">
 
 
 
@@ -401,7 +401,7 @@
       
 
       
-        <p>&ensp;&ensp;看了下爬虫框架webmagic,发现爬虫状态的监控使用JMX实现了，外部获得爬虫的信息。JMX还没用过，学习之。试写一个demo,通过JMX来改变服务的配置文件。<br><a id="more"></a></p>
+        <p>&ensp;&ensp;看了下爬虫框架webmagic,发现爬虫状态的监控使用JMX获得爬虫运行信息。JMX还没用过，学习之。试写一个demo,通过JMX来改变服务的配置文件。<br><a id="more"></a></p>
 <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>JMX分为三层，分别负责处理不同的事务。<br>1.设备层(Instrumentation Level)<br>设备层主要包括了一系列的接口定义和描述如何开发MBean的规范。通常JMX所管理的资源有一个或多个MBean组成，因此这个资源可以是任何由Java语言开发的组件，或是一个JavaWrapper包装的其他语言开发的资源。</p>
 <p>2.代理层(Agent Level)<br>代理层用来管理相应的资源，并且为远端用户提供访问的接口。代理层构建在设备层之上，并且使用并管理 设备层内部描述的组件。代理层主要定义了各种服务以及通信模型。该层的核心是一MBeanServer,所有的MBean都要向它注册，才能被管理。注册在MBeanServer上的MBean并不直接和远程应用程序进行通信，他们通过协议适配器（Adapter）和连接器（Connector）进行通信。通常Agent由一个MBeanServer和多个系统服务组成。JMX Agent并不关心它所管理的资源是什么。</p>
 <p>3.分布式服务层(Distributed Level)<br>应用层关心Agent如何被远端用户访问的细节。它定义了一系列用来访问Agent的接口和组件，包括Adapter和Connector的描述。</p>

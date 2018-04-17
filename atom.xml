@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-04-17T15:15:02.613Z</updated>
+  <updated>2018-04-17T15:16:19.073Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="http://mytianya.me/java-JMX-%E5%BC%80%E5%A7%8B%E5%88%B0%E5%BE%85%E7%BB%AD.html"/>
     <id>http://mytianya.me/java-JMX-开始到待续.html</id>
     <published>2018-04-17T14:22:07.000Z</published>
-    <updated>2018-04-17T15:15:02.613Z</updated>
+    <updated>2018-04-17T15:16:19.073Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;&amp;ensp;&amp;ensp;看了下爬虫框架webmagic,发现爬虫状态的监控使用JMX实现了，外部获得爬虫的信息。JMX还没用过，学习之。试写一个demo,通过JMX来改变服务的配置文件。&lt;br&gt;
+      &lt;p&gt;&amp;ensp;&amp;ensp;看了下爬虫框架webmagic,发现爬虫状态的监控使用JMX获得爬虫运行信息。JMX还没用过，学习之。试写一个demo,通过JMX来改变服务的配置文件。&lt;br&gt;
     
     </summary>
     

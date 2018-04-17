@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-04-15T13:52:57.655Z</updated>
+  <updated>2018-04-17T15:15:02.613Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java JMX 开始到待续</title>
+    <link href="http://mytianya.me/java-JMX-%E5%BC%80%E5%A7%8B%E5%88%B0%E5%BE%85%E7%BB%AD.html"/>
+    <id>http://mytianya.me/java-JMX-开始到待续.html</id>
+    <published>2018-04-17T14:22:07.000Z</published>
+    <updated>2018-04-17T15:15:02.613Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;ensp;&amp;ensp;看了下爬虫框架webmagic,发现爬虫状态的监控使用JMX实现了，外部获得爬虫的信息。JMX还没用过，学习之。试写一个demo,通过JMX来改变服务的配置文件。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://mytianya.me/categories/java/"/>
+    
+    
+      <category term="jmx" scheme="http://mytianya.me/tags/jmx/"/>
+    
+  </entry>
   
   <entry>
     <title>java并发编程 Callable Future</title>

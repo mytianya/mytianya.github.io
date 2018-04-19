@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-04-17T15:16:19.073Z</updated>
+  <updated>2018-04-19T13:48:29.145Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JAVA BIO编程</title>
+    <link href="http://mytianya.me/JAVA-BIO%E7%BC%96%E7%A8%8B.html"/>
+    <id>http://mytianya.me/JAVA-BIO编程.html</id>
+    <published>2018-04-19T13:40:18.000Z</published>
+    <updated>2018-04-19T13:48:29.145Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;ensp;&amp;ensp;网络编程的基本模型是Client/Server模型,其中服务端提供位置信息(ip地址+端口号),客户端通过连接操作向服务端请求连接,如果连接成功，双方通过套接字进行通信。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://mytianya.me/categories/java/"/>
+    
+    
+      <category term="io模型" scheme="http://mytianya.me/tags/io%E6%A8%A1%E5%9E%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>java JMX 开始到待续</title>

@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://mytianya.me/JAVA-BIO%E7%BC%96%E7%A8%8B.html</loc>
-    <lastmod>2018-04-19T13:48:29.145Z</lastmod>
+    <lastmod>2018-04-20T11:40:24.740Z</lastmod>
     <data>
         <display>
         <title>JAVA BIO编程</title>
@@ -18,6 +18,21 @@
              
               <breadCrumb title="java" url="http://mytianya.me/categories/java/"/>
           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://mytianya.me/JAVA-NIO%E7%BC%96%E7%A8%8B.html</loc>
+    <lastmod>2018-04-19T14:44:28.131Z</lastmod>
+    <data>
+        <display>
+        <title>JAVA NIO编程</title>
+        <pubTime>2018-04-19T13:49:36.000Z</pubTime>
+        
+         
+           
         </display>
     </data>
     </url>

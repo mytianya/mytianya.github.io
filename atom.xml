@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-04-22T15:17:36.000Z</updated>
+  <updated>2018-04-22T15:19:31.068Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="http://mytianya.me/redis-ubuntu%E9%85%8D%E7%BD%AE.html"/>
     <id>http://mytianya.me/redis-ubuntu配置.html</id>
     <published>2018-04-22T12:54:10.000Z</published>
-    <updated>2018-04-22T15:17:36.000Z</updated>
+    <updated>2018-04-22T15:19:31.068Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;&amp;ensp;&amp;ensp;Ubuntu16.04 systemctl配置redis&lt;br&gt;&lt;img src=&quot;https://github.com/mytianya/mytianya.github.io/blob/master/blog_imgs/redis_config.png?raw=true&quot; alt=&quot;示例&quot;&gt;&lt;br&gt;
+      &lt;p&gt;&amp;ensp;&amp;ensp;Ubuntu16.04 systemctl配置redis&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/redis_configure.png&quot; alt=&quot;示例&quot;&gt;&lt;br&gt;
     
     </summary>
     

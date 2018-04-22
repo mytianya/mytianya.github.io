@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[redis ubuntu配置]]></title>
-    <url>%2Fredis-ubuntu%E9%85%8D%E7%BD%AE.html</url>
+    <title><![CDATA[Ubuntu16.04配置Redis]]></title>
+    <url>%2FUbuntu16-04%E9%85%8D%E7%BD%AERedis.html</url>
     <content type="text"><![CDATA[&ensp;&ensp;Ubuntu16.04 systemctl配置redis 编译redis1234567cd /tmpcurl -O http://download.redis.io/redis-stable.tar.gztar zxvf redis-stable.tar.gzcd redis-stablemakemake installmake 移动redis-server,redis.conf到指定目录1234sudo mv redis-server /usr/local/binsudo mv redis-cli /usr/local/binsudo mkidr /etc/redissudo mv redis.conf /etc/redis 配置redis.conf123sudo vim /etc/redis/redis.confsupervised systemd #signal systemd by writing READY=1 to $NOTIFY_SOCKETdir /var/lib/redis # dump persistent data store 配置redis用户组1234sudo adduser --system --group --no-create-home redissudo mkdir /var/lib/redissudo chown redis:redis /var/lib/redissudo chmod 770 /var/lib/redis 配置redis.service1sudo touch /etc/systemd/system/redis.service 1234567891011121314[Unit]Description=Redis In-Memory Data StoreAfter=network.target[Service]Type=forkingUser=redisGroup=redisExecStart=/usr/local/bin/redis-server /etc/redis/redis.confExecStop=/usr/local/bin/redis-cli shutdownRestart=always[Install]WantedBy=multi-user.target 启动redis12sudo systemctl start redis.service # start redis servicesudo systemctl status redis.service # watch service status]]></content>
       <categories>
         <category>redis</category>

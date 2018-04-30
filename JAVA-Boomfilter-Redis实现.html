@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="linux redis," />
+  <meta name="keywords" content="redis boomfilter java," />
 
 
 
@@ -83,20 +83,18 @@
 
 
 
-<meta name="description" content="&amp;ensp;&amp;ensp;Ubuntu16.04 systemctl配置redis">
-<meta name="keywords" content="linux redis">
+<meta name="description" content="&amp;ensp;&amp;ensp;布隆过滤器（英语：Bloom Filter）是1970年由布隆提出的。它实际上是一个很长的二进制矢量和一系列随机映射函数。布隆过滤器可以用于检索一个元素是否在一个集合中。它的优点是空间效率和查询时间都远远超过一般的算法，缺点是有一定的误识别率和删除困难。&amp;ensp;&amp;ensp;布隆过滤器的原理是，当一个元素被加入集合时，通过K个散列函数将这个元素映射成一个位数组中的K个点，">
+<meta name="keywords" content="redis boomfilter java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="redis ubuntu配置">
-<meta property="og:url" content="http://mytianya.me/redis-ubuntu配置.html">
+<meta property="og:title" content="JAVA Boomfilter Redis实现">
+<meta property="og:url" content="http://mytianya.me/JAVA-Boomfilter-Redis实现.html">
 <meta property="og:site_name" content="明月天涯">
-<meta property="og:description" content="&amp;ensp;&amp;ensp;Ubuntu16.04 systemctl配置redis">
+<meta property="og:description" content="&amp;ensp;&amp;ensp;布隆过滤器（英语：Bloom Filter）是1970年由布隆提出的。它实际上是一个很长的二进制矢量和一系列随机映射函数。布隆过滤器可以用于检索一个元素是否在一个集合中。它的优点是空间效率和查询时间都远远超过一般的算法，缺点是有一定的误识别率和删除困难。&amp;ensp;&amp;ensp;布隆过滤器的原理是，当一个元素被加入集合时，通过K个散列函数将这个元素映射成一个位数组中的K个点，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/redis_configure.png">
-<meta property="og:updated_time" content="2018-04-22T15:19:31.068Z">
+<meta property="og:updated_time" content="2018-04-30T06:42:09.036Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redis ubuntu配置">
-<meta name="twitter:description" content="&amp;ensp;&amp;ensp;Ubuntu16.04 systemctl配置redis">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/redis_configure.png">
+<meta name="twitter:title" content="JAVA Boomfilter Redis实现">
+<meta name="twitter:description" content="&amp;ensp;&amp;ensp;布隆过滤器（英语：Bloom Filter）是1970年由布隆提出的。它实际上是一个很长的二进制矢量和一系列随机映射函数。布隆过滤器可以用于检索一个元素是否在一个集合中。它的优点是空间效率和查询时间都远远超过一般的算法，缺点是有一定的误识别率和删除困难。&amp;ensp;&amp;ensp;布隆过滤器的原理是，当一个元素被加入集合时，通过K个散列函数将这个元素映射成一个位数组中的K个点，">
 
 
 
@@ -126,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://mytianya.me/redis-ubuntu配置.html"/>
+  <link rel="canonical" href="http://mytianya.me/JAVA-Boomfilter-Redis实现.html"/>
 
 
 
 
 
-  <title>redis ubuntu配置 | 明月天涯</title>
+  <title>JAVA Boomfilter Redis实现 | 明月天涯</title>
   
 
 
@@ -303,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://mytianya.me/redis-ubuntu配置.html">
+    <link itemprop="mainEntityOfPage" href="http://mytianya.me/JAVA-Boomfilter-Redis实现.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="明月天涯">
@@ -320,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">redis ubuntu配置</h1>
+          <h1 class="post-title" itemprop="name headline">JAVA Boomfilter Redis实现</h1>
         
 
         <div class="post-meta">
@@ -332,8 +330,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-22T20:54:10+08:00">
-                2018-04-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-29T12:35:04+08:00">
+                2018-04-29
               </time>
             
 
@@ -355,8 +353,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/redis/" itemprop="url" rel="index">
-                    <span itemprop="name">redis</span>
+                  <a href="/categories/爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
                   </a>
                 </span>
 
@@ -372,7 +370,7 @@
 
           
           
-             <span id="/redis-ubuntu配置.html" class="leancloud_visitors" data-flag-title="redis ubuntu配置">
+             <span id="/JAVA-Boomfilter-Redis实现.html" class="leancloud_visitors" data-flag-title="JAVA Boomfilter Redis实现">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -403,14 +401,18 @@
       
 
       
-        <p>&ensp;&ensp;Ubuntu16.04 systemctl配置redis<br><img src="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/redis_configure.png" alt="示例"><br><a id="more"></a></p>
-<h2 id="编译redis"><a href="#编译redis" class="headerlink" title="编译redis"></a>编译redis</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp</span><br><span class="line">curl -O http://download.redis.io/redis-stable.tar.gz</span><br><span class="line">tar zxvf redis-stable.tar.gz</span><br><span class="line">cd redis-stable</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
-<h2 id="移动redis-server-redis-conf到指定目录"><a href="#移动redis-server-redis-conf到指定目录" class="headerlink" title="移动redis-server,redis.conf到指定目录"></a>移动redis-server,redis.conf到指定目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo mv redis-server /usr/local/bin</span><br><span class="line">sudo mv redis-cli /usr/local/bin</span><br><span class="line">sudo mkidr /etc/redis</span><br><span class="line">sudo mv redis.conf /etc/redis</span><br></pre></td></tr></table></figure>
-<h2 id="配置redis-conf"><a href="#配置redis-conf" class="headerlink" title="配置redis.conf"></a>配置redis.conf</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/redis/redis.conf</span><br><span class="line">supervised systemd #signal systemd by writing READY=1 to $NOTIFY_SOCKET</span><br><span class="line">dir /var/lib/redis # dump persistent data store</span><br></pre></td></tr></table></figure>
-<h2 id="配置redis用户组"><a href="#配置redis用户组" class="headerlink" title="配置redis用户组"></a>配置redis用户组</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser --system --group --no-create-home redis</span><br><span class="line">sudo mkdir /var/lib/redis</span><br><span class="line">sudo chown redis:redis /var/lib/redis</span><br><span class="line">sudo chmod 770 /var/lib/redis</span><br></pre></td></tr></table></figure>
-<h2 id="配置redis-service"><a href="#配置redis-service" class="headerlink" title="配置redis.service"></a>配置redis.service</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo touch /etc/systemd/system/redis.service</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Redis In-Memory Data Store</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">User=redis</span><br><span class="line">Group=redis</span><br><span class="line">ExecStart=/usr/local/bin/redis-server /etc/redis/redis.conf</span><br><span class="line">ExecStop=/usr/local/bin/redis-cli shutdown</span><br><span class="line">Restart=always</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-<h2 id="启动redis"><a href="#启动redis" class="headerlink" title="启动redis"></a>启动redis</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start redis.service  # start redis service</span><br><span class="line">sudo systemctl status redis.service # watch service status</span><br></pre></td></tr></table></figure>
+        <p>&ensp;&ensp;布隆过滤器（英语：Bloom Filter）是1970年由布隆提出的。它实际上是一个很长的二进制矢量和一系列随机映射函数。布隆过滤器可以用于检索一个元素是否在一个集合中。它的优点是空间效率和查询时间都远远超过一般的算法，缺点是有一定的误识别率和删除困难。<br>&ensp;&ensp;布隆过滤器的原理是，当一个元素被加入集合时，通过K个散列函数将这个元素映射成一个位数组中的K个点，把它们置为1。检索时，我们只要看看这些点是不是都是1就（大约）知道集合中有没有它了：如果这些点有任何一个0，则被检元素一定不在；如果都是1，则被检元素很可能在。这就是布隆过滤器的基本思想。<br>&ensp;&ensp;一个好的boomfilter关键在于hash算法，是否效率高和返回宽范围的哈希值。通过预计插入量与预判率，预计底层存储结构的大小。在Gvaua包中有造好的轮子，为了在爬虫去重更好的使用，底层存储我换成了redis的bitmap结构。<br>底层存储bit容量计算公式:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m = - nlog fpp / (log2)^2;// n为预估计去重量，fpp为误判率</span><br></pre></td></tr></table></figure></p>
+<p>哈希函数个数计算公式:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k = m/n log(2) ;//m为容量大小，n为预估计去重量</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h2 id="Redis-bitmap"><a href="#Redis-bitmap" class="headerlink" title="Redis bitmap"></a>Redis bitmap</h2><p>BitMap是通过一个bit为来表示某个元素对应的值或者状态，其中的key就是元素本身。BitMap本身不是一个数据结构，实际上一个字符串，在redis中最长的字符串512MB大，2^32个bit位大小。<br>SETBIT命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setbit key offset value</span><br></pre></td></tr></table></figure></p>
+<p>说明:对于key所存储的字符串值设置或清除指定偏移位上的位。value可以是0或者1。offset限定在2^32位内。<br>GETBIT命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getbit key offset</span><br></pre></td></tr></table></figure></p>
+<p>说明:获取字符串指定偏移量上的位<br>BITCOUNT命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitcount key start end</span><br></pre></td></tr></table></figure></p>
+<p>说明:计算字符串指定范围的上被设置为1的比特位数量</p>
+<h2 id="Docker-Redis"><a href="#Docker-Redis" class="headerlink" title="Docker Redis"></a>Docker Redis</h2><p>这里的Redis使用docker启动<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker search redis //在仓库搜索redis</span><br><span class="line">docker pull redis:3.2 // 拉取镜像</span><br><span class="line">docker run -p 6379:6379 -v ~/redis_data:/data -d redis:3.2 redis-server --appendonly yes //启动redis,-p 6379:6379 映射容器端口到本地,-v ~/redis_data:/data把本地的目录的redis_data目录挂载到容器的/data,--appendonly yes开启redis持久化配置</span><br><span class="line">docker container ls //查看启动的容器</span><br><span class="line">docker <span class="built_in">exec</span> -it xxx redis-cli //使用容器中的redis-cli连接到redis,其中xxx为容器的id可只写前几位</span><br></pre></td></tr></table></figure></p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>pom.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;redis.clients&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;jedis&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;2.9.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;com.google.guava&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;guava&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;22.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Redis连接池工具类"><a href="#Redis连接池工具类" class="headerlink" title="Redis连接池工具类"></a>Redis连接池工具类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JedisUtils</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">volatile</span> <span class="keyword">static</span> JedisUtils jedisUtils;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> JedisPool pool;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">JedisUtils</span><span class="params">()</span></span>&#123;</span><br><span class="line">        pool=<span class="keyword">new</span> JedisPool(<span class="keyword">new</span> GenericObjectPoolConfig(),<span class="string">"localhost"</span>,<span class="number">6379</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> JedisUtils <span class="title">getJedisUtils</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(jedisUtils==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (JedisUtils.class)&#123;</span><br><span class="line">                <span class="keyword">if</span>(jedisUtils==<span class="keyword">null</span>)</span><br><span class="line">                    jedisUtils=<span class="keyword">new</span> JedisUtils();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> jedisUtils;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> redis.clients.jedis.<span class="function">Jedis <span class="title">getResource</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pool.getResource();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">        pool.destroy();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span></span>&#123;</span><br><span class="line">        pool.close();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">retResource</span><span class="params">(Jedis jedis)</span></span>&#123;</span><br><span class="line">        pool.returnResource(jedis);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="BoomFilter实现Url去重"><a href="#BoomFilter实现Url去重" class="headerlink" title="BoomFilter实现Url去重"></a>BoomFilter实现Url去重</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BoomFilterRedis</span> <span class="keyword">implements</span> <span class="title">UrlFilter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> MAX_BITSIZE=<span class="number">1L</span>&lt;&lt;<span class="number">32</span>;</span><br><span class="line">    <span class="keyword">public</span> String boomFilterName;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> hashFunSize;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">long</span> size;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BoomFilterRedis</span><span class="params">(<span class="keyword">long</span> expectedInsertions,<span class="keyword">double</span> fpp,String boomFilterName)</span></span>&#123;</span><br><span class="line">        size=optimalNumOfBits(expectedInsertions,fpp);</span><br><span class="line">        <span class="keyword">if</span>(size&gt;MAX_BITSIZE)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"size is more than max bit size"</span>);</span><br><span class="line">        hashFunSize=optimalNumOfHashFunctions(expectedInsertions,size);</span><br><span class="line">        <span class="keyword">this</span>.boomFilterName=boomFilterName;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">urlExsit</span><span class="params">(String url)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> (Jedis jedis = JedisUtils.getJedisUtils().getResource();) &#123;</span><br><span class="line">            HashFunction hf = Hashing.murmur3_128();</span><br><span class="line">            <span class="keyword">byte</span>[] bytes = hf.newHasher().putString(url, Charsets.UTF_8).hash().asBytes();</span><br><span class="line">            <span class="keyword">long</span> hash1 = lowerEight(bytes);</span><br><span class="line">            <span class="keyword">long</span> hash2 = upperEight(bytes);</span><br><span class="line">            <span class="keyword">long</span> combineHash = hash1;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= hashFunSize; i++) &#123;</span><br><span class="line">                <span class="keyword">long</span> offset = (combineHash &amp; Long.MAX_VALUE) % size;</span><br><span class="line">                <span class="keyword">if</span> (!jedis.getbit(boomFilterName, offset))</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                combineHash += hash2;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">putUrl</span><span class="params">(String url)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> (Jedis jedis = JedisUtils.getJedisUtils().getResource();) &#123;</span><br><span class="line">            HashFunction hf = Hashing.murmur3_128();</span><br><span class="line">            <span class="keyword">byte</span>[] bytes = hf.newHasher().putString(url, Charsets.UTF_8).hash().asBytes();</span><br><span class="line">            <span class="keyword">long</span> hash1 = lowerEight(bytes);</span><br><span class="line">            <span class="keyword">long</span> hash2 = upperEight(bytes);</span><br><span class="line">            <span class="keyword">boolean</span> bitsChanged = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">long</span> combineHash = hash1;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= hashFunSize; i++) &#123;</span><br><span class="line">                <span class="keyword">long</span> offset = (combineHash &amp; Long.MAX_VALUE) % size;</span><br><span class="line">                bitsChanged |= jedis.setbit(boomFilterName, offset, <span class="keyword">true</span>);</span><br><span class="line">                combineHash += hash2;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> bitsChanged;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">long</span> <span class="title">lowerEight</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Longs.fromBytes(bytes[<span class="number">7</span>], bytes[<span class="number">6</span>], bytes[<span class="number">5</span>], bytes[<span class="number">4</span>], bytes[<span class="number">3</span>], bytes[<span class="number">2</span>], bytes[<span class="number">1</span>], bytes[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">long</span> <span class="title">upperEight</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Longs.fromBytes(bytes[<span class="number">15</span>], bytes[<span class="number">14</span>], bytes[<span class="number">13</span>], bytes[<span class="number">12</span>], bytes[<span class="number">11</span>], bytes[<span class="number">10</span>], bytes[<span class="number">9</span>], bytes[<span class="number">8</span>]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">optimalNumOfHashFunctions</span><span class="params">(<span class="keyword">long</span> n, <span class="keyword">long</span> m)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Math.max(<span class="number">1</span>, (<span class="keyword">int</span>) Math.round((<span class="keyword">double</span>) m / n * Math.log(<span class="number">2</span>)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">long</span> <span class="title">optimalNumOfBits</span><span class="params">(<span class="keyword">long</span> n, <span class="keyword">double</span> p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (p == <span class="number">0</span>) &#123;</span><br><span class="line">            p = Double.MIN_VALUE;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">long</span>) (-n * Math.log(p) / (Math.log(<span class="number">2</span>) * Math.log(<span class="number">2</span>)));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UrlFilter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">urlExsit</span><span class="params">(String url)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">putUrl</span><span class="params">(String url)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -427,7 +429,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux-redis/" rel="tag"># linux redis</a>
+            <a href="/tags/redis-boomfilter-java/" rel="tag"># redis boomfilter java</a>
           
         </div>
       
@@ -440,8 +442,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/java-JMX-开始到待续.html" rel="next" title="java JMX 开始到待续">
-                <i class="fa fa-chevron-left"></i> java JMX 开始到待续
+              <a href="/Ubuntu16-04配置Redis.html" rel="next" title="Ubuntu16.04配置Redis">
+                <i class="fa fa-chevron-left"></i> Ubuntu16.04配置Redis
               </a>
             
           </div>
@@ -572,7 +574,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -594,7 +596,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -664,7 +666,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译redis"><span class="nav-number">1.</span> <span class="nav-text">编译redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动redis-server-redis-conf到指定目录"><span class="nav-number">2.</span> <span class="nav-text">移动redis-server,redis.conf到指定目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置redis-conf"><span class="nav-number">3.</span> <span class="nav-text">配置redis.conf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置redis用户组"><span class="nav-number">4.</span> <span class="nav-text">配置redis用户组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置redis-service"><span class="nav-number">5.</span> <span class="nav-text">配置redis.service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动redis"><span class="nav-number">6.</span> <span class="nav-text">启动redis</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-bitmap"><span class="nav-number">1.</span> <span class="nav-text">Redis bitmap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-Redis"><span class="nav-number">2.</span> <span class="nav-text">Docker Redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">3.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis连接池工具类"><span class="nav-number">3.1.</span> <span class="nav-text">Redis连接池工具类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BoomFilter实现Url去重"><span class="nav-number">3.2.</span> <span class="nav-text">BoomFilter实现Url去重</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-04-22T15:23:31.000Z</updated>
+  <updated>2018-04-30T06:42:09.036Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JAVA Boomfilter Redis实现</title>
+    <link href="http://mytianya.me/JAVA-Boomfilter-Redis%E5%AE%9E%E7%8E%B0.html"/>
+    <id>http://mytianya.me/JAVA-Boomfilter-Redis实现.html</id>
+    <published>2018-04-29T04:35:04.000Z</published>
+    <updated>2018-04-30T06:42:09.036Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;ensp;&amp;ensp;布隆过滤器（英语：Bloom Filter）是1970年由布隆提出的。它实际上是一个很长的二进制矢量和一系列随机映射函数。布隆过滤器可以用于检索一个元素是否在一个集合中。它的优点是空间效率和查询时间都远远超过一般的算法，缺点是有一定的误识别率和删除困难。&lt;br&gt;&amp;ensp;&amp;ensp;布隆过滤器的原理是，当一个元素被加入集合时，通过K个散列函数将这个元素映射成一个位数组中的K个点，把它们置为1。检索时，我们只要看看这些点是不是都是1就（大约）知道集合中有没有它了：如果这些点有任何一个0，则被检元素一定不在；如果都是1，则被检元素很可能在。这就是布隆过滤器的基本思想。&lt;br&gt;&amp;ensp;&amp;ensp;一个好的boomfilter关键在于hash算法，是否效率高和返回宽范围的哈希值。通过预计插入量与预判率，预计底层存储结构的大小。在Gvaua包中有造好的轮子，为了在爬虫去重更好的使用，底层存储我换成了redis的bitmap结构。&lt;br&gt;底层存储bit容量计算公式:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;m = - nlog fpp / (log2)^2;// n为预估计去重量，fpp为误判率&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;哈希函数个数计算公式:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;k = m/n log(2) ;//m为容量大小，n为预估计去重量&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="爬虫" scheme="http://mytianya.me/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+      <category term="redis boomfilter java" scheme="http://mytianya.me/tags/redis-boomfilter-java/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu16.04配置Redis</title>

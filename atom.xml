@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-04-30T06:42:09.036Z</updated>
+  <updated>2018-05-17T07:26:31.838Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>责任链与过滤器</title>
+    <link href="http://mytianya.me/%E8%B4%A3%E4%BB%BB%E9%93%BE%E4%B8%8E%E8%BF%87%E6%BB%A4%E5%99%A8.html"/>
+    <id>http://mytianya.me/责任链与过滤器.html</id>
+    <published>2018-05-13T03:50:18.000Z</published>
+    <updated>2018-05-17T07:26:31.838Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;责任链&quot;&gt;&lt;a href=&quot;#责任链&quot; class=&quot;headerlink&quot; title=&quot;责任链&quot;&gt;&lt;/a&gt;责任链&lt;/h2&gt;&lt;p&gt;&amp;ensp;&amp;ensp;责任链模式（Chain of Responsibility Pattern）为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。&lt;/p&gt;
+&lt;p&gt;在这种模式中，通常每个接收者都包含对另一个接收者的引用。如果一个对象不能处理该请求，那么它会把相同的请求传给下一个接收者，依此类推。举例一个订单的层层审批。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="design pattern" scheme="http://mytianya.me/categories/design-pattern/"/>
+    
+    
+      <category term="java" scheme="http://mytianya.me/tags/java/"/>
+    
+      <category term="责任链" scheme="http://mytianya.me/tags/%E8%B4%A3%E4%BB%BB%E9%93%BE/"/>
+    
+      <category term="过滤器" scheme="http://mytianya.me/tags/%E8%BF%87%E6%BB%A4%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>JAVA Boomfilter Redis实现</title>
@@ -144,7 +169,7 @@
     <link href="http://mytianya.me/phantomjs-websever-%E7%88%AC%E8%99%AB%E6%9C%8D%E5%8A%A1.html"/>
     <id>http://mytianya.me/phantomjs-websever-爬虫服务.html</id>
     <published>2018-03-22T13:03:13.000Z</published>
-    <updated>2018-04-03T13:36:34.000Z</updated>
+    <updated>2018-05-11T13:35:50.227Z</updated>
     
     <summary type="html">
     

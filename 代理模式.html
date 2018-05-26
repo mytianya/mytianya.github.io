@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="&amp;nbsp;&amp;nbsp;代理模式:为其他对象提供一种代理来控制对着个对象的访问。涉及的角色有：  抽象角色:声明真实对象与代理对象的共同接口，这样一样在任何使用真实对象的地方，可以使用代理对象。 真实角色:代理对象所要代表的目标对象。 代理角色：内部持有真实对象的引用，从而在任何时候可以操作真实对象。一般可以附加一些其他功能来增强真实对象，更重要是对真实对象的访问控制。&amp;nbsp;&amp;nbsp;常见">
+<meta name="description" content="代理模式:为其他对象提供一种代理来控制对着个对象的访问。涉及的角色有：  抽象角色:声明真实对象与代理对象的共同接口，这样一样在任何使用真实对象的地方，可以使用代理对象。 真实角色:代理对象所要代表的目标对象。 代理角色：内部持有真实对象的引用，从而在任何时候可以操作真实对象。一般可以附加一些其他功能来增强真实对象，更重要是对真实对象的访问控制。常见使用场景Aop,Rpc远程调用，Hibernat">
 <meta name="keywords" content="java,cglib,动态代理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="代理模式">
 <meta property="og:url" content="http://mytianya.me/代理模式.html">
 <meta property="og:site_name" content="明月天涯">
-<meta property="og:description" content="&amp;nbsp;&amp;nbsp;代理模式:为其他对象提供一种代理来控制对着个对象的访问。涉及的角色有：  抽象角色:声明真实对象与代理对象的共同接口，这样一样在任何使用真实对象的地方，可以使用代理对象。 真实角色:代理对象所要代表的目标对象。 代理角色：内部持有真实对象的引用，从而在任何时候可以操作真实对象。一般可以附加一些其他功能来增强真实对象，更重要是对真实对象的访问控制。&amp;nbsp;&amp;nbsp;常见">
+<meta property="og:description" content="代理模式:为其他对象提供一种代理来控制对着个对象的访问。涉及的角色有：  抽象角色:声明真实对象与代理对象的共同接口，这样一样在任何使用真实对象的地方，可以使用代理对象。 真实角色:代理对象所要代表的目标对象。 代理角色：内部持有真实对象的引用，从而在任何时候可以操作真实对象。一般可以附加一些其他功能来增强真实对象，更重要是对真实对象的访问控制。常见使用场景Aop,Rpc远程调用，Hibernat">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-26T13:04:46.498Z">
+<meta property="og:updated_time" content="2018-05-26T14:48:12.385Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代理模式">
-<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;代理模式:为其他对象提供一种代理来控制对着个对象的访问。涉及的角色有：  抽象角色:声明真实对象与代理对象的共同接口，这样一样在任何使用真实对象的地方，可以使用代理对象。 真实角色:代理对象所要代表的目标对象。 代理角色：内部持有真实对象的引用，从而在任何时候可以操作真实对象。一般可以附加一些其他功能来增强真实对象，更重要是对真实对象的访问控制。&amp;nbsp;&amp;nbsp;常见">
+<meta name="twitter:description" content="代理模式:为其他对象提供一种代理来控制对着个对象的访问。涉及的角色有：  抽象角色:声明真实对象与代理对象的共同接口，这样一样在任何使用真实对象的地方，可以使用代理对象。 真实角色:代理对象所要代表的目标对象。 代理角色：内部持有真实对象的引用，从而在任何时候可以操作真实对象。一般可以附加一些其他功能来增强真实对象，更重要是对真实对象的访问控制。常见使用场景Aop,Rpc远程调用，Hibernat">
 
 
 
@@ -401,11 +401,11 @@
       
 
       
-        <p>&nbsp;&nbsp;代理模式:为其他对象提供一种代理来控制对着个对象的访问。涉及的角色有：</p>
+        <p>代理模式:为其他对象提供一种代理来控制对着个对象的访问。涉及的角色有：</p>
 <ol>
 <li>抽象角色:声明真实对象与代理对象的共同接口，这样一样在任何使用真实对象的地方，可以使用代理对象。</li>
 <li>真实角色:代理对象所要代表的目标对象。</li>
-<li>代理角色：内部持有真实对象的引用，从而在任何时候可以操作真实对象。一般可以附加一些其他功能来增强真实对象，更重要是对真实对象的访问控制。<br>&nbsp;&nbsp;常见使用场景Aop,Rpc远程调用，Hibernate懒加载等。<a id="more"></a>
+<li>代理角色：内部持有真实对象的引用，从而在任何时候可以操作真实对象。一般可以附加一些其他功能来增强真实对象，更重要是对真实对象的访问控制。<br>常见使用场景Aop,Rpc远程调用，Hibernate懒加载等。<a id="more"></a>
 </li>
 </ol>
 <h2 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h2><p>通过返回代理角色，相当对真实角色进行了封装控制了外界对其访问。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//抽象角色</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Api</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">invoke</span><span class="params">(String token,String serviceName)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//真实角色</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiImpl</span> <span class="keyword">implements</span> <span class="title">Api</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">invoke</span><span class="params">(String token,String serviceName)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"token:"</span>+token+<span class="string">",serviceName:"</span>+serviceName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//代理角色</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiProxy</span> <span class="keyword">implements</span> <span class="title">Api</span></span>&#123;</span><br><span class="line">    Api api;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setApi</span><span class="params">(Api api)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.api=api;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">invoke</span><span class="params">(String token,String serviceName)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(token==<span class="keyword">null</span>||<span class="string">""</span>.equals(token)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> api.invoke(token,serviceName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>

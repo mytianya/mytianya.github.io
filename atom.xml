@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-05-17T07:26:31.838Z</updated>
+  <updated>2018-05-26T13:04:46.498Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>代理模式</title>
+    <link href="http://mytianya.me/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.html"/>
+    <id>http://mytianya.me/代理模式.html</id>
+    <published>2018-05-26T03:36:31.000Z</published>
+    <updated>2018-05-26T13:04:46.498Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;nbsp;&amp;nbsp;代理模式:为其他对象提供一种代理来控制对着个对象的访问。涉及的角色有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;抽象角色:声明真实对象与代理对象的共同接口，这样一样在任何使用真实对象的地方，可以使用代理对象。&lt;/li&gt;
+&lt;li&gt;真实角色:代理对象所要代表的目标对象。&lt;/li&gt;
+&lt;li&gt;代理角色：内部持有真实对象的引用，从而在任何时候可以操作真实对象。一般可以附加一些其他功能来增强真实对象，更重要是对真实对象的访问控制。&lt;br&gt;&amp;nbsp;&amp;nbsp;常见使用场景Aop,Rpc远程调用，Hibernate懒加载等。
+    
+    </summary>
+    
+      <category term="design pattern" scheme="http://mytianya.me/categories/design-pattern/"/>
+    
+    
+      <category term="java" scheme="http://mytianya.me/tags/java/"/>
+    
+      <category term="cglib" scheme="http://mytianya.me/tags/cglib/"/>
+    
+      <category term="动态代理" scheme="http://mytianya.me/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>责任链与过滤器</title>

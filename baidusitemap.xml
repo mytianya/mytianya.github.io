@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://mytianya.me/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.html</loc>
+    <lastmod>2018-05-26T13:04:46.498Z</lastmod>
+    <data>
+        <display>
+        <title>代理模式</title>
+        <pubTime>2018-05-26T03:36:31.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>cglib</tag>
+         
+        <tag>动态代理</tag>
+         
+         
+           
+             
+              <breadCrumb title="design pattern" url="http://mytianya.me/categories/design-pattern/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://mytianya.me/%E8%B4%A3%E4%BB%BB%E9%93%BE%E4%B8%8E%E8%BF%87%E6%BB%A4%E5%99%A8.html</loc>
     <lastmod>2018-05-17T07:26:31.838Z</lastmod>
     <data>

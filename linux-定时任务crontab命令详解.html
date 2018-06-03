@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="python java spring it js javascript maven spring dubbo zookeeper" />
+  <meta name="keywords" content="linux,定时任务," />
 
 
 
@@ -83,13 +83,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="明月天涯">
-<meta property="og:url" content="http://mytianya.me/tags/jmx/index.html">
+<meta name="description" content="&amp;nbsp;&amp;nbsp;cron是linux下定时执行工具，可以在无需人工干预的情况下进行作业。cron服务提供了crontab命令来设置cron服务。 crontab命令常见命令1. crontab -l #查看当前用户下定时任务 2. crontab -r #删除当前用户下定时任务 3. crontab -e #编辑当前用户下定时任务 配置语法使用crontab -e编辑当前用户下定时任务，会">
+<meta name="keywords" content="linux,定时任务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux 定时任务crontab命令详解">
+<meta property="og:url" content="http://mytianya.me/linux-定时任务crontab命令详解.html">
 <meta property="og:site_name" content="明月天涯">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;cron是linux下定时执行工具，可以在无需人工干预的情况下进行作业。cron服务提供了crontab命令来设置cron服务。 crontab命令常见命令1. crontab -l #查看当前用户下定时任务 2. crontab -r #删除当前用户下定时任务 3. crontab -e #编辑当前用户下定时任务 配置语法使用crontab -e编辑当前用户下定时任务，会">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/crontab_syntax.png">
+<meta property="og:updated_time" content="2018-06-03T12:29:02.779Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="明月天涯">
+<meta name="twitter:title" content="linux 定时任务crontab命令详解">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;cron是linux下定时执行工具，可以在无需人工干预的情况下进行作业。cron服务提供了crontab命令来设置cron服务。 crontab命令常见命令1. crontab -l #查看当前用户下定时任务 2. crontab -r #删除当前用户下定时任务 3. crontab -e #编辑当前用户下定时任务 配置语法使用crontab -e编辑当前用户下定时任务，会">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/crontab_syntax.png">
 
 
 
@@ -119,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://mytianya.me/tags/jmx/"/>
+  <link rel="canonical" href="http://mytianya.me/linux-定时任务crontab命令详解.html"/>
 
 
 
 
 
-  <title>标签: jmx | 明月天涯</title>
+  <title>linux 定时任务crontab命令详解 | 明月天涯</title>
   
 
 
@@ -144,7 +151,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -282,54 +289,235 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>jmx<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://mytianya.me/linux-定时任务crontab命令详解.html">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="明月天涯">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="明月天涯">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/java-JMX-开始到待续.html" itemprop="url">
-              
-                <span itemprop="name">java JMX 开始到待续</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">linux 定时任务crontab命令详解</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-17T22:22:07+08:00"
-              content="2018-04-17" >
-          04-17
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-03T18:56:00+08:00">
+                2018-06-03
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux命令/" itemprop="url" rel="index">
+                    <span itemprop="name">linux命令</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/linux-定时任务crontab命令详解.html" class="leancloud_visitors" data-flag-title="linux 定时任务crontab命令详解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&nbsp;&nbsp;cron是linux下定时执行工具，可以在无需人工干预的情况下进行作业。cron服务提供了crontab命令来设置cron服务。</p>
+<h2 id="crontab命令"><a href="#crontab命令" class="headerlink" title="crontab命令"></a>crontab命令</h2><h3 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h3><pre><code>1. crontab -l #查看当前用户下定时任务
+2. crontab -r #删除当前用户下定时任务
+3. crontab -e #编辑当前用户下定时任务
+</code></pre><h3 id="配置语法"><a href="#配置语法" class="headerlink" title="配置语法"></a>配置语法</h3><p>使用crontab -e编辑当前用户下定时任务，会用默认编辑器配置定时任务,语法如下图:<br><img src="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/crontab_syntax.png" alt="crontab_syntax"></p>
+<pre><code>1. 前五个分别是分·时·天·月·星期,最后一个需要执行的脚本命令
+2. eg: * */2 * * * command  # / 表示频率，这里表示每隔2小时执行一次脚本
+3. eg: 1,15 * * * * command # , 表示并列，这里表示每小时的1分钟，15分钟各执行一次
+4. eg: * 8-15 * * * command # - 表示范围，这是表示每天8-15点每分钟执行一次
+</code></pre><a id="more"></a>
+<p>简单测试,编辑一个脚本定时输出当前时间到文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> `date`&gt;&gt;/tmp/test.txt</span><br><span class="line">chown u+x test.sh</span><br></pre></td></tr></table></figure>
+<p>crontab -e 编辑配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*/1 * * * * ~/test.sh</span><br></pre></td></tr></table></figure></p>
+<p>修改默认crontab日志输出位置,vim /etc/rsyslog.d/50-default.conf，查看任务执行情况<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cron.* /var/<span class="built_in">log</span>/cron.log</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用crontab定时运行脚本下载bing壁纸，更换桌面壁纸"><a href="#使用crontab定时运行脚本下载bing壁纸，更换桌面壁纸" class="headerlink" title="使用crontab定时运行脚本下载bing壁纸，更换桌面壁纸"></a>使用crontab定时运行脚本下载bing壁纸，更换桌面壁纸</h3><p>crontab配置，每天早晚执行一次<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">30 8,18 * * * ~/bing.py</span><br></pre></td></tr></table></figure></p>
+<p>使用requests下载图片，调用bash命令更改壁纸脚本<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">download</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        timestamp = int(round(time.time()*<span class="number">1000</span>))</span><br><span class="line">        img_address_url = <span class="string">'https://cn.bing.com/HPImageArchive.aspx?format=js&amp;idx=0&amp;n=1&amp;nc='</span> + str(timestamp)</span><br><span class="line">        r=requests.get(img_address_url)</span><br><span class="line">        address=json.loads(r.text)</span><br><span class="line">        imgurl=<span class="string">'https://cn.bing.com'</span>+address[<span class="string">'images'</span>][<span class="number">0</span>][<span class="string">'url'</span>]</span><br><span class="line">        img=requests.get(imgurl)</span><br><span class="line">        type=str(img.headers.get(<span class="string">'Content-Type'</span>))</span><br><span class="line">        path=<span class="string">'~/Pictures/bing/wallpage.'</span>+type[type.index(<span class="string">'/'</span>)+<span class="number">1</span>:]</span><br><span class="line">        <span class="keyword">with</span> open(path,<span class="string">'wb+'</span>) <span class="keyword">as</span> file:</span><br><span class="line">            file.write(img.content)</span><br><span class="line">        <span class="keyword">return</span> path</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_background</span><span class="params">(path)</span>:</span></span><br><span class="line">    print(path)</span><br><span class="line">    <span class="keyword">if</span> path != <span class="keyword">None</span>:</span><br><span class="line">        command=<span class="string">'gsettings set org.gnome.desktop.background picture-uri file:'</span>+path</span><br><span class="line">        subprocess.check_output([<span class="string">'bash'</span>,<span class="string">'-c'</span>,command])</span><br><span class="line">path=download()</span><br><span class="line">change_background(path)</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/定时任务/" rel="tag"># 定时任务</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/代理模式.html" rel="next" title="代理模式">
+                <i class="fa fa-chevron-left"></i> 代理模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -337,6 +525,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzUxMy8xMDA2OQ=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -357,8 +554,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -459,6 +665,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#crontab命令"><span class="nav-number">1.</span> <span class="nav-text">crontab命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见命令"><span class="nav-number">1.1.</span> <span class="nav-text">常见命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置语法"><span class="nav-number">1.2.</span> <span class="nav-text">配置语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用crontab定时运行脚本下载bing壁纸，更换桌面壁纸"><span class="nav-number">1.3.</span> <span class="nav-text">使用crontab定时运行脚本下载bing壁纸，更换桌面壁纸</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -599,6 +821,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -627,6 +853,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 

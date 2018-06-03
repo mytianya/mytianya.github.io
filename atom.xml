@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-05-26T14:48:12.385Z</updated>
+  <updated>2018-06-03T12:29:02.779Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux 定时任务crontab命令详解</title>
+    <link href="http://mytianya.me/linux-%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1crontab%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3.html"/>
+    <id>http://mytianya.me/linux-定时任务crontab命令详解.html</id>
+    <published>2018-06-03T10:56:00.000Z</published>
+    <updated>2018-06-03T12:29:02.779Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;nbsp;&amp;nbsp;cron是linux下定时执行工具，可以在无需人工干预的情况下进行作业。cron服务提供了crontab命令来设置cron服务。&lt;/p&gt;
+&lt;h2 id=&quot;crontab命令&quot;&gt;&lt;a href=&quot;#crontab命令&quot; class=&quot;headerlink&quot; title=&quot;crontab命令&quot;&gt;&lt;/a&gt;crontab命令&lt;/h2&gt;&lt;h3 id=&quot;常见命令&quot;&gt;&lt;a href=&quot;#常见命令&quot; class=&quot;headerlink&quot; title=&quot;常见命令&quot;&gt;&lt;/a&gt;常见命令&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;1. crontab -l #查看当前用户下定时任务
+2. crontab -r #删除当前用户下定时任务
+3. crontab -e #编辑当前用户下定时任务
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;配置语法&quot;&gt;&lt;a href=&quot;#配置语法&quot; class=&quot;headerlink&quot; title=&quot;配置语法&quot;&gt;&lt;/a&gt;配置语法&lt;/h3&gt;&lt;p&gt;使用crontab -e编辑当前用户下定时任务，会用默认编辑器配置定时任务,语法如下图:&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/crontab_syntax.png&quot; alt=&quot;crontab_syntax&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 前五个分别是分·时·天·月·星期,最后一个需要执行的脚本命令
+2. eg: * */2 * * * command  # / 表示频率，这里表示每隔2小时执行一次脚本
+3. eg: 1,15 * * * * command # , 表示并列，这里表示每小时的1分钟，15分钟各执行一次
+4. eg: * 8-15 * * * command # - 表示范围，这是表示每天8-15点每分钟执行一次
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="linux命令" scheme="http://mytianya.me/categories/linux%E5%91%BD%E4%BB%A4/"/>
+    
+    
+      <category term="linux" scheme="http://mytianya.me/tags/linux/"/>
+    
+      <category term="定时任务" scheme="http://mytianya.me/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>代理模式</title>

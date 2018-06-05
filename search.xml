@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[AS无源码动态调试apk]]></title>
+    <url>%2FAS%E6%97%A0%E6%BA%90%E7%A0%81%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95apk.html</url>
+    <content type="text"><![CDATA[工具1. Android studio 2. smaliidea.zip 3. apktool apk可调试方法 apktool反编译apk，在AndroidMainfest.xml的application标签中添加android:debuggable=”true”,重新打包签名 利用xposed安装buildProp Enhancer模块，ro.debuggable修改为1 AS配置 apktool d xx.apk -o out,如果有多个smali要进行合并 AS导入apktool反编译的源码,根目录设置为sources root As设置sdk与测试手机的android版本一致 Edit Configurations–&gt;add romote —&gt;change port Apply adb shell dumpsys activity top,找到要调试的当前进程 adb forward tcp:local port jdwp:phone activity pid 在AS项目中对应smali代码下断点，既可以调试代码]]></content>
+      <categories>
+        <category>android逆向</category>
+      </categories>
+      <tags>
+        <tag>android</tag>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[linux 定时任务crontab命令详解]]></title>
     <url>%2Flinux-%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1crontab%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3.html</url>
     <content type="text"><![CDATA[&nbsp;&nbsp;cron是linux下定时执行工具，可以在无需人工干预的情况下进行作业。cron服务提供了crontab命令来设置cron服务。 crontab命令常见命令1. crontab -l #查看当前用户下定时任务 2. crontab -r #删除当前用户下定时任务 3. crontab -e #编辑当前用户下定时任务 配置语法使用crontab -e编辑当前用户下定时任务，会用默认编辑器配置定时任务,语法如下图: 1. 前五个分别是分·时·天·月·星期,最后一个需要执行的脚本命令 2. eg: * */2 * * * command # / 表示频率，这里表示每隔2小时执行一次脚本 3. eg: 1,15 * * * * command # , 表示并列，这里表示每小时的1分钟，15分钟各执行一次 4. eg: * 8-15 * * * command # - 表示范围，这是表示每天8-15点每分钟执行一次 简单测试,编辑一个脚本定时输出当前时间到文件 123#!/bin/bashecho `date`&gt;&gt;/tmp/test.txtchown u+x test.sh crontab -e 编辑配置文件1*/1 * * * * ~/test.sh 修改默认crontab日志输出位置,vim /etc/rsyslog.d/50-default.conf，查看任务执行情况1cron.* /var/log/cron.log 使用crontab定时运行脚本下载bing壁纸，更换桌面壁纸crontab配置，每天早晚执行一次130 8,18 * * * ~/bing.py 使用requests下载图片，调用bash命令更改壁纸脚本123456789101112131415161718192021222324252627#!/usr/bin/python3import requestsimport timeimport jsonimport subprocessdef download(): try: timestamp = int(round(time.time()*1000)) img_address_url = 'https://cn.bing.com/HPImageArchive.aspx?format=js&amp;idx=0&amp;n=1&amp;nc=' + str(timestamp) r=requests.get(img_address_url) address=json.loads(r.text) imgurl='https://cn.bing.com'+address['images'][0]['url'] img=requests.get(imgurl) type=str(img.headers.get('Content-Type')) path='~/Pictures/bing/wallpage.'+type[type.index('/')+1:] with open(path,'wb+') as file: file.write(img.content) return path except Exception as e: returndef change_background(path): print(path) if path != None: command='gsettings set org.gnome.desktop.background picture-uri file:'+path subprocess.check_output(['bash','-c',command])path=download()change_background(path)]]></content>

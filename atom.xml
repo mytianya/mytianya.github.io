@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-06-03T12:29:02.779Z</updated>
+  <updated>2018-06-05T23:31:44.924Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AS无源码动态调试apk</title>
+    <link href="http://mytianya.me/AS%E6%97%A0%E6%BA%90%E7%A0%81%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95apk.html"/>
+    <id>http://mytianya.me/AS无源码动态调试apk.html</id>
+    <published>2018-06-05T06:46:44.000Z</published>
+    <updated>2018-06-05T23:31:44.924Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;工具&quot;&gt;&lt;a href=&quot;#工具&quot; class=&quot;headerlink&quot; title=&quot;工具&quot;&gt;&lt;/a&gt;工具&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;1. Android studio
+2. smaliidea.zip
+3. apktool
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;apk可调试方法&quot;&gt;&lt;a href=&quot;#apk可调试方法&quot; class=&quot;headerlink&quot; title=&quot;apk可调试方法&quot;&gt;&lt;/a&gt;apk可调试方法&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;apktool反编译apk，在AndroidMainfest.xml的application标签中添加android:debuggable=”true”,重新打包签名&lt;/li&gt;
+&lt;li&gt;利用xposed安装buildProp Enhancer模块，ro.debuggable修改为1
+    
+    </summary>
+    
+      <category term="android逆向" scheme="http://mytianya.me/categories/android%E9%80%86%E5%90%91/"/>
+    
+    
+      <category term="android" scheme="http://mytianya.me/tags/android/"/>
+    
+      <category term="爬虫" scheme="http://mytianya.me/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>linux 定时任务crontab命令详解</title>

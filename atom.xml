@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-06-05T23:31:44.924Z</updated>
+  <updated>2018-08-03T16:40:37.196Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -15,6 +15,102 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu配置ftp服务器</title>
+    <link href="http://mytianya.me/Ubuntu%E9%85%8D%E7%BD%AEftp%E6%9C%8D%E5%8A%A1%E5%99%A8.html"/>
+    <id>http://mytianya.me/Ubuntu配置ftp服务器.html</id>
+    <published>2018-08-03T16:27:05.000Z</published>
+    <updated>2018-08-03T16:40:37.196Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;nbsp;&amp;nbsp;买了一台腾讯云服务器,搭建下ftp服务器,环境为Ubuntu16.04。&lt;/p&gt;
+&lt;h2 id=&quot;安装-卸载ftp服务器&quot;&gt;&lt;a href=&quot;#安装-卸载ftp服务器&quot; class=&quot;headerlink&quot; title=&quot;安装/卸载ftp服务器&quot;&gt;&lt;/a&gt;安装/卸载ftp服务器&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apt-get install vsftpd &lt;span class=&quot;comment&quot;&gt;#安装ftp服务&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;systemctl status vsftpd.service　&lt;span class=&quot;comment&quot;&gt;#查看运行状态&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;apt-get remove vsftpd --purge &lt;span class=&quot;comment&quot;&gt;#卸载ftp清除相关配置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;apt-get autoremove&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;防火墙设置&quot;&gt;&lt;a href=&quot;#防火墙设置&quot; class=&quot;headerlink&quot; title=&quot;防火墙设置&quot;&gt;&lt;/a&gt;防火墙设置&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ufw allow 20/tcp&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ufw allow 21/tcp&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="linux" scheme="http://mytianya.me/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="http://mytianya.me/tags/linux/"/>
+    
+      <category term="ftp" scheme="http://mytianya.me/tags/ftp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu配置Mysql</title>
+    <link href="http://mytianya.me/ubuntu%E9%85%8D%E7%BD%AEMysql.html"/>
+    <id>http://mytianya.me/ubuntu配置Mysql.html</id>
+    <published>2018-08-03T16:26:52.000Z</published>
+    <updated>2018-08-03T16:38:16.028Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;nbsp;&amp;nbsp;Ubuntu安装Mysql,并进行基础安全配置。&lt;/p&gt;
+&lt;h2 id=&quot;安装Mysql&quot;&gt;&lt;a href=&quot;#安装Mysql&quot; class=&quot;headerlink&quot; title=&quot;安装Mysql&quot;&gt;&lt;/a&gt;安装Mysql&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apt-get install mysql-server &lt;span class=&quot;comment&quot;&gt;#安装Mysql&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;systemctl status mysql.service &lt;span class=&quot;comment&quot;&gt;#查看Mysql运行状态&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;开启远程连接&quot;&gt;&lt;a href=&quot;#开启远程连接&quot; class=&quot;headerlink&quot; title=&quot;开启远程连接&quot;&gt;&lt;/a&gt;开启远程连接&lt;/h2&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vim /etc/mysql/my.cnf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　#bind-address=127.0.0.1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;grant&lt;/span&gt; all &lt;span class=&quot;keyword&quot;&gt;privileges&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt; *.* &lt;span class=&quot;keyword&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;root&#39;&lt;/span&gt;@&lt;span class=&quot;string&quot;&gt;&#39;%&#39;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;identified&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;password&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;flush privileges; #其中％代表任意ip远程登录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mysql -h ip -P 3306 -uroot -p #远程登录命令&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="linux" scheme="http://mytianya.me/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="http://mytianya.me/tags/linux/"/>
+    
+      <category term="mysql" scheme="http://mytianya.me/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>观察者模式</title>
+    <link href="http://mytianya.me/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.html"/>
+    <id>http://mytianya.me/观察者模式.html</id>
+    <published>2018-08-03T16:26:37.000Z</published>
+    <updated>2018-08-03T16:34:47.727Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;nbsp;&amp;nbsp;观察者模式:当对象间存在一对多关系时，则使用观察者模式（Observer Pattern）。比如，当一个对象被修改时，则会自动通知它的依赖对象。jdk中有java.util.Observable(被观察者),java.util.Observer(观察者接口)，其中Observable中使用线程安全的列表Vector保存被观察者的观察者,和对观察者通知,加入,移除等操作,当被观察者改变时调用Observer.update方法来通知观察者。&lt;br&gt;&amp;nbsp;&amp;nbsp;这里实现Topic(话题)一更新就通知People(订阅话题的用户)处理推送的消息。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="design pattern" scheme="http://mytianya.me/categories/design-pattern/"/>
+    
+    
+      <category term="java" scheme="http://mytianya.me/tags/java/"/>
+    
+      <category term="design pattern" scheme="http://mytianya.me/tags/design-pattern/"/>
+    
+      <category term="observer" scheme="http://mytianya.me/tags/observer/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu搭建git仓库</title>
+    <link href="http://mytianya.me/ubuntu%E6%90%AD%E5%BB%BAgit%E4%BB%93%E5%BA%93.html"/>
+    <id>http://mytianya.me/ubuntu搭建git仓库.html</id>
+    <published>2018-08-03T16:24:57.000Z</published>
+    <updated>2018-08-03T16:32:42.546Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在自己的搬瓦工上搭建一个私有的git仓库，方便ubuntu linux一些个人代码同步。&lt;/p&gt;
+&lt;h2 id=&quot;安装git&quot;&gt;&lt;a href=&quot;#安装git&quot; class=&quot;headerlink&quot; title=&quot;安装git&quot;&gt;&lt;/a&gt;安装git&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apt-get install git&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git config  global user.name name&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git config  global user.email email@163.com&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;git仓库配置&quot;&gt;&lt;a href=&quot;#git仓库配置&quot; class=&quot;headerlink&quot; title=&quot;git仓库配置&quot;&gt;&lt;/a&gt;git仓库配置&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;useradd git 　&lt;span class=&quot;comment&quot;&gt;#添加git用户与组&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;passwd git　 &lt;span class=&quot;comment&quot;&gt;#设置密码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mdkir -p /git/repository.git　&lt;span class=&quot;comment&quot;&gt;#创建仓库位置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;chown -R git:git /git/repository.git　&lt;span class=&quot;comment&quot;&gt;#更改目录所在用户&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git init --bare /git/repository.git	&lt;span class=&quot;comment&quot;&gt;#创建一个裸仓库&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="linux" scheme="http://mytianya.me/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="http://mytianya.me/tags/linux/"/>
+    
+      <category term="git" scheme="http://mytianya.me/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>AS无源码动态调试apk</title>
@@ -153,7 +249,7 @@
     <link href="http://mytianya.me/Ubuntu16-04%E9%85%8D%E7%BD%AERedis.html"/>
     <id>http://mytianya.me/Ubuntu16-04配置Redis.html</id>
     <published>2018-04-22T15:21:27.000Z</published>
-    <updated>2018-04-22T15:23:31.000Z</updated>
+    <updated>2018-08-03T16:26:00.577Z</updated>
     
     <summary type="html">
     
@@ -161,10 +257,12 @@
     
     </summary>
     
-      <category term="redis" scheme="http://mytianya.me/categories/redis/"/>
+      <category term="linux" scheme="http://mytianya.me/categories/linux/"/>
     
     
-      <category term="linux redis" scheme="http://mytianya.me/tags/linux-redis/"/>
+      <category term="linux" scheme="http://mytianya.me/tags/linux/"/>
+    
+      <category term="redis" scheme="http://mytianya.me/tags/redis/"/>
     
   </entry>
   
@@ -369,88 +467,6 @@
     
     
       <category term="wireshark" scheme="http://mytianya.me/tags/wireshark/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>url编码解码</title>
-    <link href="http://mytianya.me/url%E7%BC%96%E7%A0%81%E8%A7%A3%E7%A0%81.html"/>
-    <id>http://mytianya.me/url编码解码.html</id>
-    <published>2018-01-30T02:12:35.000Z</published>
-    <updated>2018-01-31T03:36:34.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Thus, only alphanumerics, the special characters “$-&lt;em&gt;.+!*’(),”, and reserved characters used for their reserved purposes may be used unencoded within a URL.&lt;a href=&quot;https://www.rfc-editor.org/rfc/rfc1738.txt&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;url rfc&lt;/a&gt;&lt;br&gt;“只有字母和数字[0-9a-zA-Z]、一些特殊符号”$-&lt;/em&gt;.+!*’(),”[不包括双引号]、以及某些保留字，才可以不经过编码直接用于URL。”&lt;br&gt;
-    
-    </summary>
-    
-      <category term="http" scheme="http://mytianya.me/categories/http/"/>
-    
-    
-      <category term="url编码" scheme="http://mytianya.me/tags/url%E7%BC%96%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java泛型</title>
-    <link href="http://mytianya.me/java%E6%B3%9B%E5%9E%8B.html"/>
-    <id>http://mytianya.me/java泛型.html</id>
-    <published>2018-01-25T03:18:58.000Z</published>
-    <updated>2018-02-27T04:04:34.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&amp;ensp;&amp;ensp;Java泛型本质为参数化类型,也就是说变量的类型是一个参数(type parameter)。类型参数只存在于编译期泛型只能用于在编译期间的静态类型检查,然后编译器生成的代码会擦除相应的类型信息,把类型参数替换成Bounding Type(未有限定为Object)。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="java" scheme="http://mytianya.me/categories/java/"/>
-    
-    
-      <category term="java generic" scheme="http://mytianya.me/tags/java-generic/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java8 lambda表达式</title>
-    <link href="http://mytianya.me/java8-lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F.html"/>
-    <id>http://mytianya.me/java8-lambda表达式.html</id>
-    <published>2018-01-24T16:06:08.000Z</published>
-    <updated>2018-01-28T08:18:26.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&amp;ensp;&amp;ensp;可以把Lambda表达式理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表、函数主体、返回类型，可能还有一个可以抛出的异常列表。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="java8" scheme="http://mytianya.me/categories/java8/"/>
-    
-    
-      <category term="java8" scheme="http://mytianya.me/tags/java8/"/>
-    
-      <category term="lambda" scheme="http://mytianya.me/tags/lambda/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>selenium webdriver两三事</title>
-    <link href="http://mytianya.me/selenium-webdriver%E4%B8%A4%E4%B8%89%E4%BA%8B.html"/>
-    <id>http://mytianya.me/selenium-webdriver两三事.html</id>
-    <published>2018-01-22T14:10:29.000Z</published>
-    <updated>2018-03-13T06:48:56.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&amp;ensp;&amp;ensp;Selenium是一个开源的和便携式的自动化软件测试工具，用于测试Web应用程序有能力在不同的浏览器和操作系统运行。其中Selenium的webdriver可以直接发送命令给浏览器,常用于爬虫爬取javascript动态渲染的页面,下图演示firefox自动化填写表单，查看火车票信息。&lt;br&gt;&lt;img src=&quot;https://github.com/mytianya/mytianya.github.io/blob/master/blog_imgs/selenium.gif?raw=true&quot; alt=&quot;示例&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="爬虫" scheme="http://mytianya.me/categories/%E7%88%AC%E8%99%AB/"/>
-    
-    
-      <category term="selenium webdriver" scheme="http://mytianya.me/tags/selenium-webdriver/"/>
     
   </entry>
   

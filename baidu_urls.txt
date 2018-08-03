@@ -1,3 +1,7 @@
+http://mytianya.me/Ubuntu配置ftp服务器.html
+http://mytianya.me/ubuntu配置Mysql.html
+http://mytianya.me/观察者模式.html
+http://mytianya.me/ubuntu搭建git仓库.html
 http://mytianya.me/AS无源码动态调试apk.html
 http://mytianya.me/linux-定时任务crontab命令详解.html
 http://mytianya.me/代理模式.html

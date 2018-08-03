@@ -1,6 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Ubuntu配置ftp服务器]]></title>
+    <url>%2FUbuntu%E9%85%8D%E7%BD%AEftp%E6%9C%8D%E5%8A%A1%E5%99%A8.html</url>
+    <content type="text"><![CDATA[&nbsp;&nbsp;买了一台腾讯云服务器,搭建下ftp服务器,环境为Ubuntu16.04。 安装/卸载ftp服务器1234apt-get install vsftpd #安装ftp服务systemctl status vsftpd.service #查看运行状态apt-get remove vsftpd --purge #卸载ftp清除相关配置apt-get autoremove 防火墙设置12ufw allow 20/tcpufw allow 21/tcp 基本配置12345678910anonymous_enable=NO # 关闭匿名登录local_enable=YES # 允许本地用户登录write_enable=YES # 启用可以修改文件的 FTP 命令local_umask=022 # 本地用户创建文件的 umask 值dirmessage_enable=YES # 当用户第一次进入新目录时显示提示消息userlist_enable=YES # 允许 vsftpd 加载用户名字列表userlist_file=/etc/vsftpd.userlist # 存储用户名字的列表userlist_deny=NO #只有在userlist_file中的用户才能登录chroot_local_user=YES #将ftp用户限制在其家目录下allow_writeable_chroot=YES 新建用户测试1234sudo useradd -m -c "ftp test" -s /bin/bash ftpusersudo passwd ftpuserecho "ftpuser"|tee -a /etc/vsftpd.userlistftp@ip 使用ftpuser测试登录]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>ftp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ubuntu配置Mysql]]></title>
+    <url>%2Fubuntu%E9%85%8D%E7%BD%AEMysql.html</url>
+    <content type="text"><![CDATA[&nbsp;&nbsp;Ubuntu安装Mysql,并进行基础安全配置。 安装Mysql12apt-get install mysql-server #安装Mysqlsystemctl status mysql.service #查看Mysql运行状态 开启远程连接12345vim /etc/mysql/my.cnf #bind-address=127.0.0.1grant all privileges on *.* to 'root'@'%' identified by 'password';flush privileges; #其中％代表任意ip远程登录mysql -h ip -P 3306 -uroot -p #远程登录命令 安全配置1234update user set password=password('xxxx') where user='root' #修改root 密码为强口令drop database test; #删除test数据库delete from user where not (user='root') #删除初始非root用户update user set user='newname' where user='root' #修改默认管理员名称 创建新用户并分配权限1234create database data default charset utf8 collate utf8_generic_ci; #创建data测试数据库create user 'test'@'%' identified by '123456'; #创建用户testgrant select,update,insert,delete on data.* to 'test'@'%' identified by 'password' #在data数据库上为test用户分配所有表数据CRUD权限flush privileges; #刷新权限]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[观察者模式]]></title>
+    <url>%2F%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.html</url>
+    <content type="text"><![CDATA[&nbsp;&nbsp;观察者模式:当对象间存在一对多关系时，则使用观察者模式（Observer Pattern）。比如，当一个对象被修改时，则会自动通知它的依赖对象。jdk中有java.util.Observable(被观察者),java.util.Observer(观察者接口)，其中Observable中使用线程安全的列表Vector保存被观察者的观察者,和对观察者通知,加入,移除等操作,当被观察者改变时调用Observer.update方法来通知观察者。&nbsp;&nbsp;这里实现Topic(话题)一更新就通知People(订阅话题的用户)处理推送的消息。12345678910111213141516171819202122232425262728293031323334public class Topic extends Observable&#123; private String msg; public String getMsg() &#123; return msg; &#125; public void setMsg(String msg) &#123; this.setChanged(); this.msg = msg; &#125; public void broadcast() &#123; this.notifyObservers(); &#125;&#125;public class People implements Observer&#123; private String name; public People(String name) &#123; this.name=name; &#125; @Override public void update(Observable o, Object arg) &#123; if(o instanceof Topic) &#123; System.out.println(this.name+" recived a msg:"+((Topic)(o)).getMsg()); &#125; &#125; public static void main(String[] args) &#123; Topic topic=new Topic(); People p1=new People("xiaoming"); People p2=new People("zhangsan"); topic.addObserver(p1); topic.addObserver(p2); topic.setMsg("hello world....."); topic.broadcast(); &#125;&#125;]]></content>
+      <categories>
+        <category>design pattern</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>design pattern</tag>
+        <tag>observer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ubuntu搭建git仓库]]></title>
+    <url>%2Fubuntu%E6%90%AD%E5%BB%BAgit%E4%BB%93%E5%BA%93.html</url>
+    <content type="text"><![CDATA[在自己的搬瓦工上搭建一个私有的git仓库，方便ubuntu linux一些个人代码同步。 安装git123apt-get install gitgit config global user.name namegit config global user.email email@163.com git仓库配置12345useradd git #添加git用户与组passwd git #设置密码mdkir -p /git/repository.git #创建仓库位置chown -R git:git /git/repository.git #更改目录所在用户git init --bare /git/repository.git #创建一个裸仓库 推送本地ssh公钥到服务器12ssh-keygen -t rsa #本地生成ssh公钥cat ~/.ssh/id_rsa.pub|ssh git@ip "mkdir -p ~/.ssh&amp;&amp;cat ~/.ssh/authroized_keys" -p port ＃推送到远程服务器git用户authorized_keys文件中 操作实例12345git clone ssh://git@ip:port/git/repository.git #clone 远程仓库cp ~/.vimrc .git add .vimrcgit commit -m "上传vimrc配置"git push origin master #推送到远程仓库]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[AS无源码动态调试apk]]></title>
     <url>%2FAS%E6%97%A0%E6%BA%90%E7%A0%81%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95apk.html</url>
     <content type="text"><![CDATA[工具1. Android studio 2. smaliidea.zip 3. apktool apk可调试方法 apktool反编译apk，在AndroidMainfest.xml的application标签中添加android:debuggable=”true”,重新打包签名 利用xposed安装buildProp Enhancer模块，ro.debuggable修改为1 AS配置 apktool d xx.apk -o out,如果有多个smali要进行合并 AS导入apktool反编译的源码,根目录设置为sources root As设置sdk与测试手机的android版本一致 Edit Configurations–&gt;add romote —&gt;change port Apply adb shell dumpsys activity top,找到要调试的当前进程 adb forward tcp:local port jdwp:phone activity pid 在AS项目中对应smali代码下断点，既可以调试代码]]></content>
@@ -66,10 +115,11 @@
     <url>%2FUbuntu16-04%E9%85%8D%E7%BD%AERedis.html</url>
     <content type="text"><![CDATA[&ensp;&ensp;Ubuntu16.04 systemctl配置redis 编译redis1234567cd /tmpcurl -O http://download.redis.io/redis-stable.tar.gztar zxvf redis-stable.tar.gzcd redis-stablemakemake installmake 移动redis-server,redis.conf到指定目录1234sudo mv redis-server /usr/local/binsudo mv redis-cli /usr/local/binsudo mkidr /etc/redisheosudo mv redis.conf /etc/redis 配置redis.conf123sudo vim /etc/redis/redis.confsupervised systemd #signal systemd by writing READY=1 to $NOTIFY_SOCKETdir /var/lib/redis # dump persistent data store 配置redis用户组1234sudo adduser --system --group --no-create-home redissudo mkdir /var/lib/redissudo chown redis:redis /var/lib/redissudo chmod 770 /var/lib/redis 配置redis.service1sudo touch /etc/systemd/system/redis.service 1234567891011121314[Unit]Description=Redis In-Memory Data StoreAfter=network.target[Service]Type=forkingUser=redisGroup=redisExecStart=/usr/local/bin/redis-server /etc/redis/redis.confExecStop=/usr/local/bin/redis-cli shutdownRestart=always[Install]WantedBy=multi-user.target 启动redis12sudo systemctl start redis.service # start redis servicesudo systemctl status redis.service # watch service status]]></content>
       <categories>
-        <category>redis</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>linux redis</tag>
+        <tag>linux</tag>
+        <tag>redis</tag>
       </tags>
   </entry>
   <entry>

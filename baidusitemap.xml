@@ -4,6 +4,120 @@
 
     
   <url>
+    <loc>http://mytianya.me/Ubuntu%E9%85%8D%E7%BD%AEftp%E6%9C%8D%E5%8A%A1%E5%99%A8.html</loc>
+    <lastmod>2018-08-03T16:40:37.196Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu配置ftp服务器</title>
+        <pubTime>2018-08-03T16:27:05.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>ftp</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://mytianya.me/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://mytianya.me/ubuntu%E9%85%8D%E7%BD%AEMysql.html</loc>
+    <lastmod>2018-08-03T16:38:16.028Z</lastmod>
+    <data>
+        <display>
+        <title>ubuntu配置Mysql</title>
+        <pubTime>2018-08-03T16:26:52.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://mytianya.me/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://mytianya.me/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.html</loc>
+    <lastmod>2018-08-03T16:34:47.727Z</lastmod>
+    <data>
+        <display>
+        <title>观察者模式</title>
+        <pubTime>2018-08-03T16:26:37.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>design pattern</tag>
+         
+        <tag>observer</tag>
+         
+         
+           
+             
+              <breadCrumb title="design pattern" url="http://mytianya.me/categories/design-pattern/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://mytianya.me/ubuntu%E6%90%AD%E5%BB%BAgit%E4%BB%93%E5%BA%93.html</loc>
+    <lastmod>2018-08-03T16:32:42.546Z</lastmod>
+    <data>
+        <display>
+        <title>ubuntu搭建git仓库</title>
+        <pubTime>2018-08-03T16:24:57.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://mytianya.me/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://mytianya.me/Ubuntu16-04%E9%85%8D%E7%BD%AERedis.html</loc>
+    <lastmod>2018-08-03T16:26:00.577Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu16.04配置Redis</title>
+        <pubTime>2018-04-22T15:21:27.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://mytianya.me/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+  <url>
     <loc>http://mytianya.me/AS%E6%97%A0%E6%BA%90%E7%A0%81%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95apk.html</loc>
     <lastmod>2018-06-05T23:31:44.924Z</lastmod>
     <data>
@@ -129,26 +243,6 @@
            
              
               <breadCrumb title="爬虫" url="http://mytianya.me/categories/%E7%88%AC%E8%99%AB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://mytianya.me/Ubuntu16-04%E9%85%8D%E7%BD%AERedis.html</loc>
-    <lastmod>2018-04-22T15:23:31.000Z</lastmod>
-    <data>
-        <display>
-        <title>Ubuntu16.04配置Redis</title>
-        <pubTime>2018-04-22T15:21:27.000Z</pubTime>
-        
-        <tag>linux redis</tag>
-         
-         
-           
-             
-              <breadCrumb title="redis" url="http://mytianya.me/categories/redis/"/>
           
         </display>
     </data>

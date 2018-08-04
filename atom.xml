@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-08-04T13:59:26.838Z</updated>
+  <updated>2018-08-04T14:52:42.180Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -21,17 +21,11 @@
     <link href="http://mytianya.me/docker%E5%85%A5%E9%97%A8.html"/>
     <id>http://mytianya.me/docker入门.html</id>
     <published>2018-08-04T08:10:55.000Z</published>
-    <updated>2018-08-04T13:59:26.838Z</updated>
+    <updated>2018-08-04T14:52:42.180Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;ubuntu-docker安装&quot;&gt;&lt;a href=&quot;#ubuntu-docker安装&quot; class=&quot;headerlink&quot; title=&quot;ubuntu docker安装&quot;&gt;&lt;/a&gt;ubuntu docker安装&lt;/h2&gt;&lt;figure
-        
-      
+      &lt;h2 id=&quot;ubuntu-docker安装&quot;&gt;&lt;a href=&quot;#ubuntu-docker安装&quot; class=&quot;headerlink&quot; title=&quot;ubuntu docker安装&quot;&gt;&lt;/a&gt;ubuntu docker安装&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-get remove docker docker-engine docker.io&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-get update&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-get install apt-transport-https ca-certificates curl software-properties-common&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-key fingerprint 0EBFCD88&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo add-apt-repository &lt;span class=&quot;string&quot;&gt;&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu &lt;span class=&quot;variable&quot;&gt;$(lsb_release -cs)&lt;/span&gt; stable&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-get update&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-get install docker-ce&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     

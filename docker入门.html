@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="明月天涯">
 <meta property="og:description" content="ubuntu docker安装12345678sudo apt-get remove docker docker-engine docker.iosudo apt-get updatesudo apt-get install apt-transport-https ca-certificates curl software-properties-commoncurl -fsSL https://d">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-04T13:59:26.838Z">
+<meta property="og:updated_time" content="2018-08-04T14:52:42.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker入门">
 <meta name="twitter:description" content="ubuntu docker安装12345678sudo apt-get remove docker docker-engine docker.iosudo apt-get updatesudo apt-get install apt-transport-https ca-certificates curl software-properties-commoncurl -fsSL https://d">
@@ -422,6 +422,7 @@
 
       
         <h2 id="ubuntu-docker安装"><a href="#ubuntu-docker安装" class="headerlink" title="ubuntu docker安装"></a>ubuntu docker安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove docker docker-engine docker.io</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install apt-transport-https ca-certificates curl software-properties-common</span><br><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line">sudo apt-key fingerprint 0EBFCD88</span><br><span class="line">sudo add-apt-repository <span class="string">"deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="variable">$(lsb_release -cs)</span> stable"</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install docker-ce</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="docker基本概念"><a href="#docker基本概念" class="headerlink" title="docker基本概念"></a>docker基本概念</h2><pre><code>1. 镜像(Image):类似于虚拟机中的镜像,包含一个让docker引擎运行的文件系统。
 2. 容器(Container):镜像运行的实例,可以创建、启动、停止、删除。
 3. 仓库(Repository):类似代码仓库,是docker用于存放镜像的仓库。

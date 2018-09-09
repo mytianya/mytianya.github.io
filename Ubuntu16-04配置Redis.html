@@ -92,7 +92,7 @@
 <meta property="og:description" content="&amp;ensp;&amp;ensp;Ubuntu16.04 systemctl配置redis">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/redis_configure.png">
-<meta property="og:updated_time" content="2018-08-03T16:26:00.577Z">
+<meta property="og:updated_time" content="2018-09-09T01:59:30.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu16.04配置Redis">
 <meta name="twitter:description" content="&amp;ensp;&amp;ensp;Ubuntu16.04 systemctl配置redis">
@@ -427,6 +427,7 @@
 <h2 id="编译redis"><a href="#编译redis" class="headerlink" title="编译redis"></a>编译redis</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp</span><br><span class="line">curl -O http://download.redis.io/redis-stable.tar.gz</span><br><span class="line">tar zxvf redis-stable.tar.gz</span><br><span class="line">cd redis-stable</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
 <h2 id="移动redis-server-redis-conf到指定目录"><a href="#移动redis-server-redis-conf到指定目录" class="headerlink" title="移动redis-server,redis.conf到指定目录"></a>移动redis-server,redis.conf到指定目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo mv redis-server /usr/local/bin</span><br><span class="line">sudo mv redis-cli /usr/local/bin</span><br><span class="line">sudo mkidr /etc/redisheo</span><br><span class="line">sudo mv redis.conf /etc/redis</span><br></pre></td></tr></table></figure>
 <h2 id="配置redis-conf"><a href="#配置redis-conf" class="headerlink" title="配置redis.conf"></a>配置redis.conf</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/redis/redis.conf</span><br><span class="line">supervised systemd #signal systemd by writing READY=1 to $NOTIFY_SOCKET</span><br><span class="line">dir /var/lib/redis # dump persistent data store</span><br></pre></td></tr></table></figure>
+<h2 id="配置远程访问"><a href="#配置远程访问" class="headerlink" title="配置远程访问"></a>配置远程访问</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">注释 <span class="built_in">bind</span> 127.0.0.1</span></span><br><span class="line">protected-mode no </span><br><span class="line">requirepass redispwd</span><br><span class="line">redis-cli -h xxx -p 6379 -a password</span><br></pre></td></tr></table></figure>
 <h2 id="配置redis用户组"><a href="#配置redis用户组" class="headerlink" title="配置redis用户组"></a>配置redis用户组</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser --system --group --no-create-home redis</span><br><span class="line">sudo mkdir /var/lib/redis</span><br><span class="line">sudo chown redis:redis /var/lib/redis</span><br><span class="line">sudo chmod 770 /var/lib/redis</span><br></pre></td></tr></table></figure>
 <h2 id="配置redis-service"><a href="#配置redis-service" class="headerlink" title="配置redis.service"></a>配置redis.service</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo touch /etc/systemd/system/redis.service</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Redis In-Memory Data Store</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">User=redis</span><br><span class="line">Group=redis</span><br><span class="line">ExecStart=/usr/local/bin/redis-server /etc/redis/redis.conf</span><br><span class="line">ExecStop=/usr/local/bin/redis-cli shutdown</span><br><span class="line">Restart=always</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
@@ -598,7 +599,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -609,7 +610,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -620,7 +621,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -690,7 +691,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译redis"><span class="nav-number">1.</span> <span class="nav-text">编译redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动redis-server-redis-conf到指定目录"><span class="nav-number">2.</span> <span class="nav-text">移动redis-server,redis.conf到指定目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置redis-conf"><span class="nav-number">3.</span> <span class="nav-text">配置redis.conf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置redis用户组"><span class="nav-number">4.</span> <span class="nav-text">配置redis用户组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置redis-service"><span class="nav-number">5.</span> <span class="nav-text">配置redis.service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动redis"><span class="nav-number">6.</span> <span class="nav-text">启动redis</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译redis"><span class="nav-number">1.</span> <span class="nav-text">编译redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动redis-server-redis-conf到指定目录"><span class="nav-number">2.</span> <span class="nav-text">移动redis-server,redis.conf到指定目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置redis-conf"><span class="nav-number">3.</span> <span class="nav-text">配置redis.conf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置远程访问"><span class="nav-number">4.</span> <span class="nav-text">配置远程访问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置redis用户组"><span class="nav-number">5.</span> <span class="nav-text">配置redis用户组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置redis-service"><span class="nav-number">6.</span> <span class="nav-text">配置redis.service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动redis"><span class="nav-number">7.</span> <span class="nav-text">启动redis</span></a></li></ol></div>
             
 
           </div>

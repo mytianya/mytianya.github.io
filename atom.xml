@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-09-09T02:03:03.079Z</updated>
+  <updated>2018-09-16T06:57:42.435Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>anyproxy使用</title>
+    <link href="http://mytianya.me/anyproxy%E4%BD%BF%E7%94%A8.html"/>
+    <id>http://mytianya.me/anyproxy使用.html</id>
+    <published>2018-09-12T15:34:47.000Z</published>
+    <updated>2018-09-16T06:57:42.435Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;AnyProxy是一个基于NodeJS的，可供插件配置的HTTP/HTTPS代理服务器。一般我们可以用于npm模块，自定义规则修改请求与返回中的http内容。&lt;/p&gt;
+&lt;h2 id=&quot;配置https&quot;&gt;&lt;a href=&quot;#配置https&quot; class=&quot;headerlink&quot; title=&quot;配置https&quot;&gt;&lt;/a&gt;配置https&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm i anyproxy -g &lt;span class=&quot;comment&quot;&gt;#全局安装anyproxy模块&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;anyproxy-ca  &lt;span class=&quot;comment&quot;&gt;#导出证书&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cp rootCA.crt /usr/&lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt;/share/ca-certificates　&lt;span class=&quot;comment&quot;&gt;#ubuntu安装证书&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo update-ca-certificates&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;anyproxy -i&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl --proxy localhost:8001 https://www.baidu.com　&lt;span class=&quot;comment&quot;&gt;#测试https代理,浏览器localost:8002界面查看代理信息&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="爬虫" scheme="http://mytianya.me/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+      <category term="proxy" scheme="http://mytianya.me/tags/proxy/"/>
+    
+      <category term="nodejs" scheme="http://mytianya.me/tags/nodejs/"/>
+    
+  </entry>
   
   <entry>
     <title>google hack技巧总结</title>
@@ -454,28 +477,6 @@
     
     
       <category term="java异常" scheme="http://mytianya.me/tags/java%E5%BC%82%E5%B8%B8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java base64编码</title>
-    <link href="http://mytianya.me/Java-base64%E7%BC%96%E7%A0%81.html"/>
-    <id>http://mytianya.me/Java-base64编码.html</id>
-    <published>2018-02-24T02:56:53.000Z</published>
-    <updated>2018-02-24T03:56:26.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&amp;ensp;&amp;ensp;Base64是一种基于64个可打印字符来表示二进制数据的表示方法。由于2^6=64,所以每6个比特为一个单元,对应某个可打印字符。3个字节有24个比特,对应于4个Base64单元，即3个字节可表示4个可打印字符。它可用来作为电子邮件的传输编码。在Base64中的可打印字符包括字母A-Z、a-z、数字0-9,这样共有62个字符,此外两个可打印符号在不同的系统中而不同。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="java" scheme="http://mytianya.me/categories/java/"/>
-    
-    
-      <category term="java" scheme="http://mytianya.me/tags/java/"/>
-    
-      <category term="base64" scheme="http://mytianya.me/tags/base64/"/>
     
   </entry>
   

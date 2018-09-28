@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="明月天涯">
 <meta property="og:description" content="ubuntu docker安装12345678sudo apt-get remove docker docker-engine docker.iosudo apt-get updatesudo apt-get install apt-transport-https ca-certificates curl software-properties-commoncurl -fsSL https://d">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-09T02:06:52.245Z">
+<meta property="og:updated_time" content="2018-09-26T06:18:54.583Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker入门">
 <meta name="twitter:description" content="ubuntu docker安装12345678sudo apt-get remove docker docker-engine docker.iosudo apt-get updatesudo apt-get install apt-transport-https ca-certificates curl software-properties-commoncurl -fsSL https://d">
@@ -427,7 +427,7 @@
 2. 容器(Container):镜像运行的实例,可以创建、启动、停止、删除。
 3. 仓库(Repository):类似代码仓库,是docker用于存放镜像的仓库。
 </code></pre><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><h3 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker images <span class="comment">#列出本机镜像</span></span><br><span class="line">docker search name <span class="comment">#仓库中查找</span></span><br><span class="line">docker pull Name:TAG <span class="comment">#从仓库拉取镜像</span></span><br><span class="line">docker commit -m=<span class="string">"remark"</span> -a=<span class="string">"author"</span> containerID imageName:tag <span class="comment">#更新一个镜像</span></span><br></pre></td></tr></table></figure>
-<h3 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker container ps <span class="comment">#查看容器情况</span></span><br><span class="line">docker stop containerId <span class="comment">#停止容器</span></span><br><span class="line">docker run [options] IMAGE [<span class="built_in">command</span>][ARG...]</span><br><span class="line">docker run --name <span class="built_in">test</span> -p 8000:80 -v <span class="variable">$PWD</span>/nginx.conf:/etc/nginx/nginx.conf -d nginx <span class="comment">#--name 容器名称 -p 容器80映射到本地8000端口,-v 本地目录挂载到容器 -d后台运行</span></span><br><span class="line">docker <span class="built_in">exec</span> -it containerId /bin/bash <span class="comment"># 进入一个运行的容器 </span></span><br><span class="line">docker logs -f -t --since 30m containerId <span class="comment">#查看容器运行日志</span></span><br></pre></td></tr></table></figure>
+<h3 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker container ps <span class="comment">#查看容器情况</span></span><br><span class="line">docker stop containerId <span class="comment">#停止容器</span></span><br><span class="line">docker run [options] IMAGE [<span class="built_in">command</span>][ARG...]</span><br><span class="line">docker run --name <span class="built_in">test</span> -p 8000:80 -v <span class="variable">$PWD</span>/nginx.conf:/etc/nginx/nginx.conf -d nginx <span class="comment">#--name 容器名称 -p 容器80映射到本地8000端口,-v 本地目录挂载到容器 -d后台运行</span></span><br><span class="line">docker <span class="built_in">exec</span> -it containerId /bin/bash <span class="comment"># 进入一个运行的容器 </span></span><br><span class="line">docker logs -f -t --since 30m containerId <span class="comment">#查看容器运行日志</span></span><br><span class="line">docker inspect containerName <span class="comment">#查看容器运行命令</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -596,7 +596,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -618,7 +618,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

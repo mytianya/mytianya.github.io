@@ -423,7 +423,7 @@
           <p>&nbsp;&nbsp;Java中正则表达式分别要用到java.util.regex.Pattern和java.util.regex.Matcher类。其中Pattern通过编译正则表达式创建一个匹配模式,Matcher通过Pattern实例提供的正则表达式对字符串进行匹配。<br>&nbsp;&nbsp;在这里对正则表达式不做说明，可通过<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="noopener">30分钟正则表达式入门</a>。一般可通过RegexBuddy等工具先学习测试正则表达式。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/JAVA正则类Pattern-Matcher小结.html#more" rel="contents">
+            <a class="btn" href="/JAVA正则类Pattern-Matcher小结.html#espandi" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -580,7 +580,7 @@
           <p>&nbsp;&nbsp;在本业务系统中采用springboot.2.0+dubbo+zookeeper架构，其中comsumer端采用springboot返回统一的Json格式接口数据，Provider端通过zookeeper注册提供实际的业务处理接口。<br>&nbsp;&nbsp;其中Comsumer端与Provider都会遇到异常情况，这里把异常封装成公共的CommonException接口,继承RuntimeException放在dubbo-base-interface的maven模块，Comsumer与Provider的模块都集成这个模块。Provider端采用aop拦截所有的异常包装成CommonException，直接抛给Comsumer端,Comsumer通过springboot统一异常处理来捕获CommonException异常，统一处理异常封装成Json格式的数据返回给客户端接口调用。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/springboot2-dubbo-统一异常处理.html#more" rel="contents">
+            <a class="btn" href="/springboot2-dubbo-统一异常处理.html#espandi" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -738,7 +738,7 @@
 <h2 id="配置https"><a href="#配置https" class="headerlink" title="配置https"></a>配置https</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm i anyproxy -g <span class="comment">#全局安装anyproxy模块</span></span><br><span class="line">anyproxy-ca  <span class="comment">#导出证书</span></span><br><span class="line">cp rootCA.crt /usr/<span class="built_in">local</span>/share/ca-certificates　<span class="comment">#ubuntu安装证书</span></span><br><span class="line">sudo update-ca-certificates</span><br><span class="line">anyproxy -i</span><br><span class="line">curl --proxy localhost:8001 https://www.baidu.com　<span class="comment">#测试https代理,浏览器localost:8002界面查看代理信息</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/anyproxy使用.html#more" rel="contents">
+            <a class="btn" href="/anyproxy使用.html#espandi" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1062,7 +1062,7 @@
           <h2 id="ubuntu-docker安装"><a href="#ubuntu-docker安装" class="headerlink" title="ubuntu docker安装"></a>ubuntu docker安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove docker docker-engine docker.io</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install apt-transport-https ca-certificates curl software-properties-common</span><br><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line">sudo apt-key fingerprint 0EBFCD88</span><br><span class="line">sudo add-apt-repository <span class="string">"deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="variable">$(lsb_release -cs)</span> stable"</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install docker-ce</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/docker入门.html#more" rel="contents">
+            <a class="btn" href="/docker入门.html#espandi" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1221,7 +1221,7 @@
 <h2 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ufw allow 20/tcp</span><br><span class="line">ufw allow 21/tcp</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Ubuntu配置ftp服务器.html#more" rel="contents">
+            <a class="btn" href="/Ubuntu配置ftp服务器.html#espandi" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1380,7 +1380,7 @@
 <h2 id="开启远程连接"><a href="#开启远程连接" class="headerlink" title="开启远程连接"></a>开启远程连接</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/mysql/my.cnf</span><br><span class="line">　#bind-address=127.0.0.1</span><br><span class="line"><span class="keyword">grant</span> all <span class="keyword">privileges</span> <span class="keyword">on</span> *.* <span class="keyword">to</span> <span class="string">'root'</span>@<span class="string">'%'</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">'password'</span>;</span><br><span class="line">flush privileges; #其中％代表任意ip远程登录</span><br><span class="line">mysql -h ip -P 3306 -uroot -p #远程登录命令</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/ubuntu配置Mysql.html#more" rel="contents">
+            <a class="btn" href="/ubuntu配置Mysql.html#espandi" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1537,7 +1537,7 @@
           <p>&nbsp;&nbsp;观察者模式:当对象间存在一对多关系时，则使用观察者模式（Observer Pattern）。比如，当一个对象被修改时，则会自动通知它的依赖对象。jdk中有java.util.Observable(被观察者),java.util.Observer(观察者接口)，其中Observable中使用线程安全的列表Vector保存被观察者的观察者,和对观察者通知,加入,移除等操作,当被观察者改变时调用Observer.update方法来通知观察者。<br>&nbsp;&nbsp;这里实现Topic(话题)一更新就通知People(订阅话题的用户)处理推送的消息。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/观察者模式.html#more" rel="contents">
+            <a class="btn" href="/观察者模式.html#espandi" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1696,7 +1696,7 @@
 <h2 id="git仓库配置"><a href="#git仓库配置" class="headerlink" title="git仓库配置"></a>git仓库配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">useradd git 　<span class="comment">#添加git用户与组</span></span><br><span class="line">passwd git　 <span class="comment">#设置密码</span></span><br><span class="line">mdkir -p /git/repository.git　<span class="comment">#创建仓库位置</span></span><br><span class="line">chown -R git:git /git/repository.git　<span class="comment">#更改目录所在用户</span></span><br><span class="line">git init --bare /git/repository.git	<span class="comment">#创建一个裸仓库</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/ubuntu搭建git仓库.html#more" rel="contents">
+            <a class="btn" href="/ubuntu搭建git仓库.html#espandi" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1858,7 +1858,7 @@
 <li>利用xposed安装buildProp Enhancer模块，ro.debuggable修改为1
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/AS无源码动态调试apk.html#more" rel="contents">
+            <a class="btn" href="/AS无源码动态调试apk.html#espandi" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

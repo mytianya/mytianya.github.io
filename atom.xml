@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-09-28T13:56:55.039Z</updated>
+  <updated>2018-09-29T15:01:23.324Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -17,15 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JAVA正则类Pattern,Matcher小结</title>
+    <link href="http://mytianya.me/JAVA%E6%AD%A3%E5%88%99%E7%B1%BBPattern-Matcher%E5%B0%8F%E7%BB%93.html"/>
+    <id>http://mytianya.me/JAVA正则类Pattern-Matcher小结.html</id>
+    <published>2018-09-28T14:00:52.000Z</published>
+    <updated>2018-09-29T15:01:23.324Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;nbsp;&amp;nbsp;Java中正则表达式分别要用到java.util.regex.Pattern和java.util.regex.Matcher类。其中Pattern通过编译正则表达式创建一个匹配模式,Matcher通过Pattern实例提供的正则表达式对字符串进行匹配。&lt;br&gt;&amp;nbsp;&amp;nbsp;在这里对正则表达式不做说明，可通过&lt;a href=&quot;http://deerchao.net/tutorials/regex/regex.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;30分钟正则表达式入门&lt;/a&gt;。一般可通过RegexBuddy等工具先学习测试正则表达式。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://mytianya.me/categories/java/"/>
+    
+    
+      <category term="正则" scheme="http://mytianya.me/tags/%E6%AD%A3%E5%88%99/"/>
+    
+  </entry>
+  
+  <entry>
     <title>springboot2 dubbo 统一异常处理</title>
     <link href="http://mytianya.me/springboot2-dubbo-%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.html"/>
     <id>http://mytianya.me/springboot2-dubbo-统一异常处理.html</id>
     <published>2018-09-23T02:32:03.000Z</published>
-    <updated>2018-09-28T13:56:55.039Z</updated>
+    <updated>2018-09-28T14:02:32.765Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;&amp;nbsp;&amp;nbsp;在本业务系统中采用springboot.2.0+dubbo+zookeeper架构，其中comsumer端采用springboot返回统一的Json格式接口数据，Provider端通过zookeeper注册提供实际的业务处理接口。&lt;br&gt;&amp;nbsp;&amp;nbsp;其中Comsumer端与Provider都会遇到异常情况，这里把异常封装成公共的CommonException接口,继承RuntimeException放在dubbo-base-interface的maven模块，Comsumer与Provider的模块都集成这个模块。Provider端采用aop拦截所有的异常，直接抛给Comsumer端,Comsumer通过springboot统一异常处理来捕获CommonException异常，统一处理异常封装成Json格式的数据返回给客户端接口调用。&lt;br&gt;
+      &lt;p&gt;&amp;nbsp;&amp;nbsp;在本业务系统中采用springboot.2.0+dubbo+zookeeper架构，其中comsumer端采用springboot返回统一的Json格式接口数据，Provider端通过zookeeper注册提供实际的业务处理接口。&lt;br&gt;&amp;nbsp;&amp;nbsp;其中Comsumer端与Provider都会遇到异常情况，这里把异常封装成公共的CommonException接口,继承RuntimeException放在dubbo-base-interface的maven模块，Comsumer与Provider的模块都集成这个模块。Provider端采用aop拦截所有的异常包装成CommonException，直接抛给Comsumer端,Comsumer通过springboot统一异常处理来捕获CommonException异常，统一处理异常封装成Json格式的数据返回给客户端接口调用。&lt;br&gt;
     
     </summary>
     
@@ -457,26 +477,6 @@
     
     
       <category term="phantomjs" scheme="http://mytianya.me/tags/phantomjs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>windows进程相关命令</title>
-    <link href="http://mytianya.me/windows%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4.html"/>
-    <id>http://mytianya.me/windows进程相关命令.html</id>
-    <published>2018-03-13T06:46:40.000Z</published>
-    <updated>2018-03-13T07:29:00.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&amp;ensp;&amp;ensp;windows管理进程相关命令:netstat、findstr、tasklist、taskkill&lt;br&gt;
-    
-    </summary>
-    
-      <category term="bat编程" scheme="http://mytianya.me/categories/bat%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="进程 端口" scheme="http://mytianya.me/tags/%E8%BF%9B%E7%A8%8B-%E7%AB%AF%E5%8F%A3/"/>
     
   </entry>
   

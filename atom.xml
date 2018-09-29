@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-09-29T15:11:23.063Z</updated>
+  <updated>2018-09-29T15:12:39.750Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -21,11 +21,26 @@
     <link href="http://mytianya.me/JAVA%E6%AD%A3%E5%88%99%E7%B1%BBPattern-Matcher%E5%B0%8F%E7%BB%93.html"/>
     <id>http://mytianya.me/JAVA正则类Pattern-Matcher小结.html</id>
     <published>2018-09-28T14:00:52.000Z</published>
-    <updated>2018-09-29T15:11:23.063Z</updated>
+    <updated>2018-09-29T15:12:39.750Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;&amp;nbsp;&amp;nbsp;Java中正则表达式分别要用到java.util.regex.Pattern和java.util.regex.Matcher类。其中Pattern通过编译正则表达式创建一个匹配模式,Matcher通过Pattern实例提供的正则表达式对字符串进行匹配。&lt;br&gt;&amp;nbsp;&amp;nbsp;在这里对正则表达式不做说明，可通过&lt;a href=&quot;http://deerchao.net/tutorials/regex/regex.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;30分钟正则表达式入门&lt;/a&gt;。一般可通过RegexBuddy等工具先学习测试正则表达式。&lt;br&gt;
+      &lt;p&gt;&amp;nbsp;&amp;nbsp;Java中正则表达式分别要用到java.util.regex.Pattern和java.util.regex.Matcher类。其中Pattern通过编译正则表达式创建一个匹配模式,Matcher通过Pattern实例提供的正则表达式对字符串进行匹配。&lt;br&gt;&amp;nbsp;&amp;nbsp;在这里对正则表达式不做说明，可通过&lt;a href=&quot;http://deerchao.net/tutorials/regex/regex.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;30分钟正则表达式入门&lt;/a&gt;。一般可通过RegexBuddy等工具先学习测试正则表达式。&lt;/p&gt;
+&lt;h2 id=&quot;Pattern类&quot;&gt;&lt;a href=&quot;#Pattern类&quot; class=&quot;headerlink&quot; title=&quot;Pattern类&quot;&gt;&lt;/a&gt;Pattern类&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;1. Pattern p=Pattern.compile(&amp;quot;\\d+&amp;quot;) ＃通过Pattern的静态方法compile创建Pattern对象。
+2. Matcher m=p.matcher(input) #为目标字符串input创建一个Matcher对象
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;Matcher对象&quot;&gt;&lt;a href=&quot;#Matcher对象&quot; class=&quot;headerlink&quot; title=&quot;Matcher对象&quot;&gt;&lt;/a&gt;Matcher对象&lt;/h2&gt;&lt;h3 id=&quot;常用方法说明&quot;&gt;&lt;a href=&quot;#常用方法说明&quot; class=&quot;headerlink&quot; title=&quot;常用方法说明&quot;&gt;&lt;/a&gt;常用方法说明&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;1. matches()匹配整个输入
+2. lookingAt()只匹配输入开始的字符串
+3. find()对整个字符串进行匹配,可能匹配多处
+4. 3个方法均返回布尔值true或者false
+5. 执行matches(),lookingAt(),find()匹配操作后，可以利用start(),end(),group()得到更详细的匹配信息。
+6. start()返回匹配到的子字符串在字符串中的索引位置. 
+7. end()返回匹配到的子字符串的最后一个字符在字符串中的索引位置. 
+8. group()返回匹配到的子字符串
+9. groupCount()返回有几个正则分组
+10. start(i),end(i),group(i)返回第几个分组匹配
+11. reset()重置到字符串开始匹配
+12. replaceAll()和replaceFirst()方法可以用于替换Matcher搜索字符串中的一部分。replaceAll()方法替换全部匹配的正则表达式，replaceFirst()只替换第一个匹配的。
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     

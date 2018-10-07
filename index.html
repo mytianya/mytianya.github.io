@@ -592,7 +592,7 @@
 
       
         
-          <p>&nbsp;&nbsp;在本业务系统中采用springboot.2.0+dubbo+zookeeper架构，其中comsumer端采用springboot返回统一的Json格式接口数据，Provider端通过zookeeper注册提供实际的业务处理接口。<br>&nbsp;&nbsp;其中Comsumer端与Provider都会遇到异常情况，这里把异常封装成公共的CommonException接口,继承RuntimeException放在dubbo-base-interface的maven模块，Comsumer与Provider的模块都集成这个模块。Provider端采用aop拦截所有的异常包装成CommonException，直接抛给Comsumer端,Comsumer通过springboot统一异常处理来捕获CommonException异常，统一处理异常封装成Json格式的数据返回给客户端接口调用。<br>
+          <p>&nbsp;&nbsp;在本业务系统中采用springboot.2.0+dubbo+zookeeper架构，其中comsumer端采用springboot返回统一的Json格式接口数据，Provider端通过zookeeper注册提供实际的业务处理接口。<br>&nbsp;&nbsp;其中Comsumer端与Provider都会遇到异常情况，这里把异常封装成公共的CommonException接口,继承RuntimeException放在dubbo-base-interface的maven模块，Comsumer与Provider的模块都集成这个模块。Provider端采用aop拦截所有的异常包装成CommonException，直接抛给Comsumer端,Comsumer通过springboot统一异常处理来捕获CommonException异常，统一处理异常封装成Json格式的数据返回给客户端接口调用。<a href="https://github.com/mytianya/springboot2.x-dubbo" target="_blank" rel="noopener">完整源码</a>在github上。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/springboot2-dubbo-统一异常处理.html#more" rel="contents">

@@ -427,7 +427,7 @@
 <h2 id="编译redis"><a href="#编译redis" class="headerlink" title="编译redis"></a>编译redis</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp</span><br><span class="line">curl -O http://download.redis.io/redis-stable.tar.gz</span><br><span class="line">tar zxvf redis-stable.tar.gz</span><br><span class="line">cd redis-stable</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
 <h2 id="移动redis-server-redis-conf到指定目录"><a href="#移动redis-server-redis-conf到指定目录" class="headerlink" title="移动redis-server,redis.conf到指定目录"></a>移动redis-server,redis.conf到指定目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo mv redis-server /usr/local/bin</span><br><span class="line">sudo mv redis-cli /usr/local/bin</span><br><span class="line">sudo mkidr /etc/redisheo</span><br><span class="line">sudo mv redis.conf /etc/redis</span><br></pre></td></tr></table></figure>
 <h2 id="配置redis-conf"><a href="#配置redis-conf" class="headerlink" title="配置redis.conf"></a>配置redis.conf</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/redis/redis.conf</span><br><span class="line">supervised systemd #signal systemd by writing READY=1 to $NOTIFY_SOCKET</span><br><span class="line">dir /var/lib/redis # dump persistent data store</span><br></pre></td></tr></table></figure>
-<h2 id="配置远程访问"><a href="#配置远程访问" class="headerlink" title="配置远程访问"></a>配置远程访问</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>注释 bind 127.0.0.1</span><br><span class="line">protected-mode no </span><br><span class="line">requirepass redispwd</span><br><span class="line">redis-cli -h xxx -p 6379 -a password</span><br></pre></td></tr></table></figure>
+<h2 id="配置远程访问"><a href="#配置远程访问" class="headerlink" title="配置远程访问"></a>配置远程访问</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">注释 <span class="built_in">bind</span> 127.0.0.1</span></span><br><span class="line">protected-mode no </span><br><span class="line">requirepass redispwd</span><br><span class="line">redis-cli -h xxx -p 6379 -a password</span><br></pre></td></tr></table></figure>
 <h2 id="配置redis用户组"><a href="#配置redis用户组" class="headerlink" title="配置redis用户组"></a>配置redis用户组</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser --system --group --no-create-home redis</span><br><span class="line">sudo mkdir /var/lib/redis</span><br><span class="line">sudo chown redis:redis /var/lib/redis</span><br><span class="line">sudo chmod 770 /var/lib/redis</span><br></pre></td></tr></table></figure>
 <h2 id="配置redis-service"><a href="#配置redis-service" class="headerlink" title="配置redis.service"></a>配置redis.service</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo touch /etc/systemd/system/redis.service</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Redis In-Memory Data Store</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">User=redis</span><br><span class="line">Group=redis</span><br><span class="line">ExecStart=/usr/local/bin/redis-server /etc/redis/redis.conf</span><br><span class="line">ExecStop=/usr/local/bin/redis-cli shutdown</span><br><span class="line">Restart=always</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
@@ -599,7 +599,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -610,7 +610,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -621,7 +621,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-09-29T15:12:39.750Z</updated>
+  <updated>2018-10-30T13:57:32.508Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Lombok使用</title>
+    <link href="http://mytianya.me/Lombok%E4%BD%BF%E7%94%A8.html"/>
+    <id>http://mytianya.me/Lombok使用.html</id>
+    <published>2018-10-30T13:29:39.000Z</published>
+    <updated>2018-10-30T13:57:32.508Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;nbsp;&amp;nbsp;使用lombok减少java中重复代码使用。&lt;a href=&quot;https://projectlombok.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://projectlombok.org/&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="lombok" scheme="http://mytianya.me/categories/lombok/"/>
+    
+    
+      <category term="lombok" scheme="http://mytianya.me/tags/lombok/"/>
+    
+  </entry>
   
   <entry>
     <title>JAVA正则类Pattern,Matcher小结</title>
@@ -472,26 +492,6 @@
     
     
       <category term="java中断" scheme="http://mytianya.me/tags/java%E4%B8%AD%E6%96%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>phantomjs websever 爬虫服务</title>
-    <link href="http://mytianya.me/phantomjs-websever-%E7%88%AC%E8%99%AB%E6%9C%8D%E5%8A%A1.html"/>
-    <id>http://mytianya.me/phantomjs-websever-爬虫服务.html</id>
-    <published>2018-03-22T13:03:13.000Z</published>
-    <updated>2018-05-11T13:35:50.227Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&amp;ensp;&amp;ensp;PhantomJS is a headless WebKit scriptable with a JavaScript API. It has fast and native support for various web standards: DOM handling, CSS selector, JSON, Canvas, and SVG。&lt;br&gt;&amp;ensp;&amp;ensp;在爬虫方面phantomjs常来获取javascript渲染过后的页面。提供的webserver模块可发布为服务，提供了http,socks5代理、切换userAgent等爬虫常见功能,还可以配合nodejs实现更复杂的页面抓取。另外提供的网页截图,渲染html可方便用来做网站seo,网站监控等。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="爬虫" scheme="http://mytianya.me/categories/%E7%88%AC%E8%99%AB/"/>
-    
-    
-      <category term="phantomjs" scheme="http://mytianya.me/tags/phantomjs/"/>
     
   </entry>
   

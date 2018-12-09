@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2018-10-30T13:57:32.508Z</updated>
+  <updated>2018-12-09T06:14:21.086Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>docker实战运行Jenkins</title>
+    <link href="http://mytianya.me/docker%E5%AE%9E%E6%88%98%E8%BF%90%E8%A1%8CJenkins.html"/>
+    <id>http://mytianya.me/docker实战运行Jenkins.html</id>
+    <published>2018-12-09T05:47:22.000Z</published>
+    <updated>2018-12-09T06:14:21.086Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;nbsp;&amp;nbsp;使用DockerFile手动创建一个tomcat镜像,然后copy一个jenkins包到tomcat的webapps下&lt;/p&gt;
+&lt;h2 id=&quot;前期准备&quot;&gt;&lt;a href=&quot;#前期准备&quot; class=&quot;headerlink&quot; title=&quot;前期准备&quot;&gt;&lt;/a&gt;前期准备&lt;/h2&gt;&lt;p&gt;在download目录下有下载解压好的jdk1.8与tomcat9文件。编写Dockerfile，创建一个tomcat9镜像。&lt;br&gt;&lt;figure class=&quot;highlight docker&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#93fd78为基本的pull下来的ubuntu镜像&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;93&lt;/span&gt;fd78260bd&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;MAINTAINER&lt;/span&gt; dsys&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;ENV&lt;/span&gt; REFRESHED_AT &lt;span class=&quot;number&quot;&gt;2018&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#切换镜像目录，进入/usr目录&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;WORKDIR&lt;/span&gt; /usr&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#在/usr/下创建jdk目录,用来存放jdk文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;RUN mkdir jdk&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#在/usr/下创建tomcat目录，用来存放tomcat&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;RUN mkdir tomcat&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#将宿主机的jdk目录下的文件拷至镜像的/usr/jdk目录下&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ADD jdk1.8 /usr/jdk/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#将宿主机的tomcat目录下的文件拷至镜像的/usr/tomcat目录下&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ADD tomcat9 /usr/tomcat/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#设置环境变量&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ENV JAVA_HOME=/usr/jdk&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ENV JRE_HOME=$JAVA_HOME/jre&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ENV CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib:$CLASSPATH&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ENV PATH=/sbin:$JAVA_HOME/bin:$PATH&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#公开端口&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;EXPOSE 8080&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#设置启动命令&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ENTRYPOINT [&quot;/usr/tomcat/bin/catalina.sh&quot;,&quot;run&quot;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;运行命令&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker build -t dsys/tomcat9:1.0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker image ls &lt;span class=&quot;comment&quot;&gt;#查看创建是否成功&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="linux" scheme="http://mytianya.me/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="http://mytianya.me/tags/linux/"/>
+    
+      <category term="docker" scheme="http://mytianya.me/tags/docker/"/>
+    
+  </entry>
   
   <entry>
     <title>Lombok使用</title>
@@ -472,26 +496,6 @@
       <category term="java8" scheme="http://mytianya.me/tags/java8/"/>
     
       <category term="class file format" scheme="http://mytianya.me/tags/class-file-format/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java线程中断</title>
-    <link href="http://mytianya.me/java%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%96%AD.html"/>
-    <id>http://mytianya.me/java线程中断.html</id>
-    <published>2018-04-09T14:58:11.000Z</published>
-    <updated>2018-04-09T15:46:01.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&amp;ensp;&amp;ensp;Java中每个线程对象里都有一个boolean类型的标识,代表着是否有中断请求（该请求可以来自所有线程,包括被中断的线程本身），线程本身在合适的时机来响应中断请求(或者直接不处理)。相比一个线程调用另外一个线程的stop()方法来强制的停止一个线程，中断的这种协作机制无疑更加的优雅。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="并发编程" scheme="http://mytianya.me/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="java中断" scheme="http://mytianya.me/tags/java%E4%B8%AD%E6%96%AD/"/>
     
   </entry>
   

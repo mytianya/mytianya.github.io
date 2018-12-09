@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[docker实战运行Jenkins]]></title>
+    <url>%2Fdocker%E5%AE%9E%E6%88%98%E8%BF%90%E8%A1%8CJenkins.html</url>
+    <content type="text"><![CDATA[&nbsp;&nbsp;使用DockerFile手动创建一个tomcat镜像,然后copy一个jenkins包到tomcat的webapps下 前期准备在download目录下有下载解压好的jdk1.8与tomcat9文件。编写Dockerfile，创建一个tomcat9镜像。123456789101112131415161718192021222324252627#93fd78为基本的pull下来的ubuntu镜像FROM 93fd78260bdMAINTAINER dsysENV REFRESHED_AT 2018-12-3#切换镜像目录，进入/usr目录WORKDIR /usr#在/usr/下创建jdk目录,用来存放jdk文件RUN mkdir jdk#在/usr/下创建tomcat目录，用来存放tomcatRUN mkdir tomcat#将宿主机的jdk目录下的文件拷至镜像的/usr/jdk目录下ADD jdk1.8 /usr/jdk/#将宿主机的tomcat目录下的文件拷至镜像的/usr/tomcat目录下ADD tomcat9 /usr/tomcat/#设置环境变量ENV JAVA_HOME=/usr/jdkENV JRE_HOME=$JAVA_HOME/jreENV CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib:$CLASSPATHENV PATH=/sbin:$JAVA_HOME/bin:$PATH#公开端口EXPOSE 8080#设置启动命令ENTRYPOINT ["/usr/tomcat/bin/catalina.sh","run"] 运行命令12docker build -t dsys/tomcat9:1.0docker image ls #查看创建是否成功 部署jenkis12docker run --name myjenkins -p 80:8080 -d dsys/tomcat9:1.0docker cp jenkins.war myjenkins:/usr/tomcat/webapps/ #将本机的jenkis.war拷贝到容器 在浏览器localhost/jenkins查看是否运行成功,按照提示进入容器目录下查看初始密码,初始用户密码dsys/dsys123docker exec -it myjenkins /bin/bashcd /root/.jenkins/secretscat initialAdminPassword 把初始化好的jenkins容器提交成一个新的镜像运行。1234docker commit myjenkins dsys/jenkins:1.0docker image lsdocker run -d -p 80:8080 --name dsysjenkins dsys/jenkins:1.0localhost/jenkins dsys dsys登录jenkins]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Lombok使用]]></title>
     <url>%2FLombok%E4%BD%BF%E7%94%A8.html</url>
     <content type="text"><![CDATA[&nbsp;&nbsp;使用lombok减少java中重复代码使用。https://projectlombok.org/ IDE安装lombokeclipse配置 下载lombok.jar,放在eclipse安装包根目录下。 在eclipse.ini添加：12-javaagent:lombok.jar-Xbootclasspath/a:lombok.jar idea配置直接安装lombokPlugin插件即可。 基本使用123456&lt;dependency&gt; &lt;groupId&gt;org.projectlombok&lt;/groupId&gt; &lt;artifactId&gt;lombok&lt;/artifactId&gt; &lt;version&gt;1.16.20&lt;/version&gt; &lt;scope&gt;provided&lt;/scope&gt;&lt;/dependency&gt; 1. @Getter,@Setter可以作用在类上和属性上，放在类上，会对所有的非静态(non-static)属性生成Getter/Setter方法，放在属性上，会对该属性生成Getter/Setter方法。并可以指定Getter/Setter方法的访问级别。 2. @ToString生成toString方法，默认情况下，会输出类名、所有属性，属性会按照顺序输出，以逗号分割。 3. @NoArgsConstructor 无参构造器 4. @AllArgsConstructor 全参构造器 5. @NonNull 如果调用时传了null，就直接抛空指针]]></content>

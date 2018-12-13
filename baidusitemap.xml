@@ -4,6 +4,45 @@
 
     
   <url>
+    <loc>http://mytianya.me/%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F.html</loc>
+    <lastmod>2018-12-13T14:41:43.584Z</lastmod>
+    <data>
+        <display>
+        <title>生成器模式</title>
+        <pubTime>2018-12-12T11:18:40.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>design pattern</tag>
+         
+        <tag>builder</tag>
+         
+         
+           
+             
+              <breadCrumb title="design pattern" url="http://mytianya.me/categories/design-pattern/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://mytianya.me/JSR303-%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C.html</loc>
+    <lastmod>2018-12-12T12:51:48.741Z</lastmod>
+    <data>
+        <display>
+        <title>JSR303 参数校验</title>
+        <pubTime>2018-12-12T12:51:48.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://mytianya.me/docker%E5%AE%9E%E6%88%98%E8%BF%90%E8%A1%8CJenkins.html</loc>
     <lastmod>2018-12-09T06:14:21.086Z</lastmod>
     <data>

@@ -1,3 +1,5 @@
+http://mytianya.me/JSR303-参数校验.html
+http://mytianya.me/生成器模式.html
 http://mytianya.me/docker实战运行Jenkins.html
 http://mytianya.me/Lombok使用.html
 http://mytianya.me/JAVA正则类Pattern-Matcher小结.html

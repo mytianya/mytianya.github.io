@@ -1,3 +1,4 @@
+http://mytianya.me/eclipse-mybatis-generator-插件.html
 http://mytianya.me/生成器模式.html
 http://mytianya.me/docker实战运行Jenkins.html
 http://mytianya.me/Lombok使用.html

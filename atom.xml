@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2019-01-01T07:00:23.322Z</updated>
+  <updated>2019-01-06T05:22:06.171Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>mybatis执行基本分析</title>
+    <link href="http://mytianya.me/mybatis%E6%89%A7%E8%A1%8C%E5%9F%BA%E6%9C%AC%E5%88%86%E6%9E%90.html"/>
+    <id>http://mytianya.me/mybatis执行基本分析.html</id>
+    <published>2019-01-01T07:08:51.000Z</published>
+    <updated>2019-01-06T05:22:06.171Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;nbsp;&amp;nbsp;分析下mybatis这个半orm框架基本的执行流程。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 解析配置文件，生成全局的Configuration
+2. 通过Configuration构建DefaultSqlSessionFactory.
+3. 通过SessionFactory获取SqlSession,SqlSession主要生成了一个Executor
+4. SqlSession.getMapper-&amp;gt; Configuration.getMapper-&amp;gt;mapperRegistry.getMapper-&amp;gt;MapperProxyFactory.newInstance生成代理对象返回
+5. 执行相应的接口方法转到MapperProxy.invoke-&amp;gt;MapperMethod.execute-&amp;gt;选择执行DefaultSqlSession中对应方法，从Configuration获取MappedStatement-&amp;gt;获取BoundSql
+6. 最终转到Executor中，拿到Connection预编译sql,设置参数，执行sql获取返回的结果封装成对应的Bean返回。
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://mytianya.me/categories/mybatis/"/>
+    
+    
+      <category term="orm" scheme="http://mytianya.me/tags/orm/"/>
+    
+  </entry>
+  
+  <entry>
     <title>eclipse mybatis generator 插件</title>
     <link href="http://mytianya.me/eclipse-mybatis-generator-%E6%8F%92%E4%BB%B6.html"/>
     <id>http://mytianya.me/eclipse-mybatis-generator-插件.html</id>
     <published>2019-01-01T06:57:07.000Z</published>
-    <updated>2019-01-01T07:00:23.322Z</updated>
+    <updated>2019-01-06T03:23:39.526Z</updated>
     
     <summary type="html">
     
@@ -488,26 +515,6 @@
       <category term="linux" scheme="http://mytianya.me/tags/linux/"/>
     
       <category term="redis" scheme="http://mytianya.me/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java JMX 开始到待续</title>
-    <link href="http://mytianya.me/java-JMX-%E5%BC%80%E5%A7%8B%E5%88%B0%E5%BE%85%E7%BB%AD.html"/>
-    <id>http://mytianya.me/java-JMX-开始到待续.html</id>
-    <published>2018-04-17T14:22:07.000Z</published>
-    <updated>2018-04-17T15:16:19.073Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&amp;ensp;&amp;ensp;看了下爬虫框架webmagic,发现爬虫状态的监控使用JMX获得爬虫运行信息。JMX还没用过，学习之。试写一个demo,通过JMX来改变服务的配置文件。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="java" scheme="http://mytianya.me/categories/java/"/>
-    
-    
-      <category term="jmx" scheme="http://mytianya.me/tags/jmx/"/>
     
   </entry>
   

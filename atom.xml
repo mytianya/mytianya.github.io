@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mytianya.me/"/>
-  <updated>2019-01-06T05:22:06.171Z</updated>
+  <updated>2019-01-06T07:18:19.669Z</updated>
   <id>http://mytianya.me/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Maven依赖</title>
+    <link href="http://mytianya.me/Maven%E4%BE%9D%E8%B5%96.html"/>
+    <id>http://mytianya.me/Maven依赖.html</id>
+    <published>2019-01-06T05:35:16.000Z</published>
+    <updated>2019-01-06T07:18:19.669Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;nbsp;&amp;nbsp;Maven依赖小结，来源Maven实战&lt;/p&gt;
+&lt;h2 id=&quot;依赖范围&quot;&gt;&lt;a href=&quot;#依赖范围&quot; class=&quot;headerlink&quot; title=&quot;依赖范围&quot;&gt;&lt;/a&gt;依赖范围&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;1. compile默认范围，编译测试运行都有效
+2. provided编译测试有效，运行时不会被加入。如servlet api运行时由tomcat容器提供
+3. runtime在测试与运行时有效
+4. test在测试时有效
+5. system与本机系统相关，范围同provided
+6. import导入的范围，只在dependencyManagement中，表示从其他pom中导入dependency配置
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;依赖传递&quot;&gt;&lt;a href=&quot;#依赖传递&quot; class=&quot;headerlink&quot; title=&quot;依赖传递&quot;&gt;&lt;/a&gt;依赖传递&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;A依赖B,B依赖C。此时A对于B是第一直接依赖，B对于C时第二直接依赖，A对于C是传递性依赖。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 第二直接依赖为compile,对应传递性依赖为第一直接依赖
+2. 第二直接依赖为test,对应传递性依赖不存在
+3. 第二直接依赖为provided,只有第一直接依赖为provided时，传递性依赖为provided
+4. 第二直接依赖为runtime,第一直接依赖为compile时传递性依赖为runtime,其他为第一直接依赖
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="maven" scheme="http://mytianya.me/categories/maven/"/>
+    
+    
+      <category term="maven依赖" scheme="http://mytianya.me/tags/maven%E4%BE%9D%E8%B5%96/"/>
+    
+  </entry>
   
   <entry>
     <title>mybatis执行基本分析</title>
@@ -493,28 +525,6 @@
     
     
       <category term="redis boomfilter java" scheme="http://mytianya.me/tags/redis-boomfilter-java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu16.04配置Redis</title>
-    <link href="http://mytianya.me/Ubuntu16-04%E9%85%8D%E7%BD%AERedis.html"/>
-    <id>http://mytianya.me/Ubuntu16-04配置Redis.html</id>
-    <published>2018-04-22T15:21:27.000Z</published>
-    <updated>2018-09-09T01:59:30.298Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&amp;ensp;&amp;ensp;Ubuntu16.04 systemctl配置redis&lt;br&gt;&lt;img src=&quot;https://raw.githubusercontent.com/mytianya/mytianya.github.io/master/blog_imgs/redis_configure.png&quot; alt=&quot;示例&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="linux" scheme="http://mytianya.me/categories/linux/"/>
-    
-    
-      <category term="linux" scheme="http://mytianya.me/tags/linux/"/>
-    
-      <category term="redis" scheme="http://mytianya.me/tags/redis/"/>
     
   </entry>
   

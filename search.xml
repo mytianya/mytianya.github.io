@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Maven生命周期与插件]]></title>
+    <url>%2FMaven%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E6%8F%92%E4%BB%B6.html</url>
+    <content type="text"><![CDATA[&nbsp;&nbsp;Maven的生命周期与插件,来源Maven实战 生命周期]]></content>
+      <categories>
+        <category>maven</category>
+      </categories>
+      <tags>
+        <tag>maven生命周期</tag>
+        <tag>maven插件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Maven依赖]]></title>
     <url>%2FMaven%E4%BE%9D%E8%B5%96.html</url>
     <content type="text"><![CDATA[&nbsp;&nbsp;Maven依赖小结，来源Maven实战 依赖范围1. compile默认范围，编译测试运行都有效 2. provided编译测试有效，运行时不会被加入。如servlet api运行时由tomcat容器提供 3. runtime在测试与运行时有效 4. test在测试时有效 5. system与本机系统相关，范围同provided 6. import导入的范围，只在dependencyManagement中，表示从其他pom中导入dependency配置 依赖传递&nbsp;&nbsp;A依赖B,B依赖C。此时A对于B是第一直接依赖，B对于C时第二直接依赖，A对于C是传递性依赖。 1. 第二直接依赖为compile,对应传递性依赖为第一直接依赖 2. 第二直接依赖为test,对应传递性依赖不存在 3. 第二直接依赖为provided,只有第一直接依赖为provided时，传递性依赖为provided 4. 第二直接依赖为runtime,第一直接依赖为compile时传递性依赖为runtime,其他为第一直接依赖 依赖调解项目A中有不同版本的依赖时： 1. 引用依赖路径最短的依赖 2. 相同长度的依赖路径时，引用在pom.xml最先定义的依赖 可选依赖&nbsp;&nbsp;项目A依赖项目B,项目B依赖项目X,Y。当项目B中X,Y依赖optional为true时，项目A不会引入X,Y依赖。 排除依赖&nbsp;&nbsp;项目A依赖项目B,项目B依赖项目C。当项目A不需要项目C时可用exclusion排除项目C 最佳实践1. 使用&lt;version&gt;&lt;/version&gt;定义统一版本 2. 使用mvn dependency:list,tree,analyze查看项目依赖，删除无用的依赖]]></content>

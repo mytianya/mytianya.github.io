@@ -1,3 +1,4 @@
+http://mytianya.me/Maven生命周期与插件.html
 http://mytianya.me/Maven依赖.html
 http://mytianya.me/mybatis执行基本分析.html
 http://mytianya.me/eclipse-mybatis-generator-插件.html

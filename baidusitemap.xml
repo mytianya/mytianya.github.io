@@ -3,27 +3,6 @@
 
 
     
-  <url>
-    <loc>http://mytianya.me/Maven%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%8E%E6%8F%92%E4%BB%B6.html</loc>
-    <lastmod>2019-01-06T08:40:58.512Z</lastmod>
-    <data>
-        <display>
-        <title>Maven生命周期与插件</title>
-        <pubTime>2019-01-06T08:39:27.000Z</pubTime>
-        
-        <tag>maven生命周期</tag>
-         
-        <tag>maven插件</tag>
-         
-         
-           
-             
-              <breadCrumb title="maven" url="http://mytianya.me/categories/maven/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>http://mytianya.me/Maven%E4%BE%9D%E8%B5%96.html</loc>
@@ -366,7 +345,6 @@
     </data>
     </url>
 
-    
     
     
   <url>

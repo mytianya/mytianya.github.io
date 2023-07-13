@@ -1,9 +1,8 @@
 ---
-title: first blog
+title: Springboot2.x基础教程：快速开始
 date: 2023-07-13 21:32:04
-tags:
+tags: Springboot2
 ---
-# Springboot2.x基础教程：快速开始
 
 > 这里是SpringBoot2.x教程第一篇开始，开发工具为idea+JDK1.8+Maven，学习前提大家也提前安装配置好开发环境
 > Spring官方提供了非常方便的工具Spring Initializr来帮助我们创建Spring Boot应用

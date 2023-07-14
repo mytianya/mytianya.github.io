@@ -25,5 +25,7 @@ jobs:
         sed -i "s/M_GITHUB_PAGES_TOKEN/$M_GITHUB_PAGES_TOKEN/g" ./_config.yml
     - name: Install dependencies
       run: npm ci
+    - name: install hexo dependencies
+      run: npm i      
     - name: Compile and deploy blog
       run: hexo clean && hexo g && hexo d

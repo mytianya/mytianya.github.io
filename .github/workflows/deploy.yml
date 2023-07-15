@@ -24,7 +24,9 @@ jobs:
         git config --global user.name "dsys"
         sed -i "s/M_GITHUB_PAGES_TOKEN/$M_GITHUB_PAGES_TOKEN/g" ./_config.yml
     - name: install hexo dependencies
-      run: npm install hexo -g 
+      run: 
+        npm install -g hexo-cli
+        npm install hexo -g 
     - name: Install dependencies
       run: npm ci     
     - name: Compile and deploy blog

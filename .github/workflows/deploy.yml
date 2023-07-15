@@ -23,6 +23,7 @@ jobs:
         git config --global user.email "dsyslove@163.com"
         git config --global user.name "dsys"
         sed -i "s/M_GITHUB_PAGES_TOKEN/$M_GITHUB_PAGES_TOKEN/g" ./_config.yml
+        npm install hexo -g
     - name: Install dependencies
       run: npm install
     - name: Compile and deploy blog

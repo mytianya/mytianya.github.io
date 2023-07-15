@@ -125,3 +125,20 @@ about:
   intro: "赏花饮酒 只愿今朝醉"
   icons:
     - { class: 'iconfont icon-github-fill', link: 'https://github.com/mytianya', tip: 'GitHub' }
+post:
+  comments:
+    enable: true
+    type: utterances
+utterances:
+  repo: mytianya/commit-utterance
+  issue_term: pathname
+  label: #
+  theme: github-light
+  corssorigin: anonymous
+tag:
+  tagcloud:
+    min_font: 15
+    max_font: 30
+    unit: px  # 字号单位
+    start_color: "#BBBBEE"
+    end_color: "#337ab7"

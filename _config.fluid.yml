@@ -7,6 +7,7 @@ title: 道士吟诗
 subtitle: '晚来天欲雪，能饮一杯无'
 description: ''
 keywords:
+favicon: img/favcion.ico
 author: dsys
 language: zh-CN
 timezone: 'Asia/Shanghai'
@@ -120,7 +121,7 @@ index:
     enable: true
     text: 晚来天欲雪 能饮一杯无
 about:
-  avatar: /img/avatar.png
+  avatar: img/avatar.png
   name: "道士吟诗"
   intro: "赏花饮酒 只愿今朝醉"
   icons:

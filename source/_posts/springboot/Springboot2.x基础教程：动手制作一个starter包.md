@@ -173,7 +173,7 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=vip.codehome.imgh
 ```
 
 2. 在springboot项目中加入如下配置
-![](http://www.codehome.vip/upload/spring-boot-starter2.png)
+![](/img/spring-boot-starter2.png)
 
 3. 项目使用
 ```java

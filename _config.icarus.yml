@@ -3,7 +3,7 @@ version: 5.1.0
 # Icarus theme variant, can be "default" or "cyberpunk"
 variant: default
 # Path or URL to the website's logo
-logo: img/favcion.ico
+logo: img/avatar.png
 # Page metadata configurations
 head:
     # URL or path to the website's icon
@@ -105,16 +105,16 @@ head:
 navbar:
     # Navigation menu items
     menu:
-        Home: /
-        Archives: /archives
-        Categories: /categories
-        Tags: /tags
-        About: /about
+        首页: /
+        归档: /archives
+        分类: /categories
+        标签: /tags
+        关于我: /about
     # Links to be shown on the right of the navigation bar
     links:
         Download on GitHub:
             icon: fab fa-github
-            url: https://github.com/ppoffice/hexo-theme-icarus
+            url: https://github.com/mytianya
 # Page footer configurations
 footer:
     # Copyright text
@@ -171,34 +171,12 @@ comment:
 # Donate plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Donation/
 donates:
-    # "Afdian.net" donate button configurations
-    -
-        type: afdian
-        # URL to the "Afdian.net" personal page
-        url: ''
+
     # Alipay donate button configurations
     -
         type: alipay
         # Alipay qrcode image URL
         qrcode: ''
-    # "Buy me a coffee" donate button configurations
-    -
-        type: buymeacoffee
-        # URL to the "Buy me a coffee" page
-        url: ''
-    # Patreon donate button configurations
-    -
-        type: patreon
-        # URL to the Patreon page
-        url: ''
-    # Paypal donate button configurations
-    -
-        type: paypal
-        # Paypal business ID or email address
-        business: ''
-        # Currency code
-        currency_code: USD
-    # Wechat donate button configurations
     -
         type: wechat
         # Wechat qrcode image URL
@@ -206,7 +184,7 @@ donates:
 # Share plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Share/
 share:
-    type: sharethis
+    type: sharejs
     # URL to the ShareThis share plugin script
     install_url: ''
 # Sidebar configurations.
@@ -231,11 +209,11 @@ widgets:
         # Author name
         author: 道士吟诗
         # Author title
-        author_title: Your title
+        author_title: 全栈工程师
         # Author's current location
         location: China
         # URL or path to the avatar image
-        avatar: 
+        avatar: /img/avatar.png
         # Whether show the rounded avatar image
         avatar_rounded: false
         # Email address for the Gravatar
@@ -278,7 +256,6 @@ widgets:
         # Names and URLs of the sites
         links:
             Hexo: https://hexo.io
-            Bulma: https://bulma.io
     # Categories widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar

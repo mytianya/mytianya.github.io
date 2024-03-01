@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>mytianya</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="mytianya"><meta name="msapplication-TileImage" content="favcion.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="mytianya"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="晚来天欲雪，能饮一杯无"><meta property="og:type" content="blog"><meta property="og:title" content="mytianya"><meta property="og:url" content="https://mytianya.github.io/"><meta property="og:site_name" content="mytianya"><meta property="og:description" content="晚来天欲雪，能饮一杯无"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://mytianya.github.io/img/og_image.png"><meta property="article:author" content="mytianya"><meta property="article:tag" content="编程"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://mytianya.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://mytianya.github.io"},"headline":"mytianya","image":["https://mytianya.github.io/img/og_image.png"],"author":{"@type":"Person","name":"mytianya"},"publisher":{"@type":"Organization","name":"mytianya","logo":{"@type":"ImageObject","url":"https://mytianya.github.io/avatar.png"}},"description":""}</script><link rel="icon" href="/favcion.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/avatar.png" alt="mytianya" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item is-active" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于我</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/mytianya"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-27T18:00:08.000Z" title="2023/9/28 2:00:08">2023-09-28</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.011Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/oracle/">oracle</a></span><span class="level-item">7 分钟读完 (大约1039个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/09/28/oracle/ORA-00257%E5%BD%92%E6%A1%A3%E7%A8%8B%E5%BA%8F%E9%94%99%E8%AF%AF/">ORA-00257归档程序错误</a></p><div class="content"><blockquote>
+<p>线上生成系统后台日志连接数据库报ORA-00257归档程序错误。借此了解下oracle日志归档模式和非归档模式以及如何解决该问题。</p>
+</blockquote>
+<h2 id="Oracle日志操作模式"><a href="#Oracle日志操作模式" class="headerlink" title="Oracle日志操作模式"></a>Oracle日志操作模式</h2><p>Oracle数据库在运行过程中，每一个实例都有一个相关的重做日志，在实例故障情况下保护数据库。<br>我们对数据的DML,DDL操作都会结构化为重做记录，可以用来重建对数据库所做的所有更改的数据，包括撤销段。<br>重做记录在SGA的重做日志缓冲区中以循环方式进行缓冲，并被数据库后台进程log Writer (LGWR)写入其中一个重做日志文件（Redo log files）中<br>由数据库库后台进程log Writer(LGWR)写入联机重做日志（Redo log files）中，当重做日志文件被填满时，会发生日志切换，根据是否启用归档分为两种情况：</p>
+<p>1、如果归档被禁用（NOARCHIVELOG模式），则在将在记录在其中的更改写入数据文件后，这个填满的重做日志文件可用。</p>
+<p>2、如果启用了归档（ARCHIVELOG模式），则在将记录的更改写入数据文件并归档后，LGWR就可以使用这个被填满的重做日志文件。</p>
+<h2 id="归档优缺点"><a href="#归档优缺点" class="headerlink" title="归档优缺点"></a>归档优缺点</h2><p>可以进行完全、不完全恢复：由于对数据库所做的全部改动都记录在日志文件中，如果发生硬盘故障等导致数据文件丢失的话，则可以利用物理备份和归档日志完全恢复数据库，不会丢失任何数据。</p>
+<p>一般生产系统推荐都开启归档模式，毕竟数据无价。</p>
+<h2 id="归档常用操作"><a href="#归档常用操作" class="headerlink" title="归档常用操作"></a>归档常用操作</h2><h3 id="查看当前数据库归档模式"><a href="#查看当前数据库归档模式" class="headerlink" title="查看当前数据库归档模式"></a>查看当前数据库归档模式</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql">su <span class="hljs-operator">-</span> oracle #切换到oracle用户<br>sqlplus <span class="hljs-operator">/</span>nolog<br>conn <span class="hljs-operator">/</span><span class="hljs-keyword">as</span> sysdba;<br><span class="hljs-keyword">select</span> log_mode <span class="hljs-keyword">from</span> v$database;<br></code></pre></td></tr></table></figure>
+<p><img src="/img/select_log_mode.png"></p>
+<h3 id="开启归档模式"><a href="#开启归档模式" class="headerlink" title="开启归档模式"></a>开启归档模式</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql">shutdown immediate; #关闭数据库<br>startup mount; #启动数据库到mount状态<br><span class="hljs-keyword">alter</span> database archivelog; #修改数据库到归档模式<br><span class="hljs-keyword">alter</span> database <span class="hljs-keyword">open</span>; #启动数据库<br>archive log list; #查看归档配置<br></code></pre></td></tr></table></figure>
+<h2 id="解决ORA-00257问题"><a href="#解决ORA-00257问题" class="headerlink" title="解决ORA-00257问题"></a>解决ORA-00257问题</h2><p>项目上面ORA-00257归档程序错误，为归档空间不足。解决办法：<br>1、删除多余的归档日志<br>2、增大归档日志的容量<br>3、关闭归档模式</p>
+<h3 id="删除多于归档日志"><a href="#删除多于归档日志" class="headerlink" title="删除多于归档日志"></a>删除多于归档日志</h3><p>1、查看当前使用archivelog使用的百分比。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">set</span> linesize <span class="hljs-number">200</span>;<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> V$FLASH_RECOVERY_AREA_USAGE;<br></code></pre></td></tr></table></figure>
+<p><img src="/img/flash_recovery_area_usage.png"><br>2、查看当前归档日志所在目录<br>当前归档日志文件在&#x2F;home&#x2F;oracle&#x2F;fast_recovery_area&#x2F;AODB&#x2F;archivelog&#x2F;目录下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">show</span> <span class="hljs-keyword">parameter</span> recovery;<br></code></pre></td></tr></table></figure>
+<p><img src="/img/recovery.png"><br>3、在此目录下根据日期删除过久的归档日志<br>4、使用rman维护控制文件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql">rman target <span class="hljs-operator">&lt;</span>管理员用户<span class="hljs-operator">&gt;</span><span class="hljs-operator">/</span><span class="hljs-operator">&lt;</span>管理员密码<span class="hljs-operator">&gt;</span><br>crosscheck archivelog <span class="hljs-keyword">all</span>; #检查错误文档<br><span class="hljs-keyword">delete</span> expired archivelog <span class="hljs-keyword">all</span>; #删除过期文档<br></code></pre></td></tr></table></figure>
+<h3 id="修改归档日志存储大小跟容量"><a href="#修改归档日志存储大小跟容量" class="headerlink" title="修改归档日志存储大小跟容量"></a>修改归档日志存储大小跟容量</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">show</span> <span class="hljs-keyword">parameter</span> db_recover;<br><span class="hljs-keyword">alter</span> <span class="hljs-keyword">system</span> <span class="hljs-keyword">set</span> db_recovery_file_dest_size<span class="hljs-operator">=</span><span class="hljs-number">2000</span>G <span class="hljs-keyword">scope</span><span class="hljs-operator">=</span>spfile<br></code></pre></td></tr></table></figure>
+<p><img src="/img/show-parameter-db-recover.png"></p>
+<h3 id="关闭归档模式"><a href="#关闭归档模式" class="headerlink" title="关闭归档模式"></a>关闭归档模式</h3><p>如果不是生产系统而是测试环境，可以关闭归档模式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql">shutdown immediate; #关闭数据库<br>startup mount; #启动数据库到mount状态<br><span class="hljs-keyword">alter</span> database noarchivelog; #修改数据库到归档模式<br><span class="hljs-keyword">alter</span> database <span class="hljs-keyword">open</span>; #启动数据库<br>archive log list; #查看归档配置<br></code></pre></td></tr></table></figure>
+<h2 id="项目真实造成归档满原因"><a href="#项目真实造成归档满原因" class="headerlink" title="项目真实造成归档满原因"></a>项目真实造成归档满原因</h2><p>实际项目提供的归档大小为1T按照目前项目量没有这么大的日志。在线上归档日志1T一天就打满了。</p>
+<p>联想到最近对程序升级过，部分软件模块中可能存在频繁的DML操作。</p>
+<p>通过记录了几个小时的AWR日志，下载下来查看程序中存在不正常的SQL更新语句，造成了频繁的更新产生了大量的日志，修复了此SQL问题，解决了该问题。</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-26T18:00:08.000Z" title="2023/9/27 2:00:08">2023-09-27</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.010Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span><span class="level-item">3 分钟读完 (大约481个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/09/27/alg/%E7%AE%97%E6%B3%95%EF%BC%9A%E6%B1%82%E6%9C%80%E5%A4%9A%E7%BA%BF%E6%AE%B5%E9%87%8D%E5%90%88%E6%AC%A1%E6%95%B0/">求最多线段重合次数</a></p><div class="content"><blockquote>
+<p>最近在业务开发时，需要求值机柜台资源分配的使用时间段重叠部分不能超过使用次数限制。<br>简化成算法问题，就是求多个开始-结束的线段的最大重叠时间次数。</p>
+</blockquote>
+<p>举例：<br>求给定[1,3] [2,4] [4,7] [2,9]等线段求最大重合次数<br>答案是3次，1-3，2-4，2-9的重叠最大次数是3。</p>
+<h2 id="两种解题思路："><a href="#两种解题思路：" class="headerlink" title="两种解题思路："></a>两种解题思路：</h2><h3 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h3><p>最多重叠的区域的结果的左端点leftx，数组其中的一个左端点。暴力遍历每一个左端点，落在最多数组时间端的就是最大重叠次数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 最后重叠的线段的左节点一定是给定线段中其中一个线段的左节点</span><br><span class="hljs-comment"> * 因此求所有左节点，落在最多的线段中，就是最大重叠次数</span><br><span class="hljs-comment"> * O(N^2)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> lines</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxLine1</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] lines)</span>&#123;<br>    <span class="hljs-keyword">if</span>(lines==<span class="hljs-literal">null</span>||lines.length==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> max=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;lines.length;i++)&#123;<br>        <span class="hljs-type">int</span> left=lines[i][<span class="hljs-number">0</span>];<br>        <span class="hljs-type">int</span> t=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;lines.length;j++)&#123;<br>            <span class="hljs-keyword">if</span>(lines[j][<span class="hljs-number">0</span>]&lt;=left&amp;&amp;lines[j][<span class="hljs-number">1</span>]&gt;=left) t=t+<span class="hljs-number">1</span>;<br>            max=Math.max(max,t);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> max;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="小根堆"><a href="#小根堆" class="headerlink" title="小根堆"></a>小根堆</h3><p>方案2：使用小根堆<br>满足条件的左节点一定是某个线段的左端点，那么通过该节点的线段一定左端点小于该结果leftx，右节点大于leftx。<br>通过小根堆的特性，留在堆的一定是大于左节点的端点。</p>
+<ol>
+<li>将所有线段按照左端点排序，减少遍历次数</li>
+<li>遍历每一个线段，对于每一个线段</li>
+<li>把右端点放入堆中，</li>
+<li>左节点与堆顶比较，如果堆顶的元素小于左端点全部弹出</li>
+<li>每次Max找最大重合次数作为答案<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxLine2</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] lines)</span>&#123;<br>    <span class="hljs-keyword">if</span>(lines==<span class="hljs-literal">null</span>||lines.length==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    Arrays.sort(lines,(a,b)-&gt;a[<span class="hljs-number">0</span>]-b[<span class="hljs-number">0</span>]);<br>    PriorityQueue&lt;Integer&gt; heap=<span class="hljs-keyword">new</span> <span class="hljs-title class_">PriorityQueue</span>&lt;&gt;();<br>    <span class="hljs-type">int</span> max=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;lines.length;i++)&#123;<br>        <span class="hljs-keyword">while</span> (!heap.isEmpty()&amp;&amp;heap.peek()&lt;=lines[i][<span class="hljs-number">0</span>]) heap.poll();<br>        heap.add(lines[i][<span class="hljs-number">1</span>]);<br>        max=Math.max(heap.size(),max);<br>    &#125;<br>    <span class="hljs-keyword">return</span> max;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-26T18:00:08.000Z" title="2023/9/27 2:00:08">2023-09-27</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.017Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E6%B5%81%E5%AA%92%E4%BD%93/">流媒体</a></span><span class="level-item">6 分钟读完 (大约954个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/09/27/video/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%82%B9%E6%92%AD%E8%B7%9F%E7%9B%B4%E6%92%AD%E6%B5%81%E5%AA%92%E4%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%A9%E7%8E%A9/">搭建一个点播跟直播流媒体服务器玩玩</a></p><div class="content"><blockquote>
+<p>现在抖音、快手等直播实在是太火了，因此对音视频的开发非常感兴趣，查阅了相关资料，使用Nginx搭建一个简单的直播跟点播流媒体服务器，能够实时推流到服务器，同时在网页端播放直播的视频。</p>
+</blockquote>
+<h2 id="先上效果"><a href="#先上效果" class="headerlink" title="先上效果"></a>先上效果</h2><p>​	使用OBS软件录制电脑桌面操作<strong>推流</strong>到自己搭建的流媒体服务器，然后在网页<strong>拉流</strong>播放。当然也可以采集摄像头、麦克风推流，或者推送本地视频到流媒体服务器。</p>
+<p><img src="https://www.codehome.vip/upload/obs.gif"></p>
+<h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><h3 id="Ubuntu18-04安装nginx-flv模块扩展"><a href="#Ubuntu18-04安装nginx-flv模块扩展" class="headerlink" title="Ubuntu18.04安装nginx-flv模块扩展"></a>Ubuntu18.04安装nginx-flv模块扩展</h3><p>这里我是用虚拟机安装了Ubuntu18.04先下载nginx1.19.3的源码与nginx-http-flv-module的源码。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">wget https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/winshining/</span>nginx-http-flv-module<span class="hljs-regexp">/archive/m</span>aster.zip<br>wget http:<span class="hljs-regexp">//</span>nginx.org<span class="hljs-regexp">/download/</span>nginx-<span class="hljs-number">1.19</span>.<span class="hljs-number">3</span>.tar.gz  &amp;&amp; tar -zxvf nginx-<span class="hljs-number">1.19</span>.<span class="hljs-number">3</span>.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>解压下载的个源码进行编译，这样一个Nginx搭建的流媒体服务器就好了。</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-keyword">cd</span> nginx-1.19.3 <span class="hljs-comment">#进入nginx源码目录</span><br><span class="hljs-string">./configure</span> <span class="hljs-params">--add-module=</span><span class="hljs-string">../nginx-http-flv-module-master</span><br>vim objs/Makefile <span class="hljs-comment">#删除-Werror</span><br>make<br>make install<br></code></pre></td></tr></table></figure>
+
+<h2 id="进行点播与直播配置"><a href="#进行点播与直播配置" class="headerlink" title="进行点播与直播配置"></a>进行点播与直播配置</h2><p>​	上面已经安装好了nginx，编辑&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf进行相关配置。这里直接贴出完整的配置。其中rtmp为开启rtmp服务功能，并且为了能够在网页端播放开启了hls。推流的rmtp流会转换成hls协议的ts切片，保存在服务器上，nginx配置了location让网页能够访问切好的hls切片。</p>
+<p>​	这里解释下rtmp是adobe的私有协议，必须使用flash播放。hls是苹果开发的视频传输协议使用http进行传输。ios跟android支撑的都很好，一般进行跨平台直播使用hls协议比较常见。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><br><span class="hljs-comment">#user  nobody;</span><br><span class="hljs-attribute">worker_processes</span>  <span class="hljs-number">1</span>;<br><span class="hljs-section">events</span> &#123;<br>    <span class="hljs-attribute">worker_connections</span>  <span class="hljs-number">1024</span>;<br>&#125;<br><br><span class="hljs-section">rtmp</span> &#123;                <span class="hljs-comment">#RTMP服务</span><br>   <span class="hljs-section">server</span> &#123;<br>       	<span class="hljs-attribute">listen</span> <span class="hljs-number">1935</span>;  <span class="hljs-comment">#//服务端口</span><br>        <span class="hljs-attribute">chunk_size</span> <span class="hljs-number">4096</span>;   <span class="hljs-comment">#//数据传输块的大小</span><br><br><br>        <span class="hljs-attribute">application</span> vod &#123;<br>                <span class="hljs-attribute">play</span> /opt/video/vod; <span class="hljs-comment">#//视频文件存放位置。</span><br>        &#125;<br>        <span class="hljs-attribute">application</span> live&#123;<br>            <span class="hljs-attribute">live</span> <span class="hljs-literal">on</span>; <span class="hljs-comment">#直播</span><br>            <span class="hljs-attribute">hls</span> <span class="hljs-literal">on</span>; <span class="hljs-comment">#把直播服务器改造成实时回发服务器,视频切片成ts</span><br>            <span class="hljs-attribute">wait_key</span> <span class="hljs-literal">on</span>; <span class="hljs-comment">#对视频切片进行保护</span><br>            <span class="hljs-attribute">hls_path</span> /opt/video/rtmp/hls; <span class="hljs-comment">#ts切片存放位置</span><br>            <span class="hljs-attribute">hls_fragment</span> <span class="hljs-number">10s</span>; <span class="hljs-comment">#切片大小</span><br>            <span class="hljs-attribute">hls_playlist_length</span> <span class="hljs-number">60s</span>; <span class="hljs-comment">#回看的时间</span><br>            <span class="hljs-attribute">hls_continuous</span> <span class="hljs-literal">on</span>; <span class="hljs-comment">#连续模式</span><br>            <span class="hljs-attribute">hls_cleanup</span> <span class="hljs-literal">on</span>; <span class="hljs-comment">#对多余切片进行删除</span><br>            <span class="hljs-attribute">hls_nested</span> <span class="hljs-literal">on</span>; <span class="hljs-comment">#嵌套模式</span><br>        &#125;<br>   &#125;<br>&#125;<br><span class="hljs-section">http</span> &#123;<br>    <span class="hljs-attribute">include</span>       mime.types;<br>    <span class="hljs-attribute">default_type</span>  application/octet-stream;<br>    <span class="hljs-attribute">sendfile</span>        <span class="hljs-literal">on</span>;<br>    <span class="hljs-attribute">keepalive_timeout</span>  <span class="hljs-number">65</span>;<br>    <span class="hljs-section">server</span> &#123;<br>        <span class="hljs-attribute">listen</span>       <span class="hljs-number">80</span>;<br>        <span class="hljs-attribute">server_name</span>  localhost;<br>        <span class="hljs-section">location</span> /stat &#123;    <span class="hljs-comment">#第二处添加的location字段。</span><br>            <span class="hljs-attribute">rtmp_stat</span> all;<br>        	<span class="hljs-attribute">rtmp_stat_stylesheet</span> stat.xsl;<br>    	&#125;<br><br>   		<span class="hljs-section">location</span> /stat.xsl &#123; <span class="hljs-comment">#第二处添加的location字段。</span><br>      	 <span class="hljs-attribute">root</span> /usr/local/nginx-http-flv-module/;<br>   		&#125;<br>		<span class="hljs-section">location</span> /hls &#123;<br>    		<span class="hljs-section">types</span> &#123;<br>        		application/vnd.apple.<span class="hljs-attribute">mpegurl</span> m3u8;<br>       	 		video/<span class="hljs-attribute">mp2t</span> ts;<br>    		&#125;<br>    		<span class="hljs-attribute">alias</span> /opt/video/rtmp/hls;<br>    		<span class="hljs-attribute">add_header</span> Cache-Control <span class="hljs-literal">no</span>-cache;<br>    		<span class="hljs-attribute">add_header</span> Access-Control-Allow-Origin *; <br>		&#125;<br>   		<span class="hljs-section">location</span> / &#123;<br>            <span class="hljs-attribute">root</span>   html;<br>            <span class="hljs-attribute">index</span>  index.html index.htm;<br>  	  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="进行测试"><a href="#进行测试" class="headerlink" title="进行测试"></a>进行测试</h2><p>使用obs推流推送到rtmp:&#x2F;&#x2F;192.168.227.128&#x2F;live串流密钥随便填写即可。</p>
+<p><img src="/img/obc-settings.png" alt="image-20201017125252531"></p>
+<p>​	h5网页端采用video.js进行播放直播流视频,这里的播放的地址是切好片的m3u8文件地址，m3u8存放了每一个小切片的地址。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">id</span>=<span class="hljs-string">example-video</span> <span class="hljs-attr">width</span>=<span class="hljs-string">600</span> <span class="hljs-attr">height</span>=<span class="hljs-string">300</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;video-js vjs-default-skin&quot;</span> <span class="hljs-attr">controls</span>&gt;</span><br>		  <span class="hljs-tag">&lt;<span class="hljs-name">source</span></span><br><span class="hljs-tag">		     <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;http://192.168.227.128/hls/test/index.m3u8&quot;</span></span><br><span class="hljs-tag">		     <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;application/x-mpegURL&quot;</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;//vjs.zencdn.net/7.8.2/video-js.min.css&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;//vjs.zencdn.net/7.8.2/video.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;videojs-contrib-hls.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/browse/@videojs/http-streaming@2.2.3/dist/videojs-http-streaming.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">		<span class="hljs-keyword">var</span> player = <span class="hljs-title function_">videojs</span>(<span class="hljs-string">&#x27;example-video&#x27;</span>);</span><br><span class="language-javascript">		player.<span class="hljs-title function_">play</span>();</span><br><span class="language-javascript">		</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>​	上面的nginx配置还配置了本地视频文件点播配置，把视频文件放在&#x2F;opt&#x2F;video&#x2F;vod位置，使用vlc填写rtmp:&#x2F;&#x2F;192.168.227.128&#x2F;vod&#x2F;qlgame.mp4进行播放即可。</p>
+<p><img src="/img/yinshipin-show.png" alt="image-20201018163103770"></p>
+<p><strong>以上搭建只是测试学习使用，实际音视频开发涉及采集、编码、推流、传输、拉流、解码等等过程，每一个过程都设计许多知识。后面音视频开发学习笔记，等我攒了一些笔记发出来互相学习。</strong></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-25T18:00:18.000Z" title="2023/9/26 2:00:18">2023-09-26</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.016Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/java/">java</a></span><span class="level-item">3 分钟读完 (大约448个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/09/26/springcloud/SpringCloud%E7%89%88%E6%9C%AC%E6%96%B0%E6%97%A7%E5%91%BD%E5%90%8D%E6%96%B9%E5%BC%8F/">SpringCloud版本新旧命名方式</a></p><div class="content"><h2 id="看看SpringCloud已发布版本"><a href="#看看SpringCloud已发布版本" class="headerlink" title="看看SpringCloud已发布版本"></a>看看SpringCloud已发布版本</h2><p>当前已发布SpringCloud稳定版本见下图，在线查看地址:<a target="_blank" rel="noopener" href="https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies">https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies</a></p>
+<p><img src="/img/springcloud-version.png" alt="springcloud-version"></p>
+<h2 id="SpringCloud新旧命名方式"><a href="#SpringCloud新旧命名方式" class="headerlink" title="SpringCloud新旧命名方式"></a>SpringCloud新旧命名方式</h2><ul>
+<li><p><del>采用版本名+版本号，其中版本名采用伦敦地铁站命名，其中按照地铁首字母A-Z依次命令如Hoxton.SR9</del>。但是现在已更改为主版本号.次版本号.修订号如2020.0.0</p>
+</li>
+<li><p>旧版本命名方式中,开发的快照版本(BUILD-SNAPSHOT)到里程碑版本(M),开发的差不多到会发布的候选发布版(RELEASE),最后到正式版(SR)版本。</p>
+</li>
+<li><p>新版本命名是<code>YYYY.MINOR.MICRO[-MODIFIER]</code>，拿<strong>2020.0.1-SNAPSHOT</strong> 这个版本来说，其中YYYY为年份全称、MINOR为辅助版本号、MICRO为补丁版本号。MODIFIER同上述修饰关键节点，BUILD-SNAPSHOT、里程碑M等。</p>
+</li>
+</ul>
+<h2 id="SpringCloud与SpringBoot版本对应关系"><a href="#SpringCloud与SpringBoot版本对应关系" class="headerlink" title="SpringCloud与SpringBoot版本对应关系"></a>SpringCloud与SpringBoot版本对应关系</h2><p>浏览器访问<a target="_blank" rel="noopener" href="https://start.spring.io/actuator/info%EF%BC%8C%E5%9C%A8%E8%BF%94%E5%9B%9E%E7%9A%84%E6%95%B0%E6%8D%AE%E4%B8%AD%E6%89%BE%E5%88%B0spring-cloud%E5%8D%B3%E5%8F%AF%E4%BB%A5%E6%9F%A5%E7%9C%8BSpringCloud%E4%B8%8ESpringBoot%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB%E3%80%82">https://start.spring.io/actuator/info，在返回的数据中找到spring-cloud即可以查看SpringCloud与SpringBoot版本对应关系。</a></p>
+<p><img src="/img/springcloud-springboot-version.png" alt="springcloud-springboot-version"></p>
+<h2 id="SpringCloud版本选择"><a href="#SpringCloud版本选择" class="headerlink" title="SpringCloud版本选择"></a>SpringCloud版本选择</h2><ul>
+<li>根据上面的原则首先选择SpringCloud要与SpringBoot版本能够对应的上</li>
+<li>SpringCloud应该优先选择SR的版本</li>
+<li>采用官网推荐版本，每一个SpringCloud的文档均有推荐SpringBoot版本。如<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud/docs/2020.0.0/reference/html/">https://docs.spring.io/spring-cloud/docs/2020.0.0/reference/html/</a></li>
+<li>本人公司的SpringBoot框架使用的2.1.0.RELEASE,SpringCloud选择是Greenwich.SR4(有历史原因)。本系列教程<strong>SpringCloud采用Hoxton.SR9</strong>,<strong>SpringBoot采用 2.3.5.RELEASE。</strong></li>
+</ul>
+<p><strong>Springcloud企业项目实战问题汇总系列教程</strong>,所有资料和源码均在本人GitHub上，<a target="_blank" rel="noopener" href="https://github.com/mytianya/springcloud-tutorials">https://github.com/mytianya/springcloud-tutorials</a></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-25T18:00:08.000Z" title="2023/9/26 2:00:08">2023-09-26</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.017Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/java/">java</a></span><span class="level-item">18 分钟读完 (大约2631个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/09/26/springcloud/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/">微服务架构简介</a></p><div class="content"><h2 id="微服务理论基础-康威法则"><a href="#微服务理论基础-康威法则" class="headerlink" title="微服务理论基础-康威法则"></a>微服务理论基础-康威法则</h2><p><strong>康威法则</strong>：“设计系统的架构受制于产生这些设计组织的沟通结构。”**即系统设计本质上反映了企业的组织机构。系统各个模块间的接口也反映了企业各个部门之间的信息流动和合作方式。</p>
+<p>康威法则提出的各定律：</p>
+<ul>
+<li><p>第一定律 组织沟通方式会通过系统设计表达出来</p>
+<pre><code class="hljs">即组织的沟通方式决定了系统的设计方式
+</code></pre>
+</li>
+<li><p>第二定律 时间再多一件事情也不可能做的完美，但总有时间做完一件事情</p>
+<pre><code class="hljs">罗马不是一日建成的，学习解决首要问题。产品、软件、模块功能应该首先达到最小可用程度(Minimun Viable Product)
+</code></pre>
+</li>
+<li><p>第三定律 线性系统和线型组织架构间有潜在的异质同态特性</p>
+<pre><code class="hljs">这一定律是第一定律的具体应用，具体来说想要什么的系统就搭建什么样的团队，有什么样的团队就搭建什么样的系统。你需要搭建微服务架构的系统，那就需要微服务型的组织架构。每个团队负责自己的部分，对外提供相应的接口，团队间互不干扰，实现完全的**自治**。如此就能降低系统的依赖性，减少通信成本。
+</code></pre>
+</li>
+<li><p>第四定律 大的系统组织总是比小系统更倾向分解</p>
+<pre><code class="hljs">系统越复杂，越需要增加人手，人手越多，沟通成本也呈指数增长。分而治之便是大多数公司选择的解决方案。分不同的层级，分不同的小团队，让团队内部完成自治理，然后统一对外沟通。**微服务架构更多是关于组织和团队，而不是技术**。
+</code></pre>
+</li>
+</ul>
+<h2 id="微服务架构定义"><a href="#微服务架构定义" class="headerlink" title="微服务架构定义"></a>微服务架构定义</h2><p>微服务架构是一种架构风格，没有单一的定义，随着时间的推移，业界达成已经形成共识，微服务架构的特征包括：</p>
+<p><img src="/img/microservice.png" alt="微服务定义"></p>
+<ul>
+<li><p><strong>一组小的服务</strong>：怎么定义这个小，专注于做好一件事情。在一个单体系统中，避免随着新功能的增加代码库日益庞大，模块之间的界限很难维护，相似的代码随处可见，通常会创建一些抽象层或者模块来保证代码的<strong>内聚性</strong>。在使用微服务架构时一个微服务同样要具有内聚性这一概念，Robert C.Martin有一个单一职责原则：把因相同原因变化的东西聚合在一起，而把不同原因而变化的东西分开。<strong>微服务中独立服务的划分程度，同样有内聚性、单一职责原则，根据业务的边界来确定某个功能代码应该放在那个微服务之中，确定该微服务专注的业务边界之内</strong>。</p>
+</li>
+<li><p><strong>独立的进程</strong>：每个服务运行在独立的进程中，能够以进程的方式进行横向扩展。</p>
+</li>
+<li><p><strong>轻量级通信</strong>：服务之间均通过网络调用（HTTP REST&#x2F;RPC）进行通信，从而加强服务之间的隔离性，避免紧耦合。</p>
+</li>
+<li><p><strong>基于业务能力</strong>：基于业务能力来划分服务的边界。确定对于一个服务来说，我们应该暴露什么，应该隐藏什么。一个服务的变动，应该尽量避免该服务消费者的变动。</p>
+</li>
+<li><p><strong>独立部署</strong>：每个服务模块的开发人员可以进行完全的自治，独自开发、测试、部署。团队之间减少沟通的成本。</p>
+</li>
+<li><p><strong>无集中式管理</strong>：每个团队可以根据各自的业务需要，可以采用不同的技术栈，不同的存储机制，能够高效的完成业务目标即可。</p>
+<p><strong>总结来说：微服务架构风格就是小而自治的服务，可以采用不同技术栈，拥有独立进程，进程之间采用网络调用通信，不同团队在业务边界之内开发、测试、部署。</strong></p>
+</li>
+</ul>
+<h2 id="服务架构演进"><a href="#服务架构演进" class="headerlink" title="服务架构演进"></a>服务架构演进</h2><p><img src="/img/microservice1.png"></p>
+<h2 id="微服务优点"><a href="#微服务优点" class="headerlink" title="微服务优点"></a>微服务优点</h2><ol>
+<li><p>技术异构性：不同的服务可以采用最适合该服务的技术。</p>
+</li>
+<li><p>弹性：系统一个服务故障，不会引起级联故障，系统的其他组件还能使用。</p>
+</li>
+<li><p>扩展：庞大的单块服务只能作为一个整体进行扩展。即使系统中只有一小部分存在性能问题，也需要对整个服务进行扩展。如果使用较小的多个服务，则可以只对需要扩展的服务进行扩展，这样就可以把那些不需要扩展的服务运行在更小的、性能稍差的硬件上。</p>
+</li>
+<li><p>简化部署</p>
+</li>
+<li><p>更小粒度的服务粒度，带来的易于重用已有的功能</p>
+</li>
+<li><p>服务更改维护代价更小</p>
+</li>
+</ol>
+<h2 id="微服务缺点"><a href="#微服务缺点" class="headerlink" title="微服务缺点"></a>微服务缺点</h2><ol>
+<li><p>服务间的通信成本。</p>
+</li>
+<li><p>分布式系统的复杂性。</p>
+</li>
+<li><p>服务的运维管理。</p>
+</li>
+<li><p>分布部署服务出错,问题的定位追踪。</p>
+</li>
+</ol>
+<h2 id="微服务支撑组件"><a href="#微服务支撑组件" class="headerlink" title="微服务支撑组件"></a>微服务支撑组件</h2><pre><code class="hljs">微服务只是一种架构手段，当我们将一个单体系统拆分成微服务架构风格时，微服务架构的带来问题该如何解决呢？比如服务进程之间的通信、服务之间错中复杂的依赖关系导致的线上问题如何排查、分布式系统带来的一致性问题等问题。因此微服务产生了一些系列的支撑组件：
+</code></pre>
+<ol>
+<li>服务治理</li>
+<li>服务负载均衡</li>
+<li>服务网关</li>
+<li>熔断、限流、降级</li>
+<li>服务分布式链路跟踪</li>
+<li>统一配置管理</li>
+</ol>
+<h2 id="微服务组件选型"><a href="#微服务组件选型" class="headerlink" title="微服务组件选型"></a>微服务组件选型</h2><h3 id="注册中心选型"><a href="#注册中心选型" class="headerlink" title="注册中心选型"></a>注册中心选型</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>Nacos</th>
+<th>Eureka</th>
+<th>Consul</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>一致性协议</td>
+<td>CP+AP</td>
+<td>AP</td>
+<td>CP</td>
+</tr>
+<tr>
+<td>健康检查</td>
+<td>TCP&#x2F;HTTP&#x2F;MYSQL&#x2F;Client Beat</td>
+<td>Client Beat</td>
+<td>HTTP&#x2F;gRPC&#x2F;TCP</td>
+</tr>
+<tr>
+<td>负载均衡策略</td>
+<td>权重</td>
+<td>Ribbon</td>
+<td>Fabio</td>
+</tr>
+<tr>
+<td>雪崩保护</td>
+<td>有</td>
+<td>有</td>
+<td>无</td>
+</tr>
+<tr>
+<td>自动注销实例</td>
+<td>支持</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>集群</td>
+<td>支持</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>SpringCloud集成</td>
+<td>支持</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>Dubbo集成</td>
+<td>支持</td>
+<td>不支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>K8s集成</td>
+<td>支持</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>备注</td>
+<td>阿里开源产品，JAVA语言开发，持续维护</td>
+<td>SpringCloud Netffix组件，java语言开发Eureka2.0不在维护</td>
+<td>国外HashiCorp公司，GO语言开发，持续维护</td>
+</tr>
+</tbody></table>
+<h3 id="负载均衡组件选型"><a href="#负载均衡组件选型" class="headerlink" title="负载均衡组件选型"></a>负载均衡组件选型</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>Ribbon</th>
+<th>Springcloud load balancer</th>
+<th>Nginx</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>负载方式</td>
+<td>客户端负载</td>
+<td>客户端负载</td>
+<td>服务端负载</td>
+</tr>
+<tr>
+<td>原理</td>
+<td>每个客户端维护访问的服务清单</td>
+<td>每个客户端维护访问的服务清单</td>
+<td>服务端维护一个可用服务清单</td>
+</tr>
+<tr>
+<td>使用方式</td>
+<td>客户端配置负载均衡策略：权重、随机、轮询、自定义规则</td>
+<td>客户端配置负载均衡策略：权重、随机、轮询、自定义规则</td>
+<td>服务端配置规则</td>
+</tr>
+<tr>
+<td>备注</td>
+<td>Netffix开源产品,进入维护状态</td>
+<td>SpringCloud2020.0.x版本后开发的新负载均衡器</td>
+<td>传统的服务的负载均衡组件</td>
+</tr>
+</tbody></table>
+<h3 id="服务网关选型"><a href="#服务网关选型" class="headerlink" title="服务网关选型"></a>服务网关选型</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>Zuul</th>
+<th>SpringCloud Gateway</th>
+<th>Kong</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>开发语言</td>
+<td>JAVA</td>
+<td>JAVA</td>
+<td>Lua</td>
+</tr>
+<tr>
+<td>使用方式</td>
+<td>自己开发Filter</td>
+<td>自己开发Filter</td>
+<td>插件</td>
+</tr>
+<tr>
+<td>界面管理</td>
+<td>不支持</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>协议</td>
+<td>HTTP&#x2F;HTTPS</td>
+<td>HTTP&#x2F;HTTPS&#x2F;WEBSOCKET</td>
+<td>HTTP&#x2F;HTTPS&#x2F;WEBSOCKET</td>
+</tr>
+<tr>
+<td>功能</td>
+<td>限流、动态路由、灰度发布、日志等功能自己开发</td>
+<td>限流、动态路由、灰度发布、日志等功能自己开发</td>
+<td>插件+自定义规则开发</td>
+</tr>
+<tr>
+<td>备注</td>
+<td>Nettfix组件，Zuul1.0基于Serlvet,Zuul2.0支持异步</td>
+<td>SpringCloud组件，Webflux异步</td>
+<td>OpenRestry+Lua二次开发</td>
+</tr>
+</tbody></table>
+<h2 id="配置中心选型"><a href="#配置中心选型" class="headerlink" title="配置中心选型"></a>配置中心选型</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>SpringCloud Config</th>
+<th>Apollo</th>
+<th>Nacos</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>开发语言</td>
+<td>JAVA</td>
+<td>JAVA</td>
+<td>JAVA</td>
+</tr>
+<tr>
+<td>存储方式</td>
+<td>GIT仓库\MYSQL</td>
+<td>MYSQL</td>
+<td>MYSQL</td>
+</tr>
+<tr>
+<td>版本管理</td>
+<td>GIT</td>
+<td>自动管理</td>
+<td>自动管理</td>
+</tr>
+<tr>
+<td>推送机制</td>
+<td>SpringCloud BUS</td>
+<td>HTTP长轮询</td>
+<td>HTTP长轮询</td>
+</tr>
+<tr>
+<td>权限管理</td>
+<td>支持</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>备注</td>
+<td>SpringCloud全家桶组件</td>
+<td>携程开源，功能非常丰富权限管理、命名空间、多语言。集群部署可整合现有Eureka</td>
+<td>阿里开源，功能较简单，但是本身带注册中心功能。</td>
+</tr>
+</tbody></table>
+<h3 id="熔断组件选型"><a href="#熔断组件选型" class="headerlink" title="熔断组件选型"></a>熔断组件选型</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>SpringCloud Alibaba Sentinel</th>
+<th>Hystrix</th>
+<th>SpringCloud Resilience4j</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>隔离策略</td>
+<td>信号量隔离（并发控制）</td>
+<td>线程池隔离&#x2F;信号量隔离</td>
+<td>信号量隔离</td>
+</tr>
+<tr>
+<td>熔断降级策略</td>
+<td>基于慢调用比例、异常比例、异常数</td>
+<td>基于异常比例</td>
+<td>基于异常比例、响应时间</td>
+</tr>
+<tr>
+<td>实时统计实现</td>
+<td>滑动窗口（LeapArray）</td>
+<td>滑动窗口（基于 RxJava）</td>
+<td>Ring Bit Buffer</td>
+</tr>
+<tr>
+<td>动态规则配置</td>
+<td>支持多种数据源</td>
+<td>支持多种数据源</td>
+<td>有限支持</td>
+</tr>
+<tr>
+<td>扩展性</td>
+<td>多个扩展点</td>
+<td>插件的形式</td>
+<td>接口的形式</td>
+</tr>
+<tr>
+<td>基于注解的支持</td>
+<td>支持</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>限流</td>
+<td>基于 QPS，支持基于调用关系的限流</td>
+<td>有限的支持</td>
+<td>Rate Limiter</td>
+</tr>
+<tr>
+<td>流量整形</td>
+<td>支持预热模式与匀速排队控制效果</td>
+<td>不支持</td>
+<td>简单的 Rate Limiter 模式</td>
+</tr>
+<tr>
+<td>系统自适应保护</td>
+<td>支持</td>
+<td>不支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>多语言支持</td>
+<td>Java&#x2F;Go&#x2F;C++</td>
+<td>Java</td>
+<td>Java</td>
+</tr>
+<tr>
+<td>Service Mesh 支持</td>
+<td>支持 Envoy&#x2F;Istio</td>
+<td>不支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>控制台</td>
+<td>提供开箱即用的控制台，可配置规则、实时监控、机器发现等</td>
+<td>简单的监控查看</td>
+<td>不提供控制台，可对接其它监控系统</td>
+</tr>
+</tbody></table>
+<h3 id="服务调用链路追踪组件选型"><a href="#服务调用链路追踪组件选型" class="headerlink" title="服务调用链路追踪组件选型"></a>服务调用链路追踪组件选型</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>Zipkin</th>
+<th>CAT</th>
+<th>Skywalking</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OpenTracing 兼容</td>
+<td>支持</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>开发语言</td>
+<td>JAVA</td>
+<td>JAVA</td>
+<td>JAVA</td>
+</tr>
+<tr>
+<td>侵入性</td>
+<td>高</td>
+<td>高</td>
+<td>低</td>
+</tr>
+<tr>
+<td>WebUI丰富度</td>
+<td>低</td>
+<td>高</td>
+<td>高</td>
+</tr>
+<tr>
+<td>监控报警</td>
+<td>不支持</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>备注</td>
+<td>SpringCloud全家桶组件</td>
+<td>美团开源</td>
+<td>Apache</td>
+</tr>
+</tbody></table>
+<h2 id="微服务架构图"><a href="#微服务架构图" class="headerlink" title="微服务架构图"></a>微服务架构图</h2><p>图片来源互联网：<a target="_blank" rel="noopener" href="https://www.owensun.com/microservice-refercence-architecture/">https://www.owensun.com/microservice-refercence-architecture/</a></p>
+<p><img src="/img/microservice-channge.png" alt="img"></p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ul>
+<li>[1] <a target="_blank" rel="noopener" href="https://martinfowler.com/articles/microservices.html">微服务理论</a></li>
+<li>[2] <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/%E5%BA%B7%E5%A8%81%E5%AE%9A%E5%BE%8B">康威法则</a></li>
+</ul>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-24T18:01:08.000Z" title="2023/9/25 2:01:08">2023-09-25</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.014Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/java/">java</a></span><span class="level-item">8 分钟读完 (大约1134个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/09/25/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86%E4%B8%8E%E6%9D%A1%E4%BB%B6%E6%B3%A8%E8%A7%A3/">Springboot2.x基础教程：自动装配原理与条件注解</a></p><div class="content"><blockquote>
+<p>spring Boot采用约定优于配置的方式，大量的减少了配置文件的使用。该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。<br>当springboot启动的时候，默认在容器中注入许多AutoCongfigution类。在我们加入spring-boot-stareter-xx时，XXXAutoConfiguration类根据对应的条件，自动选择装配对应的Bean实例注入IOC容器中。</p>
+</blockquote>
+<h2 id="先说结论"><a href="#先说结论" class="headerlink" title="先说结论"></a>先说结论</h2><ol>
+<li>SpringBoot启动的时候加载主配置类，开启了自动配置功能@EnableAutoConfiguration</li>
+<li>@EnableAutoConfiguration Import的AutoConfigurationImportSelector中代码最终调用SpringFactoriesLoader.loadSpringFactories扫描了Jar包的META-INF&#x2F;spring.factories文件加载了大量的XXAutoConfiguration类</li>
+<li>AutoConfiguration类配合Conditonal注解与ConfigurationProperties配置类在特定条件下自动装配我们需要的Bean到IOC容器中。</li>
+</ol>
+<h2 id="注入AutoConfiguration类核心源码分析"><a href="#注入AutoConfiguration类核心源码分析" class="headerlink" title="注入AutoConfiguration类核心源码分析"></a>注入AutoConfiguration类核心源码分析</h2><p>SpringBoot的主启动类上需要加入@SpringBootApplication注解，我们看看该注解的源码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SpringBootConfiguration</span><br><span class="hljs-meta">@EnableAutoConfiguration</span><br><span class="hljs-meta">@ComponentScan(excludeFilters = &#123; @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),</span><br><span class="hljs-meta">		@Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) &#125;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> SpringBootApplication &#123;<br>	<span class="hljs-comment">//...省略</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>实际是@EnableAutoConfigurtaion注解起作用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@AutoConfigurationPackage</span><br><span class="hljs-meta">@Import(AutoConfigurationImportSelector.class)</span><br><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> EnableAutoConfiguration &#123;<br>	<span class="hljs-type">String</span> <span class="hljs-variable">ENABLED_OVERRIDE_PROPERTY</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;spring.boot.enableautoconfiguration&quot;</span>;<br>	Class&lt;?&gt;[] exclude() <span class="hljs-keyword">default</span> &#123;&#125;;<br>	String[] excludeName() <span class="hljs-keyword">default</span> &#123;&#125;;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>看到@Import注解是不是很熟悉，该注解作用见教程@Enable原理，主要能够导入下面3种情况中的Bean。</p>
+<ol>
+<li>允许注入使用@Configuration注解的类</li>
+<li>允许使用实现ImportSelectorj接口的类,注入selectImports返回的类</li>
+<li>允许是实现了ImportBeanDefinitionRegistrar接口的类</li>
+</ol>
+<p>AutoConfigurationImportSelector中selectImports源码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> String[] selectImports(AnnotationMetadata annotationMetadata) &#123;<br>	<span class="hljs-keyword">if</span> (!isEnabled(annotationMetadata)) &#123;<br>		<span class="hljs-keyword">return</span> NO_IMPORTS;<br>	&#125;<br>	<span class="hljs-type">AutoConfigurationEntry</span> <span class="hljs-variable">autoConfigurationEntry</span> <span class="hljs-operator">=</span> getAutoConfigurationEntry(annotationMetadata);<br>	<span class="hljs-keyword">return</span> StringUtils.toStringArray(autoConfigurationEntry.getConfigurations());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>其中<strong>AutoConfigurationImportSelector.getAutoConfigurationEntry</strong>调用<strong>AutoConfigurationImportSelector.getCandidateConfigurations</strong>调用<strong>SpringFactoriesLoader.loadFactoryNames</strong>调用<strong>SpringFactoriesLoader.loadSpringFactories</strong>。</p>
+<p>其中<strong>SpringFactoriesLoader.loadSpringFactories</strong>从指定的配置文件META-INF&#x2F;spring.factories加载配置。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Map&lt;String, List&lt;String&gt;&gt; <span class="hljs-title function_">loadSpringFactories</span><span class="hljs-params">(<span class="hljs-meta">@Nullable</span> ClassLoader classLoader)</span> &#123;<br>    MultiValueMap&lt;String, String&gt; result = (MultiValueMap)cache.get(classLoader);<br>    <span class="hljs-keyword">if</span> (result != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">return</span> result;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            Enumeration&lt;URL&gt; urls = classLoader != <span class="hljs-literal">null</span> ? classLoader.getResources(<span class="hljs-string">&quot;META-INF/spring.factories&quot;</span>) : ClassLoader.getSystemResources(<span class="hljs-string">&quot;META-INF/spring.factories&quot;</span>);<br>            <span class="hljs-type">LinkedMultiValueMap</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedMultiValueMap</span>();<br><br>            <span class="hljs-keyword">while</span>(urls.hasMoreElements()) &#123;<br>                <span class="hljs-type">URL</span> <span class="hljs-variable">url</span> <span class="hljs-operator">=</span> (URL)urls.nextElement();<br>                <span class="hljs-type">UrlResource</span> <span class="hljs-variable">resource</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UrlResource</span>(url);<br>                <span class="hljs-type">Properties</span> <span class="hljs-variable">properties</span> <span class="hljs-operator">=</span> PropertiesLoaderUtils.loadProperties(resource);<br>                <span class="hljs-type">Iterator</span> <span class="hljs-variable">var6</span> <span class="hljs-operator">=</span> properties.entrySet().iterator();<br><br>                <span class="hljs-keyword">while</span>(var6.hasNext()) &#123;<br>                    Entry&lt;?, ?&gt; entry = (Entry)var6.next();<br>                    <span class="hljs-type">String</span> <span class="hljs-variable">factoryTypeName</span> <span class="hljs-operator">=</span> ((String)entry.getKey()).trim();<br>                    String[] var9 = StringUtils.commaDelimitedListToStringArray((String)entry.getValue());<br>                    <span class="hljs-type">int</span> <span class="hljs-variable">var10</span> <span class="hljs-operator">=</span> var9.length;<br><br>                    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">var11</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; var11 &lt; var10; ++var11) &#123;<br>                        <span class="hljs-type">String</span> <span class="hljs-variable">factoryImplementationName</span> <span class="hljs-operator">=</span> var9[var11];<br>                        result.add(factoryTypeName, factoryImplementationName.trim());<br>                    &#125;<br>                &#125;<br>            &#125;<br><br>            cache.put(classLoader, result);<br>            <span class="hljs-keyword">return</span> result;<br>        &#125; <span class="hljs-keyword">catch</span> (IOException var13) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(<span class="hljs-string">&quot;Unable to load factories from location [META-INF/spring.factories]&quot;</span>, var13);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>总结：</p>
+<ol>
+<li>@SpringBootApplication中@EnableAutoConfiguration注解最终调用SpringFactoriesLoader.loadSpringFactories，从classpath中搜寻所有的META-INF&#x2F;spring.factories配置文件</li>
+<li>并将其中org.springframework.boot.autoconfigure.EnableutoConfiguration对应的配置项通过反射实例化为对应的标注了@Configuration的JavaConfig形式的IoC容器配置类，然后汇总为一个并加载到IoC容器。</li>
+</ol>
+<h2 id="条件注解"><a href="#条件注解" class="headerlink" title="条件注解"></a>条件注解</h2><p>在spring-boot-autoconfigure包在META-INF&#x2F;spring.factories文件中autoconfiguration配置项一览。</p>
+<p><img src="https://pan.codehome.vip/images/iuCdkPvFtxMyO2B.png" alt="image-20200909232847766"></p>
+<p>我们拿DataSourceAutoConfiguration源码分析，看看autoconfiguration类生效的条件。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Configuration(proxyBeanMethods = false)</span><br><span class="hljs-meta">@ConditionalOnClass(&#123; DataSource.class, EmbeddedDatabaseType.class &#125;)</span><br><span class="hljs-meta">@ConditionalOnMissingBean(type = &quot;io.r2dbc.spi.ConnectionFactory&quot;)</span><br><span class="hljs-meta">@EnableConfigurationProperties(DataSourceProperties.class)</span><br><span class="hljs-meta">@Import(&#123; DataSourcePoolMetadataProvidersConfiguration.class, DataSourceInitializationConfiguration.class &#125;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DataSourceAutoConfiguration</span> &#123;<br><br>	<span class="hljs-meta">@Configuration(proxyBeanMethods = false)</span><br>	<span class="hljs-meta">@Conditional(EmbeddedDatabaseCondition.class)</span><br>	<span class="hljs-meta">@ConditionalOnMissingBean(&#123; DataSource.class, XADataSource.class &#125;)</span><br>	<span class="hljs-meta">@Import(EmbeddedDataSourceConfiguration.class)</span><br>	<span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">EmbeddedDatabaseConfiguration</span> &#123;<br><br>	&#125;<br><br>	<span class="hljs-meta">@Configuration(proxyBeanMethods = false)</span><br>	<span class="hljs-meta">@Conditional(PooledDataSourceCondition.class)</span><br>	<span class="hljs-meta">@ConditionalOnMissingBean(&#123; DataSource.class, XADataSource.class &#125;)</span><br>	<span class="hljs-meta">@Import(&#123; DataSourceConfiguration.Hikari.class, DataSourceConfiguration.Tomcat.class,</span><br><span class="hljs-meta">			DataSourceConfiguration.Dbcp2.class, DataSourceConfiguration.Generic.class,</span><br><span class="hljs-meta">			DataSourceJmxConfiguration.class &#125;)</span><br>	<span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PooledDataSourceConfiguration</span> &#123;<br><br>	&#125;<br>	<span class="hljs-comment">//省略....</span><br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>在DataSourceAutoConfiguration类中，存在大量的@ConditionalXX条件注解，常见条件注解作用：</p>
+<ol>
+<li>@ConditionalOnBean：当SpringIoc容器内存在指定Bean的条件</li>
+<li>@ConditionalOnClass：当SpringIoc容器内存在指定Class的条件</li>
+<li>@ConditionalOnExpression：基于SpEL表达式作为判断条件</li>
+<li>@ConditionalOnJava：基于JVM版本作为判断条件</li>
+<li>@ConditionalOnJndi：在JNDI存在时查找指定的位置</li>
+<li>@ConditionalOnMissingBean：当SpringIoc容器内不存在指定Bean的条件</li>
+<li>@ConditionalOnMissingClass：当SpringIoc容器内不存在指定Class的条件</li>
+<li>@ConditionalOnNotWebApplication：当前项目不是Web项目的条件</li>
+<li>@ConditionalOnProperty：指定的属性是否有指定的值</li>
+<li>@ConditionalOnResource：类路径是否有指定的值</li>
+<li>@ConditionalOnSingleCandidate：当指定Bean在SpringIoc容器内只有一个，或者虽然有多个但是指定首选的Bean</li>
+<li>@ConditionalOnWebApplication：当前项目是Web项目的条件</li>
+<li>@EnableConfigurationProperties注解：使使用 @ConfigurationProperties 注解的类生效。<br>我们可以看在DataSourceAutoConfiguration激活了DataSourceProperties配置，并且根据条件注解在不同情况下加载不同的数据源到IOC容器中。</li>
+</ol>
+<p><strong>千里之行，始于足下。这里是SpringBoot教程系列第十七篇，所有项目源码均可以在我的<a target="_blank" rel="noopener" href="https://github.com/mytianya/springboot-tutorials" title="GitHub">GitHub</a>上面下载源码。觉得不错可以评论、点赞、转发3连。</strong></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-24T18:00:58.000Z" title="2023/9/25 2:00:58">2023-09-25</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.016Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/java/">java</a></span><span class="level-item">3 分钟读完 (大约444个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/09/25/springboot/springboot%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E7%98%A6%E8%BA%AB/">springboot项目打包瘦身</a></p><div class="content"><blockquote>
+<p>  默认情况下，<strong>Spring Boot</strong> 项目发布时会将项目代码和项目的所有依赖文件一起打成一个可执行的 <strong>jar</strong> 包。但如果项目的依赖包很多，那么这个文件就会非常大。这样每次即使只改动一点东西，就需要将整个项目重新打包部署，我们将依赖 <strong>lib</strong> 从项目分离出来，这样每次部署只需要发布项目源码即可。</p>
+</blockquote>
+<h2 id="瘦身打包配置"><a href="#瘦身打包配置" class="headerlink" title="瘦身打包配置"></a>瘦身打包配置</h2><p>springboot默认使用<strong>spring-boot-maven-plugin</strong> 来打包，这个插件会将项目所有的依赖打入项目<strong>jar</strong> 包里面，将打包插件替换为 <strong>maven-jar-plugin</strong>，并拷贝依赖到 <strong>jar</strong> 到外面的 <strong>lib</strong> 目录。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 指定启动类，将依赖打成外部jar包 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-jar-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">archive</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!-- 生成的jar中，不要包含pom.xml和pom.properties这两个文件 --&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">addMavenDescriptor</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">addMavenDescriptor</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">manifest</span>&gt;</span><br>                        <span class="hljs-comment">&lt;!-- 是否要把第三方jar加入到类构建路径 --&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">addClasspath</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">addClasspath</span>&gt;</span><br>                        <span class="hljs-comment">&lt;!-- 外部依赖jar包的最终位置 --&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">classpathPrefix</span>&gt;</span>lib/<span class="hljs-tag">&lt;/<span class="hljs-name">classpathPrefix</span>&gt;</span><br>                        <span class="hljs-comment">&lt;!-- 项目启动类 --&gt;</span>                       <span class="hljs-tag">&lt;<span class="hljs-name">mainClass</span>&gt;</span>vip.codehome.springboot.tutorials.SpringbootTutorialsApplication<span class="hljs-tag">&lt;/<span class="hljs-name">mainClass</span>&gt;</span><br>                    <span class="hljs-tag">&lt;/<span class="hljs-name">manifest</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">archive</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>        <span class="hljs-comment">&lt;!--拷贝依赖到jar外面的lib目录--&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-dependency-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">executions</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">execution</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>copy-lib<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">phase</span>&gt;</span>package<span class="hljs-tag">&lt;/<span class="hljs-name">phase</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">goals</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">goal</span>&gt;</span>copy-dependencies<span class="hljs-tag">&lt;/<span class="hljs-name">goal</span>&gt;</span><br>                    <span class="hljs-tag">&lt;/<span class="hljs-name">goals</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">outputDirectory</span>&gt;</span>target/lib<span class="hljs-tag">&lt;/<span class="hljs-name">outputDirectory</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">excludeTransitive</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">excludeTransitive</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">stripVersion</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">stripVersion</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">includeScope</span>&gt;</span>runtime<span class="hljs-tag">&lt;/<span class="hljs-name">includeScope</span>&gt;</span><br>                    <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">execution</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">executions</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>​	项目打包时会在target目录生成lib依赖包跟项目jar包，部署时将项目 <strong>jar</strong> 包以及 <strong>lib</strong> 文件夹上传到服务器上，使用java -jar 命令启动即可。如果后续仅仅修改了项目代码，只需上传替换项目 <strong>jar</strong> 包。</p>
+<p><img src="/img/spring-package.png" alt="spring-package"></p>
+<p><strong>千里之行，始于足下。这里是SpringBoot教程系列第十八篇，所有项目源码均可以在我的<a target="_blank" rel="noopener" href="https://github.com/mytianya/springboot-tutorials" title="GitHub">GitHub</a>上面下载源码。</strong></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-24T18:00:48.000Z" title="2023/9/25 2:00:48">2023-09-25</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.011Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/java/">java</a></span><span class="level-item">6 分钟读完 (大约897个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/09/25/springboot/SpringBoot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A%E8%BF%9E%E6%8E%A5%E6%B1%A0%E9%85%8D%E7%BD%AE/">SpringBoot2.x基础教程：连接池配置</a></p><div class="content"><h2 id="HikariCP"><a href="#HikariCP" class="headerlink" title="HikariCP"></a>HikariCP</h2><h2 id="连接池基本配置"><a href="#连接池基本配置" class="headerlink" title="连接池基本配置"></a>连接池基本配置</h2><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment">#数据源驱动名称</span><br><span class="hljs-attr">spring.datasource.driver-class-name</span>=<span class="hljs-string">com.mysql.jdbc.Driver</span><br><span class="hljs-comment">#连接池类型</span><br><span class="hljs-attr">spring.datasource.type</span>=<span class="hljs-string">com.zaxxer.hikari.HikariDataSource</span><br><span class="hljs-comment">#数据源地址</span><br><span class="hljs-attr">spring.datasource.url</span>=<span class="hljs-string">jdbc:mysql://localhost:3306/test</span><br><span class="hljs-comment">#数据源连接名</span><br><span class="hljs-attr">spring.datasource.username</span>=<span class="hljs-string">root</span><br><span class="hljs-comment">#数据源地址</span><br><span class="hljs-attr">spring.datasource.password</span>=<span class="hljs-string">123456</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="HikariCP配置"><a href="#HikariCP配置" class="headerlink" title="HikariCP配置"></a>HikariCP配置</h2><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment">#最小空闲连接</span><br><span class="hljs-attr">spring.datasource.hikari.mininum-idle</span>=<span class="hljs-string">10</span><br><span class="hljs-comment">#最大连接数</span><br><span class="hljs-attr">spring.datasource.hikari.maximun-pool-size</span>=<span class="hljs-string">10</span><br><span class="hljs-comment">#空闲超时时间，这个属性用来控制空闲连接允许保留在连接池中的最大时间，这个属性只有在minimumIdle（最小空闲连接数）小于maximumPoolSize(最大连接数)时才会生效,空闲连接断开会有15s-30s的延迟变动时间.在这个超时时间之前空闲连接永远不会断开,当连接池达到minimumIdle,连接将永远不会断开，即使处于闲置状态.值为0表示空闲连接将永远不会从连接池中移除，最小值为10000ms （10s),默认值为600000(10min)</span><br><span class="hljs-attr">spring.datasource.idle-timeout</span>=<span class="hljs-string">300000</span><br><span class="hljs-comment">#最大生命周期.这个属性用来控制连接池中连接的最大生命周期,一个使用中的连接永远不会被断开,只有当它处于关闭状态然后才会被移除.推荐设置比任何数据库或基础设施规定的连接时间限制少至少30秒。 值为0表示没有最大寿命（无限寿命）， 默认：1800000（30分钟）,由于HikariCP的housekeeper默认每30s运行一次,以维护minimumIdle最小空闲连接数，它可能添加新连接或者断开空闲连接，所以你必须设置maxLifetime属性比（mysql)wait_timeout时间少一些来避免 broken connection / exceptions.意思就是说比如mysql wait_timeout为10min,此时有一个连接由于达到超时时间，mysql主动断开了连接，而HakariCP仍然持有此连接，如果再使用此连接去请求数据库则会发生异常,设置maxLifetime最大生命周期比wait_timeout少30s后,就能确保再housekeeper运行期间提前断开此连接，避免发生异常.</span><br><span class="hljs-attr">spring.datasource.hikari.max-lifetime</span>=<span class="hljs-string">600000</span><br><span class="hljs-comment">#连接池名称</span><br><span class="hljs-attr">spring.datasource.hikari.poolName</span>=<span class="hljs-string">CDHikariPool</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Druid"><a href="#Druid" class="headerlink" title="Druid"></a>Druid</h2><h3 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>druid-spring-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.1.17<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Druid配置"><a href="#Druid配置" class="headerlink" title="Druid配置"></a>Druid配置</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">datasource:</span><br>    <span class="hljs-attr">driver-class-name:</span> <span class="hljs-string">oracle.jdbc.OracleDriver</span><br>    <span class="hljs-attr">maxActive:</span> <span class="hljs-number">20</span><br>    <span class="hljs-attr">type:</span> <span class="hljs-string">com.alibaba.druid.pool.DruidDataSource</span><br>    <span class="hljs-attr">url:</span> <span class="hljs-string">jdbc:oracle:thin:@192.28.4.21:1521:fdp1</span><br>    <span class="hljs-attr">username:</span> <span class="hljs-string">imf</span><br>    <span class="hljs-attr">password:</span> <span class="hljs-string">ca2804</span><br>    <span class="hljs-attr">druid:</span><br>      <span class="hljs-attr">filters:</span> <span class="hljs-string">stat,wall,slf4j</span><br>      <span class="hljs-comment"># 通过 connectProperties 属性来打开 mergeSql 功能；慢 SQL 记录</span><br>      <span class="hljs-attr">connectionProperties:</span> <span class="hljs-string">druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000</span><br>      <span class="hljs-attr">initial-size:</span> <span class="hljs-number">20</span><br>      <span class="hljs-attr">max-active:</span> <span class="hljs-number">20</span><br>      <span class="hljs-attr">min-idle:</span> <span class="hljs-number">20</span><br>      <span class="hljs-attr">max-wait:</span> <span class="hljs-number">60000</span><br>      <span class="hljs-comment">#是否缓存preparedStatement，也就是PSCache。PSCache对支持游标的数据库性能提升巨大，比如说oracle。在mysql下建议关闭</span><br>      <span class="hljs-attr">pool-prepared-statements:</span> <span class="hljs-literal">true</span><br>      <span class="hljs-comment">#要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true。在Druid中，不会存在Oracle下PSCache占用内存过多的问题，可以把这个数值配置大一些，比如说100</span><br>      <span class="hljs-attr">max-pool-prepared-statement-per-connection-size:</span> <span class="hljs-number">100</span><br>      <span class="hljs-comment">#测试连接</span><br>      <span class="hljs-attr">validation-query:</span> <span class="hljs-string">select</span> <span class="hljs-string">&#x27;x&#x27;</span> <span class="hljs-string">from</span> <span class="hljs-string">dual</span><br>      <span class="hljs-attr">validation-query-timeout:</span> <span class="hljs-number">10</span><br>      <span class="hljs-comment">#申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。</span><br>      <span class="hljs-attr">test-on-borrow:</span> <span class="hljs-literal">true</span><br>      <span class="hljs-attr">test-while-idle:</span> <span class="hljs-literal">true</span><br>      <span class="hljs-comment">#归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能</span><br>      <span class="hljs-attr">test-on-return:</span> <span class="hljs-literal">false</span><br>      <span class="hljs-attr">web-stat-filter:</span><br>        <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>        <span class="hljs-attr">url-pattern:</span> <span class="hljs-string">&quot;/*&quot;</span><br>        <span class="hljs-attr">exclusions:</span> <span class="hljs-string">&quot;*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*&quot;</span><br>      <span class="hljs-attr">stat-view-servlet:</span><br>        <span class="hljs-attr">url-pattern:</span> <span class="hljs-string">&quot;/druid/*&quot;</span><br>        <span class="hljs-attr">login-username:</span> <span class="hljs-string">atc</span><br>        <span class="hljs-attr">login-password:</span> <span class="hljs-string">atc4</span><br>        <span class="hljs-attr">reset-enable:</span> <span class="hljs-literal">false</span><br>        <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Druid监控页面"><a href="#Druid监控页面" class="headerlink" title="Druid监控页面"></a>Druid监控页面</h3><p>浏览器访问应用地址http:&#x2F;&#x2F;<ip>:<port>&#x2F;druid&#x2F;login.html即可以访问监控页面。</p>
+<p><img src="/img/druid-monitor.png" alt="image-20210706162306080"></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-24T18:00:38.000Z" title="2023/9/25 2:00:38">2023-09-25</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.012Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/java/">java</a></span><span class="level-item">6 分钟读完 (大约952个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/09/25/springboot/SpringBoot%E9%9B%86%E6%88%90Quartz/">Springboot2.x基础教程：SpringBoot集成Quartz</a></p><div class="content"><h2 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-quartz<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Quartz配置"><a href="#Quartz配置" class="headerlink" title="Quartz配置"></a>Quartz配置</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">quartz:</span><br>    <span class="hljs-attr">properties:</span><br>      <span class="hljs-attr">org:</span><br>        <span class="hljs-attr">quartz:</span><br>          <span class="hljs-attr">scheduler:</span><br>            <span class="hljs-attr">instanceName:</span> <span class="hljs-string">clusteredScheduler</span> <span class="hljs-comment">#调度器实例名称</span><br>            <span class="hljs-attr">instanceId:</span> <span class="hljs-string">AUTO</span> <span class="hljs-comment">#调度器实例编号自动生成</span><br>          <span class="hljs-attr">jobStore:</span><br>            <span class="hljs-attr">class:</span> <span class="hljs-string">org.quartz.impl.jdbcjobstore.JobStoreTX</span> <span class="hljs-comment">#持久化方式配置</span><br>            <span class="hljs-attr">driverDelegateClass:</span> <span class="hljs-string">org.quartz.impl.jdbcjobstore.StdJDBCDelegate</span> <span class="hljs-comment">#持久化方式配置数据驱动，MySQL数据库</span><br>            <span class="hljs-attr">tablePrefix:</span> <span class="hljs-string">qrtz_</span> <span class="hljs-comment">#quartz相关数据表前缀名</span><br>            <span class="hljs-attr">isClustered:</span> <span class="hljs-literal">true</span> <span class="hljs-comment">#开启分布式部署</span><br>            <span class="hljs-attr">clusterCheckinInterval:</span> <span class="hljs-number">10000</span> <span class="hljs-comment">#分布式节点有效性检查时间间隔，单位：毫秒</span><br>            <span class="hljs-attr">useProperties:</span> <span class="hljs-literal">false</span> <span class="hljs-comment">#配置是否使用</span><br>          <span class="hljs-attr">threadPool:</span><br>            <span class="hljs-attr">class:</span> <span class="hljs-string">org.quartz.simpl.SimpleThreadPool</span> <span class="hljs-comment">#线程池实现类</span><br>            <span class="hljs-attr">threadCount:</span> <span class="hljs-number">10</span> <span class="hljs-comment">#执行最大并发线程数量</span><br>            <span class="hljs-attr">threadPriority:</span> <span class="hljs-number">5</span> <span class="hljs-comment">#线程优先级</span><br>            <span class="hljs-attr">threadsInheritContextClassLoaderOfInitializingThread:</span> <span class="hljs-literal">true</span> <span class="hljs-comment">#配置是否启动自动加载数据库内的定时任务，默认true</span><br>    <span class="hljs-attr">job-store-type:</span> <span class="hljs-string">jdbc</span><br>    <span class="hljs-attr">overwrite-existing-jobs:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Quartz-SpringBoot使用"><a href="#Quartz-SpringBoot使用" class="headerlink" title="Quartz SpringBoot使用"></a>Quartz SpringBoot使用</h2><p>​	DataCheckJob继承 Job重写execute方法，这里**与springboot2.x集成,需要注入DataMapper Bean,直接使用@Autowired强制注入,或者使用构造函数注入即可，其他低版本的则会出现bean注入不了的情况。需要自己实现AdaptableJobFactory注入bean **</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Slf4j</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DataCheckJob</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">QuartzJobBean</span> &#123;<br>  <span class="hljs-meta">@Autowired</span><br>  DataMapper dataMapper;<br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">execute</span><span class="hljs-params">(JobExecutionContext jobExecutionContext)</span> <span class="hljs-keyword">throws</span> JobExecutionException &#123;<br>    dataMapper.check();<br>  &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>配置DataCheckJob与任务的触发器。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">JobConfig</span> &#123;<br>  <span class="hljs-meta">@Bean</span><br>  <span class="hljs-keyword">public</span> JobDetail <span class="hljs-title function_">dataCheckJobDetail</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-keyword">return</span> JobBuilder.newJob(DataCheckJob.class).storeDurably().build();<br>  &#125;<br>  <span class="hljs-meta">@Bean</span><br>  <span class="hljs-keyword">public</span> Trigger <span class="hljs-title function_">dataCheckTrigger</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-keyword">return</span> TriggerBuilder.newTrigger().forJob(dataCheckJobDetail()).withIdentity(<span class="hljs-string">&quot;DataCheckJob&quot;</span>)<br>        .withSchedule(CronScheduleBuilder.cronSchedule(<span class="hljs-string">&quot;0 37 11 ? * *&quot;</span>)).build();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Quartz表说明"><a href="#Quartz表说明" class="headerlink" title="Quartz表说明"></a>Quartz表说明</h2><h3 id="qrtz-blob-triggers"><a href="#qrtz-blob-triggers" class="headerlink" title="qrtz_blob_triggers"></a>qrtz_blob_triggers</h3><p>​	自定义的triggers使用blog类型进行存储，非自定义的triggers不会存放在此表中，Quartz提供的triggers包括：CronTrigger，CalendarIntervalTrigger，<br>DailyTimeIntervalTrigger以及SimpleTrigger，这几个trigger信息会保存在后面的几张表中；</p>
+<h3 id="qrtz-cron-triggers"><a href="#qrtz-cron-triggers" class="headerlink" title="qrtz_cron_triggers"></a>qrtz_cron_triggers</h3><p>存放CronTrigger类型的触发器实例</p>
+<p><img src="/img/qrtz_cron_triggers.png" alt="qrtz_cron_triggers"></p>
+<h2 id="qrtz-simple-triggers"><a href="#qrtz-simple-triggers" class="headerlink" title="qrtz_simple_triggers"></a>qrtz_simple_triggers</h2><p>存储SimpleTrigger</p>
+<h3 id="qrtz-simprop-triggers"><a href="#qrtz-simprop-triggers" class="headerlink" title="qrtz_simprop_triggers"></a>qrtz_simprop_triggers</h3><p>存储CalendarIntervalTrigger和DailyTimeIntervalTrigger两种类型的触发器</p>
+<h3 id="qrtz-fired-triggers"><a href="#qrtz-fired-triggers" class="headerlink" title="qrtz_fired_triggers"></a>qrtz_fired_triggers</h3><p>​	存储已经触发的trigger相关信息，trigger随着时间的推移状态发生变化，直到最后trigger执行完成，从表中被删除。</p>
+<p>相同的trigger和task，每触发一次都会创建一个实例；从刚被创建的ACQUIRED状态，到EXECUTING状态，最后执行完从数据库中删除。</p>
+<p><img src="/img/qrtz_fired_triggers.png" alt="qrtz_fired_triggers"></p>
+<h3 id="qrtz-triggers"><a href="#qrtz-triggers" class="headerlink" title="qrtz_triggers"></a>qrtz_triggers</h3><p>存储定义的trigger，和qrtz_fired_triggers存放的不一样，不管trigger触发了多少次都只有一条记录，TRIGGER_STATE用来标识当前trigger的状态</p>
+<p><img src="/img/qrtz_triggers.png" alt="qrtz_triggers"></p>
+<h3 id="qrtz-job-details"><a href="#qrtz-job-details" class="headerlink" title="qrtz_job_details"></a>qrtz_job_details</h3><p>存储jobDetails信息，相关信息在定义的时候指定。</p>
+<p><img src="/img/qrtz_job_details.png"></p>
+<h3 id="qrtz-calendars"><a href="#qrtz-calendars" class="headerlink" title="qrtz_calendars"></a>qrtz_calendars</h3><p>​	Quartz为我们提供了日历的功能，可以自己定义一个时间段，可以控制触发器在这个时间段内触发或者不触发；现在提供6种类型：AnnualCalendar，CronCalendar，DailyCalendar，HolidayCalendar，MonthlyCalendar，WeeklyCalendar；</p>
+<h3 id="qrtz-paused-trigger-grps"><a href="#qrtz-paused-trigger-grps" class="headerlink" title="qrtz_paused_trigger_grps"></a>qrtz_paused_trigger_grps</h3><p>存放暂停的触发器</p>
+<h3 id="qrtz-scheduler-state"><a href="#qrtz-scheduler-state" class="headerlink" title="qrtz_scheduler_state"></a>qrtz_scheduler_state</h3><p>存储所有节点的scheduler，会定期检查scheduler是否失效，启动多个scheduler。</p>
+<p><img src="/img/qrtz_scheduler_state.png"></p>
+<h3 id="qrtz-locks"><a href="#qrtz-locks" class="headerlink" title="qrtz_locks"></a>qrtz_locks</h3><p>Quartz提供的锁表，为多个节点调度提供分布式锁，实现分布式调度，默认有2个锁。</p>
+<p>​	&#x2F;img&#x2F;<br>​	TRIGGER_ACCESS主要用在TRIGGER被调度的时候，保证只有一个节点去执行调度；</p>
+<h2 id="Quartz表手动生成"><a href="#Quartz表手动生成" class="headerlink" title="Quartz表手动生成"></a>Quartz表手动生成</h2><p>实际在使用Quartz过程中数据库中的表通常因为权限不能够自动生成，通常配置initialize-schema为never。</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">spring.quartz.jdbc.initialize-schema</span>=<span class="hljs-string">never|always</span><br></code></pre></td></tr></table></figure>
+
+<p>在quartz的jar的org&#x2F;quartz&#x2F;impl&#x2F;jdbcjobstore包中有对应各种关系数据库的数据库生成脚本。有时候默认的quartz-sql对于最新的数据库，比如oracle19c不能很好兼容，需要我们自己修改对应SQL语句。</p>
+<p><img src="/img/quartz-table.png" alt="quartz-table"></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-24T18:00:20.000Z" title="2023/9/25 2:00:20">2023-09-25</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.011Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/java/">java</a></span><span class="level-item">6 分钟读完 (大约879个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/09/25/springboot/SpringBoot%E9%80%9A%E8%BF%87proguard-maven-plugin%E6%8F%92%E4%BB%B6%E8%BF%9B%E8%A1%8C%E5%AE%9E%E9%99%85%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81%E6%B7%B7%E6%B7%86%EF%BC%8C%E5%AE%9E%E6%B5%8B%E5%8F%AF%E7%94%A8/">SpringBoot通过proguard-maven-plugin插件进行实际项目代码混淆，实测可用</a></p><div class="content"><blockquote>
+<p>本文主要研究下如何使用proguard-maven-plugin插件混淆springboot代码。工程代码是实际跑在线上的Springboot2.x项目，踩过N个坑，最后实测成功。</p>
+</blockquote>
+<h2 id="先说贴出成功的配置"><a href="#先说贴出成功的配置" class="headerlink" title="先说贴出成功的配置"></a>先说贴出成功的配置</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">finalName</span>&gt;</span>spring<span class="hljs-tag">&lt;/<span class="hljs-name">finalName</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">resources</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">resource</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">directory</span>&gt;</span>$&#123;basedir&#125;/src/main/java<span class="hljs-tag">&lt;/<span class="hljs-name">directory</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">includes</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">include</span>&gt;</span>**/*.xml<span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">includes</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">resource</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">resource</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">directory</span>&gt;</span>$&#123;basedir&#125;/src/main/resources<span class="hljs-tag">&lt;/<span class="hljs-name">directory</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">filtering</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">filtering</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">excludes</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">exclude</span>&gt;</span>**/application-*.yml<span class="hljs-tag">&lt;/<span class="hljs-name">exclude</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">excludes</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">resource</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">resources</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>        <span class="hljs-comment">&lt;!--代码混淆--&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.github.wvengen<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>proguard-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">executions</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">execution</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">phase</span>&gt;</span>package<span class="hljs-tag">&lt;/<span class="hljs-name">phase</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">goals</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">goal</span>&gt;</span>proguard<span class="hljs-tag">&lt;/<span class="hljs-name">goal</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">goals</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">execution</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">executions</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">proguardVersion</span>&gt;</span>6.0.3<span class="hljs-tag">&lt;/<span class="hljs-name">proguardVersion</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">injar</span>&gt;</span>$&#123;project.build.finalName&#125;.jar<span class="hljs-tag">&lt;/<span class="hljs-name">injar</span>&gt;</span><br>                <span class="hljs-comment">&lt;!-- &lt;injar&gt;classes&lt;/injar&gt; --&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">outjar</span>&gt;</span>$&#123;project.build.finalName&#125;.jar<span class="hljs-tag">&lt;/<span class="hljs-name">outjar</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">obfuscate</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">obfuscate</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">options</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!--  ##默认是开启的，这里关闭shrink，即不删除没有使用的类/成员--&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-dontshrink<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!-- ##默认是开启的，这里关闭字节码级别的优化--&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-dontoptimize<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!--##对于类成员的命名的混淆采取唯一策略--&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-useuniqueclassmembernames<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!--- 混淆类名之后，对使用Class.forName(&#x27;className&#x27;)之类的地方进行相应替代--&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-adaptclassstrings <span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-ignorewarnings<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!-- 混淆时不生成大小写混合的类名，默认是可以大小写混合--&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-dontusemixedcaseclassnames<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!-- This option will replace all strings in reflections method invocations with new class names.</span><br><span class="hljs-comment">                         For example, invokes Class.forName(&#x27;className&#x27;)--&gt;</span><br>                    <span class="hljs-comment">&lt;!-- &lt;option&gt;-adaptclassstrings&lt;/option&gt; --&gt;</span><br>                    <span class="hljs-comment">&lt;!-- This option will save all original annotations and etc. Otherwise all we be removed from files.--&gt;</span><br>                    <span class="hljs-comment">&lt;!-- 不混淆所有特殊的类--&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-keepattributes Exceptions,InnerClasses,Signature,Deprecated,<br>                        SourceFile,LineNumberTable,*Annotation*,EnclosingMethod<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!-- This option will save all original names in interfaces (without obfuscate).--&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-keepnames interface **<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!-- This option will save all original methods parameters in files defined in -keep sections,</span><br><span class="hljs-comment">                         otherwise all parameter names will be obfuscate.--&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-keepparameternames<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!-- &lt;option&gt;-libraryjars **&lt;/option&gt; --&gt;</span><br>                    <span class="hljs-comment">&lt;!-- This option will save all original class files (without obfuscate) but obfuscate all in domain package.--&gt;</span><br>                    <span class="hljs-comment">&lt;!--&lt;option&gt;-keep class !com.slm.proguard.example.spring.boot.domain.** &#123; *; &#125;&lt;/option&gt;--&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-keep class !com.dsys.project.** &#123; *; &#125;<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-keep class com.dsys.project.App &#123; *; &#125;<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-keep class com.dsys.project.config.** &#123; *; &#125;<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!--保留不然Mybatis报错--&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-keep class com.dsys.project.entity.** &#123; *; &#125;<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-keep class com.dsys.project.utils.PageRes &#123; *; &#125;<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-keep class com.dsys.project.controller.** &#123; *; &#125;<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-keep class com.dsys.project.mp.controller.** &#123; *; &#125;<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-keep class com.dsys.project.mp.config.** &#123; *; &#125;<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-keep class com.dsys.project.dto.** &#123; *; &#125;<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-keep class * implements java.io.Serializable <span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!-- This option will save all original class files (without obfuscate) in service package--&gt;</span><br>                    <span class="hljs-comment">&lt;!--&lt;option&gt;-keep class com.slm.proguard.example.spring.boot.service &#123; *; &#125;&lt;/option&gt;--&gt;</span><br>                    <span class="hljs-comment">&lt;!-- This option will save all original interfaces files (without obfuscate) in all packages.--&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-keep interface * extends * &#123; *; &#125;<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!-- &lt;option&gt;-keep @org.springframework.stereotype.Service class *&lt;/option&gt; --&gt;</span><br>                    <span class="hljs-comment">&lt;!-- This option will save all original defined annotations in all class in all packages.--&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>-keepclassmembers class * &#123;<br>                        <span class="hljs-comment">&lt;!-- @org.springframework.beans.factory.annotation.Autowired *; --&gt;</span><br>                        @org.springframework.beans.factory.annotation.Value *;<br>                        &#125;<br>                    <span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">options</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">libs</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!-- Include main JAVA library required.--&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">lib</span>&gt;</span>$&#123;java.home&#125;/lib/rt.jar<span class="hljs-tag">&lt;/<span class="hljs-name">lib</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">libs</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>net.sf.proguard<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>proguard-base<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>6.2.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">executions</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">execution</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!-- &lt;phase&gt;none&lt;/phase&gt; --&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">goals</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">goal</span>&gt;</span>repackage<span class="hljs-tag">&lt;/<span class="hljs-name">goal</span>&gt;</span><br>                    <span class="hljs-tag">&lt;/<span class="hljs-name">goals</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">mainClass</span>&gt;</span>com.dsys.project.App<span class="hljs-tag">&lt;/<span class="hljs-name">mainClass</span>&gt;</span><br>                    <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">execution</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">executions</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="主要的坑-springboot项目配置注意项"><a href="#主要的坑-springboot项目配置注意项" class="headerlink" title="主要的坑,springboot项目配置注意项"></a>主要的坑,springboot项目配置注意项</h2><h3 id="启动类不能混淆"><a href="#启动类不能混淆" class="headerlink" title="启动类不能混淆"></a>启动类不能混淆</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//混淆会把Bean的名称重复，这里要求SpringBoot生成唯一的BeanName</span><br><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-meta">@MapperScan(&quot;com.dsys.project.dao&quot;)</span><br><span class="hljs-meta">@ComponentScan(&quot;com.dsys&quot;)</span><br><span class="hljs-meta">@ServletComponentScan(&quot;com.dsys&quot;)</span><br><span class="hljs-meta">@EnableCaching</span><br><span class="hljs-meta">@EnableAsync</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">App</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CustomGenerator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">BeanNameGenerator</span> &#123;<br><br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-keyword">public</span> String <span class="hljs-title function_">generateBeanName</span><span class="hljs-params">(BeanDefinition definition, BeanDefinitionRegistry registry)</span> &#123;<br>            <span class="hljs-keyword">return</span> definition.getBeanClassName();<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">/***</span><br><span class="hljs-comment">     * 由于proguard混淆貌似不能指定在basePackages下面类名混淆后唯一，不同包名经常有a.class，b.class,c.class之类重复的类名，因此spring容器初始化bean的时候会报错。</span><br><span class="hljs-comment">     *庆幸的是，我们可以通过改变spring的bean的命名策略来解决这个问题，把包名带上，就唯一了</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> args</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">SpringApplicationBuilder</span>(App.class)<br>                .beanNameGenerator(<span class="hljs-keyword">new</span> <span class="hljs-title class_">CustomGenerator</span>())<br>                .run(args);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="实体类一定要保留"><a href="#实体类一定要保留" class="headerlink" title="实体类一定要保留"></a>实体类一定要保留</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">解释：这里的实体类包括各种Entity,Dto等。保留的原因有：<br><span class="hljs-bullet">1.</span> Mybatis的XML的ResultType需要实体类的全路径<br><span class="hljs-bullet">2.</span> Jackson需要序列化，字段混淆前端会找不到<br></code></pre></td></tr></table></figure>
+
+<h3 id="Controller一定要保留"><a href="#Controller一定要保留" class="headerlink" title="Controller一定要保留"></a>Controller一定要保留</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">解释：Controller混淆了前端找不到请求路径，模板引擎例如thymeleaf找不到路径<br></code></pre></td></tr></table></figure>
+
+<h3 id="SpringBoot-JavaConfig配置不能混淆"><a href="#SpringBoot-JavaConfig配置不能混淆" class="headerlink" title="SpringBoot JavaConfig配置不能混淆"></a>SpringBoot JavaConfig配置不能混淆</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//解释：例如下面的JavaConfig配置，混淆后配置出错</span><br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@ConfigurationProperties(prefix = &quot;wx.mp&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WxMpProperties</span> &#123;<br>    <span class="hljs-keyword">private</span> List&lt;MpConfig&gt; configs;<br><br>    <span class="hljs-meta">@Data</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MpConfig</span> &#123;<br>        <span class="hljs-keyword">private</span> String appId;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>其他配置参考以上的注释，其他照抄修改成自己的项目对应路径即可，使用JD-GUI反编译查看效果。</strong></p>
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/page/0/">上一页</a></div><div class="pagination-next"><a href="/page/2/">下一页</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/">1</a></li><li><a class="pagination-link" href="/page/2/">2</a></li><li><a class="pagination-link" href="/page/3/">3</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/avatar.png" alt="mytianya"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">mytianya</p><p class="is-size-6 is-block">全栈工程师</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">30</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">5</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">6</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/mytianya" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/mytianya"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/java/"><span class="level-start"><span class="level-item">java</span></span><span class="level-end"><span class="level-item tag">26</span></span></a></li><li><a class="level is-mobile" href="/categories/oracle/"><span class="level-start"><span class="level-item">oracle</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%9D%82%E8%B0%88/"><span class="level-start"><span class="level-item">杂谈</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%B5%81%E5%AA%92%E4%BD%93/"><span class="level-start"><span class="level-item">流媒体</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%AE%97%E6%B3%95/"><span class="level-start"><span class="level-item">算法</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-27T18:00:08.000Z">2023-09-28</time></p><p class="title"><a href="/2023/09/28/oracle/ORA-00257%E5%BD%92%E6%A1%A3%E7%A8%8B%E5%BA%8F%E9%94%99%E8%AF%AF/">ORA-00257归档程序错误</a></p><p class="categories"><a href="/categories/oracle/">oracle</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-26T18:00:08.000Z">2023-09-27</time></p><p class="title"><a href="/2023/09/27/alg/%E7%AE%97%E6%B3%95%EF%BC%9A%E6%B1%82%E6%9C%80%E5%A4%9A%E7%BA%BF%E6%AE%B5%E9%87%8D%E5%90%88%E6%AC%A1%E6%95%B0/">求最多线段重合次数</a></p><p class="categories"><a href="/categories/%E7%AE%97%E6%B3%95/">算法</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-26T18:00:08.000Z">2023-09-27</time></p><p class="title"><a href="/2023/09/27/video/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%82%B9%E6%92%AD%E8%B7%9F%E7%9B%B4%E6%92%AD%E6%B5%81%E5%AA%92%E4%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%A9%E7%8E%A9/">搭建一个点播跟直播流媒体服务器玩玩</a></p><p class="categories"><a href="/categories/%E6%B5%81%E5%AA%92%E4%BD%93/">流媒体</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-25T18:00:18.000Z">2023-09-26</time></p><p class="title"><a href="/2023/09/26/springcloud/SpringCloud%E7%89%88%E6%9C%AC%E6%96%B0%E6%97%A7%E5%91%BD%E5%90%8D%E6%96%B9%E5%BC%8F/">SpringCloud版本新旧命名方式</a></p><p class="categories"><a href="/categories/java/">java</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-25T18:00:08.000Z">2023-09-26</time></p><p class="title"><a href="/2023/09/26/springcloud/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/">微服务架构简介</a></p><p class="categories"><a href="/categories/java/">java</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">29</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/ora-00257/"><span class="tag">ora-00257</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/springboot/"><span class="tag">springboot</span><span class="tag">24</span></a></div><div class="control"><a class="tags has-addons" href="/tags/springcloud/"><span class="tag">springcloud</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%8D%9A%E5%AE%A2/"><span class="tag">博客</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B0%8F%E6%A0%B9%E5%A0%86/"><span class="tag">小根堆</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/"><span class="tag">音视频</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/avatar.png" alt="mytianya" height="28"></a><p class="is-size-7"><span>&copy; 2024 mytianya</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

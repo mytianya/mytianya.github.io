@@ -1,50 +1,159 @@
-<!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Springboot2.x基础教程：@Async开启异步任务 - mytianya</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="mytianya"><meta name="msapplication-TileImage" content="favcion.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="mytianya"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="晚来天欲雪，能饮一杯无"><meta property="og:type" content="blog"><meta property="og:title" content="Springboot2.x基础教程：@Async开启异步任务"><meta property="og:url" content="https://mytianya.github.io/2023/09/24/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A@Async%E5%BC%80%E5%90%AF%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/"><meta property="og:site_name" content="mytianya"><meta property="og:description" content="晚来天欲雪，能饮一杯无"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://mytianya.github.io/img/thread-pool-params.png"><meta property="og:image" content="https://mytianya.github.io/img/thread-pool-work.png"><meta property="og:image" content="https://mytianya.github.io/img/executor.png"><meta property="og:image" content="https://mytianya.github.io/img/ThreadPoolTaskExecutor.png"><meta property="article:published_time" content="2023-09-24T02:54:08.000Z"><meta property="article:modified_time" content="2024-02-27T06:59:45.012Z"><meta property="article:author" content="mytianya"><meta property="article:tag" content="springboot"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://mytianya.github.io/img/thread-pool-params.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://mytianya.github.io/2023/09/24/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A@Async%E5%BC%80%E5%90%AF%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/"},"headline":"Springboot2.x基础教程：@Async开启异步任务","image":["https://mytianya.github.io/img/thread-pool-params.png","https://mytianya.github.io/img/thread-pool-work.png","https://mytianya.github.io/img/executor.png","https://mytianya.github.io/img/ThreadPoolTaskExecutor.png"],"datePublished":"2023-09-24T02:54:08.000Z","dateModified":"2024-02-27T06:59:45.012Z","author":{"@type":"Person","name":"mytianya"},"publisher":{"@type":"Organization","name":"mytianya","logo":{"@type":"ImageObject","url":"https://mytianya.github.io/2023/09/24/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A@Async%E5%BC%80%E5%90%AF%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/avatar.png"}},"description":"在开发项目中通常我们有场景需要开启异步任务。比如在用户注册成功时，需要发放一些优惠券。此时为了不让这些额外的操作影响用户的注册流程，我们通常开启一个线程异步去执行发放优惠券逻辑。通常我们需要自己定义一个线程池，开启一个线程任务。在Springboot中对其进行了简化处理，自动配置一个 org.springframework.core.task.TaskExecutor类型任务线程池，当我们开启@"}</script><link rel="canonical" href="https://mytianya.github.io/2023/09/24/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A@Async%E5%BC%80%E5%90%AF%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/"><link rel="icon" href="/favcion.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!-- hexo injector head_end start --><script>
-  (function () {
-      function switchTab() {
-          if (!location.hash) {
-            return;
-          }
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Springboot2.x基础教程：@Async开启异步任务" />
+    <meta name="hexo-theme-A4" content="v1.8.9" />
+    <link rel="alternate icon" type="image/webp" href="/avatar.png">
+    <title>mytianya | 晚来天欲雪，能饮一杯无</title>
 
-          const id = '#' + CSS.escape(location.hash.substring(1));
-          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
-          if (!$tabMenu) {
-            return;
-          }
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
 
-          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
-          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
-          Array.from($tabMenuContainer.querySelectorAll('a'))
-              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
-              .forEach($content => $content.classList.add('is-hidden'));
+        
+<link rel="stylesheet" href="/css/reset.css">
 
-          if ($tabMenu) {
-              $tabMenu.parentElement.classList.add('is-active');
-          }
-          const $activeTab = document.querySelector(id);
-          if ($activeTab) {
-              $activeTab.classList.remove('is-hidden');
-          }
-      }
-      switchTab();
-      window.addEventListener('hashchange', switchTab, false);
-  })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/avatar.png" alt="mytianya" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于我</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/mytianya"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-24T02:54:08.000Z" title="2023/9/24 10:54:08">2023-09-24</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.012Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/java/">java</a></span><span class="level-item">12 分钟读完 (大约1857个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">Springboot2.x基础教程：@Async开启异步任务</h1><div class="content"><blockquote>
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/avatar.png" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">mytianya</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Springboot2.x基础教程：@Async开启异步任务
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="post-toc-text">线程池基本知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%9C%BA%E6%99%AF"><span class="post-toc-text">使用线程池场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Executor%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E9%A1%B6%E7%BA%A7%E6%8E%A5%E5%8F%A3"><span class="post-toc-text">Executor线程池的顶级接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ExecutorService%E6%8E%A5%E5%8F%A3%E8%AF%A6%E8%A7%A3"><span class="post-toc-text">ExecutorService接口详解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ThreadPoolExecutor%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90"><span class="post-toc-text">ThreadPoolExecutor参数解析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RejectedExecutionHandler%E6%8B%92%E7%BB%9D%E7%AD%96%E7%95%A5"><span class="post-toc-text">RejectedExecutionHandler拒绝策略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ThreadPoolExecutor%E4%BD%BF%E7%94%A8%E8%A6%81%E7%82%B9"><span class="post-toc-text">ThreadPoolExecutor使用要点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#SpringBoot%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="post-toc-text">SpringBoot线程池</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#SpringBoot%E5%AE%9A%E4%B9%89%E8%87%AA%E5%B7%B1%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="post-toc-text">SpringBoot定义自己的异步线程池</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%A4%E7%A7%8D%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="post-toc-text">两种使用方法</span></a></li></ol></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><blockquote>
 <p>在开发项目中通常我们有场景需要开启异步任务。比如在用户注册成功时，需要发放一些优惠券。此时为了不让这些额外的操作影响用户的注册流程，我们通常开启一个线程异步去执行发放优惠券逻辑。<br>通常我们需要自己定义一个线程池，开启一个线程任务。在Springboot中对其进行了简化处理，自动配置一个 org.springframework.core.task.TaskExecutor类型任务线程池，当我们开启@EnableAsync注解时，在需要执行异步任务的方法添加@Async注解时，该方法自动会开启一个线程去执行。<br>在讲解Springboot如何配置开启异步任务时，我们先简单说明下Java的线程池有关的基本知识。</p>
 </blockquote>
 <h2 id="线程池基本知识"><a href="#线程池基本知识" class="headerlink" title="线程池基本知识"></a>线程池基本知识</h2><h3 id="使用线程池场景"><a href="#使用线程池场景" class="headerlink" title="使用线程池场景"></a>使用线程池场景</h3><p>通常高并发，任务执行时间短的业务创建线程的时间是T1,执行任务的时间是T2，销毁线程的时间是T3,当T1+T2的时间远远大于T2则可以采用线程池，线程池的作用核心在于复用线程，减少线程的创建与销毁的时间开销。<br>方便的统计任务的执行信息，例如完成的任务数量。</p>
 <h3 id="Executor线程池的顶级接口"><a href="#Executor线程池的顶级接口" class="headerlink" title="Executor线程池的顶级接口"></a>Executor线程池的顶级接口</h3><p>Jdk1.5版本以后，便提供线程池供开发人员方便的创建自己的多线程任务。java.util.concurrent.Executor接口为线程池的顶级接口。<br>该接口execute接收一个Runnable线程实例用来执行一个任务。</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-symbol">Executor</span> &#123;<br>    <span class="hljs-built_in">void</span> execute(Runnable command);<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="ExecutorService接口详解"><a href="#ExecutorService接口详解" class="headerlink" title="ExecutorService接口详解"></a>ExecutorService接口详解</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><code class="hljs scss">public interface ExecutorService extends Executor &#123;<br><br>    <span class="hljs-comment">/**关闭线程池不会接收新的任务，内部正在跑的任务和队列里等待的任务，会执行完</span><br><span class="hljs-comment">     */</span><br>    void <span class="hljs-built_in">shutdown</span>();<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 关闭线程池，不会接收新的任务</span><br><span class="hljs-comment">	 * 尝试将正在跑的任务interrupt中断</span><br><span class="hljs-comment">	 * 忽略队列里等待的任务</span><br><span class="hljs-comment">	 * 返回未执行的任务列表</span><br><span class="hljs-comment">     */</span><br>    List&lt;Runnable&gt; <span class="hljs-built_in">shutdownNow</span>();<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回线程池是否被关闭</span><br><span class="hljs-comment">     */</span><br>    boolean <span class="hljs-built_in">isShutdown</span>();<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     *线程池的任务线程是否被中断</span><br><span class="hljs-comment">     */</span><br>    boolean <span class="hljs-built_in">isTerminated</span>();<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">	*接收timeout和TimeUnit两个参数，用于设定超时时间及单位。</span><br><span class="hljs-comment">	* 当等待超过设定时间时，会监测ExecutorService是否已经关闭，若关闭则返回true，否则返回false。和shutdown方法组合使用。</span><br><span class="hljs-comment">     */</span><br>    boolean <span class="hljs-built_in">awaitTermination</span>(long timeout, TimeUnit unit)<br>        throws InterruptedException;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">	 * 提交任务会获取线程的执行结果</span><br><span class="hljs-comment">     */</span><br>    &lt;T&gt; Future&lt;T&gt; <span class="hljs-built_in">submit</span>(Callable&lt;T&gt; task);<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">	* 提交任务会获取线程的T类型的执行结果</span><br><span class="hljs-comment">     */</span><br>    &lt;T&gt; Future&lt;T&gt; <span class="hljs-built_in">submit</span>(Runnable task, T result);<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 提交任务</span><br><span class="hljs-comment">     */</span><br>    Future&lt;?&gt; <span class="hljs-built_in">submit</span>(Runnable task);<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 批量提交返回任务执行结果</span><br><span class="hljs-comment">     */</span><br>    &lt;T&gt; List&lt;Future&lt;T&gt;&gt; <span class="hljs-built_in">invokeAll</span>(Collection&lt;? extends Callable&lt;T&gt;&gt; tasks)<br>        throws InterruptedException;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 批量提交返回任务执行结果</span><br><span class="hljs-comment">	 *增加了超时时间控制，这里的超时时间是针对的所有tasks，而不是单个task的超时时间。</span><br><span class="hljs-comment">	 *如果超时，会取消没有执行完的所有任务，并抛出超时异常</span><br><span class="hljs-comment">     */</span><br>    &lt;T&gt; List&lt;Future&lt;T&gt;&gt; <span class="hljs-built_in">invokeAll</span>(Collection&lt;? extends Callable&lt;T&gt;&gt; tasks,<br>                                  long timeout, TimeUnit unit)<br>        throws InterruptedException;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 取得第一个方法的返回值,当第一个任务结束后，会调用interrupt方法中断其它任务</span><br><span class="hljs-comment">     */</span><br>    &lt;T&gt; T <span class="hljs-built_in">invokeAny</span>(Collection&lt;? extends Callable&lt;T&gt;&gt; tasks)<br>        throws InterruptedException, ExecutionException;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 取得第一个方法的返回值,当第一个任务结束后，会调用interrupt方法中断其它任务</span><br><span class="hljs-comment">	 * 任务执行超时抛出异常</span><br><span class="hljs-comment">     */</span><br>    &lt;T&gt; T <span class="hljs-built_in">invokeAny</span>(Collection&lt;? extends Callable&lt;T&gt;&gt; tasks,<br>                    long timeout, TimeUnit unit)<br>        throws InterruptedException, ExecutionException, TimeoutException;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface Executor &#123;</span><br><span class="line">    void execute(Runnable command);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ExecutorService接口详解"><a href="#ExecutorService接口详解" class="headerlink" title="ExecutorService接口详解"></a>ExecutorService接口详解</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">public interface ExecutorService extends Executor &#123;</span><br><span class="line"></span><br><span class="line">    /**关闭线程池不会接收新的任务，内部正在跑的任务和队列里等待的任务，会执行完</span><br><span class="line">     */</span><br><span class="line">    void shutdown();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 关闭线程池，不会接收新的任务</span><br><span class="line">	 * 尝试将正在跑的任务interrupt中断</span><br><span class="line">	 * 忽略队列里等待的任务</span><br><span class="line">	 * 返回未执行的任务列表</span><br><span class="line">     */</span><br><span class="line">    List&lt;Runnable&gt; shutdownNow();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 返回线程池是否被关闭</span><br><span class="line">     */</span><br><span class="line">    boolean isShutdown();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     *线程池的任务线程是否被中断</span><br><span class="line">     */</span><br><span class="line">    boolean isTerminated();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">	*接收timeout和TimeUnit两个参数，用于设定超时时间及单位。</span><br><span class="line">	* 当等待超过设定时间时，会监测ExecutorService是否已经关闭，若关闭则返回true，否则返回false。和shutdown方法组合使用。</span><br><span class="line">     */</span><br><span class="line">    boolean awaitTermination(long timeout, TimeUnit unit)</span><br><span class="line">        throws InterruptedException;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">	 * 提交任务会获取线程的执行结果</span><br><span class="line">     */</span><br><span class="line">    &lt;T&gt; Future&lt;T&gt; submit(Callable&lt;T&gt; task);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">	* 提交任务会获取线程的T类型的执行结果</span><br><span class="line">     */</span><br><span class="line">    &lt;T&gt; Future&lt;T&gt; submit(Runnable task, T result);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 提交任务</span><br><span class="line">     */</span><br><span class="line">    Future&lt;?&gt; submit(Runnable task);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 批量提交返回任务执行结果</span><br><span class="line">     */</span><br><span class="line">    &lt;T&gt; List&lt;Future&lt;T&gt;&gt; invokeAll(Collection&lt;? extends Callable&lt;T&gt;&gt; tasks)</span><br><span class="line">        throws InterruptedException;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 批量提交返回任务执行结果</span><br><span class="line">	 *增加了超时时间控制，这里的超时时间是针对的所有tasks，而不是单个task的超时时间。</span><br><span class="line">	 *如果超时，会取消没有执行完的所有任务，并抛出超时异常</span><br><span class="line">     */</span><br><span class="line">    &lt;T&gt; List&lt;Future&lt;T&gt;&gt; invokeAll(Collection&lt;? extends Callable&lt;T&gt;&gt; tasks,</span><br><span class="line">                                  long timeout, TimeUnit unit)</span><br><span class="line">        throws InterruptedException;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 取得第一个方法的返回值,当第一个任务结束后，会调用interrupt方法中断其它任务</span><br><span class="line">     */</span><br><span class="line">    &lt;T&gt; T invokeAny(Collection&lt;? extends Callable&lt;T&gt;&gt; tasks)</span><br><span class="line">        throws InterruptedException, ExecutionException;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 取得第一个方法的返回值,当第一个任务结束后，会调用interrupt方法中断其它任务</span><br><span class="line">	 * 任务执行超时抛出异常</span><br><span class="line">     */</span><br><span class="line">    &lt;T&gt; T invokeAny(Collection&lt;? extends Callable&lt;T&gt;&gt; tasks,</span><br><span class="line">                    long timeout, TimeUnit unit)</span><br><span class="line">        throws InterruptedException, ExecutionException, TimeoutException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="ThreadPoolExecutor参数解析"><a href="#ThreadPoolExecutor参数解析" class="headerlink" title="ThreadPoolExecutor参数解析"></a>ThreadPoolExecutor参数解析</h3><p>ThreadPoolExecutor 是用来处理异步任务的一个接口，可以将其理解成为一个线程池和一个任务队列，提交到 ExecutorService 对象的任务会被放入任务队或者直接被线程池中的线程执行并且ThreadPoolExecutor 支持通过调整构造参数来配置不同的任务处理策略。<br>下面贴出ThreadPoolExecutor线程池构造函数代码:</p>
-<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs aspectj"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ThreadPoolExecutor</span><span class="hljs-params">(<span class="hljs-keyword">int</span> corePoolSize,</span></span><br><span class="hljs-params"><span class="hljs-function">                          <span class="hljs-keyword">int</span> maximumPoolSize,</span></span><br><span class="hljs-params"><span class="hljs-function">                          <span class="hljs-keyword">long</span> keepAliveTime,</span></span><br><span class="hljs-params"><span class="hljs-function">                          TimeUnit unit,</span></span><br><span class="hljs-params"><span class="hljs-function">                          BlockingQueue&lt;Runnable&gt; workQueue,</span></span><br><span class="hljs-params"><span class="hljs-function">                          ThreadFactory threadFactory,</span></span><br><span class="hljs-params"><span class="hljs-function">                          RejectedExecutionHandler <span class="hljs-keyword">handler</span>)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (corePoolSize &lt; <span class="hljs-number">0</span> ||<br>        maximumPoolSize &lt;= <span class="hljs-number">0</span> ||<br>        maximumPoolSize &lt; corePoolSize ||<br>        keepAliveTime &lt; <span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException();<br>    <span class="hljs-keyword">if</span> (workQueue == <span class="hljs-keyword">null</span> || threadFactory == <span class="hljs-keyword">null</span> || <span class="hljs-keyword">handler</span> == <span class="hljs-keyword">null</span>)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NullPointerException();<br>    <span class="hljs-keyword">this</span>.acc = System.getSecurityManager() == <span class="hljs-keyword">null</span> ?<br>            <span class="hljs-keyword">null</span> :<br>            AccessController.getContext();<br>    <span class="hljs-keyword">this</span>.corePoolSize = corePoolSize;<br>    <span class="hljs-keyword">this</span>.maximumPoolSize = maximumPoolSize;<br>    <span class="hljs-keyword">this</span>.workQueue = workQueue;<br>    <span class="hljs-keyword">this</span>.keepAliveTime = unit.toNanos(keepAliveTime);<br>    <span class="hljs-keyword">this</span>.threadFactory = threadFactory;<br>    <span class="hljs-keyword">this</span>.<span class="hljs-keyword">handler</span> = <span class="hljs-keyword">handler</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>ThreadPoolExecutor每个入参含义：<br><img src="/img/thread-pool-params.png" alt="thread-pool-params"><br>参数之间的关系：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public ThreadPoolExecutor(int corePoolSize,</span><br><span class="line">                          int maximumPoolSize,</span><br><span class="line">                          long keepAliveTime,</span><br><span class="line">                          TimeUnit unit,</span><br><span class="line">                          BlockingQueue&lt;Runnable&gt; workQueue,</span><br><span class="line">                          ThreadFactory threadFactory,</span><br><span class="line">                          RejectedExecutionHandler handler) &#123;</span><br><span class="line">    if (corePoolSize &lt; 0 ||</span><br><span class="line">        maximumPoolSize &lt;= 0 ||</span><br><span class="line">        maximumPoolSize &lt; corePoolSize ||</span><br><span class="line">        keepAliveTime &lt; 0)</span><br><span class="line">        throw new IllegalArgumentException();</span><br><span class="line">    if (workQueue == null || threadFactory == null || handler == null)</span><br><span class="line">        throw new NullPointerException();</span><br><span class="line">    this.acc = System.getSecurityManager() == null ?</span><br><span class="line">            null :</span><br><span class="line">            AccessController.getContext();</span><br><span class="line">    this.corePoolSize = corePoolSize;</span><br><span class="line">    this.maximumPoolSize = maximumPoolSize;</span><br><span class="line">    this.workQueue = workQueue;</span><br><span class="line">    this.keepAliveTime = unit.toNanos(keepAliveTime);</span><br><span class="line">    this.threadFactory = threadFactory;</span><br><span class="line">    this.handler = handler;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ThreadPoolExecutor每个入参含义：<br><a href="/img/thread-pool-params.png" title="thread-pool-params" class="gallery-item" style="box-shadow: none;"> <img src="/img/thread-pool-params.png" alt="thread-pool-params"></a><br>参数之间的关系：</p>
 <ol>
 <li>从线程池中获取可用线程执行任务，如果没有可用线程则使用ThreadFactory创建新的线程，直到线程数达到corePoolSize限制</li>
 <li>线程池线程数达到corePoolSize以后，新的任务将被放入队列，直到队列不能再容纳更多的任务</li>
 <li>当队列不能再容纳更多的任务以后，会创建新的线程，直到线程数达到maxinumPoolSize限制</li>
-<li>线程数达到maxinumPoolSize限制以后新任务会被拒绝执行，调用 RejectedExecutionHandler 进行处理<br>[<img src="/img/thread-pool-work.png" alt="thread-pool-work"></li>
+<li>线程数达到maxinumPoolSize限制以后新任务会被拒绝执行，调用 RejectedExecutionHandler 进行处理<br>[<a href="/img/thread-pool-work.png" title="thread-pool-work" class="gallery-item" style="box-shadow: none;"> <img src="/img/thread-pool-work.png" alt="thread-pool-work"></a></li>
 </ol>
 <h3 id="RejectedExecutionHandler拒绝策略"><a href="#RejectedExecutionHandler拒绝策略" class="headerlink" title="RejectedExecutionHandler拒绝策略"></a>RejectedExecutionHandler拒绝策略</h3><p>1、AbortPolicy：直接抛出异常，默认策略；<br>2、CallerRunsPolicy：用调用者所在的线程来执行任务；<br>3、DiscardOldestPolicy：丢弃阻塞队列中靠最前的任务，并执行当前任务；<br>4、DiscardPolicy：直接丢弃任务；</p>
 <h3 id="ThreadPoolExecutor使用要点"><a href="#ThreadPoolExecutor使用要点" class="headerlink" title="ThreadPoolExecutor使用要点"></a>ThreadPoolExecutor使用要点</h3><ol>
@@ -52,27 +161,170 @@
 <li>任务队列：任务队列一般使用LinkedBlockingQueue指定大小，配合拒绝策略使用，默认是Integer.Max_VALUE容易内存溢出。</li>
 <li>任务异常： 线程池中任务注意上加上try{}catch{}捕获异常，方便排查问题</li>
 </ol>
-<h2 id="SpringBoot线程池"><a href="#SpringBoot线程池" class="headerlink" title="SpringBoot线程池"></a>SpringBoot线程池</h2><p>org.springframework.core.task.TaskExecutor为Spring异步线程池的接口类，其实质是java.util.concurrent.Executor。<br><img src="/img/executor.png" alt="executor"><br><img src="/img/ThreadPoolTaskExecutor.png" alt="ThreadPoolTaskExecutor"><br>springboot2.3.x默认使用的线程池就是ThreadPoolTaskExecutor，可以通过TaskExecutionProperties进行简单的参数调整</p>
-<h2 id="SpringBoot定义自己的异步线程池"><a href="#SpringBoot定义自己的异步线程池" class="headerlink" title="SpringBoot定义自己的异步线程池"></a>SpringBoot定义自己的异步线程池</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@EnableAsync</span><br><span class="hljs-meta">@Component</span><br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AsyncConfig</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AsyncConfigurer</span> &#123;<br>    <span class="hljs-keyword">public</span> TaskExecutor <span class="hljs-title function_">taskExecutor</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">ThreadPoolTaskExecutor</span> <span class="hljs-variable">executor</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ThreadPoolTaskExecutor</span>();<br>        <span class="hljs-comment">// 设置核心线程数</span><br>        executor.setCorePoolSize(<span class="hljs-number">8</span>);<br>        <span class="hljs-comment">// 设置最大线程数</span><br>        executor.setMaxPoolSize(<span class="hljs-number">16</span>);<br>        <span class="hljs-comment">// 设置队列容量</span><br>        executor.setQueueCapacity(<span class="hljs-number">50</span>);<br>        <span class="hljs-comment">// 设置线程活跃时间（秒）</span><br>        executor.setKeepAliveSeconds(<span class="hljs-number">60</span>);<br>        <span class="hljs-comment">//设置线程池中任务的等待时间，如果超过这个时候还没有销毁就强制销毁，以确保应用最后能够被关闭，而不是阻塞住</span><br>        executor.setAwaitTerminationSeconds(<span class="hljs-number">60</span>);<br>        <span class="hljs-comment">// 设置默认线程名称</span><br>        executor.setThreadNamePrefix(<span class="hljs-string">&quot;CodehomeAsyncTask-&quot;</span>);<br>        <span class="hljs-comment">// 设置拒绝策略</span><br>        executor.setRejectedExecutionHandler(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ThreadPoolExecutor</span>.CallerRunsPolicy());<br>        <span class="hljs-comment">// 等待所有任务结束后再关闭线程池</span><br>        executor.setWaitForTasksToCompleteOnShutdown(<span class="hljs-literal">true</span>);<br>        executor.initialize();<br>        <span class="hljs-keyword">return</span> executor;<br>    &#125;<br>    <span class="hljs-keyword">public</span> Executor <span class="hljs-title function_">getAsyncExecutor</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> taskExecutor();<br>    &#125;<br>    <span class="hljs-keyword">public</span> AsyncUncaughtExceptionHandler <span class="hljs-title function_">getAsyncUncaughtExceptionHandler</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyAsyncExceptionHandler</span>();<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 自定义异常处理类</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyAsyncExceptionHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AsyncUncaughtExceptionHandler</span> &#123;<br><br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">handleUncaughtException</span><span class="hljs-params">(Throwable throwable, Method method, Object... objects)</span> &#123;<br>            log.info(<span class="hljs-string">&quot;Exception message - &quot;</span> + throwable.getMessage());<br>            log.info(<span class="hljs-string">&quot;Method name - &quot;</span> + method.getName());<br>            <span class="hljs-keyword">for</span> (Object param : objects) &#123;<br>                log.info(<span class="hljs-string">&quot;Parameter value - &quot;</span> + param);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="两种使用方法"><a href="#两种使用方法" class="headerlink" title="两种使用方法"></a>两种使用方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><br><span class="hljs-meta">@Component</span><br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserServiceSyncTask</span> &#123;<br>	<span class="hljs-comment">//不带返回值</span><br>    <span class="hljs-meta">@Async</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sendEmail</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            TimeUnit.SECONDS.sleep(<span class="hljs-number">1</span>);<br>        &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>        log.info(Thread.currentThread().getName());<br>    &#125;<br>	<span class="hljs-comment">//带返回值</span><br>    <span class="hljs-meta">@Async</span><br>    <span class="hljs-keyword">public</span> Future&lt;String&gt; <span class="hljs-title function_">echo</span><span class="hljs-params">(String msg)</span>&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            Thread.sleep(<span class="hljs-number">5000</span>);<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AsyncResult</span>&lt;String&gt;(Thread.currentThread().getName()+<span class="hljs-string">&quot;hello world !!!!&quot;</span>);<br>        &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>            <span class="hljs-comment">//</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="SpringBoot线程池"><a href="#SpringBoot线程池" class="headerlink" title="SpringBoot线程池"></a>SpringBoot线程池</h2><p>org.springframework.core.task.TaskExecutor为Spring异步线程池的接口类，其实质是java.util.concurrent.Executor。<br><a href="/img/executor.png" title="executor" class="gallery-item" style="box-shadow: none;"> <img src="/img/executor.png" alt="executor"></a><br><a href="/img/ThreadPoolTaskExecutor.png" title="ThreadPoolTaskExecutor" class="gallery-item" style="box-shadow: none;"> <img src="/img/ThreadPoolTaskExecutor.png" alt="ThreadPoolTaskExecutor"></a><br>springboot2.3.x默认使用的线程池就是ThreadPoolTaskExecutor，可以通过TaskExecutionProperties进行简单的参数调整</p>
+<h2 id="SpringBoot定义自己的异步线程池"><a href="#SpringBoot定义自己的异步线程池" class="headerlink" title="SpringBoot定义自己的异步线程池"></a>SpringBoot定义自己的异步线程池</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableAsync</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AsyncConfig</span> <span class="keyword">implements</span> <span class="title class_">AsyncConfigurer</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> TaskExecutor <span class="title function_">taskExecutor</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">ThreadPoolTaskExecutor</span> <span class="variable">executor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolTaskExecutor</span>();</span><br><span class="line">        <span class="comment">// 设置核心线程数</span></span><br><span class="line">        executor.setCorePoolSize(<span class="number">8</span>);</span><br><span class="line">        <span class="comment">// 设置最大线程数</span></span><br><span class="line">        executor.setMaxPoolSize(<span class="number">16</span>);</span><br><span class="line">        <span class="comment">// 设置队列容量</span></span><br><span class="line">        executor.setQueueCapacity(<span class="number">50</span>);</span><br><span class="line">        <span class="comment">// 设置线程活跃时间（秒）</span></span><br><span class="line">        executor.setKeepAliveSeconds(<span class="number">60</span>);</span><br><span class="line">        <span class="comment">//设置线程池中任务的等待时间，如果超过这个时候还没有销毁就强制销毁，以确保应用最后能够被关闭，而不是阻塞住</span></span><br><span class="line">        executor.setAwaitTerminationSeconds(<span class="number">60</span>);</span><br><span class="line">        <span class="comment">// 设置默认线程名称</span></span><br><span class="line">        executor.setThreadNamePrefix(<span class="string">&quot;CodehomeAsyncTask-&quot;</span>);</span><br><span class="line">        <span class="comment">// 设置拒绝策略</span></span><br><span class="line">        executor.setRejectedExecutionHandler(<span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>.CallerRunsPolicy());</span><br><span class="line">        <span class="comment">// 等待所有任务结束后再关闭线程池</span></span><br><span class="line">        executor.setWaitForTasksToCompleteOnShutdown(<span class="literal">true</span>);</span><br><span class="line">        executor.initialize();</span><br><span class="line">        <span class="keyword">return</span> executor;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> Executor <span class="title function_">getAsyncExecutor</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> taskExecutor();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> AsyncUncaughtExceptionHandler <span class="title function_">getAsyncUncaughtExceptionHandler</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MyAsyncExceptionHandler</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 自定义异常处理类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">MyAsyncExceptionHandler</span> <span class="keyword">implements</span> <span class="title class_">AsyncUncaughtExceptionHandler</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleUncaughtException</span><span class="params">(Throwable throwable, Method method, Object... objects)</span> &#123;</span><br><span class="line">            log.info(<span class="string">&quot;Exception message - &quot;</span> + throwable.getMessage());</span><br><span class="line">            log.info(<span class="string">&quot;Method name - &quot;</span> + method.getName());</span><br><span class="line">            <span class="keyword">for</span> (Object param : objects) &#123;</span><br><span class="line">                log.info(<span class="string">&quot;Parameter value - &quot;</span> + param);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="两种使用方法"><a href="#两种使用方法" class="headerlink" title="两种使用方法"></a>两种使用方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserServiceSyncTask</span> &#123;</span><br><span class="line">	<span class="comment">//不带返回值</span></span><br><span class="line">    <span class="meta">@Async</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendEmail</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            TimeUnit.SECONDS.sleep(<span class="number">1</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        log.info(Thread.currentThread().getName());</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//带返回值</span></span><br><span class="line">    <span class="meta">@Async</span></span><br><span class="line">    <span class="keyword">public</span> Future&lt;String&gt; <span class="title function_">echo</span><span class="params">(String msg)</span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">5000</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">AsyncResult</span>&lt;String&gt;(Thread.currentThread().getName()+<span class="string">&quot;hello world !!!!&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            <span class="comment">//</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>千里之行，始于足下。这里是SpringBoot教程系列第十篇，所有项目源码均可以在我的<a target="_blank" rel="noopener" href="https://github.com/mytianya/springboot-tutorials" title="GitHub">GitHub</a>上面下载源码。</strong></p>
-</div><div class="article-licensing box"><div class="licensing-title"><p>Springboot2.x基础教程：@Async开启异步任务</p><p><a href="https://mytianya.github.io/2023/09/24/springboot/Springboot2.x基础教程：@Async开启异步任务/">https://mytianya.github.io/2023/09/24/springboot/Springboot2.x基础教程：@Async开启异步任务/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>mytianya</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-09-24</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-02-27</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/springboot/">springboot</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/09/24/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A@Scheduled%E5%BC%80%E5%90%AF%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%8F%8A%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Springboot2.x基础教程：@Scheduled开启定时任务及源码分析</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/09/23/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E6%8B%A6%E6%88%AA%E5%99%A8%E8%AF%A6%E8%A7%A3/"><span class="level-item">Springboot2.x基础教程：过滤器和拦截器详解</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/avatar.png" alt="mytianya"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">mytianya</p><p class="is-size-6 is-block">全栈工程师</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">30</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">5</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">6</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/mytianya" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/mytianya"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/java/"><span class="level-start"><span class="level-item">java</span></span><span class="level-end"><span class="level-item tag">26</span></span></a></li><li><a class="level is-mobile" href="/categories/oracle/"><span class="level-start"><span class="level-item">oracle</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%9D%82%E8%B0%88/"><span class="level-start"><span class="level-item">杂谈</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%B5%81%E5%AA%92%E4%BD%93/"><span class="level-start"><span class="level-item">流媒体</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%AE%97%E6%B3%95/"><span class="level-start"><span class="level-item">算法</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-27T18:00:08.000Z">2023-09-28</time></p><p class="title"><a href="/2023/09/28/oracle/ORA-00257%E5%BD%92%E6%A1%A3%E7%A8%8B%E5%BA%8F%E9%94%99%E8%AF%AF/">ORA-00257归档程序错误</a></p><p class="categories"><a href="/categories/oracle/">oracle</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-26T18:00:08.000Z">2023-09-27</time></p><p class="title"><a href="/2023/09/27/alg/%E7%AE%97%E6%B3%95%EF%BC%9A%E6%B1%82%E6%9C%80%E5%A4%9A%E7%BA%BF%E6%AE%B5%E9%87%8D%E5%90%88%E6%AC%A1%E6%95%B0/">求最多线段重合次数</a></p><p class="categories"><a href="/categories/%E7%AE%97%E6%B3%95/">算法</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-26T18:00:08.000Z">2023-09-27</time></p><p class="title"><a href="/2023/09/27/video/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%82%B9%E6%92%AD%E8%B7%9F%E7%9B%B4%E6%92%AD%E6%B5%81%E5%AA%92%E4%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%A9%E7%8E%A9/">搭建一个点播跟直播流媒体服务器玩玩</a></p><p class="categories"><a href="/categories/%E6%B5%81%E5%AA%92%E4%BD%93/">流媒体</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-25T18:00:18.000Z">2023-09-26</time></p><p class="title"><a href="/2023/09/26/springcloud/SpringCloud%E7%89%88%E6%9C%AC%E6%96%B0%E6%97%A7%E5%91%BD%E5%90%8D%E6%96%B9%E5%BC%8F/">SpringCloud版本新旧命名方式</a></p><p class="categories"><a href="/categories/java/">java</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-25T18:00:08.000Z">2023-09-26</time></p><p class="title"><a href="/2023/09/26/springcloud/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/">微服务架构简介</a></p><p class="categories"><a href="/categories/java/">java</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">29</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/ora-00257/"><span class="tag">ora-00257</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/springboot/"><span class="tag">springboot</span><span class="tag">24</span></a></div><div class="control"><a class="tags has-addons" href="/tags/springcloud/"><span class="tag">springcloud</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%8D%9A%E5%AE%A2/"><span class="tag">博客</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B0%8F%E6%A0%B9%E5%A0%86/"><span class="tag">小根堆</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/"><span class="tag">音视频</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/avatar.png" alt="mytianya" height="28"></a><p class="is-size-7"><span>&copy; 2024 mytianya</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
-            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
-        });</script></body></html>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-09-24</span>
+            
+                <span>该篇文章被 mytianya</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/springboot/'>
+                            springboot
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/java/'>
+                            java
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊晚来天欲雪，能饮一杯无🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

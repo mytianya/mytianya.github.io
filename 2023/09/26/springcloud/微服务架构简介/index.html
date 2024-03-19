@@ -1,56 +1,165 @@
-<!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>微服务架构简介 - mytianya</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="mytianya"><meta name="msapplication-TileImage" content="favcion.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="mytianya"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="晚来天欲雪，能饮一杯无"><meta property="og:type" content="blog"><meta property="og:title" content="微服务架构简介"><meta property="og:url" content="https://mytianya.github.io/2023/09/26/springcloud/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/"><meta property="og:site_name" content="mytianya"><meta property="og:description" content="晚来天欲雪，能饮一杯无"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://mytianya.github.io/img/microservice.png"><meta property="og:image" content="https://mytianya.github.io/img/microservice1.png"><meta property="og:image" content="https://mytianya.github.io/img/microservice-channge.png"><meta property="article:published_time" content="2023-09-25T18:00:08.000Z"><meta property="article:modified_time" content="2024-02-27T06:59:45.017Z"><meta property="article:author" content="mytianya"><meta property="article:tag" content="springcloud"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://mytianya.github.io/img/microservice.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://mytianya.github.io/2023/09/26/springcloud/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/"},"headline":"微服务架构简介","image":["https://mytianya.github.io/img/microservice.png","https://mytianya.github.io/img/microservice1.png","https://mytianya.github.io/img/microservice-channge.png"],"datePublished":"2023-09-25T18:00:08.000Z","dateModified":"2024-02-27T06:59:45.017Z","author":{"@type":"Person","name":"mytianya"},"publisher":{"@type":"Organization","name":"mytianya","logo":{"@type":"ImageObject","url":"https://mytianya.github.io/2023/09/26/springcloud/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/avatar.png"}},"description":"微服务理论基础-康威法则康威法则：“设计系统的架构受制于产生这些设计组织的沟通结构。”**即系统设计本质上反映了企业的组织机构。系统各个模块间的接口也反映了企业各个部门之间的信息流动和合作方式。 康威法则提出的各定律：  第一定律 组织沟通方式会通过系统设计表达出来 即组织的沟通方式决定了系统的设计方式   第二定律 时间再多一件事情也不可能做的完美，但总有时间做完一件事情 罗马不是一日建成的，学"}</script><link rel="canonical" href="https://mytianya.github.io/2023/09/26/springcloud/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/"><link rel="icon" href="/favcion.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!-- hexo injector head_end start --><script>
-  (function () {
-      function switchTab() {
-          if (!location.hash) {
-            return;
-          }
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="微服务架构简介" />
+    <meta name="hexo-theme-A4" content="v1.8.9" />
+    <link rel="alternate icon" type="image/webp" href="/avatar.png">
+    <title>mytianya | 晚来天欲雪，能饮一杯无</title>
 
-          const id = '#' + CSS.escape(location.hash.substring(1));
-          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
-          if (!$tabMenu) {
-            return;
-          }
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
 
-          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
-          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
-          Array.from($tabMenuContainer.querySelectorAll('a'))
-              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
-              .forEach($content => $content.classList.add('is-hidden'));
+        
+<link rel="stylesheet" href="/css/reset.css">
 
-          if ($tabMenu) {
-              $tabMenu.parentElement.classList.add('is-active');
-          }
-          const $activeTab = document.querySelector(id);
-          if ($activeTab) {
-              $activeTab.classList.remove('is-hidden');
-          }
-      }
-      switchTab();
-      window.addEventListener('hashchange', switchTab, false);
-  })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/avatar.png" alt="mytianya" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于我</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/mytianya"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-25T18:00:08.000Z" title="2023/9/26 2:00:08">2023-09-26</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.017Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/java/">java</a></span><span class="level-item">18 分钟读完 (大约2631个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">微服务架构简介</h1><div class="content"><h2 id="微服务理论基础-康威法则"><a href="#微服务理论基础-康威法则" class="headerlink" title="微服务理论基础-康威法则"></a>微服务理论基础-康威法则</h2><p><strong>康威法则</strong>：“设计系统的架构受制于产生这些设计组织的沟通结构。”**即系统设计本质上反映了企业的组织机构。系统各个模块间的接口也反映了企业各个部门之间的信息流动和合作方式。</p>
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/avatar.png" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">mytianya</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            微服务架构简介
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80-%E5%BA%B7%E5%A8%81%E6%B3%95%E5%88%99"><span class="post-toc-text">微服务理论基础-康威法则</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E5%AE%9A%E4%B9%89"><span class="post-toc-text">微服务架构定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B"><span class="post-toc-text">服务架构演进</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%BC%98%E7%82%B9"><span class="post-toc-text">微服务优点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BC%BA%E7%82%B9"><span class="post-toc-text">微服务缺点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%94%AF%E6%92%91%E7%BB%84%E4%BB%B6"><span class="post-toc-text">微服务支撑组件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BB%84%E4%BB%B6%E9%80%89%E5%9E%8B"><span class="post-toc-text">微服务组件选型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E9%80%89%E5%9E%8B"><span class="post-toc-text">注册中心选型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%BB%84%E4%BB%B6%E9%80%89%E5%9E%8B"><span class="post-toc-text">负载均衡组件选型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3%E9%80%89%E5%9E%8B"><span class="post-toc-text">服务网关选型</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E9%80%89%E5%9E%8B"><span class="post-toc-text">配置中心选型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%86%94%E6%96%AD%E7%BB%84%E4%BB%B6%E9%80%89%E5%9E%8B"><span class="post-toc-text">熔断组件选型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA%E7%BB%84%E4%BB%B6%E9%80%89%E5%9E%8B"><span class="post-toc-text">服务调用链路追踪组件选型</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E5%9B%BE"><span class="post-toc-text">微服务架构图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="post-toc-text">参考文章</span></a></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h2 id="微服务理论基础-康威法则"><a href="#微服务理论基础-康威法则" class="headerlink" title="微服务理论基础-康威法则"></a>微服务理论基础-康威法则</h2><p><strong>康威法则</strong>：“设计系统的架构受制于产生这些设计组织的沟通结构。”**即系统设计本质上反映了企业的组织机构。系统各个模块间的接口也反映了企业各个部门之间的信息流动和合作方式。</p>
 <p>康威法则提出的各定律：</p>
 <ul>
 <li><p>第一定律 组织沟通方式会通过系统设计表达出来</p>
-<pre><code class="hljs">即组织的沟通方式决定了系统的设计方式
+<pre><code>即组织的沟通方式决定了系统的设计方式
 </code></pre>
 </li>
 <li><p>第二定律 时间再多一件事情也不可能做的完美，但总有时间做完一件事情</p>
-<pre><code class="hljs">罗马不是一日建成的，学习解决首要问题。产品、软件、模块功能应该首先达到最小可用程度(Minimun Viable Product)
+<pre><code>罗马不是一日建成的，学习解决首要问题。产品、软件、模块功能应该首先达到最小可用程度(Minimun Viable Product)
 </code></pre>
 </li>
 <li><p>第三定律 线性系统和线型组织架构间有潜在的异质同态特性</p>
-<pre><code class="hljs">这一定律是第一定律的具体应用，具体来说想要什么的系统就搭建什么样的团队，有什么样的团队就搭建什么样的系统。你需要搭建微服务架构的系统，那就需要微服务型的组织架构。每个团队负责自己的部分，对外提供相应的接口，团队间互不干扰，实现完全的**自治**。如此就能降低系统的依赖性，减少通信成本。
+<pre><code>这一定律是第一定律的具体应用，具体来说想要什么的系统就搭建什么样的团队，有什么样的团队就搭建什么样的系统。你需要搭建微服务架构的系统，那就需要微服务型的组织架构。每个团队负责自己的部分，对外提供相应的接口，团队间互不干扰，实现完全的**自治**。如此就能降低系统的依赖性，减少通信成本。
 </code></pre>
 </li>
 <li><p>第四定律 大的系统组织总是比小系统更倾向分解</p>
-<pre><code class="hljs">系统越复杂，越需要增加人手，人手越多，沟通成本也呈指数增长。分而治之便是大多数公司选择的解决方案。分不同的层级，分不同的小团队，让团队内部完成自治理，然后统一对外沟通。**微服务架构更多是关于组织和团队，而不是技术**。
+<pre><code>系统越复杂，越需要增加人手，人手越多，沟通成本也呈指数增长。分而治之便是大多数公司选择的解决方案。分不同的层级，分不同的小团队，让团队内部完成自治理，然后统一对外沟通。**微服务架构更多是关于组织和团队，而不是技术**。
 </code></pre>
 </li>
 </ul>
 <h2 id="微服务架构定义"><a href="#微服务架构定义" class="headerlink" title="微服务架构定义"></a>微服务架构定义</h2><p>微服务架构是一种架构风格，没有单一的定义，随着时间的推移，业界达成已经形成共识，微服务架构的特征包括：</p>
-<p><img src="/img/microservice.png" alt="微服务定义"></p>
+<p><a href="/img/microservice.png" title="微服务定义" class="gallery-item" style="box-shadow: none;"> <img src="/img/microservice.png" alt="微服务定义"></a></p>
 <ul>
 <li><p><strong>一组小的服务</strong>：怎么定义这个小，专注于做好一件事情。在一个单体系统中，避免随着新功能的增加代码库日益庞大，模块之间的界限很难维护，相似的代码随处可见，通常会创建一些抽象层或者模块来保证代码的<strong>内聚性</strong>。在使用微服务架构时一个微服务同样要具有内聚性这一概念，Robert C.Martin有一个单一职责原则：把因相同原因变化的东西聚合在一起，而把不同原因而变化的东西分开。<strong>微服务中独立服务的划分程度，同样有内聚性、单一职责原则，根据业务的边界来确定某个功能代码应该放在那个微服务之中，确定该微服务专注的业务边界之内</strong>。</p>
 </li>
@@ -66,7 +175,7 @@
 <p><strong>总结来说：微服务架构风格就是小而自治的服务，可以采用不同技术栈，拥有独立进程，进程之间采用网络调用通信，不同团队在业务边界之内开发、测试、部署。</strong></p>
 </li>
 </ul>
-<h2 id="服务架构演进"><a href="#服务架构演进" class="headerlink" title="服务架构演进"></a>服务架构演进</h2><p><img src="/img/microservice1.png"></p>
+<h2 id="服务架构演进"><a href="#服务架构演进" class="headerlink" title="服务架构演进"></a>服务架构演进</h2><p><a href="/img/microservice1.png" class="gallery-item" style="box-shadow: none;"> <img src="/img/microservice1.png"></a></p>
 <h2 id="微服务优点"><a href="#微服务优点" class="headerlink" title="微服务优点"></a>微服务优点</h2><ol>
 <li><p>技术异构性：不同的服务可以采用最适合该服务的技术。</p>
 </li>
@@ -91,7 +200,7 @@
 <li><p>分布部署服务出错,问题的定位追踪。</p>
 </li>
 </ol>
-<h2 id="微服务支撑组件"><a href="#微服务支撑组件" class="headerlink" title="微服务支撑组件"></a>微服务支撑组件</h2><pre><code class="hljs">微服务只是一种架构手段，当我们将一个单体系统拆分成微服务架构风格时，微服务架构的带来问题该如何解决呢？比如服务进程之间的通信、服务之间错中复杂的依赖关系导致的线上问题如何排查、分布式系统带来的一致性问题等问题。因此微服务产生了一些系列的支撑组件：
+<h2 id="微服务支撑组件"><a href="#微服务支撑组件" class="headerlink" title="微服务支撑组件"></a>微服务支撑组件</h2><pre><code>微服务只是一种架构手段，当我们将一个单体系统拆分成微服务架构风格时，微服务架构的带来问题该如何解决呢？比如服务进程之间的通信、服务之间错中复杂的依赖关系导致的线上问题如何排查、分布式系统带来的一致性问题等问题。因此微服务产生了一些系列的支撑组件：
 </code></pre>
 <ol>
 <li>服务治理</li>
@@ -426,28 +535,171 @@
 </tr>
 </tbody></table>
 <h2 id="微服务架构图"><a href="#微服务架构图" class="headerlink" title="微服务架构图"></a>微服务架构图</h2><p>图片来源互联网：<a target="_blank" rel="noopener" href="https://www.owensun.com/microservice-refercence-architecture/">https://www.owensun.com/microservice-refercence-architecture/</a></p>
-<p><img src="/img/microservice-channge.png" alt="img"></p>
+<p><a href="/img/microservice-channge.png" title="img" class="gallery-item" style="box-shadow: none;"> <img src="/img/microservice-channge.png" alt="img"></a></p>
 <h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ul>
 <li>[1] <a target="_blank" rel="noopener" href="https://martinfowler.com/articles/microservices.html">微服务理论</a></li>
 <li>[2] <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/%E5%BA%B7%E5%A8%81%E5%AE%9A%E5%BE%8B">康威法则</a></li>
 </ul>
-</div><div class="article-licensing box"><div class="licensing-title"><p>微服务架构简介</p><p><a href="https://mytianya.github.io/2023/09/26/springcloud/微服务架构简介/">https://mytianya.github.io/2023/09/26/springcloud/微服务架构简介/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>mytianya</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-09-26</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-02-27</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/springcloud/">springcloud</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/09/26/springcloud/SpringCloud%E7%89%88%E6%9C%AC%E6%96%B0%E6%97%A7%E5%91%BD%E5%90%8D%E6%96%B9%E5%BC%8F/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">SpringCloud版本新旧命名方式</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/09/25/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86%E4%B8%8E%E6%9D%A1%E4%BB%B6%E6%B3%A8%E8%A7%A3/"><span class="level-item">Springboot2.x基础教程：自动装配原理与条件注解</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/avatar.png" alt="mytianya"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">mytianya</p><p class="is-size-6 is-block">全栈工程师</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">30</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">5</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">6</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/mytianya" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/mytianya"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/java/"><span class="level-start"><span class="level-item">java</span></span><span class="level-end"><span class="level-item tag">26</span></span></a></li><li><a class="level is-mobile" href="/categories/oracle/"><span class="level-start"><span class="level-item">oracle</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%9D%82%E8%B0%88/"><span class="level-start"><span class="level-item">杂谈</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%B5%81%E5%AA%92%E4%BD%93/"><span class="level-start"><span class="level-item">流媒体</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%AE%97%E6%B3%95/"><span class="level-start"><span class="level-item">算法</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-27T18:00:08.000Z">2023-09-28</time></p><p class="title"><a href="/2023/09/28/oracle/ORA-00257%E5%BD%92%E6%A1%A3%E7%A8%8B%E5%BA%8F%E9%94%99%E8%AF%AF/">ORA-00257归档程序错误</a></p><p class="categories"><a href="/categories/oracle/">oracle</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-26T18:00:08.000Z">2023-09-27</time></p><p class="title"><a href="/2023/09/27/alg/%E7%AE%97%E6%B3%95%EF%BC%9A%E6%B1%82%E6%9C%80%E5%A4%9A%E7%BA%BF%E6%AE%B5%E9%87%8D%E5%90%88%E6%AC%A1%E6%95%B0/">求最多线段重合次数</a></p><p class="categories"><a href="/categories/%E7%AE%97%E6%B3%95/">算法</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-26T18:00:08.000Z">2023-09-27</time></p><p class="title"><a href="/2023/09/27/video/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%82%B9%E6%92%AD%E8%B7%9F%E7%9B%B4%E6%92%AD%E6%B5%81%E5%AA%92%E4%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%A9%E7%8E%A9/">搭建一个点播跟直播流媒体服务器玩玩</a></p><p class="categories"><a href="/categories/%E6%B5%81%E5%AA%92%E4%BD%93/">流媒体</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-25T18:00:18.000Z">2023-09-26</time></p><p class="title"><a href="/2023/09/26/springcloud/SpringCloud%E7%89%88%E6%9C%AC%E6%96%B0%E6%97%A7%E5%91%BD%E5%90%8D%E6%96%B9%E5%BC%8F/">SpringCloud版本新旧命名方式</a></p><p class="categories"><a href="/categories/java/">java</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-25T18:00:08.000Z">2023-09-26</time></p><p class="title"><a href="/2023/09/26/springcloud/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/">微服务架构简介</a></p><p class="categories"><a href="/categories/java/">java</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">29</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/ora-00257/"><span class="tag">ora-00257</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/springboot/"><span class="tag">springboot</span><span class="tag">24</span></a></div><div class="control"><a class="tags has-addons" href="/tags/springcloud/"><span class="tag">springcloud</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%8D%9A%E5%AE%A2/"><span class="tag">博客</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B0%8F%E6%A0%B9%E5%A0%86/"><span class="tag">小根堆</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/"><span class="tag">音视频</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/avatar.png" alt="mytianya" height="28"></a><p class="is-size-7"><span>&copy; 2024 mytianya</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
-            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
-        });</script></body></html>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-09-26</span>
+            
+                <span>该篇文章被 mytianya</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/springcloud/'>
+                            springcloud
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/java/'>
+                            java
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊晚来天欲雪，能饮一杯无🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

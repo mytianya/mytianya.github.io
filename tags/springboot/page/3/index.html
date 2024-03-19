@@ -1,149 +1,259 @@
-<!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="robots" content="noindex"><meta><title>标签: springboot - mytianya</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="mytianya"><meta name="msapplication-TileImage" content="favcion.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="mytianya"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="晚来天欲雪，能饮一杯无"><meta property="og:type" content="blog"><meta property="og:title" content="mytianya"><meta property="og:url" content="https://mytianya.github.io/"><meta property="og:site_name" content="mytianya"><meta property="og:description" content="晚来天欲雪，能饮一杯无"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://mytianya.github.io/img/og_image.png"><meta property="article:author" content="mytianya"><meta property="article:tag" content="编程"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://mytianya.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://mytianya.github.io"},"headline":"mytianya","image":["https://mytianya.github.io/img/og_image.png"],"author":{"@type":"Person","name":"mytianya"},"publisher":{"@type":"Organization","name":"mytianya","logo":{"@type":"ImageObject","url":"https://mytianya.github.io/avatar.png"}},"description":""}</script><link rel="icon" href="/favcion.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!-- hexo injector head_end start --><script>
-  (function () {
-      function switchTab() {
-          if (!location.hash) {
-            return;
-          }
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="" />
+    <meta name="hexo-theme-A4" content="v1.8.9" />
+    <link rel="alternate icon" type="image/webp" href="/avatar.png">
+    <title>mytianya | 晚来天欲雪，能饮一杯无</title>
 
-          const id = '#' + CSS.escape(location.hash.substring(1));
-          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
-          if (!$tabMenu) {
-            return;
-          }
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
 
-          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
-          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
-          Array.from($tabMenuContainer.querySelectorAll('a'))
-              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
-              .forEach($content => $content.classList.add('is-hidden'));
+        
+<link rel="stylesheet" href="/css/reset.css">
 
-          if ($tabMenu) {
-              $tabMenu.parentElement.classList.add('is-active');
-          }
-          const $activeTab = document.querySelector(id);
-          if ($activeTab) {
-              $activeTab.classList.remove('is-hidden');
-          }
-      }
-      switchTab();
-      window.addEventListener('hashchange', switchTab, false);
-  })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/avatar.png" alt="mytianya" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于我</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/mytianya"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags">标签</a></li><li class="is-active"><a href="#" aria-current="page">springboot</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-23T13:54:08.000Z" title="2023/9/23 21:54:08">2023-09-23</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.013Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/java/">java</a></span><span class="level-item">5 分钟读完 (大约776个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/09/23/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9ASwagger%E8%AF%A6%E8%A7%A3%E7%BB%99%E4%BD%A0%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%8A%A0%E4%B8%8A%E6%96%87%E6%A1%A3%E8%AF%B4%E6%98%8E/">Springboot2.x基础教程：Swagger详解给你的接口加上文档说明</a></p><div class="content"><blockquote>
-<p>相信无论是前端还是后端开发，都或多或少地被接口文档折磨过。前端经常抱怨后端给的接口文档与实际情况不一致。后端又觉得编写及维护接口文档会耗费不少精力，经常来不及更新。其实无论是前端调用后端，还是后端调用后端，都期望有一个好的接口文档。<br>SpringBoot集成Swagger能够通过很简单的注解把接口描述清楚，生成可视化文档页面。<br>原生的Swagger-ui界面很粗糙，这里用<a target="_blank" rel="noopener" href="https://doc.xiaominfo.com/knife4j/" title="knife4j-spring-ui">knife4j-spring-ui</a>替代。</p>
-</blockquote>
-<h2 id="一个好的HTTP接口文档描述"><a href="#一个好的HTTP接口文档描述" class="headerlink" title="一个好的HTTP接口文档描述"></a>一个好的HTTP接口文档描述</h2><ol>
-<li>写清楚接口的请求路径:  QueryPath: &#x2F;user&#x2F;login</li>
-<li>写清楚接口的请求方法类型： GET&#x2F;POST&#x2F;DELETE&#x2F;PUT</li>
-<li>写清楚接口的业务含义,使用场景</li>
-<li>写清楚接口的入参：参数描述、参数类型、参数结构、参数是否必传</li>
-<li>写清楚接口的返回类型：返回的数据结构，异常状况</li>
-</ol>
-<h2 id="SpringBoot集成Swagger"><a href="#SpringBoot集成Swagger" class="headerlink" title="SpringBoot集成Swagger"></a>SpringBoot集成Swagger</h2><h3 id="项目引入依赖"><a href="#项目引入依赖" class="headerlink" title="项目引入依赖"></a>项目引入依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.springfox<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springfox-swagger2<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.9.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.springfox<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.9.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.github.xiaoymin<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>knife4j-spring-ui<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.0.4<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+        
+<link rel="stylesheet" href="/css/markdown.css">
 
-<h3 id="SpringBoot关于Swagger配置"><a href="#SpringBoot关于Swagger配置" class="headerlink" title="SpringBoot关于Swagger配置"></a>SpringBoot关于Swagger配置</h3><p>把此Swagger配置粘入项目即可</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@EnableSwagger2</span><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SwaggerConfig</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">WebMvcConfigurer</span> &#123;<br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> Docket <span class="hljs-title function_">createRestApi</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Docket</span>(DocumentationType.SWAGGER_2)<br>                .apiInfo(apiInfo())<br>                .select()<br>                <span class="hljs-comment">//这里改成自己的接口包名</span><br>                .apis(RequestHandlerSelectors.basePackage(<span class="hljs-string">&quot;vip.codehome.springboot.tutorials.controller&quot;</span>))<br>                .paths(PathSelectors.any())<br>                .build();<br>    &#125;<br>    <span class="hljs-keyword">private</span> ApiInfo <span class="hljs-title function_">apiInfo</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ApiInfoBuilder</span>()<br>                .title(<span class="hljs-string">&quot;SpringBoot教程接口文档&quot;</span>)<span class="hljs-comment">//标题</span><br>                .description(<span class="hljs-string">&quot;使用swagger文档管理接口&quot;</span>)<span class="hljs-comment">//描述</span><br>                .contact(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Contact</span>(<span class="hljs-string">&quot;codehome&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;dsyslove@163.com&quot;</span>))<span class="hljs-comment">//作者信息</span><br>                .version(<span class="hljs-string">&quot;1.0.0&quot;</span>)<span class="hljs-comment">//版本号</span><br>                .build();<br>    &#125;<br>    <span class="hljs-comment">//解决doc.html，swagger-ui.html 404问题</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addResourceHandlers</span><span class="hljs-params">(ResourceHandlerRegistry registry)</span> &#123;<br>        registry.addResourceHandler(<span class="hljs-string">&quot;/**&quot;</span>).addResourceLocations(<br>                <span class="hljs-string">&quot;classpath:/static/&quot;</span>);<br>        registry.addResourceHandler(<span class="hljs-string">&quot;swagger-ui.html&quot;</span>).addResourceLocations(<br>                <span class="hljs-string">&quot;classpath:/META-INF/resources/&quot;</span>);<br>        registry.addResourceHandler(<span class="hljs-string">&quot;doc.html&quot;</span>).addResourceLocations(<br>                <span class="hljs-string">&quot;classpath:/META-INF/resources/&quot;</span>);<br>        registry.addResourceHandler(<span class="hljs-string">&quot;/webjars/**&quot;</span>).addResourceLocations(<br>                <span class="hljs-string">&quot;classpath:/META-INF/resources/webjars/&quot;</span>);<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
 
-<h3 id="Swagger的具体使用"><a href="#Swagger的具体使用" class="headerlink" title="Swagger的具体使用"></a>Swagger的具体使用</h3><h4 id="各个注解的作用"><a href="#各个注解的作用" class="headerlink" title="各个注解的作用"></a>各个注解的作用</h4><ol>
-<li>@Api 放在类上介绍类的作用</li>
-<li>@ApiOperation 放在方法上介绍方法的作用</li>
-<li>@ApiImplicitParam介绍入参说明</li>
-<li>@ApiResponse介绍返回状态</li>
-<li>@ApiModel、@ApiModelProperty介绍入参是对象，返回是对象字段说明</li>
-</ol>
-<h4 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@Api(tags = &quot;Swagger注解测试类&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SwaggerUserController</span> &#123;<br>    <span class="hljs-meta">@ApiOperation(value = &quot;这是一个echo接口&quot;)</span><br>    <span class="hljs-meta">@ApiImplicitParams(&#123;</span><br><span class="hljs-meta">            @ApiImplicitParam(name = &quot;msg&quot;,value = &quot;请求的msg参数&quot;,required = true,paramType = &quot;query&quot;),</span><br><span class="hljs-meta">            @ApiImplicitParam(name = &quot;token&quot;,value = &quot;请求的token&quot;,required = false,paramType =&quot;header&quot; )</span><br><span class="hljs-meta">    &#125;)</span><br>    <span class="hljs-meta">@ApiResponses(&#123;</span><br><span class="hljs-meta">            @ApiResponse(code=200,message = &quot;请求成功&quot;),</span><br><span class="hljs-meta">            @ApiResponse(code=400,message=&quot;请求无权限&quot;)</span><br><span class="hljs-meta">    &#125;)</span><br>    <span class="hljs-meta">@GetMapping(&quot;/echo&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">echo</span><span class="hljs-params">(String msg,<span class="hljs-meta">@RequestHeader(name = &quot;token&quot;)</span> String token)</span>&#123;<br>        <span class="hljs-keyword">return</span> msg;<br>    &#125;<br>    <span class="hljs-meta">@PostMapping(&quot;/login&quot;)</span><br>    <span class="hljs-keyword">public</span> R&lt;UserInfoVO&gt; <span class="hljs-title function_">login</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> LoginDTO loginDTO)</span>&#123;<br>        UserInfoVO userInfoVO=<span class="hljs-keyword">new</span> <span class="hljs-title class_">UserInfoVO</span>();<br>        userInfoVO.setNickname(<span class="hljs-string">&quot;编程之家&quot;</span>);<br>        userInfoVO.setToken(<span class="hljs-string">&quot;xxx&quot;</span>);<br>        <span class="hljs-keyword">return</span> R.ok(userInfoVO);<br>    &#125;<br>&#125;<br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@ApiModel</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LoginDTO</span> &#123;<br>    <span class="hljs-meta">@ApiModelProperty(value = &quot;用户账号或者邮箱&quot;)</span><br>    String account;<br>    <span class="hljs-meta">@ApiModelProperty(value = &quot;用户密码&quot;)</span><br>    String passwd;<br>    <span class="hljs-meta">@ApiModelProperty(value = &quot;用户密码&quot;)</span><br>    String verifyCode;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h4 id="接口文档效果"><a href="#接口文档效果" class="headerlink" title="接口文档效果"></a>接口文档效果</h4><p>这里访问的是<a target="_blank" rel="noopener" href="http://localhost:8080/doc.html,knife4j-spring-ui%E8%BF%98%E6%9C%89%E7%9B%B8%E6%AF%94%E5%8E%9F%E7%94%9F%E8%BF%98%E6%9C%89%E6%9B%B4%E5%A4%9A%E5%BC%BA%E5%A4%A7%E7%9A%84%E5%8A%9F%E8%83%BD%EF%BC%8C%E5%A4%A7%E5%AE%B6%E8%87%AA%E8%A1%8C%E5%8F%91%E7%8E%B0%E3%80%82">http://localhost:8080/doc.html,knife4j-spring-ui还有相比原生还有更多强大的功能，大家自行发现。</a><br><strong>千里之行，始于足下。这里是SpringBoot教程系列第二篇，所有项目源码均可以在我的<a target="_blank" rel="noopener" href="https://github.com/mytianya/springboot-tutorials" title="GitHub">GitHub</a>上面下载源码。</strong></p>
-<p><img src="/img/swagger-ui.png" alt="swagger-ui"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-23T13:53:09.000Z" title="2023/9/23 21:53:09">2023-09-23</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.014Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/java/">java</a></span><span class="level-item">3 分钟读完 (大约435个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/09/23/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E7%BB%9F%E4%B8%80%E6%A0%BC%E5%BC%8F%E8%BF%94%E5%9B%9E/">Springboot2.x基础教程：接口实现统一格式返回</a></p><div class="content"><blockquote>
-<p>在SpringBoot项目中经常会涉及到前后端数据的交互，目前比较流行的是基于 json 格式的数据交互。但是 json 只是消息的格式，其中的内容还需要我们自行设计。不管是 HTTP 接口还是 RPC 接口保持返回值格式统一很重要，这将大大降低 前后端联调的成本。</p>
-</blockquote>
-<h2 id="定义的接口具体格式"><a href="#定义的接口具体格式" class="headerlink" title="定义的接口具体格式"></a>定义的接口具体格式</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs elixir">&#123;<br>	<span class="hljs-comment">#返回状态码</span><br>	<span class="hljs-string">&quot;code&quot;</span><span class="hljs-symbol">:integer</span>类型,<br>	<span class="hljs-comment">#返回信息描述</span><br>	<span class="hljs-string">&quot;msg&quot;</span><span class="hljs-symbol">:string</span>,<br>	<span class="hljs-comment">#返回值</span><br>	<span class="hljs-string">&quot;data&quot;</span><span class="hljs-symbol">:object</span><br>&#125;<br></code></pre></td></tr></table></figure>
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
 
-<h2 id="提供的R类型工具类"><a href="#提供的R类型工具类" class="headerlink" title="提供的R类型工具类"></a>提供的R类型工具类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Data</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">R</span>&lt;T&gt; &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> code;<br>    <span class="hljs-keyword">private</span> T data;<br>    <span class="hljs-keyword">private</span> String msg;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">R</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; R&lt;T&gt; <span class="hljs-title function_">ok</span><span class="hljs-params">(T data)</span> &#123;<br>        <span class="hljs-keyword">return</span> fill(data,ApiCommonCodeEnum.OK);<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; R&lt;T&gt; <span class="hljs-title function_">failed</span><span class="hljs-params">(String msg)</span> &#123;<br>        <span class="hljs-keyword">return</span> fill( <span class="hljs-literal">null</span>, ApiCommonCodeEnum.FAIL);<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; R&lt;T&gt; <span class="hljs-title function_">failed</span><span class="hljs-params">(ApiCommonCodeEnum apiEnum)</span> &#123;<br>        <span class="hljs-keyword">return</span> fill( <span class="hljs-literal">null</span>, apiEnum);<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; R&lt;T&gt; <span class="hljs-title function_">fill</span><span class="hljs-params">(T data, ApiCommonCodeEnum apiEnum)</span> &#123;<br>        <span class="hljs-keyword">return</span> fill(apiEnum.getCode(),data,apiEnum.getMsg());<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; R&lt;T&gt; <span class="hljs-title function_">fill</span><span class="hljs-params">(<span class="hljs-type">int</span> code,T data,String msg)</span> &#123;<br>        <span class="hljs-type">R</span> <span class="hljs-variable">R</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">R</span>();<br>        R.setCode(code);<br>        R.setData(data);<br>        R.setMsg(msg);<br>        <span class="hljs-keyword">return</span> R;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//使用举例</span><br><span class="hljs-meta">@PostMapping(&quot;/login&quot;)</span><br><span class="hljs-keyword">public</span> R&lt;UserInfoVO&gt; <span class="hljs-title function_">login</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> LoginDTO loginDTO)</span>&#123;<br>	UserInfoVO userInfoVO=<span class="hljs-keyword">new</span> <span class="hljs-title class_">UserInfoVO</span>();<br>	userInfoVO.setNickname(<span class="hljs-string">&quot;编程之家&quot;</span>);<br>	userInfoVO.setToken(<span class="hljs-string">&quot;xxx&quot;</span>);<br>	<span class="hljs-keyword">return</span> R.ok(userInfoVO);<br>&#125;<br></code></pre></td></tr></table></figure>
+            
+<link rel="stylesheet" href="/css/unicons.css">
 
-<h2 id="状态码设计"><a href="#状态码设计" class="headerlink" title="状态码设计"></a>状态码设计</h2><p>这里我们可以参考Http状态码设计，每种业务类型定义一个状态码区间，抽出放在枚举类中</p>
-<p><img src="/img/http_status_code.jpg"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span>  <span class="hljs-title class_">ApiCommonCodeEnum</span> &#123;<br>    FAIL(<span class="hljs-number">1</span>,<span class="hljs-string">&quot;调用出错&quot;</span>),<br>    OK(<span class="hljs-number">0</span>,<span class="hljs-string">&quot;调用成功&quot;</span>),<br>	USER_EXISIT(<span class="hljs-number">100</span>,<span class="hljs-string">&quot;用户不存在&quot;</span>),<br>	USER_PASSWORD_ERROR(<span class="hljs-number">101</span>,<span class="hljs-string">&quot;用户密码错误&quot;</span>),<br>	<span class="hljs-comment">//....</span><br>	NO_PERM(<span class="hljs-number">300</span>,<span class="hljs-string">&quot;无权限&quot;</span>);<br>	<span class="hljs-comment">//....</span><br>    <span class="hljs-type">int</span> code;<br>    String msg;<br>    ApiCommonCodeEnum(<span class="hljs-type">int</span> code,String msg)&#123;<br>        <span class="hljs-built_in">this</span>.code=code;<br>        <span class="hljs-built_in">this</span>.msg=msg;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getCode</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> code;<br>    &#125;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setCode</span><span class="hljs-params">(<span class="hljs-type">int</span> code)</span> &#123;<br>        <span class="hljs-built_in">this</span>.code = code;<br>    &#125;<br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getMsg</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> msg;<br>    &#125;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setMsg</span><span class="hljs-params">(String msg)</span> &#123;<br>        <span class="hljs-built_in">this</span>.msg = msg;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><strong>千里之行，始于足下。这里是SpringBoot教程系列第二篇，所有项目源码均可以在我的<a target="_blank" rel="noopener" href="https://github.com/mytianya/springboot-tutorials" title="GitHub">GitHub</a>上面下载源码。</strong></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-23T13:53:08.000Z" title="2023/9/23 21:53:08">2023-09-23</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.015Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/java/">java</a></span><span class="level-item">7 分钟读完 (大约1020个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/09/23/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/">Springboot2.x基础教程：配置文件详解</a></p><div class="content"><blockquote>
-<p>当使用Spring Initializr构建springboot项目时，会自动在src&#x2F;main&#x2F;resources下生产application.properties文件。今天我们就来聊聊SpringBoot的配置文件。</p>
-</blockquote>
-<h2 id="配置文件的作用"><a href="#配置文件的作用" class="headerlink" title="配置文件的作用"></a>配置文件的作用</h2><p>SpringBoot采用“习惯优于配置”的理念，项目中存在大量的配置，采用默认配置，让你无需手动配置。<br>SpringBoot能够识别properties格式与yml格式的配置文件（我们一般使用yml格式更多）。当需要<strong>对默认配置进行修改或者自定义配置</strong>时可用通过修改配置文件达到目的。</p>
-<h2 id="配置文件的基本使用"><a href="#配置文件的基本使用" class="headerlink" title="配置文件的基本使用"></a>配置文件的基本使用</h2><p>这是使用yml格式的配置举例，说明application.yml中如何配置，以及代码中如何获取。</p>
-<h3 id="数字，字符串，布尔获取"><a href="#数字，字符串，布尔获取" class="headerlink" title="数字，字符串，布尔获取"></a>数字，字符串，布尔获取</h3><p>配置文件写法：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-number">1.0</span><br><span class="hljs-attr">author:</span> <span class="hljs-string">codhome.vip</span><br><span class="hljs-attr">flag:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
-<p>使用@Value获取:</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-meta">@Value(<span class="hljs-string">&quot;<span class="hljs-subst">$&#123;version&#125;</span>&quot;</span>)</span><br>float version;<br><span class="hljs-meta">@Value(<span class="hljs-string">&quot;<span class="hljs-subst">$&#123;author&#125;</span>&quot;</span>)</span><br>String author;<br><span class="hljs-comment">//这里的true为默认值</span><br><span class="hljs-meta">@Value(<span class="hljs-string">&quot;<span class="hljs-subst">$&#123;flag:true&#125;</span>&quot;</span>)</span><br>boolean flag;<br></code></pre></td></tr></table></figure>
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
 
-<h3 id="对象、Map写法与获取"><a href="#对象、Map写法与获取" class="headerlink" title="对象、Map写法与获取"></a>对象、Map写法与获取</h3><p>配置文件写法：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">user:</span><br>  <span class="hljs-attr">userName:</span> <span class="hljs-string">codehome</span><br>  <span class="hljs-attr">age:</span> <span class="hljs-number">18</span><br>  <span class="hljs-attr">forbidden:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
-<p>使用@ConfigurationProperties获取:</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-variable">@Configuration</span><br><span class="hljs-variable">@ConfigurationProperties</span>(prefix = <span class="hljs-string">&quot;user&quot;</span>)<br><span class="hljs-variable">@Data</span><br>public class UserProperties &#123;<br>    <span class="hljs-selector-tag">String</span> <span class="hljs-selector-tag">userName</span>;<br>    <span class="hljs-selector-tag">int</span> <span class="hljs-selector-tag">age</span>;<br>    <span class="hljs-selector-tag">boolean</span> <span class="hljs-selector-tag">forbidden</span>;<br>&#125;<br><span class="hljs-comment">//注入使用</span><br>@<span class="hljs-selector-tag">Autowired</span><br><span class="hljs-selector-tag">UserProperties</span> <span class="hljs-selector-tag">userProperties</span>;<br></code></pre></td></tr></table></figure>
-<h2 id="List、Set、Array获取"><a href="#List、Set、Array获取" class="headerlink" title="List、Set、Array获取"></a>List、Set、Array获取</h2><p>配置文件写法：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">random:</span> <span class="hljs-number">10</span><span class="hljs-string">,20,30</span><br></code></pre></td></tr></table></figure>
-<p>使用@Value获取:</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-variable">@Value</span>(<span class="hljs-string">&quot;<span class="hljs-subst">#&#123;<span class="hljs-string">&#x27;$&#123;random&#125;&#x27;</span>.split(<span class="hljs-string">&#x27;,&#x27;</span>)&#125;</span>&quot;</span>)<br>int[] randoms; <span class="hljs-regexp">//</span><span class="hljs-title class_">List</span>&lt;<span class="hljs-title class_">Integer</span>&gt;也可以<br></code></pre></td></tr></table></figure>
-<p>配置文件写法：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">random1:</span><br>  <span class="hljs-attr">users:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">zhangsao</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">lisi</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">wangwu</span><br></code></pre></td></tr></table></figure>
-<p>使用@ConfigurationProperties获取:</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-meta">@Configuration</span><br><span class="hljs-meta">@ConfigurationProperties(prefix = <span class="hljs-string">&quot;random1&quot;</span>)</span><br><span class="hljs-meta">@Data</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserProperties</span> &#123;<br>    List&lt;String&gt; users;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="总结下两种注解区别"><a href="#总结下两种注解区别" class="headerlink" title="总结下两种注解区别"></a>总结下两种注解区别</h2><p><img src="/img/configuration-vs-value.png" alt="configuration-vs-value"></p>
-<h2 id="多环境配置"><a href="#多环境配置" class="headerlink" title="多环境配置"></a>多环境配置</h2><p>我们在主配置文件编写的时候，文件名可以是 application-{profile}.properties&#x2F;yml,使用spring.profiles.active激活使用哪一个配置文件</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">profiles:</span><br>    <span class="hljs-attr">active:</span> <span class="hljs-string">dev</span><br><span class="hljs-meta">---</span><br><span class="hljs-meta"></span><br><span class="hljs-comment">#配置开发环境</span><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">profiles:</span> <span class="hljs-string">dev</span><br><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">9000</span><br><br><span class="hljs-meta">---</span><br><span class="hljs-meta"></span><br><span class="hljs-comment">#配置生产环境</span><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">profiles:</span> <span class="hljs-string">prod</span><br><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">9100</span><br><br><span class="hljs-meta">---</span><br><span class="hljs-meta"></span><br><span class="hljs-comment">#配置测试环境</span><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">profiles:</span> <span class="hljs-string">dev</span><br><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">8000</span><br></code></pre></td></tr></table></figure>
+        
+    
 
-<h2 id="配置文件优先级"><a href="#配置文件优先级" class="headerlink" title="配置文件优先级"></a>配置文件优先级</h2><h3 id="项目内部配置文件"><a href="#项目内部配置文件" class="headerlink" title="项目内部配置文件"></a>项目内部配置文件</h3><ol>
-<li>application.properties 与application.yml同一个目录共存时，properties配置优先级更高</li>
-<li>ConfigFileApplicationListener中默认配置文件加载顺序<br>项目根目录config文件夹&gt;根目录配置文件&gt;resources下config文件夹&gt;resources下配置文件</li>
-<li>当多个配置文件属性不冲突时，配置是互补的<br><img src="/img/config-load-order.jpg"></li>
-<li>也可以指定配置文件地址<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">java -jar run-0.0.1-SNAPSHOT.jar --spring.config.location=D:/application.properties<br></code></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="外部配置"><a href="#外部配置" class="headerlink" title="外部配置"></a>外部配置</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config">官方参考链接</a></p>
-<ol>
-<li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-devtools-globalsettings">Devtools global settings properties</a> in the <code>$HOME/.config/spring-boot</code> directory when devtools is active.</li>
-<li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/javadoc-api/org/springframework/test/context/TestPropertySource.html"><code>@TestPropertySource</code></a> annotations on your tests.</li>
-<li><code>properties</code> attribute on your tests. Available on <a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/api/org/springframework/boot/test/context/SpringBootTest.html"><code>@SpringBootTest</code></a> and the <a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-testing-spring-boot-applications-testing-autoconfigured-tests">test annotations for testing a particular slice of your application</a>.</li>
-<li>Command line arguments.</li>
-<li>Properties from <code>SPRING_APPLICATION_JSON</code> (inline JSON embedded in an environment variable or system property).</li>
-<li><code>ServletConfig</code> init parameters.</li>
-<li><code>ServletContext</code> init parameters.</li>
-<li>JNDI attributes from <code>java:comp/env</code>.</li>
-<li>Java System properties (<code>System.getProperties()</code>).</li>
-<li>OS environment variables.</li>
-<li>A <code>RandomValuePropertySource</code> that has properties only in <code>random.*</code>.</li>
-<li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config-profile-specific-properties">Profile-specific application properties</a> outside of your packaged jar (<code>application-&#123;profile&#125;.properties</code> and YAML variants).</li>
-<li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config-profile-specific-properties">Profile-specific application properties</a> packaged inside your jar (<code>application-&#123;profile&#125;.properties</code> and YAML variants).</li>
-<li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config-application-property-files">Application properties</a> outside of your packaged jar (<code>application.properties</code> and YAML variants).</li>
-<li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config-application-property-files">Application properties</a> packaged inside your jar (<code>application.properties</code> and YAML variants).</li>
-<li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/javadoc-api/org/springframework/context/annotation/PropertySource.html"><code>@PropertySource</code></a> annotations on your <code>@Configuration</code> classes. Please note that such property sources are not added to the <code>Environment</code> until the application context is being refreshed. This is too late to configure certain properties such as <code>logging.*</code> and <code>spring.main.*</code> which are read before refresh begins.</li>
-<li>Default properties (specified by setting <code>SpringApplication.setDefaultProperties</code>).</li>
-</ol>
-<p><strong>千里之行，始于足下。这里是SpringBoot教程系列第五篇，所有项目源码均可以在我的<a target="_blank" rel="noopener" href="https://github.com/mytianya/springboot-tutorials" title="GitHub">GitHub</a>上面下载源码。</strong></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-23T13:53:05.000Z" title="2023/9/23 21:53:05">2023-09-23</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.014Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/java/">java</a></span><span class="level-item">2 分钟读完 (大约253个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/09/23/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/">Springboot2.x基础教程：快速开始</a></p><div class="content"><blockquote>
-<p>这里是SpringBoot2.x教程第一篇开始，开发工具为idea+JDK1.8+Maven，学习前提大家也提前安装配置好开发环境<br>Spring官方提供了非常方便的工具Spring Initializr来帮助我们创建Spring Boot应用<br>第一次带领大家使用Idea开发工具快速创建一个SpringBoot Web项目</p>
-</blockquote>
-<h2 id="Idea新建工程选择Spring-Initializr"><a href="#Idea新建工程选择Spring-Initializr" class="headerlink" title="Idea新建工程选择Spring Initializr"></a>Idea新建工程选择Spring Initializr</h2><p><img src="/img/new-project.png"></p>
-<h2 id="项目使用Maven构建，指定Jdk版本为1-8，修改项目GroupId，ArtifactId"><a href="#项目使用Maven构建，指定Jdk版本为1-8，修改项目GroupId，ArtifactId" class="headerlink" title="项目使用Maven构建，指定Jdk版本为1.8，修改项目GroupId，ArtifactId"></a>项目使用Maven构建，指定Jdk版本为1.8，修改项目GroupId，ArtifactId</h2><p><img src="/img/new-project2.png"></p>
-<h2 id="选择SpringBoot版本，这里选择当前最新的2-3-2，勾选SpringWeb依赖"><a href="#选择SpringBoot版本，这里选择当前最新的2-3-2，勾选SpringWeb依赖" class="headerlink" title="选择SpringBoot版本，这里选择当前最新的2.3.2，勾选SpringWeb依赖"></a>选择SpringBoot版本，这里选择当前最新的2.3.2，勾选SpringWeb依赖</h2><p><img src="/img/new-project3.png"></p>
-<h2 id="至此下一步打开项目-下载好项目依赖，就可以正常启动SpringBoot项目"><a href="#至此下一步打开项目-下载好项目依赖，就可以正常启动SpringBoot项目" class="headerlink" title="至此下一步打开项目,下载好项目依赖，就可以正常启动SpringBoot项目"></a>至此下一步打开项目,下载好项目依赖，就可以正常启动SpringBoot项目</h2><p><img src="/img/springboot-run.png"></p>
-<p>千里之行，始于足下。不要嫌弃一开始很简单，后面慢慢在此项目基础上介绍SpringBoot的方方面面，所有项目源码均可以在我的<a target="_blank" rel="noopener" href="https://github.com/mytianya/springboot-tutorials" title="GitHub">GitHub</a>上面下载源码。</p>
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/tags/springboot/page/2/">上一页</a></div><div class="pagination-next is-invisible is-hidden-mobile"><a href="/tags/springboot/page/4/">下一页</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/tags/springboot/">1</a></li><li><a class="pagination-link" href="/tags/springboot/page/2/">2</a></li><li><a class="pagination-link is-current" href="/tags/springboot/page/3/">3</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/avatar.png" alt="mytianya"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">mytianya</p><p class="is-size-6 is-block">全栈工程师</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">30</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">5</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">6</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/mytianya" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/mytianya"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/java/"><span class="level-start"><span class="level-item">java</span></span><span class="level-end"><span class="level-item tag">26</span></span></a></li><li><a class="level is-mobile" href="/categories/oracle/"><span class="level-start"><span class="level-item">oracle</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%9D%82%E8%B0%88/"><span class="level-start"><span class="level-item">杂谈</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%B5%81%E5%AA%92%E4%BD%93/"><span class="level-start"><span class="level-item">流媒体</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%AE%97%E6%B3%95/"><span class="level-start"><span class="level-item">算法</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-27T18:00:08.000Z">2023-09-28</time></p><p class="title"><a href="/2023/09/28/oracle/ORA-00257%E5%BD%92%E6%A1%A3%E7%A8%8B%E5%BA%8F%E9%94%99%E8%AF%AF/">ORA-00257归档程序错误</a></p><p class="categories"><a href="/categories/oracle/">oracle</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-26T18:00:08.000Z">2023-09-27</time></p><p class="title"><a href="/2023/09/27/alg/%E7%AE%97%E6%B3%95%EF%BC%9A%E6%B1%82%E6%9C%80%E5%A4%9A%E7%BA%BF%E6%AE%B5%E9%87%8D%E5%90%88%E6%AC%A1%E6%95%B0/">求最多线段重合次数</a></p><p class="categories"><a href="/categories/%E7%AE%97%E6%B3%95/">算法</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-26T18:00:08.000Z">2023-09-27</time></p><p class="title"><a href="/2023/09/27/video/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%82%B9%E6%92%AD%E8%B7%9F%E7%9B%B4%E6%92%AD%E6%B5%81%E5%AA%92%E4%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%A9%E7%8E%A9/">搭建一个点播跟直播流媒体服务器玩玩</a></p><p class="categories"><a href="/categories/%E6%B5%81%E5%AA%92%E4%BD%93/">流媒体</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-25T18:00:18.000Z">2023-09-26</time></p><p class="title"><a href="/2023/09/26/springcloud/SpringCloud%E7%89%88%E6%9C%AC%E6%96%B0%E6%97%A7%E5%91%BD%E5%90%8D%E6%96%B9%E5%BC%8F/">SpringCloud版本新旧命名方式</a></p><p class="categories"><a href="/categories/java/">java</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-25T18:00:08.000Z">2023-09-26</time></p><p class="title"><a href="/2023/09/26/springcloud/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/">微服务架构简介</a></p><p class="categories"><a href="/categories/java/">java</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">29</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/ora-00257/"><span class="tag">ora-00257</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/springboot/"><span class="tag">springboot</span><span class="tag">24</span></a></div><div class="control"><a class="tags has-addons" href="/tags/springcloud/"><span class="tag">springcloud</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%8D%9A%E5%AE%A2/"><span class="tag">博客</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B0%8F%E6%A0%B9%E5%A0%86/"><span class="tag">小根堆</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/"><span class="tag">音视频</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/avatar.png" alt="mytianya" height="28"></a><p class="is-size-7"><span>&copy; 2024 mytianya</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
-            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
-        });</script></body></html>
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/avatar.png" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">mytianya</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><i>
+                    
+                        <a style="color: #4e7dde;" href="/tags/">标签</a>
+                    
+                </i></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                            
+
+
+<div class="archive-list">
+  <ul class="archive">
+
+    
+    <span>📌<i>springboot/page/3</i></span>
+ 
+    
+
+    
+    
+
+    
+
+    
+  
+  </ul>
+</div>
+ 
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊晚来天欲雪，能饮一杯无🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

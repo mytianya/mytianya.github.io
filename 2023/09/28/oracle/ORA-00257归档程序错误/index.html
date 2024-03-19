@@ -1,76 +1,329 @@
-<!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>ORA-00257归档程序错误 - mytianya</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="mytianya"><meta name="msapplication-TileImage" content="favcion.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="mytianya"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="晚来天欲雪，能饮一杯无"><meta property="og:type" content="blog"><meta property="og:title" content="ORA-00257归档程序错误"><meta property="og:url" content="https://mytianya.github.io/2023/09/28/oracle/ORA-00257%E5%BD%92%E6%A1%A3%E7%A8%8B%E5%BA%8F%E9%94%99%E8%AF%AF/"><meta property="og:site_name" content="mytianya"><meta property="og:description" content="晚来天欲雪，能饮一杯无"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://mytianya.github.io/img/select_log_mode.png"><meta property="og:image" content="https://mytianya.github.io/img/flash_recovery_area_usage.png"><meta property="og:image" content="https://mytianya.github.io/img/recovery.png"><meta property="og:image" content="https://mytianya.github.io/img/show-parameter-db-recover.png"><meta property="article:published_time" content="2023-09-27T18:00:08.000Z"><meta property="article:modified_time" content="2024-02-27T06:59:45.011Z"><meta property="article:author" content="mytianya"><meta property="article:tag" content="ora-00257"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://mytianya.github.io/img/select_log_mode.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://mytianya.github.io/2023/09/28/oracle/ORA-00257%E5%BD%92%E6%A1%A3%E7%A8%8B%E5%BA%8F%E9%94%99%E8%AF%AF/"},"headline":"ORA-00257归档程序错误","image":["https://mytianya.github.io/img/select_log_mode.png","https://mytianya.github.io/img/flash_recovery_area_usage.png","https://mytianya.github.io/img/recovery.png","https://mytianya.github.io/img/show-parameter-db-recover.png"],"datePublished":"2023-09-27T18:00:08.000Z","dateModified":"2024-02-27T06:59:45.011Z","author":{"@type":"Person","name":"mytianya"},"publisher":{"@type":"Organization","name":"mytianya","logo":{"@type":"ImageObject","url":"https://mytianya.github.io/2023/09/28/oracle/ORA-00257%E5%BD%92%E6%A1%A3%E7%A8%8B%E5%BA%8F%E9%94%99%E8%AF%AF/avatar.png"}},"description":"线上生成系统后台日志连接数据库报ORA-00257归档程序错误。借此了解下oracle日志归档模式和非归档模式以及如何解决该问题。  Oracle日志操作模式Oracle数据库在运行过程中，每一个实例都有一个相关的重做日志，在实例故障情况下保护数据库。我们对数据的DML,DDL操作都会结构化为重做记录，可以用来重建对数据库所做的所有更改的数据，包括撤销段。重做记录在SGA的重做日志缓冲区中以循环"}</script><link rel="canonical" href="https://mytianya.github.io/2023/09/28/oracle/ORA-00257%E5%BD%92%E6%A1%A3%E7%A8%8B%E5%BA%8F%E9%94%99%E8%AF%AF/"><link rel="icon" href="/favcion.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!-- hexo injector head_end start --><script>
-  (function () {
-      function switchTab() {
-          if (!location.hash) {
-            return;
-          }
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="ORA-00257归档程序错误" />
+    <meta name="hexo-theme-A4" content="v1.8.9" />
+    <link rel="alternate icon" type="image/webp" href="/avatar.png">
+    <title>mytianya | 晚来天欲雪，能饮一杯无</title>
 
-          const id = '#' + CSS.escape(location.hash.substring(1));
-          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
-          if (!$tabMenu) {
-            return;
-          }
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
 
-          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
-          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
-          Array.from($tabMenuContainer.querySelectorAll('a'))
-              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
-              .forEach($content => $content.classList.add('is-hidden'));
+        
+<link rel="stylesheet" href="/css/reset.css">
 
-          if ($tabMenu) {
-              $tabMenu.parentElement.classList.add('is-active');
-          }
-          const $activeTab = document.querySelector(id);
-          if ($activeTab) {
-              $activeTab.classList.remove('is-hidden');
-          }
-      }
-      switchTab();
-      window.addEventListener('hashchange', switchTab, false);
-  })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/avatar.png" alt="mytianya" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于我</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/mytianya"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-27T18:00:08.000Z" title="2023/9/28 2:00:08">2023-09-28</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.011Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/oracle/">oracle</a></span><span class="level-item">7 分钟读完 (大约1039个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">ORA-00257归档程序错误</h1><div class="content"><blockquote>
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/avatar.png" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">mytianya</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            ORA-00257归档程序错误
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Oracle%E6%97%A5%E5%BF%97%E6%93%8D%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="post-toc-text">Oracle日志操作模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BD%92%E6%A1%A3%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="post-toc-text">归档优缺点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BD%92%E6%A1%A3%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="post-toc-text">归档常用操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BD%92%E6%A1%A3%E6%A8%A1%E5%BC%8F"><span class="post-toc-text">查看当前数据库归档模式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BC%80%E5%90%AF%E5%BD%92%E6%A1%A3%E6%A8%A1%E5%BC%8F"><span class="post-toc-text">开启归档模式</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3ORA-00257%E9%97%AE%E9%A2%98"><span class="post-toc-text">解决ORA-00257问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%A0%E9%99%A4%E5%A4%9A%E4%BA%8E%E5%BD%92%E6%A1%A3%E6%97%A5%E5%BF%97"><span class="post-toc-text">删除多于归档日志</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BF%AE%E6%94%B9%E5%BD%92%E6%A1%A3%E6%97%A5%E5%BF%97%E5%AD%98%E5%82%A8%E5%A4%A7%E5%B0%8F%E8%B7%9F%E5%AE%B9%E9%87%8F"><span class="post-toc-text">修改归档日志存储大小跟容量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E9%97%AD%E5%BD%92%E6%A1%A3%E6%A8%A1%E5%BC%8F"><span class="post-toc-text">关闭归档模式</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%9C%9F%E5%AE%9E%E9%80%A0%E6%88%90%E5%BD%92%E6%A1%A3%E6%BB%A1%E5%8E%9F%E5%9B%A0"><span class="post-toc-text">项目真实造成归档满原因</span></a></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><blockquote>
 <p>线上生成系统后台日志连接数据库报ORA-00257归档程序错误。借此了解下oracle日志归档模式和非归档模式以及如何解决该问题。</p>
 </blockquote>
+<span id="more"></span>
 <h2 id="Oracle日志操作模式"><a href="#Oracle日志操作模式" class="headerlink" title="Oracle日志操作模式"></a>Oracle日志操作模式</h2><p>Oracle数据库在运行过程中，每一个实例都有一个相关的重做日志，在实例故障情况下保护数据库。<br>我们对数据的DML,DDL操作都会结构化为重做记录，可以用来重建对数据库所做的所有更改的数据，包括撤销段。<br>重做记录在SGA的重做日志缓冲区中以循环方式进行缓冲，并被数据库后台进程log Writer (LGWR)写入其中一个重做日志文件（Redo log files）中<br>由数据库库后台进程log Writer(LGWR)写入联机重做日志（Redo log files）中，当重做日志文件被填满时，会发生日志切换，根据是否启用归档分为两种情况：</p>
 <p>1、如果归档被禁用（NOARCHIVELOG模式），则在将在记录在其中的更改写入数据文件后，这个填满的重做日志文件可用。</p>
 <p>2、如果启用了归档（ARCHIVELOG模式），则在将记录的更改写入数据文件并归档后，LGWR就可以使用这个被填满的重做日志文件。</p>
 <h2 id="归档优缺点"><a href="#归档优缺点" class="headerlink" title="归档优缺点"></a>归档优缺点</h2><p>可以进行完全、不完全恢复：由于对数据库所做的全部改动都记录在日志文件中，如果发生硬盘故障等导致数据文件丢失的话，则可以利用物理备份和归档日志完全恢复数据库，不会丢失任何数据。</p>
 <p>一般生产系统推荐都开启归档模式，毕竟数据无价。</p>
-<h2 id="归档常用操作"><a href="#归档常用操作" class="headerlink" title="归档常用操作"></a>归档常用操作</h2><h3 id="查看当前数据库归档模式"><a href="#查看当前数据库归档模式" class="headerlink" title="查看当前数据库归档模式"></a>查看当前数据库归档模式</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql">su <span class="hljs-operator">-</span> oracle #切换到oracle用户<br>sqlplus <span class="hljs-operator">/</span>nolog<br>conn <span class="hljs-operator">/</span><span class="hljs-keyword">as</span> sysdba;<br><span class="hljs-keyword">select</span> log_mode <span class="hljs-keyword">from</span> v$database;<br></code></pre></td></tr></table></figure>
-<p><img src="/img/select_log_mode.png"></p>
-<h3 id="开启归档模式"><a href="#开启归档模式" class="headerlink" title="开启归档模式"></a>开启归档模式</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql">shutdown immediate; #关闭数据库<br>startup mount; #启动数据库到mount状态<br><span class="hljs-keyword">alter</span> database archivelog; #修改数据库到归档模式<br><span class="hljs-keyword">alter</span> database <span class="hljs-keyword">open</span>; #启动数据库<br>archive log list; #查看归档配置<br></code></pre></td></tr></table></figure>
+<h2 id="归档常用操作"><a href="#归档常用操作" class="headerlink" title="归档常用操作"></a>归档常用操作</h2><h3 id="查看当前数据库归档模式"><a href="#查看当前数据库归档模式" class="headerlink" title="查看当前数据库归档模式"></a>查看当前数据库归档模式</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">su <span class="operator">-</span> oracle #切换到oracle用户</span><br><span class="line">sqlplus <span class="operator">/</span>nolog</span><br><span class="line">conn <span class="operator">/</span><span class="keyword">as</span> sysdba;</span><br><span class="line"><span class="keyword">select</span> log_mode <span class="keyword">from</span> v$database;</span><br></pre></td></tr></table></figure>
+<p><a href="/img/select_log_mode.png" class="gallery-item" style="box-shadow: none;"> <img src="/img/select_log_mode.png"></a></p>
+<h3 id="开启归档模式"><a href="#开启归档模式" class="headerlink" title="开启归档模式"></a>开启归档模式</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">shutdown immediate; #关闭数据库</span><br><span class="line">startup mount; #启动数据库到mount状态</span><br><span class="line"><span class="keyword">alter</span> database archivelog; #修改数据库到归档模式</span><br><span class="line"><span class="keyword">alter</span> database <span class="keyword">open</span>; #启动数据库</span><br><span class="line">archive log list; #查看归档配置</span><br></pre></td></tr></table></figure>
 <h2 id="解决ORA-00257问题"><a href="#解决ORA-00257问题" class="headerlink" title="解决ORA-00257问题"></a>解决ORA-00257问题</h2><p>项目上面ORA-00257归档程序错误，为归档空间不足。解决办法：<br>1、删除多余的归档日志<br>2、增大归档日志的容量<br>3、关闭归档模式</p>
 <h3 id="删除多于归档日志"><a href="#删除多于归档日志" class="headerlink" title="删除多于归档日志"></a>删除多于归档日志</h3><p>1、查看当前使用archivelog使用的百分比。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">set</span> linesize <span class="hljs-number">200</span>;<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> V$FLASH_RECOVERY_AREA_USAGE;<br></code></pre></td></tr></table></figure>
-<p><img src="/img/flash_recovery_area_usage.png"><br>2、查看当前归档日志所在目录<br>当前归档日志文件在&#x2F;home&#x2F;oracle&#x2F;fast_recovery_area&#x2F;AODB&#x2F;archivelog&#x2F;目录下</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">show</span> <span class="hljs-keyword">parameter</span> recovery;<br></code></pre></td></tr></table></figure>
-<p><img src="/img/recovery.png"><br>3、在此目录下根据日期删除过久的归档日志<br>4、使用rman维护控制文件</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql">rman target <span class="hljs-operator">&lt;</span>管理员用户<span class="hljs-operator">&gt;</span><span class="hljs-operator">/</span><span class="hljs-operator">&lt;</span>管理员密码<span class="hljs-operator">&gt;</span><br>crosscheck archivelog <span class="hljs-keyword">all</span>; #检查错误文档<br><span class="hljs-keyword">delete</span> expired archivelog <span class="hljs-keyword">all</span>; #删除过期文档<br></code></pre></td></tr></table></figure>
-<h3 id="修改归档日志存储大小跟容量"><a href="#修改归档日志存储大小跟容量" class="headerlink" title="修改归档日志存储大小跟容量"></a>修改归档日志存储大小跟容量</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">show</span> <span class="hljs-keyword">parameter</span> db_recover;<br><span class="hljs-keyword">alter</span> <span class="hljs-keyword">system</span> <span class="hljs-keyword">set</span> db_recovery_file_dest_size<span class="hljs-operator">=</span><span class="hljs-number">2000</span>G <span class="hljs-keyword">scope</span><span class="hljs-operator">=</span>spfile<br></code></pre></td></tr></table></figure>
-<p><img src="/img/show-parameter-db-recover.png"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> linesize <span class="number">200</span>;</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> V$FLASH_RECOVERY_AREA_USAGE;</span><br></pre></td></tr></table></figure>
+<p><a href="/img/flash_recovery_area_usage.png" class="gallery-item" style="box-shadow: none;"> <img src="/img/flash_recovery_area_usage.png"></a><br>2、查看当前归档日志所在目录<br>当前归档日志文件在&#x2F;home&#x2F;oracle&#x2F;fast_recovery_area&#x2F;AODB&#x2F;archivelog&#x2F;目录下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">parameter</span> recovery;</span><br></pre></td></tr></table></figure>
+<p><a href="/img/recovery.png" class="gallery-item" style="box-shadow: none;"> <img src="/img/recovery.png"></a><br>3、在此目录下根据日期删除过久的归档日志<br>4、使用rman维护控制文件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rman target <span class="operator">&lt;</span>管理员用户<span class="operator">&gt;</span><span class="operator">/</span><span class="operator">&lt;</span>管理员密码<span class="operator">&gt;</span></span><br><span class="line">crosscheck archivelog <span class="keyword">all</span>; #检查错误文档</span><br><span class="line"><span class="keyword">delete</span> expired archivelog <span class="keyword">all</span>; #删除过期文档</span><br></pre></td></tr></table></figure>
+<h3 id="修改归档日志存储大小跟容量"><a href="#修改归档日志存储大小跟容量" class="headerlink" title="修改归档日志存储大小跟容量"></a>修改归档日志存储大小跟容量</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">parameter</span> db_recover;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">system</span> <span class="keyword">set</span> db_recovery_file_dest_size<span class="operator">=</span><span class="number">2000</span>G <span class="keyword">scope</span><span class="operator">=</span>spfile</span><br></pre></td></tr></table></figure>
+<p><a href="/img/show-parameter-db-recover.png" class="gallery-item" style="box-shadow: none;"> <img src="/img/show-parameter-db-recover.png"></a></p>
 <h3 id="关闭归档模式"><a href="#关闭归档模式" class="headerlink" title="关闭归档模式"></a>关闭归档模式</h3><p>如果不是生产系统而是测试环境，可以关闭归档模式</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql">shutdown immediate; #关闭数据库<br>startup mount; #启动数据库到mount状态<br><span class="hljs-keyword">alter</span> database noarchivelog; #修改数据库到归档模式<br><span class="hljs-keyword">alter</span> database <span class="hljs-keyword">open</span>; #启动数据库<br>archive log list; #查看归档配置<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">shutdown immediate; #关闭数据库</span><br><span class="line">startup mount; #启动数据库到mount状态</span><br><span class="line"><span class="keyword">alter</span> database noarchivelog; #修改数据库到归档模式</span><br><span class="line"><span class="keyword">alter</span> database <span class="keyword">open</span>; #启动数据库</span><br><span class="line">archive log list; #查看归档配置</span><br></pre></td></tr></table></figure>
 <h2 id="项目真实造成归档满原因"><a href="#项目真实造成归档满原因" class="headerlink" title="项目真实造成归档满原因"></a>项目真实造成归档满原因</h2><p>实际项目提供的归档大小为1T按照目前项目量没有这么大的日志。在线上归档日志1T一天就打满了。</p>
 <p>联想到最近对程序升级过，部分软件模块中可能存在频繁的DML操作。</p>
 <p>通过记录了几个小时的AWR日志，下载下来查看程序中存在不正常的SQL更新语句，造成了频繁的更新产生了大量的日志，修复了此SQL问题，解决了该问题。</p>
-</div><div class="article-licensing box"><div class="licensing-title"><p>ORA-00257归档程序错误</p><p><a href="https://mytianya.github.io/2023/09/28/oracle/ORA-00257归档程序错误/">https://mytianya.github.io/2023/09/28/oracle/ORA-00257归档程序错误/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>mytianya</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-09-28</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-02-27</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/ora-00257/">ora-00257</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/09/27/alg/%E7%AE%97%E6%B3%95%EF%BC%9A%E6%B1%82%E6%9C%80%E5%A4%9A%E7%BA%BF%E6%AE%B5%E9%87%8D%E5%90%88%E6%AC%A1%E6%95%B0/"><span class="level-item">求最多线段重合次数</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/avatar.png" alt="mytianya"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">mytianya</p><p class="is-size-6 is-block">全栈工程师</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">30</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">5</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">6</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/mytianya" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/mytianya"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/java/"><span class="level-start"><span class="level-item">java</span></span><span class="level-end"><span class="level-item tag">26</span></span></a></li><li><a class="level is-mobile" href="/categories/oracle/"><span class="level-start"><span class="level-item">oracle</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%9D%82%E8%B0%88/"><span class="level-start"><span class="level-item">杂谈</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%B5%81%E5%AA%92%E4%BD%93/"><span class="level-start"><span class="level-item">流媒体</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%AE%97%E6%B3%95/"><span class="level-start"><span class="level-item">算法</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-27T18:00:08.000Z">2023-09-28</time></p><p class="title"><a href="/2023/09/28/oracle/ORA-00257%E5%BD%92%E6%A1%A3%E7%A8%8B%E5%BA%8F%E9%94%99%E8%AF%AF/">ORA-00257归档程序错误</a></p><p class="categories"><a href="/categories/oracle/">oracle</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-26T18:00:08.000Z">2023-09-27</time></p><p class="title"><a href="/2023/09/27/alg/%E7%AE%97%E6%B3%95%EF%BC%9A%E6%B1%82%E6%9C%80%E5%A4%9A%E7%BA%BF%E6%AE%B5%E9%87%8D%E5%90%88%E6%AC%A1%E6%95%B0/">求最多线段重合次数</a></p><p class="categories"><a href="/categories/%E7%AE%97%E6%B3%95/">算法</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-26T18:00:08.000Z">2023-09-27</time></p><p class="title"><a href="/2023/09/27/video/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%82%B9%E6%92%AD%E8%B7%9F%E7%9B%B4%E6%92%AD%E6%B5%81%E5%AA%92%E4%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%A9%E7%8E%A9/">搭建一个点播跟直播流媒体服务器玩玩</a></p><p class="categories"><a href="/categories/%E6%B5%81%E5%AA%92%E4%BD%93/">流媒体</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-25T18:00:18.000Z">2023-09-26</time></p><p class="title"><a href="/2023/09/26/springcloud/SpringCloud%E7%89%88%E6%9C%AC%E6%96%B0%E6%97%A7%E5%91%BD%E5%90%8D%E6%96%B9%E5%BC%8F/">SpringCloud版本新旧命名方式</a></p><p class="categories"><a href="/categories/java/">java</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-25T18:00:08.000Z">2023-09-26</time></p><p class="title"><a href="/2023/09/26/springcloud/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/">微服务架构简介</a></p><p class="categories"><a href="/categories/java/">java</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">29</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/ora-00257/"><span class="tag">ora-00257</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/springboot/"><span class="tag">springboot</span><span class="tag">24</span></a></div><div class="control"><a class="tags has-addons" href="/tags/springcloud/"><span class="tag">springcloud</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%8D%9A%E5%AE%A2/"><span class="tag">博客</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B0%8F%E6%A0%B9%E5%A0%86/"><span class="tag">小根堆</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/"><span class="tag">音视频</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/avatar.png" alt="mytianya" height="28"></a><p class="is-size-7"><span>&copy; 2024 mytianya</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
-            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
-        });</script></body></html>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-09-28</span>
+            
+                <span>该篇文章被 mytianya</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/ora-00257/'>
+                            ora-00257
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/oracle/'>
+                            oracle
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊晚来天欲雪，能饮一杯无🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

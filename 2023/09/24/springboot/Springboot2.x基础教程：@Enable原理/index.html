@@ -1,75 +1,327 @@
-<!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Springboot2.x基础教程：@Enable原理 - mytianya</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="mytianya"><meta name="msapplication-TileImage" content="favcion.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="mytianya"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="晚来天欲雪，能饮一杯无"><meta property="og:type" content="blog"><meta property="og:title" content="Springboot2.x基础教程：@Enable原理"><meta property="og:url" content="https://mytianya.github.io/2023/09/24/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A@Enable%E5%8E%9F%E7%90%86/"><meta property="og:site_name" content="mytianya"><meta property="og:description" content="晚来天欲雪，能饮一杯无"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://mytianya.github.io/img/spring-refresh.png"><meta property="og:image" content="https://mytianya.github.io/img/spring-configuration-processor.png"><meta property="article:published_time" content="2023-09-24T05:54:08.000Z"><meta property="article:modified_time" content="2024-02-27T06:59:45.012Z"><meta property="article:author" content="mytianya"><meta property="article:tag" content="springboot"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://mytianya.github.io/img/spring-refresh.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://mytianya.github.io/2023/09/24/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A@Enable%E5%8E%9F%E7%90%86/"},"headline":"Springboot2.x基础教程：@Enable原理","image":["https://mytianya.github.io/img/spring-refresh.png","https://mytianya.github.io/img/spring-configuration-processor.png"],"datePublished":"2023-09-24T05:54:08.000Z","dateModified":"2024-02-27T06:59:45.012Z","author":{"@type":"Person","name":"mytianya"},"publisher":{"@type":"Organization","name":"mytianya","logo":{"@type":"ImageObject","url":"https://mytianya.github.io/2023/09/24/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A@Enable%E5%8E%9F%E7%90%86/avatar.png"}},"description":"上一篇springboot2.x基础教程：@Async开启异步任务我们使用了@EnableAsync注解来启用异步执行。SpringBoot框架中@Enable*注解有很多例如：@EnableAspectJAutoProxy、@EnableCaching、@EnableAutoConfiguration、@EnableSwagger2这一章讲讲它背后的原理。  几个典型的@Enable*注解下面"}</script><link rel="canonical" href="https://mytianya.github.io/2023/09/24/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A@Enable%E5%8E%9F%E7%90%86/"><link rel="icon" href="/favcion.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!-- hexo injector head_end start --><script>
-  (function () {
-      function switchTab() {
-          if (!location.hash) {
-            return;
-          }
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Springboot2.x基础教程：@Enable原理" />
+    <meta name="hexo-theme-A4" content="v1.8.9" />
+    <link rel="alternate icon" type="image/webp" href="/avatar.png">
+    <title>mytianya | 晚来天欲雪，能饮一杯无</title>
 
-          const id = '#' + CSS.escape(location.hash.substring(1));
-          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
-          if (!$tabMenu) {
-            return;
-          }
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
 
-          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
-          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
-          Array.from($tabMenuContainer.querySelectorAll('a'))
-              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
-              .forEach($content => $content.classList.add('is-hidden'));
+        
+<link rel="stylesheet" href="/css/reset.css">
 
-          if ($tabMenu) {
-              $tabMenu.parentElement.classList.add('is-active');
-          }
-          const $activeTab = document.querySelector(id);
-          if ($activeTab) {
-              $activeTab.classList.remove('is-hidden');
-          }
-      }
-      switchTab();
-      window.addEventListener('hashchange', switchTab, false);
-  })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/avatar.png" alt="mytianya" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于我</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/mytianya"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-24T05:54:08.000Z" title="2023/9/24 13:54:08">2023-09-24</time>发表</span><span class="level-item"><time dateTime="2024-02-27T06:59:45.012Z" title="2024/2/27 14:59:45">2024-02-27</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/java/">java</a></span><span class="level-item">6 分钟读完 (大约926个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">Springboot2.x基础教程：@Enable原理</h1><div class="content"><blockquote>
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/avatar.png" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">mytianya</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Springboot2.x基础教程：@Enable原理
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%87%A0%E4%B8%AA%E5%85%B8%E5%9E%8B%E7%9A%84-Enable-%E6%B3%A8%E8%A7%A3"><span class="post-toc-text">几个典型的@Enable*注解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EnableScheduling"><span class="post-toc-text">@EnableScheduling</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EnableAsync"><span class="post-toc-text">@EnableAsync</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EnableAspectJAutoProxy"><span class="post-toc-text">@EnableAspectJAutoProxy</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Import%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="post-toc-text">@Import注解使用方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%81%E8%AE%B8%E4%BD%BF%E7%94%A8-Configuration%E6%B3%A8%E8%A7%A3%E7%9A%84%E7%B1%BB"><span class="post-toc-text">允许使用@Configuration注解的类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%81%E8%AE%B8%E4%BD%BF%E7%94%A8%E5%AE%9E%E7%8E%B0ImportSelectorj%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%B1%BB"><span class="post-toc-text">允许使用实现ImportSelectorj接口的类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%81%E8%AE%B8%E6%98%AF%E5%AE%9E%E7%8E%B0%E4%BA%86ImportBeanDefinitionRegistrar%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%B1%BB"><span class="post-toc-text">允许是实现了ImportBeanDefinitionRegistrar接口的类</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Import%E6%B3%A8%E8%A7%A3SpringBoot%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="post-toc-text">@Import注解SpringBoot处理流程源码分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ConfigurationClassParser%E7%B1%BB%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="post-toc-text">ConfigurationClassParser类源码分析</span></a></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><blockquote>
 <p>上一篇springboot2.x基础教程：@Async开启异步任务我们使用了@EnableAsync注解来启用异步执行。<br>SpringBoot框架中@Enable*注解有很多例如：@EnableAspectJAutoProxy、@EnableCaching、@EnableAutoConfiguration、@EnableSwagger2这一章讲讲它背后的原理。</p>
 </blockquote>
 <h2 id="几个典型的-Enable-注解"><a href="#几个典型的-Enable-注解" class="headerlink" title="几个典型的@Enable*注解"></a>几个典型的@Enable*注解</h2><p>下面贴出@EnableSwagger2、@EnableAsync、@EnableAspectJAutoProxy这三个注解，不难看出这三个注解都使用了@Import注解。<br>@Import注解支持导入普通的java类,并将其声明成一个bean。<br>实际@Enable注解就是通过@Import注解的能力实现Bean的注入springboot ioc容器，从而使某些配置生效。</p>
-<h3 id="EnableScheduling"><a href="#EnableScheduling" class="headerlink" title="@EnableScheduling"></a>@EnableScheduling</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-variable">@Target</span>(&#123;ElementType.TYPE&#125;)<br><span class="hljs-variable">@Retention</span>(RetentionPolicy.RUNTIME)<br><span class="hljs-variable">@Import</span>(&#123;SchedulingConfiguration.class&#125;)<br><span class="hljs-variable">@Documented</span><br>public <span class="hljs-variable">@interface</span> EnableScheduling &#123;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="EnableAsync"><a href="#EnableAsync" class="headerlink" title="@EnableAsync"></a>@EnableAsync</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Target(&#123;ElementType.TYPE&#125;)</span><br><span class="hljs-meta">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="hljs-meta">@Documented</span><br><span class="hljs-meta">@Import(&#123;AsyncConfigurationSelector.class&#125;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> EnableAsync &#123;<br>    Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Annotation</span>&gt; annotation() <span class="hljs-keyword">default</span> Annotation.class;<br>    <span class="hljs-type">boolean</span> <span class="hljs-title function_">proxyTargetClass</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> <span class="hljs-literal">false</span>;<br>    AdviceMode <span class="hljs-title function_">mode</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> AdviceMode.PROXY;<br>    <span class="hljs-type">int</span> <span class="hljs-title function_">order</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> <span class="hljs-number">2147483647</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="EnableAspectJAutoProxy"><a href="#EnableAspectJAutoProxy" class="headerlink" title="@EnableAspectJAutoProxy"></a>@EnableAspectJAutoProxy</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-variable">@Target</span>(&#123;ElementType.TYPE&#125;)<br><span class="hljs-variable">@Retention</span>(RetentionPolicy.RUNTIME)<br><span class="hljs-variable">@Documented</span><br><span class="hljs-variable">@Import</span>(&#123;AspectJAutoProxyRegistrar.class&#125;)<br>public <span class="hljs-variable">@interface</span> EnableAspectJAutoProxy &#123;<br>    <span class="hljs-selector-tag">boolean</span> <span class="hljs-selector-tag">proxyTargetClass</span>() <span class="hljs-selector-tag">default</span> <span class="hljs-selector-tag">false</span>;<br><br>    <span class="hljs-selector-tag">boolean</span> <span class="hljs-selector-tag">exposeProxy</span>() <span class="hljs-selector-tag">default</span> <span class="hljs-selector-tag">false</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="EnableScheduling"><a href="#EnableScheduling" class="headerlink" title="@EnableScheduling"></a>@EnableScheduling</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Target(&#123;ElementType.TYPE&#125;)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Import(&#123;SchedulingConfiguration.class&#125;)</span><br><span class="line">@Documented</span><br><span class="line">public @interface EnableScheduling &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="EnableAsync"><a href="#EnableAsync" class="headerlink" title="@EnableAsync"></a>@EnableAsync</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Target(&#123;ElementType.TYPE&#125;)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Documented</span><br><span class="line">@Import(&#123;AsyncConfigurationSelector.class&#125;)</span><br><span class="line">public @interface EnableAsync &#123;</span><br><span class="line">    Class&lt;? extends Annotation&gt; annotation() default Annotation.class;</span><br><span class="line">    boolean proxyTargetClass() default false;</span><br><span class="line">    AdviceMode mode() default AdviceMode.PROXY;</span><br><span class="line">    int order() default 2147483647;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="EnableAspectJAutoProxy"><a href="#EnableAspectJAutoProxy" class="headerlink" title="@EnableAspectJAutoProxy"></a>@EnableAspectJAutoProxy</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Target(&#123;ElementType.TYPE&#125;)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Documented</span><br><span class="line">@Import(&#123;AspectJAutoProxyRegistrar.class&#125;)</span><br><span class="line">public @interface EnableAspectJAutoProxy &#123;</span><br><span class="line">    boolean proxyTargetClass() default false;</span><br><span class="line"></span><br><span class="line">    boolean exposeProxy() default false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Import注解使用方式"><a href="#Import注解使用方式" class="headerlink" title="@Import注解使用方式"></a>@Import注解使用方式</h2><h3 id="允许使用-Configuration注解的类"><a href="#允许使用-Configuration注解的类" class="headerlink" title="允许使用@Configuration注解的类"></a>允许使用@Configuration注解的类</h3><p>@EnableScheduling注解的@Import导入的是SchedulingConfiguration类，我们看下该类的实现。<br>我们可以看到该类使用了@Configuration、@Bean注解。<br>@Import注解允许使用@Configuration注解的类注入容器中。</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-variable">@Configuration</span><br><span class="hljs-variable">@Role</span>(<span class="hljs-number">2</span>)<br>public class SchedulingConfiguration &#123;<br>    <span class="hljs-selector-tag">public</span> <span class="hljs-selector-tag">SchedulingConfiguration</span>() &#123;<br>    &#125;<br>    <span class="hljs-variable">@Bean</span>(<br>        name = &#123;<span class="hljs-string">&quot;org.springframework.context.annotation.internalScheduledAnnotationProcessor&quot;</span>&#125;<br>    )<br>    <span class="hljs-variable">@Role</span>(<span class="hljs-number">2</span>)<br>    public ScheduledAnnotationBeanPostProcessor <span class="hljs-built_in">scheduledAnnotationProcessor</span>() &#123;<br>        <span class="hljs-selector-tag">return</span> <span class="hljs-selector-tag">new</span> <span class="hljs-selector-tag">ScheduledAnnotationBeanPostProcessor</span>();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@Role(2)</span><br><span class="line">public class SchedulingConfiguration &#123;</span><br><span class="line">    public SchedulingConfiguration() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    @Bean(</span><br><span class="line">        name = &#123;&quot;org.springframework.context.annotation.internalScheduledAnnotationProcessor&quot;&#125;</span><br><span class="line">    )</span><br><span class="line">    @Role(2)</span><br><span class="line">    public ScheduledAnnotationBeanPostProcessor scheduledAnnotationProcessor() &#123;</span><br><span class="line">        return new ScheduledAnnotationBeanPostProcessor();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="允许使用实现ImportSelectorj接口的类"><a href="#允许使用实现ImportSelectorj接口的类" class="headerlink" title="允许使用实现ImportSelectorj接口的类"></a>允许使用实现ImportSelectorj接口的类</h3><p>@EnableAsync注解的@Import导入的是AsyncConfigurationSelector类，我们看下该类实现。<br>AsyncConfigurationSelector类实现了ImportSelector接口，重写了selectImports方法。<br>@Import注解这里会把selectImports返回的全路径的类注入容器中。</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs scala">public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AsyncConfigurationSelector</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AdviceModeImportSelector&lt;EnableAsync&gt;</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> static <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-type">ASYNC_EXECUTION_ASPECT_CONFIGURATION_CLASS_NAME</span> = <span class="hljs-string">&quot;org.springframework.scheduling.aspectj.AspectJAsyncConfiguration&quot;</span>;<br><br>    public <span class="hljs-type">AsyncConfigurationSelector</span>() &#123;<br>    &#125;<br><br>    <span class="hljs-meta">@Nullable</span><br>    public <span class="hljs-type">String</span>[] selectImports(<span class="hljs-type">AdviceMode</span> adviceMode) &#123;<br>        switch(adviceMode) &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-type">PROXY</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-type">String</span>[]&#123;<span class="hljs-type">ProxyAsyncConfiguration</span>.<span class="hljs-keyword">class</span>.getName()&#125;;<br>        <span class="hljs-keyword">case</span> <span class="hljs-type">ASPECTJ</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-type">String</span>[]&#123;<span class="hljs-string">&quot;org.springframework.scheduling.aspectj.AspectJAsyncConfiguration&quot;</span>&#125;;<br>        <span class="hljs-keyword">default</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class AsyncConfigurationSelector extends AdviceModeImportSelector&lt;EnableAsync&gt; &#123;</span><br><span class="line">    private static final String ASYNC_EXECUTION_ASPECT_CONFIGURATION_CLASS_NAME = &quot;org.springframework.scheduling.aspectj.AspectJAsyncConfiguration&quot;;</span><br><span class="line"></span><br><span class="line">    public AsyncConfigurationSelector() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Nullable</span><br><span class="line">    public String[] selectImports(AdviceMode adviceMode) &#123;</span><br><span class="line">        switch(adviceMode) &#123;</span><br><span class="line">        case PROXY:</span><br><span class="line">            return new String[]&#123;ProxyAsyncConfiguration.class.getName()&#125;;</span><br><span class="line">        case ASPECTJ:</span><br><span class="line">            return new String[]&#123;&quot;org.springframework.scheduling.aspectj.AspectJAsyncConfiguration&quot;&#125;;</span><br><span class="line">        default:</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="允许是实现了ImportBeanDefinitionRegistrar接口的类"><a href="#允许是实现了ImportBeanDefinitionRegistrar接口的类" class="headerlink" title="允许是实现了ImportBeanDefinitionRegistrar接口的类"></a>允许是实现了ImportBeanDefinitionRegistrar接口的类</h3><p>@EnableAspectJAutoProxy注解的@Import导入的是AspectJAutoProxyRegistrar类，我们再看看该类实现。<br>AspectJAutoProxyRegistrar实现了ImportBeanDefinitionRegistrar接口，ImportBeanDefinitionRegistrar的作用是在运行时自动添加Bean到已有的配置类，并在Spring容器启动时解析生成bean，通过重写方法registerBeanDefinitions。</p>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">class</span> AspectJAutoProxyRegistrar implements ImportBeanDefinitionRegistrar &#123;<br>    <span class="hljs-constructor">AspectJAutoProxyRegistrar()</span> &#123;<br>    &#125;<br><br>    public void register<span class="hljs-constructor">BeanDefinitions(AnnotationMetadata <span class="hljs-params">importingClassMetadata</span>, BeanDefinitionRegistry <span class="hljs-params">registry</span>)</span> &#123;<br>        <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">AopConfigUtils</span>.</span></span>register<span class="hljs-constructor">AspectJAnnotationAutoProxyCreatorIfNecessary(<span class="hljs-params">registry</span>)</span>;<br>        AnnotationAttributes enableAspectJAutoProxy = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">AnnotationConfigUtils</span>.</span></span>attributes<span class="hljs-constructor">For(<span class="hljs-params">importingClassMetadata</span>, EnableAspectJAutoProxy.<span class="hljs-params">class</span>)</span>;<br>        <span class="hljs-keyword">if</span> (enableAspectJAutoProxy != null) &#123;<br>            <span class="hljs-keyword">if</span> (enableAspectJAutoProxy.get<span class="hljs-constructor">Boolean(<span class="hljs-string">&quot;proxyTargetClass&quot;</span>)</span>) &#123;<br>                <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">AopConfigUtils</span>.</span></span>force<span class="hljs-constructor">AutoProxyCreatorToUseClassProxying(<span class="hljs-params">registry</span>)</span>;<br>            &#125;<br><br>            <span class="hljs-keyword">if</span> (enableAspectJAutoProxy.get<span class="hljs-constructor">Boolean(<span class="hljs-string">&quot;exposeProxy&quot;</span>)</span>) &#123;<br>                <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">AopConfigUtils</span>.</span></span>force<span class="hljs-constructor">AutoProxyCreatorToExposeProxy(<span class="hljs-params">registry</span>)</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class AspectJAutoProxyRegistrar implements ImportBeanDefinitionRegistrar &#123;</span><br><span class="line">    AspectJAutoProxyRegistrar() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) &#123;</span><br><span class="line">        AopConfigUtils.registerAspectJAnnotationAutoProxyCreatorIfNecessary(registry);</span><br><span class="line">        AnnotationAttributes enableAspectJAutoProxy = AnnotationConfigUtils.attributesFor(importingClassMetadata, EnableAspectJAutoProxy.class);</span><br><span class="line">        if (enableAspectJAutoProxy != null) &#123;</span><br><span class="line">            if (enableAspectJAutoProxy.getBoolean(&quot;proxyTargetClass&quot;)) &#123;</span><br><span class="line">                AopConfigUtils.forceAutoProxyCreatorToUseClassProxying(registry);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (enableAspectJAutoProxy.getBoolean(&quot;exposeProxy&quot;)) &#123;</span><br><span class="line">                AopConfigUtils.forceAutoProxyCreatorToExposeProxy(registry);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Import注解SpringBoot处理流程源码分析"><a href="#Import注解SpringBoot处理流程源码分析" class="headerlink" title="@Import注解SpringBoot处理流程源码分析"></a>@Import注解SpringBoot处理流程源码分析</h2><ol>
-<li>Spring IOC容器初始化的时候会调用AbstractApplicationContext的refresh方法<br><img src="/img/spring-refresh.png" alt="spring-refresh"></li>
-<li>在refresh里会调用各种BeanFactoryPostProcessor。ConfigurationClassPostProcessor的processConfigBeanDefinitions方法有对@Configuration、@Import等对注解的处理。<br><img src="/img/spring-configuration-processor.png" alt="spring-configuration-processor"></li>
+<li>Spring IOC容器初始化的时候会调用AbstractApplicationContext的refresh方法<br><a href="/img/spring-refresh.png" title="spring-refresh" class="gallery-item" style="box-shadow: none;"> <img src="/img/spring-refresh.png" alt="spring-refresh"></a></li>
+<li>在refresh里会调用各种BeanFactoryPostProcessor。ConfigurationClassPostProcessor的processConfigBeanDefinitions方法有对@Configuration、@Import等对注解的处理。<br><a href="/img/spring-configuration-processor.png" title="spring-configuration-processor" class="gallery-item" style="box-shadow: none;"> <img src="/img/spring-configuration-processor.png" alt="spring-configuration-processor"></a></li>
 <li>ConfigurationClassPostProcessor实际内部通过ConfigurationClassParser处理。</li>
 <li>我们重点看看ConfigurationClassParser这个类对@Import处理。</li>
 </ol>
 <h2 id="ConfigurationClassParser类源码分析"><a href="#ConfigurationClassParser类源码分析" class="headerlink" title="ConfigurationClassParser类源码分析"></a>ConfigurationClassParser类源码分析</h2><p><strong>核心处理代码在ConfigurationClassParser的processImports方法中，实现了对于本文对于@Import三种使用方式的处理过程。</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">processImports</span><span class="hljs-params">(ConfigurationClass configClass, ConfigurationClassParser.SourceClass currentSourceClass, Collection&lt;ConfigurationClassParser.SourceClass&gt; importCandidates, Predicate&lt;String&gt; exclusionFilter, <span class="hljs-type">boolean</span> checkForCircularImports)</span> &#123;<br><span class="hljs-comment">//....省略部分代码</span><br>                       ConfigurationClassParser.<span class="hljs-type">SourceClass</span> <span class="hljs-variable">candidate</span> <span class="hljs-operator">=</span> (ConfigurationClassParser.SourceClass)var6.next();<br>                       Class candidateClass;<br>                       <span class="hljs-keyword">if</span> (candidate.isAssignable(ImportSelector.class)) &#123;<br>						<span class="hljs-comment">//对于处理ImportSelector注解处理</span><br>                           candidateClass = candidate.loadClass();<br>                           <span class="hljs-type">ImportSelector</span> <span class="hljs-variable">selector</span> <span class="hljs-operator">=</span> (ImportSelector)ParserStrategyUtils.instantiateClass(candidateClass, ImportSelector.class, <span class="hljs-built_in">this</span>.environment, <span class="hljs-built_in">this</span>.resourceLoader, <span class="hljs-built_in">this</span>.registry);<br>                           Predicate&lt;String&gt; selectorFilter = selector.getExclusionFilter();<br>                           <span class="hljs-keyword">if</span> (selectorFilter != <span class="hljs-literal">null</span>) &#123;<br>                               exclusionFilter = exclusionFilter.or(selectorFilter);<br>                           &#125;<br>                           <span class="hljs-keyword">if</span> (selector <span class="hljs-keyword">instanceof</span> DeferredImportSelector) &#123;<br>                               <span class="hljs-built_in">this</span>.deferredImportSelectorHandler.handle(configClass, (DeferredImportSelector)selector);<br>                           &#125; <span class="hljs-keyword">else</span> &#123;<br>                               String[] importClassNames = selector.selectImports(currentSourceClass.getMetadata());<br>                               Collection&lt;ConfigurationClassParser.SourceClass&gt; importSourceClasses = <span class="hljs-built_in">this</span>.asSourceClasses(importClassNames, exclusionFilter);<br>                               <span class="hljs-built_in">this</span>.processImports(configClass, currentSourceClass, importSourceClasses, exclusionFilter, <span class="hljs-literal">false</span>);<br>                           &#125;<br>                       &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (candidate.isAssignable(ImportBeanDefinitionRegistrar.class)) &#123;<br>						<span class="hljs-comment">//对于ImportBeanDefinitionRegistrar接口处理</span><br>                           candidateClass = candidate.loadClass();<br>                           <span class="hljs-type">ImportBeanDefinitionRegistrar</span> <span class="hljs-variable">registrar</span> <span class="hljs-operator">=</span> (ImportBeanDefinitionRegistrar)ParserStrategyUtils.instantiateClass(candidateClass, ImportBeanDefinitionRegistrar.class, <span class="hljs-built_in">this</span>.environment, <span class="hljs-built_in">this</span>.resourceLoader, <span class="hljs-built_in">this</span>.registry);<br>                           configClass.addImportBeanDefinitionRegistrar(registrar, currentSourceClass.getMetadata());<br>                       &#125; <span class="hljs-keyword">else</span> &#123;<br>                           <span class="hljs-built_in">this</span>.importStack.registerImport(currentSourceClass.getMetadata(), candidate.getMetadata().getClassName());<br>						<span class="hljs-comment">//对于@Configuration注解处理</span><br>                           <span class="hljs-built_in">this</span>.processConfigurationClass(candidate.asConfigClass(configClass), exclusionFilter);<br>                       &#125;<br><span class="hljs-comment">//....省略部分代码</span><br>   &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">processImports</span><span class="params">(ConfigurationClass configClass, ConfigurationClassParser.SourceClass currentSourceClass, Collection&lt;ConfigurationClassParser.SourceClass&gt; importCandidates, Predicate&lt;String&gt; exclusionFilter, <span class="type">boolean</span> checkForCircularImports)</span> &#123;</span><br><span class="line"><span class="comment">//....省略部分代码</span></span><br><span class="line">                       ConfigurationClassParser.<span class="type">SourceClass</span> <span class="variable">candidate</span> <span class="operator">=</span> (ConfigurationClassParser.SourceClass)var6.next();</span><br><span class="line">                       Class candidateClass;</span><br><span class="line">                       <span class="keyword">if</span> (candidate.isAssignable(ImportSelector.class)) &#123;</span><br><span class="line">						<span class="comment">//对于处理ImportSelector注解处理</span></span><br><span class="line">                           candidateClass = candidate.loadClass();</span><br><span class="line">                           <span class="type">ImportSelector</span> <span class="variable">selector</span> <span class="operator">=</span> (ImportSelector)ParserStrategyUtils.instantiateClass(candidateClass, ImportSelector.class, <span class="built_in">this</span>.environment, <span class="built_in">this</span>.resourceLoader, <span class="built_in">this</span>.registry);</span><br><span class="line">                           Predicate&lt;String&gt; selectorFilter = selector.getExclusionFilter();</span><br><span class="line">                           <span class="keyword">if</span> (selectorFilter != <span class="literal">null</span>) &#123;</span><br><span class="line">                               exclusionFilter = exclusionFilter.or(selectorFilter);</span><br><span class="line">                           &#125;</span><br><span class="line">                           <span class="keyword">if</span> (selector <span class="keyword">instanceof</span> DeferredImportSelector) &#123;</span><br><span class="line">                               <span class="built_in">this</span>.deferredImportSelectorHandler.handle(configClass, (DeferredImportSelector)selector);</span><br><span class="line">                           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                               String[] importClassNames = selector.selectImports(currentSourceClass.getMetadata());</span><br><span class="line">                               Collection&lt;ConfigurationClassParser.SourceClass&gt; importSourceClasses = <span class="built_in">this</span>.asSourceClasses(importClassNames, exclusionFilter);</span><br><span class="line">                               <span class="built_in">this</span>.processImports(configClass, currentSourceClass, importSourceClasses, exclusionFilter, <span class="literal">false</span>);</span><br><span class="line">                           &#125;</span><br><span class="line">                       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (candidate.isAssignable(ImportBeanDefinitionRegistrar.class)) &#123;</span><br><span class="line">						<span class="comment">//对于ImportBeanDefinitionRegistrar接口处理</span></span><br><span class="line">                           candidateClass = candidate.loadClass();</span><br><span class="line">                           <span class="type">ImportBeanDefinitionRegistrar</span> <span class="variable">registrar</span> <span class="operator">=</span> (ImportBeanDefinitionRegistrar)ParserStrategyUtils.instantiateClass(candidateClass, ImportBeanDefinitionRegistrar.class, <span class="built_in">this</span>.environment, <span class="built_in">this</span>.resourceLoader, <span class="built_in">this</span>.registry);</span><br><span class="line">                           configClass.addImportBeanDefinitionRegistrar(registrar, currentSourceClass.getMetadata());</span><br><span class="line">                       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                           <span class="built_in">this</span>.importStack.registerImport(currentSourceClass.getMetadata(), candidate.getMetadata().getClassName());</span><br><span class="line">						<span class="comment">//对于@Configuration注解处理</span></span><br><span class="line">                           <span class="built_in">this</span>.processConfigurationClass(candidate.asConfigClass(configClass), exclusionFilter);</span><br><span class="line">                       &#125;</span><br><span class="line"><span class="comment">//....省略部分代码</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p><strong>千里之行，始于足下。这里是SpringBoot教程系列第十一篇，所有项目源码均可以在我的<a target="_blank" rel="noopener" href="https://github.com/mytianya/springboot-tutorials" title="GitHub">GitHub</a>上面下载源码。</strong></p>
-</div><div class="article-licensing box"><div class="licensing-title"><p>Springboot2.x基础教程：@Enable原理</p><p><a href="https://mytianya.github.io/2023/09/24/springboot/Springboot2.x基础教程：@Enable原理/">https://mytianya.github.io/2023/09/24/springboot/Springboot2.x基础教程：@Enable原理/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>mytianya</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-09-24</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-02-27</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/springboot/">springboot</a></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/09/25/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A%E9%9B%86%E6%88%90mybatis%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Springboot2.x基础教程：集成mybatis最佳实践</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/09/24/springboot/Springboot2.x%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%9A@Scheduled%E5%BC%80%E5%90%AF%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%8F%8A%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"><span class="level-item">Springboot2.x基础教程：@Scheduled开启定时任务及源码分析</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/avatar.png" alt="mytianya"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">mytianya</p><p class="is-size-6 is-block">全栈工程师</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">30</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">5</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">6</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/mytianya" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/mytianya"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/java/"><span class="level-start"><span class="level-item">java</span></span><span class="level-end"><span class="level-item tag">26</span></span></a></li><li><a class="level is-mobile" href="/categories/oracle/"><span class="level-start"><span class="level-item">oracle</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%9D%82%E8%B0%88/"><span class="level-start"><span class="level-item">杂谈</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%B5%81%E5%AA%92%E4%BD%93/"><span class="level-start"><span class="level-item">流媒体</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%AE%97%E6%B3%95/"><span class="level-start"><span class="level-item">算法</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-27T18:00:08.000Z">2023-09-28</time></p><p class="title"><a href="/2023/09/28/oracle/ORA-00257%E5%BD%92%E6%A1%A3%E7%A8%8B%E5%BA%8F%E9%94%99%E8%AF%AF/">ORA-00257归档程序错误</a></p><p class="categories"><a href="/categories/oracle/">oracle</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-26T18:00:08.000Z">2023-09-27</time></p><p class="title"><a href="/2023/09/27/alg/%E7%AE%97%E6%B3%95%EF%BC%9A%E6%B1%82%E6%9C%80%E5%A4%9A%E7%BA%BF%E6%AE%B5%E9%87%8D%E5%90%88%E6%AC%A1%E6%95%B0/">求最多线段重合次数</a></p><p class="categories"><a href="/categories/%E7%AE%97%E6%B3%95/">算法</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-26T18:00:08.000Z">2023-09-27</time></p><p class="title"><a href="/2023/09/27/video/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%82%B9%E6%92%AD%E8%B7%9F%E7%9B%B4%E6%92%AD%E6%B5%81%E5%AA%92%E4%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%A9%E7%8E%A9/">搭建一个点播跟直播流媒体服务器玩玩</a></p><p class="categories"><a href="/categories/%E6%B5%81%E5%AA%92%E4%BD%93/">流媒体</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-25T18:00:18.000Z">2023-09-26</time></p><p class="title"><a href="/2023/09/26/springcloud/SpringCloud%E7%89%88%E6%9C%AC%E6%96%B0%E6%97%A7%E5%91%BD%E5%90%8D%E6%96%B9%E5%BC%8F/">SpringCloud版本新旧命名方式</a></p><p class="categories"><a href="/categories/java/">java</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-25T18:00:08.000Z">2023-09-26</time></p><p class="title"><a href="/2023/09/26/springcloud/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/">微服务架构简介</a></p><p class="categories"><a href="/categories/java/">java</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">29</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/ora-00257/"><span class="tag">ora-00257</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/springboot/"><span class="tag">springboot</span><span class="tag">24</span></a></div><div class="control"><a class="tags has-addons" href="/tags/springcloud/"><span class="tag">springcloud</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%8D%9A%E5%AE%A2/"><span class="tag">博客</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B0%8F%E6%A0%B9%E5%A0%86/"><span class="tag">小根堆</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/"><span class="tag">音视频</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/avatar.png" alt="mytianya" height="28"></a><p class="is-size-7"><span>&copy; 2024 mytianya</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
-            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
-        });</script></body></html>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-09-24</span>
+            
+                <span>该篇文章被 mytianya</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/springboot/'>
+                            springboot
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/java/'>
+                            java
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊晚来天欲雪，能饮一杯无🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

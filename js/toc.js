@@ -1,80 +1,61 @@
-(function (window, document) {
-  function register($toc) {
-    const currentInView = new Set();
-    const headingToMenu = new Map();
-    const $menus = Array.from($toc.querySelectorAll('.menu-list > li > a'));
+$(document).ready(function() {
+    var headingCount1 = $("h1").length;
+    var headingCount2 = $("h2").length;
+    var headingCount3 = $("h3").length;
+    var headingCount4 = $("h4").length;
+    var headingCount5 = $("h5").length;
+    var headingCount6 = $("h6").length;
+    var headingCount7 = $("h7").length;
+    var tocHeading = "";
 
-    for (const $menu of $menus) {
-      const elementId = $menu.getAttribute('href').trim().slice(1);
-      const $heading = document.getElementById(elementId);
-      if ($heading) {
-        headingToMenu.set($heading, $menu);
+    if (headingCount1 > 1) {
+      if(tocHeading == "") {
+        tocHeading = "h1";
+      } else {
+        tocHeading += ",h1"
       }
     }
 
-    const $headings = Array.from(headingToMenu.keys());
-
-    const callback = (entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          currentInView.add(entry.target);
+    if (headingCount2 > 1) {
+        if(tocHeading == "") {
+          tocHeading = "h2";
         } else {
-          currentInView.delete(entry.target);
+          tocHeading += ",h2"
         }
-      }
-      let $heading;
-      if (currentInView.size) {
-        // heading is the first in-view heading
-        $heading = [...currentInView].sort(($el1, $el2) => $el1.offsetTop - $el2.offsetTop)[0];
-      } else if ($headings.length) {
-        // heading is the closest heading above the viewport top
-        $heading = $headings
-          .filter(($heading) => $heading.offsetTop < window.scrollY)
-          .sort(($el1, $el2) => $el2.offsetTop - $el1.offsetTop)[0];
-      }
-      if ($heading && headingToMenu.has($heading)) {
-        $menus.forEach(($menu) => $menu.classList.remove('is-active'));
-
-        const $menu = headingToMenu.get($heading);
-        $menu.classList.add('is-active');
-        let $menuList = $menu.parentElement.parentElement;
-        while (
-          $menuList.classList.contains('menu-list') &&
-          $menuList.parentElement.tagName.toLowerCase() === 'li'
-        ) {
-          $menuList.parentElement.children[0].classList.add('is-active');
-          $menuList = $menuList.parentElement.parentElement;
-        }
-      }
-    };
-    const observer = new IntersectionObserver(callback, { threshold: 0 });
-
-    for (const $heading of $headings) {
-      observer.observe($heading);
-      // smooth scroll to the heading
-      if (headingToMenu.has($heading)) {
-        const $menu = headingToMenu.get($heading);
-        $menu.setAttribute('data-href', $menu.getAttribute('href'));
-        $menu.setAttribute('href', 'javascript:;');
-        $menu.addEventListener('click', () => {
-          if (typeof $heading.scrollIntoView === 'function') {
-            $heading.scrollIntoView({ behavior: 'smooth' });
-          }
-          const anchor = $menu.getAttribute('data-href');
-          if (history.pushState) {
-            history.pushState(null, null, anchor);
-          } else {
-            location.hash = anchor;
-          }
-        });
-        $heading.style.scrollMargin = '1em';
-      }
     }
-  }
 
-  if (typeof window.IntersectionObserver === 'undefined') {
-    return;
-  }
+    if (headingCount3 > 1) {
+        if(tocHeading == "") {
+          tocHeading = "h3";
+        } else {
+          tocHeading += ",h3"
+        }
+    }
 
-  document.querySelectorAll('#toc').forEach(register);
-})(window, document);
+    if (headingCount4 > 1) {
+        if(tocHeading == "") {
+          tocHeading = "h4";
+        } else {
+          tocHeading += ",h4"
+        }
+    }
+    if (headingCount5 > 1) {
+        if(tocHeading == "") {
+          tocHeading = "h5";
+        } else {
+          tocHeading += ",h5"
+        }
+    }
+
+    if (headingCount6 > 1) {
+        if(tocHeading == "") {
+          tocHeading = "h6";
+        } else {
+          tocHeading += ",h6"
+        }
+    }
+
+    $("#toc").tocify({
+        selectors: tocHeading
+      });
+  });
